@@ -5,4 +5,6 @@ Repository for sharing and writing the paper for SWJ, special call on tools and 
 
 TODO
 =======
+- [ ] Finish some stuff there
+- [ ] And more and more
  
