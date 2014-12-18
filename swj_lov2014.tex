@@ -132,7 +132,7 @@ LOV\sep Linked Open Vocabulary\sep Ontology search\sep Linked Data
 
 
 \section{Introduction}
-Started in March 2011, in the framework of the DataLift research project \cite{scharffe_2012} hosted by the Open Knowledge Foundation, the Linked Open Vocabularies (LOV) initiative is now standing as an innovative observatory of the vocabularies ecosystem. It gathers and makes visible indicators not yet harvested before, such as interconnection between vocabularies, versioning history and maintenance policy, past and current referent (individual or organization) if any. The number of vocabularies indexed by LOV is constantly growing (469 as of January 2014) thanks to a community effort and it is the only catalog, to the best of our knowledge, that provide all types of search criteria (metadata search, within/across ontologies search), both an API and a SPARQL endpoint access. According to the categories of ontology libraries defined in~\cite{AquinJoWS12}, LOV falls under the category of \textit{``curated ontology directory''}  and \textit{``application platform''}.
+Started in March 2011, in the framework of the DataLift research project \cite{scharffe_2012} hosted by the Open Knowledge Foundation, the Linked Open Vocabularies (LOV) initiative is now standing as an innovative observatory of the vocabularies ecosystem. It gathers and makes visible indicators not yet harvested before, such as interconnection between vocabularies, versioning history and maintenance policy, past and current referent (individual or organization) if any. The number of vocabularies indexed by LOV is constantly growing (469 as of December 2014) thanks to a community effort and it is the only catalog, to the best of our knowledge, that provide all types of search criteria (metadata search, within/across ontologies search), both an API and a SPARQL endpoint access. According to the categories of ontology libraries defined in~\cite{AquinJoWS12}, LOV falls under the category of \textit{``curated ontology directory''}  and \textit{``application platform''}.
 
 The development of LOV has highlighted a number of interesting research issues such as \textit{``where to find the best domain vocabulary to reuse?"}, and \textit{``is it possible to create a curated catalogue of vocabularies that are links?"}. 
 In this paper, \TODO{ add what are the contributions}
@@ -164,7 +164,8 @@ LOV high-curated vocabularies are suitable for ontology search and reuse activit
 
 
 
-\subsection{Metadata information of a vocabulary}
+\section{Metadata information of a vocabulary}
+\label{sec:metadata}
 A vocabulary to be accepted and inserted into LOV, a minimal metadata information is required in the vocabulary. Those metadata should be described reusing existing meta-vocabularies, such Dublin core, lexvo\footnote{\url{http://lexvo.org/ontology#}} and provenance vocabulary.
 Three levels of metadata are present in any vocabulary in LOV:
 \begin{itemize}
@@ -177,9 +178,26 @@ Three levels of metadata are present in any vocabulary in LOV:
 
 \begin{figure}[ht!b]
 \includegraphics[scale=0.4]{dcat-relations.pdf}
-\caption{Sample of relations and metadata used in the DCAT vocabulary.}
+\caption{Sample type of relations and metadata used in the DCAT vocabulary.}
 \label{fig:dcat}
 \end{figure}
+
+Languages tag retrieved for each vocabulary is inserted into LOV database by using the \texttt{dcterms:language} property with the URI of the language in lexvo dataset using the ISO 639-3 code. For example, the URI associated to Japanese language is \url{http://www.lexvo.org/page/iso639-3/jpn}. Currently, 91.25\% (428 out of 469) of vocabularies use a language tag associated, with only 9 vocabularies with labels in a language different from English. Table \ref{tab:language} presents the number and percentage of the top five languages detected in LOV. This results suggest that publishers should make more effort to provide multilingual vocabularies on the Web,
+ 
+ \begin{table}[h!tb]
+\caption{Top five languages and percentage detected in LOV catalogue.}
+\begin{tabular}{lcc}
+\hline
+\textbf{Language} & \textbf{Number} & \textbf{\%}  \\ \hline
+English  & 419   &  97.89\%      \\
+French & 42 & 9.81\% \\
+Spanish & 28 & 6.54\%\\
+German & 21 & 4.90\%\\
+Italian & 20 & 4.67\%\\
+\hline  
+\end{tabular}
+\label{tab:language }
+\end{table}
 
 
 \section{LOV as an ontology-based search engine}
@@ -265,7 +283,7 @@ LOV is a catalog and API that can fits well within the Neon methodology for buil
       \label{fig:eqCR}
     \end{figure}
     
- \item [Ontology Localization.] Labels in different languages are stored in the LOV endpoint for the ontology terms that provide such information. This annotations could be used when translating terms into different languages. This information could be extracted by querying the SPARQL endpoint as shown in Listing \ref{list:person}\footnote{\url{http://goo.gl/JJCJ01}} where all the labels defined for the terms that have at least one \emph{rdfs:label} containing strictly ``person":
+ \item [Ontology Localization.] Labels in different languages are stored in the LOV endpoint for the ontology terms that provide such information. This annotations could be used when translating terms into different languages. This information could be extracted by querying the SPARQL endpoint\footnote{\url{http://goo.gl/JJCJ01}} as shown in Listing \ref{list:person} where all the labels defined for the terms that have at least one \emph{rdfs:label} containing strictly ``person":
 		
     \begin{lstlisting}[float=htb,caption={SPARQL query asking all the labels defined for the terms containing person.},label=list:person, language=json]
     SELECT DISTINCT ?label2 ?element{
@@ -276,8 +294,9 @@ LOV is a catalog and API that can fits well within the Neon methodology for buil
 	} ORDER BY ?element
 	\end{lstlisting}
 							
-   An excerpt of the query result is shown in figure \ref{fig:translations}. From that result, ``Persona''@es and ``Personne''@fr could be used as translations for the English term ``Person'' in Spanish and French respectively.
-   \begin{figure}
+   An excerpt of the query result is shown in Figure \ref{fig:translations}. From that result, ``Persona''@es and ``Personne''@fr could be used as translations for the English term ``Person'' in Spanish and French respectively. 
+   
+   \begin{figure}[ht!b]
      \centering
      \includegraphics[width=.90\linewidth]{translations1.png}
      \caption{Translations example for foaf:Person}
@@ -286,7 +305,7 @@ LOV is a catalog and API that can fits well within the Neon methodology for buil
    
 \end{description}
 
-Figure \ref{fig:LOVandNeOn} shows the activities LOV can support within the overall Neon methodologies activity workflow.
+Figure \ref{fig:LOVandNeOn} shows the activities in which LOV can support within the overall Neon methodologies activity workflow.
 \begin{figure}[h!tp]
 \centering
   \includegraphics[width=.80\linewidth]{neonScenarios.png}
