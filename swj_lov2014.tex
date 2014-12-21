@@ -196,13 +196,14 @@ German & 21 & 4.90\%\\
 Italian & 20 & 4.67\%\\
 \hline  
 \end{tabular}
-\label{tab:language }
+\label{tab:language}
 \end{table}
+
 
 
 \section{LOV as an ontology-based search engine}
 \label{sec:ontoSearch}
-Users or agents use keywords to search properties or classes within vocabularies in the LOV catalogue. The log\footnote{\url{http://lov.okfn.org/dataset/lov/stats/searchLog.csv}} of search terms between 2012/01/06 and 2014/12/09 presents a total of 54,657 terms, with 36,019 (65.90\%) duplicate terms and 18,643 unique terms (34.10\%). Figure \ref{fig:searchterms} depicts the number of terms in the log grouped by year. From 2012 to 2013, there have been an increase of more than 50\% of terms for searching vocabularies in LOV. Searching terms are mostly single words (e.g., currency). However, terms can be composite of two words (e.g., family tree), three words (e.g., semantic sensor network) or an URI (e.g., http://www.aktors.org/ontology/portal). Table \ref{tab:patterns } shows details for the use of URIs, two words and at least three words for unique values in the LOV log.
+Users or agents use keywords to search properties or classes within vocabularies in the LOV catalogue. The log\footnote{\url{http://lov.okfn.org/dataset/lov/stats/searchLog.csv}} of search terms between 2012/01/06 and 2014/12/09 presents a total of 54,657 terms, with 36,019 (65.90\%) duplicate terms and 18,643 unique terms (34.10\%). Figure \ref{fig:searchterms} depicts the number of terms in the log grouped by year. From 2012 to 2013, there have been an increase of more than 50\% of terms for searching vocabularies in LOV. Searching terms are mostly single words (e.g., currency). However, terms can be composite of two words (e.g., ``family tree''), three words (e.g., ``semantic sensor network'') or an URI (e.g., ``http://www.aktors.org/ontology/portal''). Table \ref{tab:patterns} shows details for the use of URIs, two words and at least three words for unique values in the LOV searching log.
 
 
 \begin{table}[h!tb]
@@ -337,6 +338,8 @@ Datalift\footnote{\url{http://datalift.org/en/node/24}} platform \cite{scharffe_
 
 LOV vocabularies have served as object of study in \cite{poveda2012landscape} where trends in ontology reuse techniques were analyzed in 2012. In addition, LOV dataset has been used in order to analyze the occurrence of good and bad practices in vocabularies as described in \cite{poveda2013detecting} in 2013.
 
+Prefixes in LOV dataset is regularly mapped with namespaces in the prefix.cc service. In \cite{wasabi13}, the authors performs alignments of Qnames of vocabularies in both services, and provides different solutions to handle in case of clashes and disagreements on preferred namespaces. Both LOV and prefix.cc provide associations between prefixes and namespaces but following a different logic. The prefix.cc service supports polysemy and synonymy, and has a very loose control on its crowd-sourced information. In contrast, LOV has a much more strict policy forbidding polysemy and synonymy ensuring that each vocabulary in the LOV database is uniquely identified by a unique prefix identification allowing the usage of prefixes in various LOV publication URIs. This requirement leads sometimes to a situation where LOV uses prefixes different from the ones recommended by the vocabulary publishers.
+
 LOV query log covering the period between 06/01/2012 and 16/04/2014 is used in \cite{butt2014} to build a benchmark suite for ontology search and ranking. The CBRBench\footnote{\url{https://zenodo.org/record/11121}} benchmark uses eight ranking models of resources in ontologies and compare the results with ontology engineers.
 
 In \cite{janowicz2014five}, the authors rate vocabularies according to some criteria beyond the sameAs links but subClassOf and equivalentClass 'links' between vocabularies to foster interoperability, query federation, ease the interpretation of data, and so forth. %\ghis{ read this paper to add more content here}
@@ -345,7 +348,6 @@ Databugger\footnote{\url{https://github.com/AKSW/Databugger}} is a test-driven d
 
 Giovanni et al. \cite{governatori2014} analyzes the current use of licenses in vocabularies on the Web based on LOV catalogue to further propose a framework to detect incompatibilities between datasets and vocabularies.
 
-\maria{ Maria: something about LOVER, was it really relate? }. \\
 
 \section{Related work and Discussion}
 \label{sec:related}
