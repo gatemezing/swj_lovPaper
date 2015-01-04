@@ -119,8 +119,8 @@ E-mail: bernard.vatant@mondeca.com}
 
 
 \begin{abstract}
-\textcolor{red}{The abstract should be clear, descriptive, self-explanatory and no longer than 200 words. It should also
-be suitable for publication in abstracting services. Do not include references or formulae in the abstract.}
+%\textcolor{red}{The abstract should be clear, descriptive, self-explanatory and no longer than 200 words. It should also be suitable for publication in abstracting services. Do not include references or formulae in the abstract.}
+One of the major barriers to the deployment of Linked Data is the difficulty data publishers have in determining which vocabularies to use for describing the semantic of data. This paper describes the Linked Open Vocabulary (LOV) as an innovative observatory of the vocabularies ecosystem. The LOV initiative gathers and makes visible indicators that have not previously been harvested, such as interconnection between vocabularies, version history, maintenance policy, past and current referent (individual or organization). Many applications of the LOV in vocabulary engineering, ontology ranking, data quality and vocabulary licenses show the benefits of such a set of vocabularies to aid the modeling and publication of data on the Web.
 \end{abstract}
 
 \begin{keyword}
@@ -177,7 +177,7 @@ Italian & 20 & 4.67\%\\
 \section{LOV functionalities}
 \label{sec:about}
 
-\py{ give some input here, and current figures}\\
+%\py{ give some input here, and current figures}\\
 
 LOV high-curated vocabularies are suitable for ontology search and reuse activities during the process of creating and publishing a vocabulary. Below are the relevant features of LOV achieving the aforementioned activities:
 
@@ -229,20 +229,8 @@ $t_{1}$ $t_{2}$ & 200 & 480 & 466 & 1146 \\
 \section{LOV as a support for Data Publication and Ontology Engineering}
 \label{sec:dataPubOntoEngine}
 
-\subsection{Life-cycle of a vocabulary in LOV}
-\label{sec:lifecyle}
 
-\TODO{ ADD some text here }\\
-Review --insertion --publication --archive version --Daily checking --\\
-
-\ghis{ add a figure of tracking the vocabulary evolution}
-\paragraph{Criteria to remove a vocabulary} 
-When it is orphan, no metadata, no labels. 
-
-
-\subsection{Building ontologies with LOV}
-\label{sec:builOnto}
-
+LOV can be used in any methodology of creating and reusing ontologies. One of the most recent methodology for supporting collaborative development of ontologies is NeOn.  
 The NeOn Methodology is a scenario-based methodology that supports the collaborative aspects of ontology development and reuse, as well as the dynamic evolution of ontology networks in distributed environments. The key assets of the NeOn Methodology are \cite{MC10}:
 \begin{itemize}
  \item  A set of nine scenarios for building ontologies and ontology networks, emphasizing the reuse of ontological and non-ontological resources, the re-engineering and merging, and taking into account collaboration and dynamism.
@@ -315,7 +303,7 @@ Figure \ref{fig:LOVandNeOn} shows the activities in which LOV can support within
 
 \section{LOV application and project ecosystem}
 \label{sec:lovecosystem}
-\py{ write the way to use the API, with a snapshot of some results}
+%\py{ write the way to use the API, with a snapshot of some results}
 LOV database as of today contains over 46,000 RDF vocabularies elements, with 28,000 properties and 18,000 classes, all accessible also via API\footnote{\url{http://lov.okfn.org/dataset/lov/apidoc/}}. For example, using the LOV Search API, an application can search for all classes with the term ``Catalog'' in any literal value by making the following call: \url{http://lov.okfn.org/dataset/lov/api/v2/search?q=Catalog&type=class}
  
 \subsection{Derived tools and applications}
@@ -398,7 +386,7 @@ LOV search engine is to the best of our knowledge, the only purpose-built ontolo
 Next version v3 functionality coming soon :)
 
 \section*{Acknowledgments}
-This work has been partially supported by the French National Research Agency (ANR) within the Datalift Project, under grant number ANR-10-CORD-009 and the Spanish project BabelData (TIN2010-17550) and Fujitsu Laboratories. The Linked Open Vocabularies initiative is graciously hosted by the Open Knowledge Foundation.Thanks to all the members of the LOV community in Google+\footnote{\url{https://plus.google.com/communities/108509791366293651606}}, all the editors and publishers of vocabularies who trust in the LOV catalogue. 
+This work has been partially supported by the French National Research Agency (ANR) within the Datalift Project, under grant number ANR-10-CORD-009 and the Spanish project BabelData (TIN2010-17550) and Fujitsu Laboratories. The Linked Open Vocabularies initiative is graciously hosted by the Open Knowledge Foundation. Thanks to all the members of the LOV community in Google+\footnote{\url{https://plus.google.com/communities/108509791366293651606}}, all the editors and publishers of vocabularies who trust in the LOV catalogue. 
 
 
 \bibliographystyle{plain}
