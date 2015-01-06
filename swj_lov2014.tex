@@ -49,15 +49,6 @@
 \newcommand{\py}[1]{\textcolor{olive}{\textbf{[PIERRE-YVES TO:#1]}}}
 \newcommand{\ghis}[1]{\textcolor{brown}{\textbf{[GHIS TO:#1]}}}
 
-% Language Definitions for Turtle
-\definecolor{olivegreen}{rgb}{0.2,0.8,0.5}
-\definecolor{grey}{rgb}{0.5,0.5,0.5}
-\lstdefinelanguage{ttl}{
-sensitive=true,
-morecomment=[l][\color{brown}]{@},
-morecomment=[l][\color{red}]{\#},
-morestring=[b][\color{blue}]\",
-}
 
 %% language json
 \colorlet{punct}{red!60!black}
@@ -66,9 +57,9 @@ morestring=[b][\color{blue}]\",
 \colorlet{numb}{magenta!60!black}
 
 \lstdefinelanguage{json}{
-    basicstyle=\normalfont\ttfamily,
+    basicstyle=\scriptsize\ttfamily,
     numbers=left,
-    numberstyle=\scriptsize,
+    numberstyle=\tiny,
     stepnumber=1,
     numbersep=8pt,
     showstringspaces=false,
@@ -289,7 +280,7 @@ Based on the Neon Methodology's glossary of activities for building ontologies, 
 
  \item [Ontology Search.] Main LOV's feature is the search of vocabulary terms. These vocabularies are categorized within LOV according to the domain they address. In this way, LOV contributes to ontology search by means of (a) keyword search and (b) domain browsing.
  \item [Ontology Assessment.] LOV provides a score for each term retrieved by a keyword search. This score can be used during the assessment stage.
- \item [Ontology Mapping.] In LOV, vocabularies rely on each other in seven different ways. These relationships are explicitly stated using VOAF vocabulary\footnote{\url{http://lov.okfn.org/vocab/voaf}}. This data could be useful to find alignments between ontologies, for example one user might be interested in finding equivalent classes for a given class or all the equivalent classes among two ontologies. Listing \ref{list:alignment} shows the SPARQL query to retrieve all the equivalent classes and properties between the vocabularies foaf and dcterms\footnote{The reader can run the query on LOV Endpoint: \url{http://goo.gl/sTIGQ6}. Prefixes are omitted for readability purpose. They can be found in LOV.}.
+ \item [Ontology Mapping.] In LOV, vocabularies rely on each other in seven different ways. These relationships are explicitly stated using VOAF vocabulary\footnote{\url{http://lov.okfn.org/vocab/voaf}}. This data could be useful to find alignments between ontologies, for example one user might be interested in finding equivalent classes for a given class or all the equivalent classes among two ontologies. Listing \ref{list:alignment} shows the SPARQL query to retrieve all the equivalent classes and properties between the vocabularies \texttt{foaf} and \texttt{dcterms}\footnote{The reader can run the query on LOV Endpoint: \url{http://goo.gl/sTIGQ6}. Prefixes are omitted for readability purpose. They can be found in LOV.}.
      
  \begin{lstlisting}[basicstyle=\tiny,float=htb,caption={SPARQL query asking for all the equivalent classes and properties between the vocabularies foaf and dcterms. },label=list:alignment, language=json]
  SELECT DISTINCT ?elem1 ?alignment ?elem2 {
