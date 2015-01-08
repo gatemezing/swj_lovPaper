@@ -49,6 +49,23 @@
 \newcommand{\py}[1]{\textcolor{olive}{\textbf{[PIERRE-YVES TO:#1]}}}
 \newcommand{\ghis}[1]{\textcolor{brown}{\textbf{[GHIS TO:#1]}}}
 
+% Language Definitions for Turtle
+\definecolor{MyLightGray}{RGB}{200, 200,200}
+\lstdefinelanguage{turtle}
+{
+    columns=fullflexible,
+    keywordstyle=\color{red},
+    morekeywords={PREFIX,SELECT,DISTINCT,UNION,FILTER,ORDER,BY,REGEX,STR,isBlank},
+    morecomment=[l]{\#},
+    tabsize=4,
+    frame=lines,
+    alsoletter={-?}, % allowed in names
+    morecomment=[s][\color{blue}]{<}{>},
+    basicstyle=\scriptsize\ttfamily\color{black},
+    %numberstyle=\color{black},
+    morestring=[b][\color{black}]\",
+    backgroundcolor=\color{background},    
+}
 
 %% language json
 \colorlet{punct}{red!60!black}
@@ -58,8 +75,6 @@
 
 \lstdefinelanguage{json}{
     basicstyle=\scriptsize\ttfamily,
-    numbers=left,
-    numberstyle=\tiny,
     stepnumber=1,
     numbersep=8pt,
     showstringspaces=false,
@@ -282,12 +297,13 @@ Based on the Neon Methodology's glossary of activities for building ontologies, 
  \item [Ontology Assessment.] LOV provides a score for each term retrieved by a keyword search. This score can be used during the assessment stage.
  \item [Ontology Mapping.] In LOV, vocabularies rely on each other in seven different ways. These relationships are explicitly stated using VOAF vocabulary\footnote{\url{http://lov.okfn.org/vocab/voaf}}. This data could be useful to find alignments between ontologies, for example one user might be interested in finding equivalent classes for a given class or all the equivalent classes among two ontologies. Listing \ref{list:alignment} shows the SPARQL query to retrieve all the equivalent classes and properties between the vocabularies \texttt{foaf} and \texttt{dcterms}\footnote{The reader can run the query on LOV Endpoint: \url{http://goo.gl/sTIGQ6}. Prefixes are omitted for readability purpose. They can be found in LOV.}.
      
- \begin{lstlisting}[basicstyle=\tiny,float=htb,caption={SPARQL query asking for all the equivalent classes and properties between the vocabularies foaf and dcterms. },label=list:alignment, language=json]
+ \begin{lstlisting}[basicstyle=\tiny,float=htb,caption={SPARQL query asking for all the equivalent classes and properties between the vocabularies foaf and dcterms. },label=list:alignment, language=turtle]
+ PREFIX owl:<http://www.w3.org/2002/07/owl#>
  SELECT DISTINCT ?elem1 ?alignment ?elem2 {
-   {?elem1 <http://www.w3.org/2002/07/owl#equivalentClass> ?elem2}
-      UNION {?elem1 <http://www.w3.org/2002/07/owl#equivalentProperty> ?elem2}
-      UNION {?elem2 <http://www.w3.org/2002/07/owl#equivalentClass> ?elem1}
-      UNION {?elem2 <http://www.w3.org/2002/07/owl#equivalentProperty> ?elem1}
+   {?elem1 owl:equivalentClass ?elem2}
+      UNION {?elem1 owl:equivalentProperty ?elem2}
+      UNION {?elem2 owl:equivalentClass ?elem1}
+      UNION {?elem2 owl:equivalentProperty ?elem1}
       FILTER(!isBlank(?elem2))
       FILTER(!isBlank(?elem1))
       ?elem1 ?alignment ?elem2.
@@ -307,7 +323,7 @@ Based on the Neon Methodology's glossary of activities for building ontologies, 
     
  \item [Ontology Localization.] Labels in different languages are stored in the LOV endpoint. This annotations could be used when translating terms into different languages. This information could be extracted by querying the SPARQL endpoint\footnote{Result of the query can be found at the following URL: \url{http://goo.gl/JJCJ01}} as shown in Listing \ref{list:person} where all the labels defined for the terms that have at least one \url{rdfs:label} containing strictly ``person":
 		
-    \begin{lstlisting}[basicstyle=\tiny,float=htb,caption={SPARQL query asking all the labels defined for the terms containing person.},label=list:person, language=json]
+    \begin{lstlisting}[basicstyle=\tiny,float=htb,caption={SPARQL query asking all the labels defined for the terms containing person.},label=list:person, language=turtle]
  SELECT DISTINCT ?label2 ?element{
    ?element rdfs:label ?label1 .
    ?element rdfs:label ?label2 .
