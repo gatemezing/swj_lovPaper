@@ -395,9 +395,9 @@ YASGUI (Yet Another SPARQL Query GUI)\footnote{\url{http://yasgui.laurensrietvel
 
 Datalift\footnote{\url{http://datalift.org/en/node/24}} platform \cite{scharffe_2012}, a framework for ``lifting'' raw data into RDF, comes with a module to map data objects and properties to ontology classes and predicates available in the LOV catalogue. Data2Ontology module takes an input a ``raw RDF'', that is a dataset that has been converted directly from legacy format to triples. The goal is to help to publishers reusing existing ontologies for converting their dataset for easy discovery and interlinking. It consists of three main components assisting the publisher in selecting properties suitable for the dataset to be published. 
 \begin{description}
-\item LOV component. This component is in charge to connect with the LOV catalogue to retrieve up-to-date ontologies using the LOV search API\footnote{\url{http://lov.okfn.org/dataset/lov/apidoc/\#lov2search}}.
-\item Matching Workflow. Data2Ontology offers to map the data to LOV by automatically proposing a list of best matches.
-\item SPARQL Generator. This module receives as input the desired mappings and creates the SPARQL CONSTRUCT query needed to implement the mapping. The query can further be modified before the execution to generate a new dataset in the lifting process with Datalift.
+\item 1-LOV component. This component is in charge to connect with the LOV catalogue to retrieve up-to-date ontologies using the LOV search API\footnote{\url{http://lov.okfn.org/dataset/lov/apidoc/#lov2search}}.
+\item 2-Matching Workflow. Data2Ontology offers to map the data to LOV by automatically proposing a list of best matches.
+\item 3-SPARQL Generator. This module receives as input the desired mappings and creates the SPARQL CONSTRUCT query needed to implement the mapping. The query can further be modified before the execution to generate a new dataset in the lifting process with Datalift.
 \end{description}
 
 OntoWiki\footnote{\url{http://ontowiki.net/}} facilitates the visual presentation of a knowledge base as an information map, with different views on instance data \cite{auer2006ontowiki}. It enables intuitive authoring of semantic content, with an inline editing mode for editing RDF content, similar to WYSIWIG for text documents. OntoWiki offers a vocabulary selection feature based on LOV.
