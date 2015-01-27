@@ -27,10 +27,10 @@ nodes near coords align=center
 
 \pgfplotstableread{PGFPlots/LOVSearch.dat}\thisTable
 
-\addplot+[black,fill=red] table[x=date,y=nbUnique, meta=nbUnique]{\thisTable};
+\addplot+[black,fill=green!30!white] table[x=date,y=nbUnique, meta=nbUnique]{\thisTable};
 \addlegendentry{Unique Terms}
 
-\addplot+[black,fill=orange] table[x=date,y=nbDuplicates, meta=nbDuplicates]{\thisTable};
+\addplot+[black,fill=orange!80!white] table[x=date,y=nbDuplicates, meta=nbDuplicates]{\thisTable};
 \addlegendentry{Duplicates}
 
 
