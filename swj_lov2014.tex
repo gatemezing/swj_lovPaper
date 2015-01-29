@@ -113,7 +113,7 @@
 
 %
 %\pretitle{Pretitle}
-\title{LOV: a gateway to reusable semantic vocabularies on the Web}
+\title{Linked Open Vocabularies (LOV): a gateway to reusable semantic vocabularies on the Web}
 %\title{LOV: An Ontology-based search engine for the Web}
 %\thanks{Footnote in title.}}
 
@@ -123,7 +123,7 @@
 \review{Name Surname, University, Country}{Name Surname, University, Country}{Name Surname, University, Country}
 
 
-\author[A]{\fnms{Pierre-Yves} \snm{Vandenbussche}  \thanks{Thanks to Am\'elie Gyrard and Thomas Francart for their reviews on vocabularies}},
+\author[A]{\fnms{Pierre-Yves} \snm{Vandenbussche}  \thanks{Thanks to Am\'elie Gyrard, Thomas Francart, Th\'er\`{e}ze Rogez and Anthony McCauley for their help on the project.}},
 \author[B]{\fnms{Ghislain A.} \snm{Atemezing}\thanks{Corresponding author. E-mail: auguste.atemezing@eurecom.fr}},
 \author[C]{\fnms{Mar\'ia} \snm{Poveda-Villal\'on}}
 and
@@ -156,11 +156,11 @@ LOV\sep Linked Open Vocabularies\sep Ontology search\sep Linked Data\sep Vocabul
 
 
 \section{Introduction}
-Started in March 2011, in the framework of the DataLift research project \cite{scharffe_2012} hosted by the Open Knowledge Foundation, the Linked Open Vocabularies (LOV) initiative is now standing as an innovative observatory of the semantic vocabularies\footnote{In this paper, ``semantic vocabulary'', ``vocabulary'' and ``ontology'' terms are used interchangeably. An explanation of their meaning is given in the following section.} ecosystem. It gathers and makes visible indicators not yet harvested before, such as interconnection between vocabularies, versioning history, maintenance policy and past and current referent (individual or organization) if any. The number of vocabularies indexed by LOV is constantly growing (469 as of January 2015) thanks to a community effort. It is the only catalogue, to the best of our knowledge, that provides all types of search criteria: metadata search, ontology search, APIs, comprehensive dump file and a SPARQL endpoint access. According to the categories of ontology libraries defined in~\cite{AquinJoWS12}, LOV falls under the categories \textit{``curated ontology directory''}  and \textit{``application platform''}. 
+Started in March 2011, as part of the DataLift research project \cite{scharffe_2012 } and hosted by the Open Knowledge Foundation, the Linked Open Vocabularies (LOV) initiative is now an innovative observatory of the semantic vocabularies\footnote{In this paper, ``semantic vocabulary'', ``vocabulary'' and ``ontology'' terms are used interchangeably. An explanation of their meaning is given in the following section.} ecosystem. It gathers and makes visible indicators not yet harvested before, such as interconnection between vocabularies, versioning history, maintenance policy along with past and current referent (individual or organization) if any. The number of vocabularies indexed by LOV is constantly growing (469 as of January 2015) thanks to a community effort. It is the only catalogue, to the best of our knowledge, that provides all types of search criteria: metadata search, ontology search, APIs, comprehensive dump file and a SPARQL endpoint access. According to the categories of ontology libraries defined by D'Aquin and Noy~\cite{AquinJoWS12}, LOV falls under the categories \textit{``curated ontology directory''}  and \textit{``application platform''}. 
 
-The development of LOV has highlighted a number of interesting research challenges: \textit{``What are the solutions for long-term vocabulary preservation on the Web?"}\cite{Baker2013HLT}. This is a particularly important problem in a distributed and uncontrolled environment where any individual can create and publish a vocabulary that can then be reused by external publishers. This creates a dependency on the original vocabulary availability as it holds the semantic of data using it. \textit{``How to facilitate vocabulary search and reuse"}\cite{butt2014, poveda2012landscape}. To be used by a broader community, reuse and design of vocabularies has to be facilitated by intuitive tools and methods.  \textit{``How can we harmonise the various curated vocabulary catalogues on the Web to ease their adoption?"}\cite{wasabi13}. One of the barrier to Semantic Web adoption is the confusion in understanding and finding an appropriate vocabulary in compliance with the best practices.
+The development of LOV has highlighted a number of interesting research challenges: \textit{``What are the solutions for long-term vocabulary preservation on the Web?"}\cite{Baker2013HLT}. This is a particularly important problem in a distributed and uncontrolled environment where any individual can create and publish a vocabulary that can then be reused by external publishers. This creates a dependency on the original vocabulary availability as it retains the semantics of the data. \textit{``How to facilitate vocabulary search and reuse"}\cite{butt2014, poveda2012landscape}. To be used by a broader community, reuse and design of vocabularies has to be facilitated by intuitive tools and methods.  \textit{``How can we harmonise the various curated vocabulary catalogues on the Web to ease their adoption?"}\cite{wasabi13}. One of the barriers to Semantic Web adoption is the confusion related to understanding and finding an appropriate vocabulary in compliance with best practice.
 
-The system report is structured as follows: In the next section, we describe the LOV architecture along with some high level results that the system has collected. In section \ref{sec:dataPubOntoEngine}, we explicate how LOV is used to support Data Publication and Ontology Engineering process. Subsequently, we provide an overview of some applications and research projects based and motivated by LOV (section \ref{sec:lovecosystem}). In section \ref{sec:related}, we report on related work and conclude in section \ref{sec:conclusion}.
+This report is structured as follows: In the next section, we describe the LOV architecture along with some high level results that the system has collected. In section \ref{sec:dataPubOntoEngine}, we explain how LOV is used to support the Data Publication and Ontology Engineering process. Subsequently, we provide an overview of some applications and research projects based and motivated by LOV (section \ref{sec:lovecosystem}). In section \ref{sec:related}, we report on related work and reach out conclusions in section \ref{sec:conclusion}.
 
 \section{System Architecture}
 \label{sec:arch}
@@ -168,7 +168,7 @@ The intended purpose of LOV is to promote and facilitate the reuse of well docum
 \begin{inparaenum}[1)] 
   \item collecting new vocabularies from the LOV Community;
   \item tracking and analysis of the LOV vocabulary catalogue; and
-  \item giving access to the data using various indexes and publication methods to ease data consumption.
+  \item giving access to the data using various indices and publication methods to ease data consumption including a search engine, data dumps, SPARQL endpoint and APIs.
 \end{inparaenum}
 To carry out these tasks, LOV is based on a number of components depicted in figure \ref{fig:arch}, relying on existing standards and open technologies.
 
@@ -179,18 +179,18 @@ To carry out these tasks, LOV is based on a number of components depicted in fig
 \end{figure}
 
 \subsection{LOV Community}
-Over the last four years, Linked Open Vocabularies initiative has gathered a community of around 350 people interested in various domain among them: ontology engineering or data publication. LOV Google+ community\footnote{\url{https://plus.google.com/communities/108509791366293651606}} is now an important place to discuss, report and announce general facts related to vocabularies on the Web. Compared to other vocabulary catalogues (cf. section \ref{sec:related}), LOV relies on a manual process for vocabulary insertion thus ensuring the quality of each vocabulary and therefore the quality of the overall LOV ecosystem. Suggestions are coming from the community and from inter-vocabulary reference links. Our system provides a feature to suggest\footnote{\url{http://lov.okfn.org/dataset/lov/suggest/}} the insertion of a new vocabulary. This feature allows a user to check what information LOV can automatically detect and extract. From our experience in vocabulary publication, we published a handbook about Metadata recommendations for linked open data vocabularies to help that process~\cite{vandenbussche2011metadata}. We consider LOV community as a core component of the system.
+Over the last four years, the Linked Open Vocabularies initiative has gathered a community of around 350 people interested in various domains among them: ontology engineering or data publication. LOV Google+ community\footnote{\url{https://plus.google.com/communities/108509791366293651606}} is now an important place to discuss, report and announce general facts related to vocabularies on the Web. Compared to other vocabulary catalogues (cf. section \ref{sec:related}), LOV relies on a semi-automated process for vocabulary insertion. Whereas an automated process put the emphasis on the volume, in our process, we focus on the quality of each vocabulary and therefore the quality of the overall LOV ecosystem. Suggestions are coming from the community and from inter-vocabulary reference links. Our system provides a feature to suggest\footnote{\url{http://lov.okfn.org/dataset/lov/suggest/}} the insertion of a new vocabulary. This feature allows a user to check what information LOV can automatically detect and extract. As a result of our experience in vocabulary publication, we are now able to publish a handbook about Metadata recommendations for linked open data vocabularies to help that process~\cite{vandenbussche2011metadata}. We consider the LOV community as a core component of that system.
 
 \subsection{Tracking and Analysis}
 The vocabulary collection is maintained by curators in charge of validating\footnote{Before a vocabulary is inserted, LOV curators contact the authors to make sure the vocabulary is published following the best practices and contains enough metadata}, inserting a vocabulary in the LOV ecosystem and assigning a detailed review (updated every year). Following this manual step, the \emph{Tracking and Analysis} component takes care of dereferencing\footnote{URI is looked up over HTTP to return content in a processable format such as XML/RDF, notation 3 or turtle.} the vocabulary, storing a version locally (in notation 3 format) and extracting relevant metadata. A vocabulary consists of a collection of terms (classes and properties) expressed in W3C RDF, RDFS, OWL languages. 
 
 At the Vocabulary level, the system extracts three types of information for each vocabulary version (figure \ref{fig:dcat}):
 \begin{itemize}
-\item Metadata associated to the vocabulary: this information is explicitly defined within the vocabulary to provide context, and useful data about the vocabulary. To be part of the LOV catalogue, a vocabulary must contain some minimal metadata information \cite{vandenbussche2011metadata}. Some high level vocabularies can be reused in that purpose, such as Dublin Core to describe authors, contributors, publishers or Creative Commons\footnote{\url{http://creativecommons.org/ns#}} for the description of license.
+\item Metadata associated to the vocabulary: this information is explicitly defined within the vocabulary to provide context, and useful data about the vocabulary. To be part of the LOV catalogue, a vocabulary must contain some minimal metadata information \cite{vandenbussche2011metadata}. Some high level vocabularies can be reused for that purpose, such as Dublin Core to describe authors, contributors, publishers or Creative Commons\footnote{\url{http://creativecommons.org/ns#}} for the description of a license.
 
-\item Inlinks vocabularies, making explicit the links to another vocabulary based on the semantic relation of their terms.
+\item Inlinks vocabularies, making explicit the \underline{links to} another vocabulary based on the semantic relation of their terms.
 
-\item Outlinks vocabularies, making explicit the links from another vocabulary based on the semantic relation of their terms.
+\item Outlinks vocabularies, making explicit the\\ \underline{links from} another vocabulary based on the semantic relation of their terms.
 \end{itemize}
 
 \begin{figure}[ht!b]
@@ -199,7 +199,7 @@ At the Vocabulary level, the system extracts three types of information for each
 \label{fig:dcat}
 \end{figure}
 
-At the Vocabulary Term level, the system extracts labels that will be used for full text search and language information. The information of language is then inserted into LOV database at the vocabulary level using the \texttt{dcterms:language} property with the URI of the language in Library of Congress dataset using the ISO 639-2 code. For example, the URI associated to Japanese language is \url{http://id.loc.gov/vocabulary/iso639-2/jpn}. Currently, 91.25\% (428 out of 469) of vocabularies use explicitly at least one language tag, with only 9 vocabularies with labels in a language different from English. Table \ref{tab:language} presents the number and percentage of the top five languages detected in LOV. We will discuss in section \ref{sec:conclusion} the importance for publishers to provide multilingual vocabularies on the Web.
+At the Vocabulary Term level, the system extracts labels that will be used for full text search and language information. The language information is then inserted into LOV database at the vocabulary level using the \texttt{dcterms:language} property with the URI of the language in Library of Congress dataset using the ISO 639-2 code. For example, the URI associated to Japanese language is \url{http://id.loc.gov/vocabulary/iso639-2/jpn}. Currently, 91.25\% (428 out of 469) of vocabularies use explicitly at least one language tag, with only 9 vocabularies with labels in a language different from English. Table \ref{tab:language} presents the number and percentage of the top five languages detected in LOV. We will discuss in section \ref{sec:conclusion} the importance for publishers to provide multilingual vocabularies on the Web.
  
  \begin{table}[h!tb]
 \caption{Top five languages and percentage detected in LOV catalogue.}
@@ -216,26 +216,26 @@ Italian & 20 & 4.67\%\\
 \label{tab:language}
 \end{table}
 
-When some metadata failed to be extracted automatically (such as creators of a vocabulary), LOV curators enhance the description available in the system. The documentation provided by LOV assists any user in the task of understanding the semantic of each vocabulary term and therefore of any data using it. For instance, information about the creator and publisher is a key indication for a vocabulary user in case help or clarification is required from the author, or to assess the stability of that artifact. About 55\% of vocabularies specify at least one creator, contributor or editor. We augmented this information using manually gathered information, leading to inclusion of data about the creator in over 85\% of vocabularies in LOV. The database stores every different version of a vocabulary over time since its first issue. For each version, a user can access the file (even though the original online file is no longer available). An automatic script is in place to automatically check for vocabulary updates every day. To embrace the complexity of the vocabulary ecosystem and assess the impact of a modification, one needs to know in which vocabularies and datasets a particular vocabulary term is referenced. For the first time LOV provides such a vision. 
+When some metadata failed to be extracted automatically (such as creators of a vocabulary), LOV curators enhance the description available in the system. The documentation provided by LOV assists any user in the task of understanding the semantics of each vocabulary term and therefore of any data using it. For instance, information about the creator and publisher is a key indication for a vocabulary user in case help or clarification is required from the author, or to assess the stability of that artifact. About 55\% of vocabularies specify at least one creator, contributor or editor. We augmented this information using manually gathered information, leading to the inclusion of data about the creator in over 85\% of vocabularies in LOV. The database stores every version of a vocabulary since its first issue. For each version, a user can access the file (even though the original online file is no longer available). An automatic script is in place to automatically check for vocabulary updates every day. To embrace the complexity of the vocabulary ecosystem and assess the impact of a modification, one needs to know in which vocabularies and datasets a particular vocabulary term is referenced. For the first time LOV provides such a vision. 
 
 \subsection{Data Access}
 LOV system (code and data) is published under Creative Commons 4.0 license\footnote{\url{https://creativecommons.org/licenses/by/4.0/}} (CC BY 4.0). Three methods are offered for users and applications to access LOV data:
 		\begin{inparaenum}[1)] 
-			\item query LOV search engine to find the most relevant vocabulary terms, vocabularies or agents matching keywords;
+			\item query the LOV search engine to find the most relevant vocabulary terms, vocabularies or agents matching keywords;
 			\item download data dumps of the LOV catalogue in RDF Notation 3 format or the LOV catalogue and the latest version of each vocabulary in RDF N-quads format;
-			\item run SPARQL queries on LOV SPARQL Endpoint; and
-			\item use LOV system Application Program Interfaces (APIs) which provide a full access to LOV data for software applications.
+			\item run SPARQL queries on the LOV SPARQL Endpoint; and
+			\item use the LOV system Application Program Interface (API) which provides a full access to LOV data for software applications.
 		\end{inparaenum}
 
 
 \subsubsection{Search Engine}
-For every vocabulary in LOV, terms (classes, properties, datatypes, instances) are indexed and a full text search feature is offered\footnote{\url{http://lov.okfn.org/dataset/lov/terms}}. Compared to other existing ontology search engines (cf. section \ref{sec:related}), the Linked Open Vocabularies search engine ranking algorithm is not only based on term popularity in datasets but take as well into account its popularity within the LOV ecosystem and most importantly assigned a different score depending on which label property a searched term matched~\cite{butt2014}. We distinguish four different label property categories on which a search term could match: 
-		\begin{inparaenum}[1)] 
-			\item local name (URI without the namespace). While a URI is not suppose to carry any meaning, it is a convention to use a compressed form of a term label to construct the local name. It becomes therefore an important artifact for term matching for which the highest score will be assigned. An example of local name matching the term ``person'' is \url{http://schema.org/Person};
-			\item primary labels. The highest score will also be assigned for matches on \url{rdfs:label}, \url{dce:title}, \url{dcterms:title}, \url{skos:prefLabel} properties. An example of primary label matching the term ``person'' is \url{rdfs:label} \emph{"Person"@en};
-			\item secondary labels. We define as secondary label properties: \url{rdfs:comment}, \url{dce:description},\\ \url{dcterms:description}, \url{skos:altLabel}. A medium score is assigned for matches on these properties. An example of secondary label matching the term ``person'' is \url{dcterms:description} \emph{"Examples of a Creator include a person, an organization, or a service."@en}; and
-			\item tertiary labels. Finally all properties not falling in the previous categories are considered as tertiary labels for which a low score is assigned. An example of tertiary label matching the term ``person'' is \url{http://metadataregistry.org/uri/profile/RegAp/name} \emph{"Person"@en}. 
-		\end{inparaenum}
+For every vocabulary in the LOV, terms (classes, properties, datatypes, instances) are indexed and a full text search feature is offered\footnote{\url{http://lov.okfn.org/dataset/lov/terms}}. Compared to other existing ontology search engines (cf. section \ref{sec:related}), the Linked Open Vocabularies search engine ranking algorithm is not only based on term popularity in datasets but take as well into account its popularity within the LOV ecosystem and most importantly assigned a different score depending on which label property a searched term matched~\cite{butt2014}. We distinguish four different label property categories on which a search term could match: 
+		\begin{itemize}
+ 			\item Local name (URI without the namespace). While a URI is not suppose to carry any meaning, it is a convention to use a compressed form of a term label to construct the local name. It becomes therefore an important artifact for term matching for which the highest score will be assigned. An example of local name matching the term ``person'' is \url{http://schema.org/Person};
+			\item Primary labels. The highest score will also be assigned for matches on \url{rdfs:label}, \url{dce:title}, \url{dcterms:title}, \url{skos:prefLabel} properties. An example of primary label matching the term ``person'' is \url{rdfs:label} \emph{"Person"@en};
+			\item Secondary labels. We define as secondary label properties: \url{rdfs:comment}, \url{dce:description},\\ \url{dcterms:description}, \url{skos:altLabel}. A medium score is assigned for matches on these properties. An example of secondary label matching the term ``person'' is \url{dcterms:description} \emph{"Examples of a Creator include a person, an organization, or a service."@en}; and
+			\item Tertiary labels. Finally all properties not falling in the previous categories are considered as tertiary labels for which a low score is assigned. An example of tertiary label matching the term ``person'' is \url{http://metadataregistry.org/uri/profile/RegAp/name} \emph{"Person"@en}. 
+		\end{itemize}
 As a result a term matching a value for the property \url{rdfs:label} will have a higher score than if it matches a value for the property \url{dcterms:comment}. Based on the different nature of these labels, we apply different indexing tokenizers and scoring methods.
 
 	\begin{table}[!htb]
@@ -252,7 +252,7 @@ As a result a term matching a value for the property \url{rdfs:label} will have 
 		\label{tab:patterns}
 	\end{table}
 
-Human users or agents can further narrow a search by filtering on term type (class, property, datatype, instance), vocabulary domain and vocabulary. The LOV log\footnote{\url{http://lov.okfn.org/dataset/lov/stats/searchLog.csv}} of search terms between 2012/01/06 and 2014/12/09 presents a total of 54,657 terms, with 36,019 (65.90\%) duplicate terms and 18,643 unique terms (34.10\%). Figure \ref{fig:searchterms} depicts the number of terms in the log grouped by year. From 2012 to 2013, there has been an increase of more than 50\% of search in LOV. Searched terms are mostly single words (e.g., currency). However, terms can be a composition of two words (e.g., ``family tree''), three words (e.g., ``semantic sensor network'') or an URI (e.g., ``http://www.aktors.org/ontology/portal''). Table \ref{tab:patterns} details the use of URIs, two words and at least three words for unique values in the LOV search log.
+Human users or agents can further narrow a search by filtering on term type (class, property, datatype, instance), vocabulary domain and vocabulary. The LOV log of search terms between 2012/01/06 and 2014/12/09 presents a total of 54,657 terms, with 36,019 (65.90\%) duplicate terms and 18,643 unique terms (34.10\%). Figure \ref{fig:searchterms} depicts the number of terms in the log grouped by year. From 2012 to 2013, there has been an increase of more than 50\% of search in LOV. Searched terms are mostly single words (e.g., currency). However, terms can be a composition of two words (e.g., ``family tree''), three words (e.g., ``semantic sensor network'') or an URI (e.g., ``http://www.aktors.org/ontology/portal''). Table \ref{tab:patterns} details the use of URIs, two words and at least three words for unique values in the LOV search log.
 	
 %	\begin{figure}[!htbp]
 %	\centering{
@@ -272,7 +272,7 @@ Human users or agents can further narrow a search by filtering on term type (cla
 	\end{figure}
 
 \subsubsection{Data Dumps}
-The system provides data dumps of the LOV vocabulary catalogue in RDF Notation 3 forma\footnote{\url{http://lov.okfn.org/lov.n3.gz}}t and the LOV catalogue along with the latest version of each vocabulary in RDF N-quads format\footnote{\url{http://lov.okfn.org/lov.nq.gz}}. As illustrated in figure \ref{fig:model}, the RDF model mainly reuse the Data CATalogue Vocabulary (DCAT) which allows the representation of LOV catalogue as a \texttt{dcat:Catalog} composed of vocabulary entries (\texttt{dcat:CatalogRecord}) capturing information like the insertion date in LOV. Each entry points to the vocabulary itself represented by a sub class of \texttt{dcat:Dataset} defined in the Vocabulary of a Friend (VOAF). This artifact contains metadata extracted by LOV such as creators, first issued date, number of occurrences of the vocabulary in Linked Open datasets. Each vocabulary is then linked to its various published versions represented by the \texttt{dcat:Distribution} entity on which information such as inter vocabulary links or languages can be found.
+The system provides data dumps of the LOV vocabulary catalogue in RDF Notation 3 format\footnote{\url{http://lov.okfn.org/lov.n3.gz}} and the LOV catalogue along with the latest version of each vocabulary in RDF N-quads format\footnote{\url{http://lov.okfn.org/lov.nq.gz}}. As illustrated in figure \ref{fig:model}, the RDF model mainly reuses the Data CATalogue Vocabulary (DCAT) which allows the representation of the LOV catalogue as a \texttt{dcat:Catalog} composed of vocabulary entries (\texttt{dcat:CatalogRecord}) capturing information like the insertion date in LOV. Each entry point to the vocabulary itself is represented by a sub class of \texttt{dcat:Dataset} defined in the Vocabulary of a Friend (VOAF). This artifact contains metadata extracted by LOV such as creators, first issued date, number of occurrences of the vocabulary in Linked Open datasets. Each vocabulary is then linked to its various published versions represented by the \texttt{dcat:Distribution} entity on which information such as inter vocabulary links or languages can be found.
 
 \begin{figure*}[!htb]
 \includegraphics[scale=0.5]{model.png}
@@ -287,11 +287,11 @@ The LOV SPARQL Endpoint\footnote{\url{http://lov.okfn.org/dataset/lov/sparql}} o
 
 \subsubsection{API and UI}
 LOV APIs give a remote access to the many functions of LOV through a set of Restful services\footnote{\url{http://lov.okfn.org/dataset/lov/apidoc/}}. The basic design requirements for these APIs is that they should allow applications to get access to the very same information humans do via the User Interfaces. More precisely the APIs give access, through three different type of services (cf. figure \ref{fig:apis}), to functions related to:
-\begin{inparaenum}[1)] 
-			\item vocabulary terms (classes, properties, datatypes and instances). With these functions, a software application can query the LOV search engine, ask for autocompletion or suggestion for misspelled terms;
-			\item vocabularies. A client can get access to the current list of vocabularies contained in the LOV catalogue; search for vocabularies or get autocompletion; and
-			\item agents. This provides a software agent with a list of all agents references in the LOV catalogue, a mean to search for an agent and get autocompletion.
-		\end{inparaenum}
+\begin{itemize} 
+			\item Vocabulary terms (classes, properties, datatypes and instances). With these functions, a software application can query the LOV search engine, ask for autocompletion or suggestion for misspelled terms;
+			\item Vocabularies. A client can get access to the current list of vocabularies contained in the LOV catalogue; search for vocabularies or get autocompletion; and
+			\item Agents. This provides a software agent with a list of all agents references in the LOV catalogue, a mean to search for an agent and get autocompletion.
+		\end{itemize}
 LOV APIs is a convenient manner to get access to the full functionality and data of LOV. It is particularly appropriate for dynamic Web applications using scripting languages such as Javascript. The APIs described above have been developed for, and following the requirements of, Ontology design and data publication tools.
 
 \begin{figure}[ht!b]
@@ -312,7 +312,7 @@ The NeOn Methodology is a scenario-based methodology that supports the collabora
  \item Methodological guidelines for different processes and activities of the ontology network development process, such as the reuse and re-engineering of ontological and non-ontological resources, the ontology requirements specification, the ontology localization, the scheduling, etc.
 \end{itemize}
 
-Based on the Neon Methodology's glossary of activities for building ontologies, LOV is relevant in four activities:
+Based on the NeOn Methodology's glossary of activities for building ontologies, LOV is relevant in four activities:
 
 \begin{description}
 
@@ -366,7 +366,7 @@ Based on the Neon Methodology's glossary of activities for building ontologies, 
    
 \end{description}
 
-Figure \ref{fig:LOVandNeOn} shows the activities within the overall Neon methodologies activity workflow that can benefit from LOV.
+Figure \ref{fig:LOVandNeOn} shows the activities within the overall NeOn methodologies activity workflow that can benefit from the LOV.
 \begin{figure}[h!tp]
 \centering
   \includegraphics[width=1\linewidth]{neonScenarios.png}
@@ -376,7 +376,7 @@ Figure \ref{fig:LOVandNeOn} shows the activities within the overall Neon methodo
 
 \section{LOV application and project ecosystem}
 \label{sec:lovecosystem}
-As of today, LOV database contains over 46,000 RDF vocabulary terms, with 28,000 properties and 18,000 classes. The evolution of the number of vocabularies in LOV is illustrated in figure \ref{fig:evolLOV}. LOV is supporting the emergence of a rich application ecosystem thanks to its various data access methods. We list below some tools using our system as part of their service and projects using LOV as a research artifact.
+As of today, the LOV database contains over 46,000 RDF vocabulary terms, with 28,000 properties and 18,000 classes. The evolution of the number of vocabularies in the LOV is illustrated in figure \ref{fig:evolLOV}. The LOV is supporting the emergence of a rich application ecosystem thanks to its various data access methods. We list below some tools using our system as part of their service and projects using LOV as a research artifact.
  
 \begin{figure}[htb]
    \input{PGFPlots/LOVSizeEvol.tex}
@@ -386,31 +386,30 @@ As of today, LOV database contains over 46,000 RDF vocabulary terms, with 28,000
 
 Maguire et al. \cite{ontomaton12} uses the LOV search API to implement OntoMaton\footnote{\url{https://github.com/ISA-tools/OntoMaton}}, a widget for bringing together ontology lookup and tagging within the collaborative environment provided by Google spreadsheets. 
 
-YASGUI (Yet Another SPARQL Query GUI)\footnote{\url{http://yasgui.laurensrietveld.nl}} is a client-side JavaScript SPARQL query editor that uses LOV API for property and class autocompletion together with \url{http://prefix.cc} for namespace prefix autocompletion \cite{yasgui}.
+YASGUI (Yet Another SPARQL Query GUI)\footnote{\url{http://yasgui.laurensrietveld.nl}} is a client-side JavaScript SPARQL query editor that uses the LOV API for property and class autocompletion together with \url{http://prefix.cc} for namespace prefix autocompletion \cite{yasgui}.
 
-Datalift\footnote{\url{http://datalift.org/en/node/24}} platform \cite{scharffe_2012}, a framework for ``lifting'' raw data into RDF, comes with a module to map data objects and properties to ontology classes and predicates available in the LOV catalogue. Data2Ontology module takes an input a ``raw RDF'', that is a dataset that has been converted directly from legacy format to triples. The goal is to help to publishers reusing existing ontologies for converting their dataset for easy discovery and interlinking. It consists of three main components assisting the publisher in selecting properties suitable for the dataset to be published. 
-\begin{description}
-\item 1-LOV component. This component is in charge to connect with the LOV catalogue to retrieve up-to-date ontologies using the LOV search API\footnote{\url{http://lov.okfn.org/dataset/lov/apidoc/#lov2search}}.
-\item 2-Matching Workflow. Data2Ontology offers to map the data to LOV by automatically proposing a list of best matches.
-\item 3-SPARQL Generator. This module receives as input the desired mappings and creates the SPARQL CONSTRUCT query needed to implement the mapping. The query can further be modified before the execution to generate a new dataset in the lifting process with Datalift.
-\end{description}
+Datalift\footnote{\url{http://datalift.org/en/node/24}} platform \cite{scharffe_2012}, a framework for ``lifting'' raw data into RDF, comes with a module to map data objects and properties to ontology classes and predicates available in the LOV catalogue. Data2Ontology module takes an input a ``raw RDF'', that is a dataset that has been converted directly from legacy format to triples. The goal is to help publishers reuse existing ontologies for converting their dataset owing easy discovery and interlinking. %It consists of three main components assisting the publisher in selecting properties suitable for the dataset to be published. 
+%\begin{description}
+%\item 1-LOV component. This component connects with the LOV catalogue to retrieve up-to-date ontologies using the LOV %search API\footnote{\url{http://lov.okfn.org/dataset/lov/apidoc/#lov2search}}.
+%\item 2-Matching Workflow. Data2Ontology maps the data to LOV by automatically proposing a list of best matches.
+%\item 3-SPARQL Generator. This module receives as input the desired mappings and creates the SPARQL CONSTRUCT query needed to %implement the mapping. The query can further be modified before the execution to generate a new dataset in the lifting process with Datalift.
+%\end{description}
 
 OntoWiki\footnote{\url{http://ontowiki.net/}} facilitates the visual presentation of a knowledge base as an information map, with different views on instance data \cite{auer2006ontowiki}. It enables intuitive authoring of semantic content, with an inline editing mode for editing RDF content, similar to WYSIWIG for text documents. OntoWiki offers a vocabulary selection feature based on LOV.
 
 \subsection{Using LOV as a Research platform}
-%\maria{ write input of your work on onto pitfalls using LOV dataset }. \\
 
-LOV vocabularies have served as object of study in \cite{poveda2012landscape} where trends in ontology reuse techniques were analyzed in 2012. In addition, LOV dataset has been used in order to analyze the occurrence of good and bad practices in vocabularies as described in \cite{poveda2013detecting} in 2013.
+LOV have served as the object of studies in \cite{poveda2012landscape} where Poveda-Villal\'on \emph{et al.} analysed trends in ontology reuse methods. In addition, the LOV dataset has been used in order to analyze the occurrence of good and bad practices in vocabularies \cite{poveda2013detecting}.
 
-Prefixes in LOV dataset is regularly mapped with namespaces in the prefix.cc service. In \cite{wasabi13}, the authors performs alignments of Qnames of vocabularies in both services, and provides different solutions to handle in case of clashes and disagreements on preferred namespaces. Both LOV and prefix.cc provide associations between prefixes and namespaces but following a different logic. The prefix.cc service supports polysemy and synonymy, and has a very loose control on its crowd-sourced information. In contrast, LOV has a much more strict policy forbidding polysemy and synonymy ensuring that each vocabulary in the LOV database is uniquely identified by a unique prefix identification allowing the usage of prefixes in various LOV publication URIs. This requirement leads sometimes to a situation where LOV uses prefixes differently from the ones recommended by the vocabulary publishers.
+Prefixes in the LOV dataset are regularly mapped with namespaces in the prefix.cc service. In \cite{wasabi13}, the authors perform alignments of Qnames of vocabularies in both services, and provide different solutions to handle clashes and disagreements between preferred namespaces. Both the LOV and prefix.cc provide associations between prefixes and namespaces but follow a different logic. The prefix.cc service supports polysemy and synonymy, and has a very loose control on its crowd-sourced information. In contrast, the LOV has a much more strict policy forbidding polysemy and synonymy ensuring that each vocabulary in the LOV database is uniquely identified by a unique prefix identification allowing the usage of prefixes in various LOV publication URIs. This requirement leads sometimes to a situation where the LOV use prefixes differently from the ones recommended by the vocabulary publishers.
 
-LOV query log covering the period between 06/01/2012 and 16/04/2014 is used in \cite{butt2014} to build a benchmark suite for ontology search and ranking. The CBRBench\footnote{\url{https://zenodo.org/record/11121}} benchmark uses eight ranking models of resources in ontologies and compare the results with ontology engineers. We plan to start a collaboration with the authors to enhance LOV search based on the study result.
+The LOV query log covering the period between 06/01/2012 and 16/04/2014 is used in \cite{butt2014} to build a benchmark suite for ontology search and ranking. The CBRBench\footnote{\url{https://zenodo.org/record/11121}} benchmark uses eight ranking models of resources in ontologies and compares the results with ontology engineers. We plan to start a collaboration with the authors to enhance the LOV search based on the study result.
 
 In \cite{janowicz2014five}, the authors rate vocabularies according to some criteria beyond the sameAs links but subClassOf and equivalentClass 'links' between vocabularies to foster interoperability, query federation, ease the interpretation of data, and so forth. %\ghis{ read this paper to add more content here}
 
-Databugger\footnote{\url{https://github.com/AKSW/Databugger}} is a test-driven data debugging framework for the Web of Data. In \cite{databugger,rdfunit}, the authors provide an automatic test case instantiations for all available schemata registered with LOV. In this case, the vocabularies of LOV are used to encode semantics to domain specific knowledge to check the quality of data.
+Databugger\footnote{\url{https://github.com/AKSW/Databugger}} is a test-driven data debugging framework for the Web of Data. In \cite{databugger,rdfunit}, the authors provide an automatic test case for all available schema registered with the LOV. Vocabularies are used to encode semantics to domain specific knowledge to check the quality of data.
 
-Giovanni et al. \cite{governatori2014} analyzes the current use of licenses in vocabularies on the Web based on LOV catalogue to further propose a framework to detect incompatibilities between datasets and vocabularies.
+Giovanni et al. \cite{governatori2014} analyzes the current use of licenses in vocabularies on the Web based on the LOV catalogue to further propose a framework to detect incompatibilities between datasets and vocabularies.
 
 
 \section{Related work and Discussion}
@@ -418,15 +417,15 @@ Giovanni et al. \cite{governatori2014} analyzes the current use of licenses in v
 
 Reusing vocabularies requires searching for terms in existing specialized vocabulary catalogues or search engines on the web. While we refer the reader to~\cite{AquinJoWS12} for a systematic survey of ontology repositories, we list below some existing catalogues relevant to find vocabularies \cite{wasabi13}:
 \begin{itemize}
- \item \textit{Catalogs of generic vocabularies/schemas} similar to LOV catalogue. Example of catalogues falling in this category are vocab.org\footnote{\url{http://vocab.org/}}, ontologi.es\footnote{\url{http://ontologi.es/}}, JoinUp Semantic Assets or the Open Metadata Registry.
- \item \textit{Catalogs of ontologies for a specific domain} such as biomedicine with the BioPortal \cite{bioportal11}, geospatial ontologies with SOCoP+OOR\footnote{\url{http://socop.oor.net/}}, Marine Metadata Interoperability and the SWEET \cite{sweet05} ontologies\footnote{\url{http://sweet.jpl.nasa.gov/2.1/}}. The SWEET ontologies include several thousand terms, spanning a broad extent of Earth system science and related concepts (such as data characteristics), with the search tool to aid finding science data resources. 
- \item \textit{Catalogs of ontology Design Patterns (ODP)} focused on reusable patterns in ontology engineering \cite{presutti08}. The submitted patterns are small pieces of vocabularies that can further be integrated or linked with others vocabularies. ODP is more targeted on  reusable successful solution to a recurrent modeling problem. However, it does not provide a search function for specific terms as it is the case with Swoogle or Watson.
- \item \textit{Search Engines of ontology terms}. Among ontology search engines, we can cite: Swoogle \cite{finin2005swoogle}, Watson \cite{d2007watson,Sabou07} and FalconS \cite{cheng2008falcons}. These search engines crawl for data schema from RDF document on the Web. They offer a filtering based on ontology type (Class, Property) and a ranking based on the popularity. They don't look for ontology relations nor check if the definition of the ontology is available (usually known as dereferenciation)
+ \item \textit{Catalogues of generic vocabularies/schemas} similar to LOV catalogue. Example of catalogues falling in this category are vocab.org\footnote{\url{http://vocab.org/}}, ontologi.es\footnote{\url{http://ontologi.es/}}, JoinUp Semantic Assets or the Open Metadata Registry.
+ \item \textit{Catalogues of ontologies for a specific domain} such as biomedicine with the BioPortal \cite{bioportal11}, geospatial ontologies with SOCoP+OOR\footnote{\url{http://socop.oor.net/}}, Marine Metadata Interoperability and the SWEET \cite{sweet05} ontologies\footnote{\url{http://sweet.jpl.nasa.gov/2.1/}}. The SWEET ontologies include several thousand terms, spanning a broad extent of Earth system science and related concepts (such as data characteristics), with the search tool to aid finding science data resources. 
+ \item \textit{Catalogues of ontology Design Patterns (ODP)} focused on reusable patterns in ontology engineering \cite{presutti08}. The submitted patterns are small pieces of vocabularies that can further be integrated or linked with other vocabularies. ODP does not provide a search function for specific terms as is the case with Swoogle or Watson.
+ \item \textit{Search Engines of ontology terms}. Among ontology search engines, we can cite: Swoogle \cite{finin2005swoogle}, Watson \cite{d2007watson,Sabou07} and FalconS \cite{cheng2008falcons}. These search engines crawl for data schema from RDF documents on the Web. They offer a filtering based on ontology type (Class, Property) and a ranking based on the popularity. They don't look for ontology relations nor check if the definition of the ontology is available (usually known as dereferenciation)
 \end{itemize}
 
 
-LOV focuses only on vocabularies (subpart of semantic documents of the web) submitted by any user, reviewed and validated by curators. In addition, LOV keeps track of different versions of the vocabularies in the server that can be retrieved for comparing the differences between along the time evolution.  In contrast, Swoogle is designed to automatically discover Semantic Web Documents (SWDs), indexes their metadata and answers queries about it. Thus, the result of a search query retrieved any semantic document. For example, a query of the term \textit{person} gives $16,438$ results while in LOV, the term only appears in $134$ vocabularies.
-Watson works similarly to Swoogle, crawling and indexing semantic document at a small scale, explicitly distinguishing for each document (resource), concepts, properties and individuals if available. While in Swoogle  the ranking score is displayed, Watson shows the language of the resource and the size. Falcons is a keyword-based search system for concepts and objects on the Semantic Web, and is equipped with entity summarization for browsing. It is notable that Falcons limits the search only to ontologies and a recommendation feature is provided according to users' preferences. However, it does not provide any relationships between the related ontologies, nor any domain classification of the vocabularies.
+The LOV focuses only on vocabularies (subpart of semantic documents of the web) submitted by any user, reviewed and validated by curators. In addition, the LOV keeps track locally of all versions of the vocabularies.  In contrast, Swoogle is designed to automatically discover Semantic Web Documents (SWDs), index their metadata. Thus, the result of a search query retrieved any semantic document. For example, a query of the term \textit{person} gives $16,438$ results while in the LOV, the term only appears in $1,562$ vocabularies.
+Watson works similarly to Swoogle, crawling and indexing semantic documents at a small scale, explicitly distinguishing for each document (resource), concepts, properties and individuals if available. While in Swoogle  the ranking score is displayed, Watson shows the language of the resource and the size. Falcons is a keyword-based search system for concepts and objects on the Semantic Web, and is equipped with entity summarization for browsing. It is notable that Falcons limits the search only to ontologies and a recommendation feature is provided according to users' preferences. However, it does not provide any relationships between the related ontologies, nor any domain classification of the vocabularies.
 Table \ref{tab:lovfeatures} compares key features of LOV with respect to Swoogle, Watson and Falcons.
  \begin{table*}[!htb]
 \centering{
@@ -456,7 +455,7 @@ Interaction with Contributors & No &  - & No & Yes \\
 }
 \end{table*}
 
-LOV search engine is to the best of our knowledge, the only purpose-built ontology search engine available on the Web with an up-to-date index.
+The LOV search engine is to the best of our knowledge, the only purpose-built ontology search engine available on the Web with an up-to-date index.
 
 \section{Conclusion and Future work}
 \label{sec:conclusion}
@@ -467,9 +466,9 @@ In this system report, we presented an overview of the Linked Open Vocabularies 
 	\item the consideration of property semantic in term search scoring.
 \end{inparaenum}
 
-The adoption and integration of the LOV catalogue in applications for vocabulary engineering, reuse and data quality are significant. Linked Open Vocabularies has a central role in vocabulary life-cycle on the Web of Data. In the future, we see in particular the following directions for advancing the LOV initiative:
+The adoption and integration of the LOV catalogue in applications for vocabulary engineering, reuse and data quality are significant. Linked Open Vocabularies have a central role in vocabulary life-cycle on the Web of Data. In the future, we see in particular the following directions for advancing the LOV initiative:
 
-\emph{From single to multi-term search.} An area which is still largely unexplored is multi-term vocabulary search. During the ontology design process, it is common to have more than 20 concepts to be represented using existing vocabularies or a new one in case there is no corresponding artifact. When we are able to search for relevant terms in LOV it is still the responsibility of the ontology designer to understand the complex relationships betwen all these terms and come up with a coherent ontology. We could use the network of vocabularies defined in LOV to suggest not only terms result but graphs to represent several concepts together.
+\emph{From single to multi-term search.} An area which is still largely unexplored is multi-term vocabulary search. During the ontology design process, it is common to have more than 20 concepts to be represented using existing vocabularies or a new one in case there is no corresponding artifact. While we are able to search for relevant terms in the LOV it is still the responsibility of the ontology designer to understand the complex relationships betwen all these terms and come up with a coherent ontology. We could use the network of vocabularies defined in the LOV to suggest not only a list of terms but graphs to represent several concepts together.
 
 \emph{Multilingual vocabularies.} There is a need for vocabularies to support more languages. Labels are the main entrypoint to a vocabulary and their associated language is the key. Only 18\% of LOV vocabularies use a different language than English. Multilingualism is important at least for two reasons: 
 \begin{inparaenum}[1)] 
