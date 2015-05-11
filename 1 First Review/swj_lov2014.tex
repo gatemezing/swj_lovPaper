@@ -162,6 +162,14 @@ The development of the LOV has highlighted a number of interesting research chal
 
 This report is structured as follows: In the next section, we describe the LOV architecture along with some high level results that the system has collected. In section \ref{sec:dataPubOntoEngine}, we explain how the LOV is used to support the Data Publication and Ontology Engineering process. Subsequently, we provide an overview of some applications and research projects based and motivated by the LOV system (section \ref{sec:lovecosystem}). In section \ref{sec:related}, we report on related work and reach out conclusions in section \ref{sec:conclusion}.
 
+\section{LOV state}
+
+\section{Architecture Overview}
+
+\section{Curation Process}
+
+\section{Features description}
+
 \section{System Architecture}
 \label{sec:arch}
 The intended purpose of the LOV is to promote and facilitate the reuse of well documented vocabularies in the linked data ecosystem. To meet that goal, the LOV performs the following three main activities: 
@@ -286,7 +294,7 @@ The LOV SPARQL Endpoint\footnote{\url{http://lov.okfn.org/dataset/lov/sparql}} o
 
 
 \subsubsection{API and UI}
-LOV APIs give a remote access to the many functions of LOV through a set of Restful services\footnote{\url{http://lov.okfn.org/dataset/lov/apidoc/}}. The basic design requirements for these APIs is that they should allow applications to get access to the very same information humans do via the User Interfaces. More precisely the APIs give access, through three different type of services (cf. figure \ref{fig:apis}), to functions related to:
+LOV APIs give a remote access to the many functions of LOV through a set of RESTful services\footnote{\url{http://lov.okfn.org/dataset/lov/apidoc/}}. The basic design requirements for these APIs is that they should allow applications to get access to the very same information humans do via the User Interfaces. More precisely the APIs give access, through three different type of services (cf. figure \ref{fig:apis}), to functions related to:
 \begin{itemize} 
 			\item Vocabulary terms (classes, properties, datatypes and instances). With these functions, a software application can query the LOV search engine, ask for autocompletion or suggestion for misspelled terms;
 			\item Vocabularies. A client can get access to the current list of vocabularies contained in the LOV catalogue; search for vocabularies, get autocompletion or obtain all details about a vocabulary; and
@@ -300,7 +308,7 @@ LOV APIs is a convenient manner to get access to the full functionality and data
 \label{fig:apis}
 \end{figure}
 
-The LOV Website offers an intuitive navigation within the vocabularies catalogue. It allows users to explore vocabularies, vocabulary terms, agents, languages and to get the connection between these entities. For instance, a user can look for experts in \emph{geography} and \emph{geometry} domains\footnote{\url{http://lov.okfn.org/dataset/lov/agents?&tag=Geography,Geometry}}. We use d3\footnote{\url{http://d3js.org/}} javascript library to display charts and make the navigation more interactive For instance, star graph representation is used to display incoming and outgoing links between vocabularies (cf. figure \ref{fig:graphVocab}). 
+The LOV Website offers an intuitive navigation within the vocabularies catalogue. It allows users to explore vocabularies, vocabulary terms, agents, languages and to get the connection between these entities. For instance, a user can look for experts in \emph{geography} and \emph{geometry} domains\footnote{\url{http://lov.okfn.org/dataset/lov/agents?&tag=Geography,Geometry}}. We use d3\footnote{\url{http://d3js.org/}} javascript library to display charts and make the navigation more interactive like star graph representation used to display incoming and outgoing links between vocabularies (cf. figure \ref{fig:graphVocab}). 
 
 
 \begin{figure}[ht!b]
@@ -384,7 +392,7 @@ Figure \ref{fig:LOVandNeOn} shows the activities within the overall NeOn methodo
   \label{fig:LOVandNeOn}
 \end{figure}
 
-\section{LOV application and project ecosystem}
+\section{LOV Adoption}
 \label{sec:lovecosystem}
 As of today, the LOV database contains over 46,000 RDF vocabulary terms, with 28,000 properties and 18,000 classes. The evolution of the number of vocabularies in the LOV is illustrated in figure \ref{fig:evolLOV}. The LOV is supporting the emergence of a rich application ecosystem thanks to its various data access methods. We list below some tools using our system as part of their service and projects using LOV as a research artifact.
  
@@ -422,7 +430,7 @@ Databugger\footnote{\url{https://github.com/AKSW/Databugger}} is a test-driven d
 Giovanni et al. \cite{governatori2014} analyzes the current use of licenses in vocabularies on the Web based on the LOV catalogue to further propose a framework to detect incompatibilities between datasets and vocabularies.
 
 
-\section{Related work and Discussion}
+\section{Related work}
 \label{sec:related}
 
 Reusing vocabularies requires searching for terms in existing specialized vocabulary catalogues or search engines on the web. While we refer the reader to~\cite{AquinJoWS12} for a systematic survey of ontology repositories, we list below some existing catalogues relevant to find vocabularies \cite{wasabi13}:
@@ -465,6 +473,10 @@ Interaction with Contributors & No &  - & No & Yes \\
 }
 \end{table*}
 
+
+\section{Discussion}
+
+
 %The LOV search engine is to the best of our knowledge, the only purpose-built ontology search engine available on the Web with an up-to-date index.
 
 \section{Conclusion and Future work}
@@ -490,7 +502,7 @@ Hence multilingualism and translation should be native, built-in features of any
 \emph{Query extension and rewriting.} Another research perspective is SPARQL query extension and rewriting based on Linked Vocabularies. Using the inter-vocabulary relationships we could transform the query to use the same semantic (same vocabulary terms) as the data source(s) to query.
 
 \section*{Acknowledgments}
-This work has been partially supported by the French National Research Agency (ANR) within the Datalift Project, under grant number ANR-10-CORD-009; the Spanish project BabelData (TIN2010-17550) and Fujitsu Laboratories Limited. The Linked Open Vocabularies initiative is graciously hosted by the Open Knowledge Foundation. We woudl like to thank all the members of the LOV community, all the editors and publishers of vocabularies who trust in the LOV catalogue. 
+This work has been partially supported by the French National Research Agency (ANR) within the Datalift Project, under grant number ANR-10-CORD-009; the Spanish project BabelData (TIN2010-17550) and Fujitsu Laboratories Limited. The Linked Open Vocabularies initiative is graciously hosted by the Open Knowledge Foundation. We would like to thank all the members of the LOV community, all the editors and publishers of vocabularies who trust in the LOV catalogue. 
 
 
 \bibliographystyle{plain}
