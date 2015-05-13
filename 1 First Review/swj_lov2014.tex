@@ -163,12 +163,25 @@ The development of the LOV has highlighted a number of interesting research chal
 This report is structured as follows: In the next section, we describe the LOV architecture along with some high level results that the system has collected. In section \ref{sec:dataPubOntoEngine}, we explain how the LOV is used to support the Data Publication and Ontology Engineering process. Subsequently, we provide an overview of some applications and research projects based and motivated by the LOV system (section \ref{sec:lovecosystem}). In section \ref{sec:related}, we report on related work and reach out conclusions in section \ref{sec:conclusion}.
 
 \section{LOV state}
+As of today, the LOV database contains over 46,000 RDF vocabulary terms, with 28,000 properties and 18,000 classes. The evolution of the number of vocabularies in the LOV is illustrated in figure \ref{fig:evolLOV}.
 
-\section{Architecture Overview}
+\begin{figure}[htb]
+   \input{PGFPlots/LOVSizeEvol.tex}
+   \caption{\label{fig:evolLOV} Evolution of the number of vocabularies in LOV from March 2011.}
+\end{figure}
 
-\section{Curation Process}
+\section{System Architecture and Features}
+\subsection{Architecture Overview}
 
-\section{Features description}
+\begin{figure}[ht!b]
+\includegraphics[scale=0.6]{lov_architecture.png}
+\caption{Overview of the Linked Open Vocabularies Architecture.}
+\label{fig:arch}
+\end{figure}
+\subsection{Curation Process}
+\subsection{System Features}
+-Search Engine
+-
 
 \section{System Architecture}
 \label{sec:arch}
@@ -180,11 +193,7 @@ The intended purpose of the LOV is to promote and facilitate the reuse of well d
 \end{inparaenum}
 To carry out these tasks, the LOV is based on a number of components depicted in figure \ref{fig:arch}, relying on existing standards and open technologies.
 
-\begin{figure}[ht!b]
-\includegraphics[scale=0.6]{lov_architecture.png}
-\caption{Overview of the Linked Open Vocabularies Architecture.}
-\label{fig:arch}
-\end{figure}
+
 
 \subsection{LOV Community}
 Over the last four years, the Linked Open Vocabularies initiative has gathered a community of around 350 people interested in various domains among them: ontology engineering or data publication. LOV Google+ community\footnote{\url{https://plus.google.com/communities/108509791366293651606}} is now an important place to discuss, report and announce general facts related to vocabularies on the Web. Compared to other vocabulary catalogues (cf. section \ref{sec:related}), the LOV relies on a semi-automated process for vocabulary insertion. Whereas an automated process put the emphasis on the volume, in our process, we focus on the quality of each vocabulary and therefore the quality of the overall LOV ecosystem. Suggestions are coming from the community and from inter-vocabulary reference links. Our system provides a feature to suggest\footnote{\url{http://lov.okfn.org/dataset/lov/suggest/}} the insertion of a new vocabulary. This feature allows a user to check what information the LOV application can automatically detect and extract. As a result of our experience in vocabulary publication, we are now able to publish a handbook about Metadata recommendations for linked open data vocabularies to help that process~\cite{vandenbussche2011metadata}. We consider the LOV community as a core component of that system.
@@ -394,12 +403,8 @@ Figure \ref{fig:LOVandNeOn} shows the activities within the overall NeOn methodo
 
 \section{LOV Adoption}
 \label{sec:lovecosystem}
-As of today, the LOV database contains over 46,000 RDF vocabulary terms, with 28,000 properties and 18,000 classes. The evolution of the number of vocabularies in the LOV is illustrated in figure \ref{fig:evolLOV}. The LOV is supporting the emergence of a rich application ecosystem thanks to its various data access methods. We list below some tools using our system as part of their service and projects using LOV as a research artifact.
+The LOV is supporting the emergence of a rich application ecosystem thanks to its various data access methods. We list below some tools using our system as part of their service and projects using LOV as a research artifact.
  
-\begin{figure}[htb]
-   \input{PGFPlots/LOVSizeEvol.tex}
-   \caption{\label{fig:evolLOV} Evolution of the number of vocabularies in LOV from March 2011.}
-\end{figure}
 \subsection{Derived tools and applications}
 
 Maguire et al. \cite{ontomaton12} uses the LOV search API to implement OntoMaton\footnote{\url{https://github.com/ISA-tools/OntoMaton}}, a widget for bringing together ontology lookup and tagging within the collaborative environment provided by Google spreadsheets. 
