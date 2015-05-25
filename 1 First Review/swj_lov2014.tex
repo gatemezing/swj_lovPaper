@@ -31,6 +31,7 @@
 \usepackage{tikz}
 \usepackage{pgf-pie}
 \usepackage{pgfplots}
+\usepackage{soul}
 \pgfplotsset{compat=1.5}
 %\usetikzlibrary{backgrounds}
 %\usepackage[scaled=0.87]{helvet}
@@ -163,60 +164,28 @@ The development of the LOV has highlighted a number of interesting research chal
 This report is structured as follows: In the next section, we describe the LOV architecture along with some high level results that the system has collected. In section \ref{sec:dataPubOntoEngine}, we explain how the LOV is used to support the Data Publication and Ontology Engineering process. Subsequently, we provide an overview of some applications and research projects based and motivated by the LOV system (section \ref{sec:lovecosystem}). In section \ref{sec:related}, we report on related work and reach out conclusions in section \ref{sec:conclusion}.
 
 \section{LOV state}
-As of today, the LOV database contains over 46,000 RDF vocabulary terms, with 28,000 properties and 18,000 classes. The evolution of the number of vocabularies in the LOV is illustrated in figure \ref{fig:evolLOV}.
-
-\begin{figure}[htb]
-   \input{PGFPlots/LOVSizeEvol.tex}
-   \caption{\label{fig:evolLOV} Evolution of the number of vocabularies in LOV from March 2011.}
-\end{figure}
-
-\section{System Architecture and Features}
-\subsection{Architecture Overview}
-
-\begin{figure}[ht!b]
-\includegraphics[scale=0.6]{lov_architecture.png}
-\caption{Overview of the Linked Open Vocabularies Architecture.}
-\label{fig:arch}
-\end{figure}
-\subsection{Curation Process}
-\subsection{System Features}
--Search Engine
--
-
-\section{System Architecture}
-\label{sec:arch}
-The intended purpose of the LOV is to promote and facilitate the reuse of well documented vocabularies in the linked data ecosystem. To meet that goal, the LOV performs the following three main activities: 
-\begin{inparaenum}[1)] 
-  \item collecting new vocabularies from the LOV Community;
-  \item tracking and analysis of the LOV vocabulary catalogue; and
-  \item giving access to the data using various indices and publication methods to ease data consumption including a search engine, data dumps, SPARQL endpoint and APIs.
-\end{inparaenum}
-To carry out these tasks, the LOV is based on a number of components depicted in figure \ref{fig:arch}, relying on existing standards and open technologies.
-
-
-
-\subsection{LOV Community}
-Over the last four years, the Linked Open Vocabularies initiative has gathered a community of around 350 people interested in various domains among them: ontology engineering or data publication. LOV Google+ community\footnote{\url{https://plus.google.com/communities/108509791366293651606}} is now an important place to discuss, report and announce general facts related to vocabularies on the Web. Compared to other vocabulary catalogues (cf. section \ref{sec:related}), the LOV relies on a semi-automated process for vocabulary insertion. Whereas an automated process put the emphasis on the volume, in our process, we focus on the quality of each vocabulary and therefore the quality of the overall LOV ecosystem. Suggestions are coming from the community and from inter-vocabulary reference links. Our system provides a feature to suggest\footnote{\url{http://lov.okfn.org/dataset/lov/suggest/}} the insertion of a new vocabulary. This feature allows a user to check what information the LOV application can automatically detect and extract. As a result of our experience in vocabulary publication, we are now able to publish a handbook about Metadata recommendations for linked open data vocabularies to help that process~\cite{vandenbussche2011metadata}. We consider the LOV community as a core component of that system.
-
-\subsection{Tracking and Analysis}
-The vocabulary collection is maintained by curators in charge of validating\footnote{Before a vocabulary is inserted, LOV curators contact the authors to make sure the vocabulary is published following the best practices and contains enough metadata}, inserting a vocabulary in the LOV ecosystem and assigning a detailed review (updated every year). Following this manual step, the \emph{Tracking and Analysis} component takes care of dereferencing\footnote{URI is looked up over HTTP to return content in a processable format such as XML/RDF, notation 3 or turtle.} the vocabulary, storing a version locally (in notation 3 format) and extracting relevant metadata. A vocabulary consists of a collection of terms (classes and properties) expressed in W3C RDF, RDFS, OWL languages. 
-
-At the Vocabulary level, the system extracts three types of information for each vocabulary version (figure \ref{fig:dcat}):
 \begin{itemize}
-\item Metadata associated to the vocabulary: this information is explicitly defined within the vocabulary to provide context, and useful data about the vocabulary. To be part of the LOV catalogue, a vocabulary must contain some minimal metadata information \cite{vandenbussche2011metadata}. Some high level vocabularies can be reused for that purpose, such as Dublin Core to describe authors, contributors, publishers or Creative Commons\footnote{\url{http://creativecommons.org/ns#}} for the description of a license.
+	\item{\st{evol nb Vocabs}  => mongo}
+	\item{cumul evol Vocabs creation date/last modif date | first last => SPARQL}
+	\item{vocabs expressivity => mongo}
 
-\item Inlinks vocabularies, making explicit the \underline{links to} another vocabulary based on the semantic relation of their terms.
+	\item{Median nb version per vocab | range => ES}
+	\item{nb elems (classes / properties / instances) | range => ES}
+	\item{Median classes / properties / instances => ES}
+	\item{nb agents (organisations / persons) => ES}
+	
+	\item{Perc vocabs per language => mongo}
+	\item{Distribution nb lang /vocabs => mongo}
+	\item{Perc. vocabs with agents => mongo / SPARQL}
 
-\item Outlinks vocabularies, making explicit the\\ \underline{links from} another vocabulary based on the semantic relation of their terms.
+	\item{dist nb vocab / voaf rel type | nb | median => SPARQL}
 \end{itemize}
 
-\begin{figure}[ht!b]
-\includegraphics[scale=0.4]{dcat-relations.pdf}
-\caption{Metadata type, vocabulary inlinks and outlinks of DCAT vocabulary.}
-\label{fig:dcat}
-\end{figure}
+As of today, the LOV database contains over 47,000 RDF vocabulary terms, with 28,800 properties and 19,000 classes. The evolution of the number of vocabularies in the LOV is illustrated in figure \ref{fig:evolLOV}.
 
-At the Vocabulary Term level, the system extracts labels that will be used for full text search and language information. Out of 469 vocabularies (as of January 2015), 419 use explicitly the English language for labels/comments, and 83 use other languages. Table \ref{tab:language} presents the number and percentage of the top five languages detected in the LOV. 41 vocabularies still does not provide any language information and only 70 vocabularies are multilingual. We will discuss in section \ref{sec:conclusion} the importance for publishers to provide multilingual vocabularies on the Web.
+Over the last four years, the Linked Open Vocabularies initiative has gathered a community of around 470 people interested in various domains among them: ontology engineering or data publication. LOV Google+ community\footnote{\url{https://plus.google.com/communities/108509791366293651606}} is now an important place to discuss, report and announce general facts related to vocabularies on the Web.
+
+Out of 469 vocabularies (as of January 2015), 419 use explicitly the English language for labels/comments, and 83 use other languages. Table \ref{tab:language} presents the number and percentage of the top five languages detected in the LOV. 41 vocabularies still does not provide any language information and only 70 vocabularies are multilingual. We will discuss in section \ref{sec:conclusion} the importance for publishers to provide multilingual vocabularies on the Web.
  
  \begin{table}[h!tb]
 \caption{Top five languages and percentage detected in the LOV catalogue. Some vocabularies can make use of multiple languages.}
@@ -233,9 +202,69 @@ Italian & 20 & 4.67\%\\
 \label{tab:language}
 \end{table}
 
+\begin{figure}[htb]
+   \input{PGFPlots/LOVSizeEvol.tex}
+   \caption{\label{fig:evolLOV} Evolution of the number of vocabularies in LOV from March 2011 to May 2015.}
+\end{figure}
+
+\section{System Components and Features}
+	Figure \ref{fig:arch} shows an overview of the LOV components architecture. It is composed of four main components. Each components provides a set of features detailed in the following subsections.
+
+\begin{figure}[ht!b]
+\includegraphics[scale=0.6]{lov_architecture.png}
+\caption{Overview of the Linked Open Vocabularies Architecture.}
+\label{fig:arch}
+\end{figure}
+
+\subsection{Tracking and Analysis}
+	The \emph{Tracking and Analysis} component takes care of dereferencing\footnote{URI is looked up over HTTP to return content in a processable format such as XML/RDF, notation 3 or turtle.} LOV vocabularies. , storing a version locally (in notation 3 format) and extracting relevant metadata. A vocabulary consists of a collection of terms (classes and properties) expressed in W3C RDF, RDFS, OWL languages. 
+
+At the Vocabulary level, the system extracts three types of information for each vocabulary version (figure \ref{fig:dcat}):
+\begin{itemize}
+\item Metadata associated to the vocabulary: this information is explicitly defined within the vocabulary to provide context, and useful data about the vocabulary. To be part of the LOV catalogue, a vocabulary must contain some minimal metadata information \cite{vandenbussche2011metadata}. Some high level vocabularies can be reused for that purpose, such as Dublin Core to describe authors, contributors, publishers or Creative Commons\footnote{\url{http://creativecommons.org/ns#}} for the description of a license.
+
+\item Inlinks vocabularies, making explicit the \underline{links from} another vocabulary based on the semantic relation of their terms.
+
+\item Outlinks vocabularies, making explicit the\\ \underline{links to} another vocabulary based on the semantic relation of their terms.
+\end{itemize}
+
+\begin{figure}[ht!b]
+\includegraphics[scale=0.4]{dcat-relations.pdf}
+\caption{Metadata type, vocabulary inlinks and outlinks of DCAT vocabulary.}
+\label{fig:dcat}
+\end{figure}
+
+At the Vocabulary Term level, the system extracts labels that will be used for full text search and language information
+
+
+
+\subsection{Curation}
+	\subsubsection{Vocabulary Insertion} Compared to other vocabulary catalogues (cf. section \ref{sec:related}), LOV relies on a semi-automated process for vocabulary insertion. Whereas an automated process put the emphasis on the volume, in our process, we focus on the quality of each vocabulary and therefore the quality of the overall LOV ecosystem. Suggestions are coming from the community and from inter-vocabulary reference links. Our system provides a feature to suggest\footnote{\url{http://lov.okfn.org/dataset/lov/suggest/}} the insertion of a new vocabulary. This feature allows a user to check what information the LOV application can automatically detect and extract. LOV curators then check if the vocabulary falls in the scope of LOV and if it meets basic vocabulary quality to be reused:
+\begin{enumerate}
+ \item a vocabulary should be dereferentiable
+ \item a vocabulary should be parsable without error (warning tolerated)
+ \item all classes and properties in a vocabulary should have an rdfs:label
+ \item a vocabulary should refer and reuse relevant existing ones
+\end{enumerate}
+If a suggested vocabulary meets these criteria, it is then inserted in the LOV catalogue. during the process, the LOV curators keep the authors informed and help them to improve their vocabulary quality. As a result of our experience in vocabulary publication, we are now able to publish a handbook about Metadata recommendations for linked open data vocabularies to help that process~\cite{vandenbussche2011metadata}.
+
+\begin{figure}[ht!b]
+\includegraphics[scale=0.6]{workflow-curation-suggest.png}
+\caption{Curation workflow for vocabulary insertion.}
+\label{fig:arch}
+\end{figure}
+
+	\subsubsection{Vocabulary Review}
 When some metadata failed to be extracted automatically (such as creators of a vocabulary), LOV curators enhance the description available in the system. The documentation provided by the LOV application assists any user in the task of understanding the semantics of each vocabulary term and therefore of any data using it. For instance, information about the creator and publisher is a key indication for a vocabulary user in case help or clarification is required from the author, or to assess the stability of that artifact. About 55\% of vocabularies specify at least one creator, contributor or editor. We augmented this information using manually gathered information, leading to the inclusion of data about the creator in over 85\% of vocabularies in the LOV. The database stores every version of a vocabulary since its first issue. For each version, a user can access the file (particularly useful when the original online file is no longer available). An automatic script is in place to automatically check for vocabulary updates on a daily basis. To embrace the complexity of the vocabulary ecosystem and assess the impact of a modification, one needs to know in which vocabularies and datasets a particular vocabulary term is referenced. For the first time LOV provides such a vision. 
 
+\begin{figure}[ht!b]
+\includegraphics[scale=0.6]{workflow-curation-review.png}
+\caption{Curation workflow for systematic vocabulary review.}
+\label{fig:arch}
+\end{figure}
+
 \subsection{Data Access}
+
 LOV system (code and data) is published under Creative Commons 4.0 license\footnote{\url{https://creativecommons.org/licenses/by/4.0/}} (CC BY 4.0). Four methods are offered for users and applications to access the LOV data:
 		\begin{inparaenum}[1)] 
 			\item query the LOV search engine to find the most relevant vocabulary terms, vocabularies or agents matching keywords;
@@ -301,8 +330,7 @@ The system provides data dumps of the LOV vocabulary catalogue in RDF Notation 3
 \subsubsection{SPARQL Endpoint}
 The LOV SPARQL Endpoint\footnote{\url{http://lov.okfn.org/dataset/lov/sparql}} offers a complementary data access method and allows clients to pose complex queries to the server and retrieve direct answers computed over the LOV dataset. We use Jena fuseki triple store to store the N-quads file containing the LOV catalogue and the latest version of each vocabulary. This allows for the first time to query multiple vocabulary at the same time and to detect inter-vocabulary dependencies. An example of this use is explained in section \ref{sec:dataPubOntoEngine}.
 
-
-\subsubsection{API and UI}
+\subsection{LOV User Interfaces and Application Program Interfaces}
 LOV APIs give a remote access to the many functions of LOV through a set of RESTful services\footnote{\url{http://lov.okfn.org/dataset/lov/apidoc/}}. The basic design requirements for these APIs is that they should allow applications to get access to the very same information humans do via the User Interfaces. More precisely the APIs give access, through three different type of services (cf. figure \ref{fig:apis}), to functions related to:
 \begin{itemize} 
 			\item Vocabulary terms (classes, properties, datatypes and instances). With these functions, a software application can query the LOV search engine, ask for autocompletion or suggestion for misspelled terms;
@@ -325,6 +353,26 @@ The LOV Website offers an intuitive navigation within the vocabularies catalogue
 \caption{Schema.org vocabulary incoming and outgoing links graphical representation as displayed in the UI.}
 \label{fig:graphVocab}
 \end{figure}
+
+
+
+
+\section{System Architecture}
+\label{sec:arch}
+The intended purpose of the LOV is to promote and facilitate the reuse of well documented vocabularies in the linked data ecosystem. To meet that goal, the LOV performs the following three main activities: 
+\begin{inparaenum}[1)] 
+  \item collecting new vocabularies from the LOV Community;
+  \item tracking and analysis of the LOV vocabulary catalogue; and
+  \item giving access to the data using various indices and publication methods to ease data consumption including a search engine, data dumps, SPARQL endpoint and APIs.
+\end{inparaenum}
+To carry out these tasks, the LOV is based on a number of components depicted in figure \ref{fig:arch}, relying on existing standards and open technologies.
+
+
+\subsection{Tracking and Analysis}
+The vocabulary collection is maintained by curators in charge of validating\footnote{Before a vocabulary is inserted, LOV curators contact the authors to make sure the vocabulary is published following the best practices and contains enough metadata}, inserting a vocabulary in the LOV ecosystem and assigning a detailed review (updated every year).
+
+
+
 
 \section{LOV as a support for Data Publication and Ontology Engineering}
 \label{sec:dataPubOntoEngine}
