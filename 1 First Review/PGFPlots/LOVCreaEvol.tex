@@ -1,0 +1,87 @@
+\makeatletter
+\long\def\ifnodedefined#1#2#3{%
+    \@ifundefined{pgf@sh@ns@#1}{#3}{#2}%
+}
+\makeatother
+
+\begin{tikzpicture}
+\begin{axis}[
+date coordinates in=x,
+x tick label style={align=left,rotate=90,font=\scriptsize},
+date ZERO=1998-01-01,% <- improves precision!
+xmin={1998-01-01}, % A date with no time is assumed to have a time of 00:00
+xmax={2015-01-01},
+ybar interval,
+ymin={0},
+  xticklabel={\year},
+xtick={% Set tick marks CAREFUL the year has been decremented by one year ... was not able to figure out how to do that properly...
+1998-01-01,
+1999-01-01,
+2000-01-01,
+2001-01-01,
+2002-01-01,
+2003-01-01,
+2004-01-01,
+2005-01-01,
+2006-01-01,
+2007-01-01,
+2008-01-01,
+2009-01-01,
+2010-01-01,
+2011-01-01,
+2012-01-01,
+2013-01-01,
+2014-01-01,
+2015-01-01
+},
+]
+\addplot coordinates {
+(1998-01-01,1)
+(1998-07-01,0)
+(1999-01-01,0)
+(1999-07-01,1)
+(2000-01-01,2)
+(2000-07-01,0)
+(2001-01-01,1)
+(2001-07-01,0)
+(2002-01-01,7)
+(2002-07-01,6)
+(2003-01-01,6)
+(2003-07-01,5)
+(2004-01-01,9)
+(2004-07-01,6)
+(2005-01-01,5)
+(2005-07-01,5)
+(2006-01-01,7)
+(2006-07-01,6)
+(2007-01-01,10)
+(2007-07-01,11)
+(2008-01-01,16)
+(2008-07-01,11)
+(2009-01-01,26)
+(2009-07-01,35)
+(2010-01-01,41)
+(2010-07-01,20)
+(2011-01-01,30)
+(2011-07-01,31)
+(2012-01-01,25)
+(2012-07-01,22)
+(2013-01-01,11)
+(2013-07-01,6)
+(2014-01-01,0)
+(2014-07-01,0)
+};
+\addplot[red,sharp plot,update limits=false] 
+	coordinates {(1998-02-22,0) (1998-02-22,50)} 
+	node[below, rotate=90] at (axis cs:1998-02-22,20) {RDF 1.0};
+\addplot[red,sharp plot,update limits=false] 
+	coordinates {(2013-02-25,0) (2013-02-25,50)} 
+	node[below, rotate=90] at (axis cs:2013-02-25,20) {RDF 1.1};
+\addplot[red,sharp plot,update limits=false] 
+	coordinates {(2003-02-10,0) (2003-02-10,50)} 
+	node[below, rotate=90] at (axis cs:2003-02-10,20) {RDFS};
+\addplot[red,sharp plot,update limits=false] 
+	coordinates {(2008-11-15,0) (2008-11-15,50)} 
+	node[below, rotate=90] at (axis cs:2008-11-15,20) {OWL};
+\end{axis}
+\end{tikzpicture}
