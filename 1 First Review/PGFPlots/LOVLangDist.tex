@@ -2,19 +2,20 @@
 \begin{axis}[
     ybar,
     ymin={0},
-    ylabel={\#vocabularies},
+    % ylabel={\#vocabularies},
     symbolic x coords={0,1,2,3,4,5,6,7+},
     xtick=data,
     nodes near coords,
     nodes near coords align={vertical},
     ]
-\addplot coordinates {(0,132) 
-(1,266) 
-(2,43) 
-(3,7) 
-(4,2) 
-(5,7) 
-(6,5) 
-(7+,5)};
+\addplot[fill=orange] coordinates {(0,143)
+(1,292)
+(2,49)
+(3,7)
+(4,2)
+(5,7)
+(6,5)
+(7+,5)
+};
 \end{axis}
 \end{tikzpicture}

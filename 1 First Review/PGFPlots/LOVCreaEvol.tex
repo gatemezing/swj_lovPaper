@@ -35,7 +35,7 @@ xtick={% Set tick marks CAREFUL the year has been decremented by one year ... wa
 2015-01-01
 },
 ]
-\addplot coordinates {
+\addplot[fill=green!30!white] coordinates {
 (1998-01-01,1)
 (1998-07-01,0)
 (1999-01-01,0)
@@ -73,15 +73,15 @@ xtick={% Set tick marks CAREFUL the year has been decremented by one year ... wa
 };
 \addplot[red,sharp plot,update limits=false] 
 	coordinates {(1998-02-22,0) (1998-02-22,50)} 
-	node[below, rotate=90] at (axis cs:1998-02-22,20) {RDF 1.0};
+	node[below, rotate=90] at (axis cs:1998-02-22,25) {RDF};
 \addplot[red,sharp plot,update limits=false] 
 	coordinates {(2013-02-25,0) (2013-02-25,50)} 
-	node[below, rotate=90] at (axis cs:2013-02-25,20) {RDF 1.1};
+	node[below, rotate=90] at (axis cs:2013-02-25,25) {RDF 1.1};
 \addplot[red,sharp plot,update limits=false] 
 	coordinates {(2003-02-10,0) (2003-02-10,50)} 
-	node[below, rotate=90] at (axis cs:2003-02-10,20) {RDFS};
+	node[below, rotate=90] at (axis cs:2003-02-10,25) {RDFS and RDF revised};
 \addplot[red,sharp plot,update limits=false] 
 	coordinates {(2008-11-15,0) (2008-11-15,50)} 
-	node[below, rotate=90] at (axis cs:2008-11-15,20) {OWL};
+	node[below, rotate=90] at (axis cs:2008-11-15,25) {OWL};
 \end{axis}
 \end{tikzpicture}

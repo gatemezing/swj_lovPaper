@@ -38,6 +38,7 @@
 \usepackage{textcomp}
 \usepackage{enumitem}
 \usepgfplotslibrary{dateplot}
+\usetikzlibrary{shapes.geometric, arrows}
 
 %\usepackage{bibentry}
 
@@ -164,100 +165,86 @@ The development of the LOV has highlighted a number of interesting research chal
 This report is structured as follows: In the next section, we describe the LOV architecture along with some high level results that the system has collected. In section \ref{sec:dataPubOntoEngine}, we explain how the LOV is used to support the Data Publication and Ontology Engineering process. Subsequently, we provide an overview of some applications and research projects based and motivated by the LOV system (section \ref{sec:lovecosystem}). In section \ref{sec:related}, we report on related work and reach out conclusions in section \ref{sec:conclusion}.
 
 \section{LOV state}
-\begin{itemize}
-	\item{\st{evol nb Vocabs}  => mongo}
-	\item{\st{cumul evol Vocabs creation date/last modif date | first last} => mongo}
-	\item{\st{vocabs expressivity} => mongo}
+As of June 2015, the LOV database contains 511 vocabularies. Figure \ref{fig:evolLOV} depicts the evolution of the number of vocabularies inserted in the LOV dataset. The addition of new vocabularies to LOV has been fairly constant with two outstanding events: 
+\begin{inparaenum}[1)] 
+	\item the increase beginning of 2012 corresponds to the deployment of LOV version 2 making automatic most of the vocabulary analyses and
+	\item a small decrease and plateau beginning of 2015 corresponding to the deployement of LOV version 3. At that time we were thinking about removing offline vocabularies but finally decided to keep them with a special flag making LOV the last semantic continuity for datasets referencing a dead vocabularies.
+\end{inparaenum} 
 
-	\item{\st{Median nb version per vocab | range} => ES}
-	\item{\st{nb elems (classes / properties / instances) | range} => ES}
-	\item{\st{Median classes / properties / instances} => ES}
-	\item{\st{nb agents (organisations / persons)} => ES}
-	
-	\item{\st{Perc vocabs per language} => mongo}
-	\item{\st{Distribution nb lang /vocabs} => mongo}
-	\item{Perc. vocabs with agents => mongo}
+\begin{figure}[htb]
+   \input{PGFPlots/LOVSizeEvol.tex}
+   \caption{\label{fig:evolLOV} Evolution of the number of vocabularies in LOV from March 2011 to June 2015.}
+\end{figure}
 
-	\item{\st{dist nb vocab / voaf rel type | nb | median} => mongo}
-\end{itemize}
+\begin{figure}[htb]
+\input{PGFPlots/LOVCreaEvol.tex}
+\caption{\label{fig:creaevol} Vocabularies distribution by creation date.}
+\end{figure}
 
-As of today, the LOV database contains over 47,000 RDF vocabulary terms, with 28,800 properties and 19,000 classes. The evolution of the number of vocabularies in the LOV is illustrated in figure \ref{fig:evolLOV}.
+\begin{figure}[htb]
+\input{PGFPlots/LOVModifEvol.tex}
+\caption{\label{fig:modifevol} Vocabularies distribution by last modification date.}
+\end{figure}
 
- \begin{table}[h!tb]
-\caption{Top five languages and percentage detected in the LOV catalogue. Some vocabularies can make use of multiple languages.}
+Looking at the creation date of the vocabularies registered in LOV, illustrated in Figure \ref{fig:creaevol}, it informs on the adoption of Semantic Web technologies. The apex of this bell curve is happening in 2011. The figure put as well this in the perspective of the W3C recommendation effort of RDF, RDFS and OWL languages. A decrease of vocabulary creation does not mean a decrease in use of the technology but rather than the coverage of existing vocabularies now covers a large part of the semantic description need. This is as well confirmed by figure \ref{fig:modifevol} that presents the last modification date of LOV vocabularies demonstrating a living ecosystem where vocabularies are not static. The median number of versions per vocabulary is 2. Where 98.23\% of vocabularies makes use of RDFS in addition to RDF, only 45.99\% of them makes use of OWL. 
+
+Overall, LOV dataset contains almost 50,000 RDF vocabulary classes and properties with a median number of 9 and 17 respectively per vocabulary. Table \ref{tab:elements} presents a breakdown of LOV dataset content by vocabulary element type. Out of 511 vocabularies, 66.14\% use explicitly the English language for labels/comments. Table \ref{tab:language} presents the number and percentage of the top five languages detected in the LOV. Figure \ref{fig:langdist} shows the distribution of vocabularies per number of languages explicitly used: 27.98\% vocabularies still does not provide any language information and only 14.68\% of vocabularies are multilingual. 45 Languages are represented in LOV. We will discuss in section \ref{sec:conclusion} the importance for publishers to provide multilingual vocabularies on the Web.
+
+\begin{table}[h!tb]
+\caption{LOV vocabulary elements statistics.}
 \begin{tabular}{lrr}
 \hline
-\textbf{Type} & \textbf{Count} &  \textbf{Med per vocab} \\ \hline
-Vocabularies & 469 & \\ 
-Classes & 18,336 & 9 \\ 
-Properties & 27,152 & 16 \\ 
-Instances & 4,672 & 0 \\ 
-Datatypes & 94 & 0 \\ 
-
+\textbf{Type} & \textbf{Count} &  \textbf{Median per vocab} \\ \hline
+Classes & 20,034 & 9 \\
+Properties & 29,925 & 17 \\
+Instances & 5,232 & 0 \\
+Datatypes & 101 & 0 \\
 \hline  
 \end{tabular}
-\label{tab:voaf}
+\label{tab:elements}
 \end{table}
 
-Over the last four years, the Linked Open Vocabularies initiative has gathered a community of around 470 people interested in various domains among them: ontology engineering or data publication. LOV Google+ community\footnote{\url{https://plus.google.com/communities/108509791366293651606}} is now an important place to discuss, report and announce general facts related to vocabularies on the Web.
-
-Out of 469 vocabularies (as of January 2015), 419 use explicitly the English language for labels/comments, and 83 use other languages. Table \ref{tab:language} presents the number and percentage of the top five languages detected in the LOV. 41 vocabularies still does not provide any language information and only 70 vocabularies are multilingual. We will discuss in section \ref{sec:conclusion} the importance for publishers to provide multilingual vocabularies on the Web.
- 
  \begin{table}[h!tb]
 \caption{Top five languages and percentage detected in the LOV catalogue. Some vocabularies can make use of multiple languages.}
 \begin{tabular}{lrr}
 \hline
-\textbf{Language} & \textbf{Nb Vocabs} & \textbf{\% Vocabs (out of 469)}  \\ \hline
-English & 326 & 69.51\%      \\ 
-French & 40 & 8.53\%      \\ 
-Spanish & 27 & 5.76\%      \\ 
-German & 22 & 4.69\%      \\ 
-Italian & 21 & 4.48\%      \\
+\textbf{Language} & \textbf{Nb Vocabs} & \textbf{\% Vocabs (out of 511)}  \\ \hline
+English & 338 & 66.14\%      \\
+French & 37 & 7.24\%      \\
+Spanish & 25 & 4.89\%      \\
+German & 19 & 3.72\%      \\
+Italian & 18 & 3.52\%      \\
 \hline  
 \end{tabular}
 \label{tab:language}
 \end{table}
 
- \begin{table}[h!tb]
-\caption{Top five languages and percentage detected in the LOV catalogue. Some vocabularies can make use of multiple languages.}
-\begin{tabular}{lcc}
-\hline
-\textbf{Inter vocabulary relationship} & \textbf{Nb Relations} \\ \hline
-voaf:metadataVoc & 2396 \\ 
-voaf:specializes & 1155 \\ 
-voaf:extends & 946 \\ 
-owl:imports & 329 \\ 
-voaf:hasEquivalencesWith & 190 \\ 
-voaf:generalizes & 49 \\ 
-voaf:hasDisjunctionsWith & 15 \\ 
-\hline  
-\end{tabular}
-\label{tab:voaf}
-\end{table}
-
-\begin{figure}[htb]
-   \input{PGFPlots/LOVSizeEvol.tex}
-   \caption{\label{fig:evolLOV} Evolution of the number of vocabularies in LOV from March 2011 to May 2015.}
-\end{figure}
-
-\begin{figure}[htb]
-\input{PGFPlots/LOVCreaEvol.tex}
-\caption{\label{fig:evolLOV} Distribution of the vocabularies by creation date.}
-\end{figure}
-
-\begin{figure}[htb]
-\input{PGFPlots/LOVModifEvol.tex}
-\caption{\label{fig:evolLOV} Distribution of the vocabularies by last modification date.}
-\end{figure}
-
 \begin{figure}[htb]
 \input{PGFPlots/LOVLangDist.tex}
-\caption{\label{fig:evolLOV} Distribution of the vocabularies per language count.}
+\caption{\label{fig:langdist} Distribution of the vocabularies per language count.}
 \end{figure}
+
+Over the last four years, the Linked Open Vocabularies initiative has gathered a community of around 470 people interested in various domains among them: ontology engineering or data publication. LOV Google+ community\footnote{\url{https://plus.google.com/communities/108509791366293651606}} is now an important place to discuss, report and announce general facts related to vocabularies on the Web. LOV dataset itself referenced 389 resources of type persons and 111 of type organization participating in vocabulary design and/or publication.
+
 
 
 \section{System Components and Features}
-	Figure \ref{fig:arch} shows an overview of the LOV components architecture. It is composed of four main components. Each components provides a set of features detailed in the following subsections.
+	Figure \ref{fig:arch} shows an overview of the LOV components architecture. It is composed of four main components: 
+\begin{inparaenum}[1)] 
+	\item \emph{Tracking and Analysis}. Responsible to check for any vocabulary version update and analysing vocabularies specific features.
+	\item \emph{Curation}. Ensure the high quality of the LOV dataset through methods for the community to suggest or edit the LOV catalogue.
+	\item \emph{Data Access}. Consists in providing access to the data through a large range of methods and protocols to facilitate the use of LOV dataset and
+	\item \emph{LOV User Interfaces and Application Program Interfaces}.
+\end{inparaenum} 
+Each components provides a set of features detailed in the following subsections.
+
+The intended purpose of the LOV is to promote and facilitate the reuse of well documented vocabularies in the linked data ecosystem. To meet that goal, the LOV performs the following three main activities: 
+\begin{inparaenum}[1)] 
+  \item collecting new vocabularies from the LOV Community;
+  \item tracking and analysis of the LOV vocabulary catalogue; and
+  \item giving access to the data using various indices and publication methods to ease data consumption including a search engine, data dumps, SPARQL endpoint and APIs.
+\end{inparaenum}
+To carry out these tasks, the LOV is based on a number of components depicted in figure \ref{fig:arch}, relying on existing standards and open technologies.
 
 \begin{figure}[ht!b]
 \includegraphics[scale=0.6]{lov_architecture.png}
@@ -277,6 +264,89 @@ At the Vocabulary level, the system extracts three types of information for each
 \item Outlinks vocabularies, making explicit the\\ \underline{links to} another vocabulary based on the semantic relation of their terms.
 \end{itemize}
 
+\subsubsection{Inter-vocabulary relationships} \label{voafRelations}
+		There are many ways two vocabularies can rely on each other. Considering two vocabularies $V1$ and $V2$ such as $V1$ contains a class $c1$ and a property $p1$ and $V2$ contains a class $c2$ and a property $p2$. Relationships between these two vocabularies can be of the following types:
+		\begin{description}
+			\item [Import.] some terms from $V2$ are reused in complement with $V1$ to capture the semantic of the data:
+\begin{lstlisting}[basicstyle=\tiny,float=htb,label=list:person, language=turtle]
+<http://purl.org/NET/c4dm/event.owl> owl:imports 
+	<http://www.w3.org/2006/time>
+\end{lstlisting}
+			\item [Specialization.] $V1$ defines some subclasses or subproperties (or local restrictions) of $V2$:
+				\begin{itemize}
+					\item c1 is subclass of c2 
+\begin{lstlisting}[basicstyle=\tiny,float=htb,label=list:person, language=turtle]
+<http://open.vocab.org/terms/Birth> rdfs:subClassOf 
+	<http://purl.org/NET/c4dm/event.owl#Event>
+\end{lstlisting}
+					\item p1 is subproperty of p2.  
+\begin{lstlisting}[basicstyle=\tiny,float=htb,label=list:person, language=turtle]
+<http://purl.org/spar/fabio/hasEmbargoDate> 
+	rdfs:subPropertyOf <http://purl.org/dc/terms/date>
+\end{lstlisting}
+				\end{itemize}
+
+			\item [Generalization.] V1 defines some superclasses or superproperties of V2. c1 is superclass of c2 
+\begin{lstlisting}[basicstyle=\tiny,float=htb,label=list:person, language=turtle]
+<http://semanticweb.cs.vu.nl/2009/11/sem/Place> 
+  skos:narrowMatch 
+  <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
+\end{lstlisting}
+
+			\item [Extension.] V1 extends the expressivity of V2:
+				\begin{itemize}
+					\item p1 is inverse of p2 
+\begin{lstlisting}[basicstyle=\tiny,float=htb,label=list:person, language=turtle]
+<http://vivoweb.org/ontology/core#translatorOf> owl:inverseOf
+		<http://purl.org/ontology/bibo/translator>
+\end{lstlisting}
+					\item p1 has for domain c2.  
+\begin{lstlisting}[basicstyle=\tiny,float=htb,label=list:person, language=turtle]
+<http://xmlns.com/foaf/0.1/based_near> rdfs:domain
+		<http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
+\end{lstlisting}
+				\end{itemize}
+
+			\item [Equivalence.] V1 declares some equivalent classes or properties with V2.  
+				\begin{itemize}
+					\item p1 is equivalent to p2 
+\begin{lstlisting}[basicstyle=\tiny,float=htb,label=list:person, language=turtle]
+<http://lsdis.cs.uga.edu/projects/semdis/opus#journal_name> 
+		owl:equivalentProperty 
+		<http://purl.org/net/nknouf/ns/bibtex#hasJournal>
+\end{lstlisting}
+					\item c1 is equivalent to c2.  
+\begin{lstlisting}[basicstyle=\tiny,float=htb,label=list:person, language=turtle]
+<http://www.loc.gov/mads/rdf/v1#Language> owl:equivalentClass
+		<http://purl.org/dc/terms/LinguisticSystem>
+\end{lstlisting}
+				\end{itemize}
+
+			\item [Disjunction.] V1 declares some disjunct classes with V2. c1 is disjoint with c2 
+\begin{lstlisting}[basicstyle=\tiny,float=htb,label=list:person, language=turtle]
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval>
+		owl:disjointWith 
+		<http://www.ontologydesignpatterns.org/ont/dul/ontopic.owl#SubjectSpace>
+\end{lstlisting}
+		\end{description}
+
+\begin{table}[h!tb]
+\caption{Inter-vocabularies relationship types and their number of occurrences in LOV.}
+\begin{tabular}{lcc}
+\hline
+\textbf{Inter vocabulary relationship} & \textbf{Nb Relations} \\ \hline
+voaf:metadataVoc & 2637 \\
+voaf:specializes & 1269 \\
+voaf:extends & 1031 \\
+owl:imports & 373 \\
+voaf:hasEquivalencesWith & 201 \\
+voaf:generalizes & 57 \\
+voaf:hasDisjunctionsWith & 16 \\
+\hline  
+\end{tabular}
+\label{tab:voaf}
+\end{table}
+
 \begin{figure}[ht!b]
 \includegraphics[scale=0.4]{dcat-relations.pdf}
 \caption{Metadata type, vocabulary inlinks and outlinks of DCAT vocabulary.}
@@ -288,6 +358,9 @@ At the Vocabulary Term level, the system extracts labels that will be used for f
 
 
 \subsection{Curation}
+
+The vocabulary collection is maintained by curators in charge of validating\footnote{Before a vocabulary is inserted, LOV curators contact the authors to make sure the vocabulary is published following the best practices and contains enough metadata}, inserting a vocabulary in the LOV ecosystem and assigning a detailed review (updated every year).
+
 	\subsubsection{Vocabulary Insertion} Compared to other vocabulary catalogues (cf. section \ref{sec:related}), LOV relies on a semi-automated process for vocabulary insertion. Whereas an automated process put the emphasis on the volume, in our process, we focus on the quality of each vocabulary and therefore the quality of the overall LOV ecosystem. Suggestions are coming from the community and from inter-vocabulary reference links. Our system provides a feature to suggest\footnote{\url{http://lov.okfn.org/dataset/lov/suggest/}} the insertion of a new vocabulary. This feature allows a user to check what information the LOV application can automatically detect and extract. LOV curators then check if the vocabulary falls in the scope of LOV and if it meets basic vocabulary quality to be reused:
 \begin{enumerate}
  \item a vocabulary should be dereferentiable
@@ -296,6 +369,11 @@ At the Vocabulary Term level, the system extracts labels that will be used for f
  \item a vocabulary should refer and reuse relevant existing ones
 \end{enumerate}
 If a suggested vocabulary meets these criteria, it is then inserted in the LOV catalogue. during the process, the LOV curators keep the authors informed and help them to improve their vocabulary quality. As a result of our experience in vocabulary publication, we are now able to publish a handbook about Metadata recommendations for linked open data vocabularies to help that process~\cite{vandenbussche2011metadata}.
+
+\begin{figure}[htb]
+\input{FlowCharts/InsertFlow.tex}
+\caption{\label{fig:creaevol} Vocabularies distribution by creation date.}
+\end{figure}
 
 \begin{figure}[ht!b]
 \includegraphics[scale=0.6]{workflow-curation-suggest.png}
@@ -406,23 +484,6 @@ The LOV Website offers an intuitive navigation within the vocabularies catalogue
 
 
 
-\section{System Architecture}
-\label{sec:arch}
-The intended purpose of the LOV is to promote and facilitate the reuse of well documented vocabularies in the linked data ecosystem. To meet that goal, the LOV performs the following three main activities: 
-\begin{inparaenum}[1)] 
-  \item collecting new vocabularies from the LOV Community;
-  \item tracking and analysis of the LOV vocabulary catalogue; and
-  \item giving access to the data using various indices and publication methods to ease data consumption including a search engine, data dumps, SPARQL endpoint and APIs.
-\end{inparaenum}
-To carry out these tasks, the LOV is based on a number of components depicted in figure \ref{fig:arch}, relying on existing standards and open technologies.
-
-
-\subsection{Tracking and Analysis}
-The vocabulary collection is maintained by curators in charge of validating\footnote{Before a vocabulary is inserted, LOV curators contact the authors to make sure the vocabulary is published following the best practices and contains enough metadata}, inserting a vocabulary in the LOV ecosystem and assigning a detailed review (updated every year).
-
-
-
-
 \section{LOV as a support for Data Publication and Ontology Engineering}
 \label{sec:dataPubOntoEngine}
 
@@ -454,8 +515,10 @@ Based on the NeOn Methodology's glossary of activities for building ontologies, 
       FILTER(!isBlank(?elem2))
       FILTER(!isBlank(?elem1))
       ?elem1 ?alignment ?elem2.
-      ?elem1 rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/>.
-      ?elem2 rdfs:isDefinedBy <http://purl.org/dc/terms/>.
+      ?elem1 rdfs:isDefinedBy 
+		<http://xmlns.com/foaf/0.1/>.
+      ?elem2 rdfs:isDefinedBy 
+		<http://purl.org/dc/terms/>.
  } ORDER BY ?alignment
 	
 	\end{lstlisting}
