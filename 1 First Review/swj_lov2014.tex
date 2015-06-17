@@ -318,17 +318,18 @@ At the Vocabulary level, the system extracts three types of information for each
 					\item c1 is equivalent to c2.  
 \begin{lstlisting}[basicstyle=\tiny,float=htb,label=list:person, language=turtle]
 <http://www.loc.gov/mads/rdf/v1#Language> owl:equivalentClass
-		<http://purl.org/dc/terms/LinguisticSystem>
+		dcterms:LinguisticSystem.
 \end{lstlisting}
 				\end{itemize}
 
 			\item [Disjunction.] V1 declares some disjunct classes with V2. c1 is disjoint with c2 
 \begin{lstlisting}[basicstyle=\tiny,float=htb,label=list:person, language=turtle]
-<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval>
+dul:TimeInterval
 		owl:disjointWith 
-		<http://www.ontologydesignpatterns.org/ont/dul/ontopic.owl#SubjectSpace>
+		ontopic:SubjectSpace.
 \end{lstlisting}
 		\end{description}
+Where \texttt{dul} namespace is \url{http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#} and ontopic is \url{http://www.ontologydesignpatterns.org/ont/dul/ontopic.owl#} 
 
 \begin{table}[h!tb]
 \caption{Inter-vocabularies relationship types and their number of occurrences in LOV.}
@@ -363,12 +364,12 @@ The vocabulary collection is maintained by curators in charge of validating\foot
 
 	\subsubsection{Vocabulary Insertion} Compared to other vocabulary catalogues (cf. section \ref{sec:related}), LOV relies on a semi-automated process for vocabulary insertion. Whereas an automated process put the emphasis on the volume, in our process, we focus on the quality of each vocabulary and therefore the quality of the overall LOV ecosystem. Suggestions are coming from the community and from inter-vocabulary reference links. Our system provides a feature to suggest\footnote{\url{http://lov.okfn.org/dataset/lov/suggest/}} the insertion of a new vocabulary. This feature allows a user to check what information the LOV application can automatically detect and extract. LOV curators then check if the vocabulary falls in the scope of LOV and if it meets basic vocabulary quality to be reused:
 \begin{enumerate}
- \item a vocabulary should be dereferentiable
+ \item a vocabulary should be dereferenceable
  \item a vocabulary should be parsable without error (warning tolerated)
- \item all classes and properties in a vocabulary should have an rdfs:label
+ \item all classes and properties in a vocabulary should have an \texttt{rdfs:label}
  \item a vocabulary should refer and reuse relevant existing ones
 \end{enumerate}
-If a suggested vocabulary meets these criteria, it is then inserted in the LOV catalogue. during the process, the LOV curators keep the authors informed and help them to improve their vocabulary quality. As a result of our experience in vocabulary publication, we are now able to publish a handbook about Metadata recommendations for linked open data vocabularies to help that process~\cite{vandenbussche2011metadata}.
+If a suggested vocabulary meets these criteria, it is then inserted in the LOV catalogue. during the process, the LOV curators keep the authors informed and help them to improve their vocabulary quality. As a result of our experience in vocabulary publication, we are now able to publish a handbook about metadata recommendations for linked open data vocabularies to help that process~\cite{vandenbussche2011metadata}.
 
 \begin{figure}[htb]
 \input{FlowCharts/InsertFlow.tex}
