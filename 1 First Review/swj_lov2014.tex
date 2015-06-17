@@ -29,6 +29,7 @@
 \usepackage{xcolor}
 \usepackage{epsfig,color,subfigure}
 \usepackage{tikz}
+\usepackage{tikzscale}
 \usepackage{pgf-pie}
 \usepackage{pgfplots}
 \usepackage{soul}
@@ -37,8 +38,14 @@
 %\usepackage[scaled=0.87]{helvet}
 \usepackage{textcomp}
 \usepackage{enumitem}
+\usepackage{colortbl}   % Provides \rowcolor
+\usepackage{calc}       % For doing math with dimensions
+\usepackage{setspace}
 \usepgfplotslibrary{dateplot}
-\usetikzlibrary{shapes.geometric, arrows}
+%\usetikzlibrary{shapes.geometric, arrows}
+\usetikzlibrary{shapes,decorations,arrows}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
 
 %\usepackage{bibentry}
 
@@ -371,22 +378,18 @@ The vocabulary collection is maintained by curators in charge of validating\foot
 \end{enumerate}
 If a suggested vocabulary meets these criteria, it is then inserted in the LOV catalogue. during the process, the LOV curators keep the authors informed and help them to improve their vocabulary quality. As a result of our experience in vocabulary publication, we are now able to publish a handbook about metadata recommendations for linked open data vocabularies to help that process~\cite{vandenbussche2011metadata}.
 
-\begin{figure}[htb]
-\input{FlowCharts/InsertFlow.tex}
-\caption{\label{fig:creaevol} Vocabularies distribution by creation date.}
-\end{figure}
-
 \begin{figure}[ht!b]
-\includegraphics[scale=0.6]{workflow-curation-suggest.png}
+\includegraphics[width=1\textwidth]{FlowCharts/DiagramInsert.pdf}
 \caption{Curation workflow for vocabulary insertion.}
 \label{fig:arch}
 \end{figure}
+
 
 	\subsubsection{Vocabulary Review}
 When some metadata failed to be extracted automatically (such as creators of a vocabulary), LOV curators enhance the description available in the system. The documentation provided by the LOV application assists any user in the task of understanding the semantics of each vocabulary term and therefore of any data using it. For instance, information about the creator and publisher is a key indication for a vocabulary user in case help or clarification is required from the author, or to assess the stability of that artifact. About 55\% of vocabularies specify at least one creator, contributor or editor. We augmented this information using manually gathered information, leading to the inclusion of data about the creator in over 85\% of vocabularies in the LOV. The database stores every version of a vocabulary since its first issue. For each version, a user can access the file (particularly useful when the original online file is no longer available). An automatic script is in place to automatically check for vocabulary updates on a daily basis. To embrace the complexity of the vocabulary ecosystem and assess the impact of a modification, one needs to know in which vocabularies and datasets a particular vocabulary term is referenced. For the first time LOV provides such a vision. 
 
 \begin{figure}[ht!b]
-\includegraphics[scale=0.6]{workflow-curation-review.png}
+\includegraphics[width=1\textwidth]{FlowCharts/DiagramCuration.pdf}
 \caption{Curation workflow for systematic vocabulary review.}
 \label{fig:arch}
 \end{figure}
