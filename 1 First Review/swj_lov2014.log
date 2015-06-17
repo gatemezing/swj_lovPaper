@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  5 JUN 2015 16:56
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  8 JUN 2015 22:17
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1172,33 +1172,33 @@ Package pdftex.def Info: neonScenarios.png used on input line 559.
 
 [10 <./graphVocab.png> <./equivalentCandR.png>] [11 <./translations1.png> <./ne
 onScenarios.png>]
-Overfull \hbox (12.22849pt too wide) in paragraph at lines 603--604
+Overfull \hbox (12.22849pt too wide) in paragraph at lines 606--607
 \T1/ptm/m/n/10 falling in this cat-e-gory are vo-cab.org$[]$, on-tologi.es$[]$,
 
  []
 
 
-Underfull \hbox (badness 853) in paragraph at lines 604--605
+Underfull \hbox (badness 853) in paragraph at lines 607--608
 \T1/ptm/m/n/10 such as biomedicine with the Bio-Por-tal [[]],
  []
 
 
-Underfull \hbox (badness 1412) in paragraph at lines 604--605
+Underfull \hbox (badness 1412) in paragraph at lines 607--608
 \T1/ptm/m/n/10 cepts (such as data char-ac-ter-is-tics), with the
  []
 
 
-Overfull \hbox (12.60596pt too wide) in paragraph at lines 615--636
+Overfull \hbox (12.60596pt too wide) in paragraph at lines 618--639
  [][] 
  []
 
 [12]
-Underfull \hbox (badness 1199) in paragraph at lines 670--671
+Underfull \hbox (badness 1199) in paragraph at lines 673--674
 []\T1/ptm/m/n/10 This work has been par-tially sup-ported by the
  []
 
 
-Underfull \hbox (badness 927) in paragraph at lines 670--671
+Underfull \hbox (badness 927) in paragraph at lines 673--674
 \T1/ptm/m/n/10 Vo-cab-u-lar-ies ini-tia-tive is gra-ciously hosted by the
  []
 
