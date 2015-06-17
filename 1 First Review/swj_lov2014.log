@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  8 JUN 2015 22:17
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  17 JUN 2015 15:05
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1203,73 +1203,59 @@ Underfull \hbox (badness 927) in paragraph at lines 673--674
  []
 
 [13] (./swj_lov2014.bbl
-Underfull \hbox (badness 4024) in paragraph at lines 11--14
+Underfull \hbox (badness 4024) in paragraph at lines 13--16
 []\T1/ptm/m/n/8 Sören Auer, Se-bas-tian Di-et-zold, and Thomas Riechert.
  []
 
 
-Underfull \hbox (badness 2119) in paragraph at lines 16--19
+Underfull \hbox (badness 2119) in paragraph at lines 18--21
 []\T1/ptm/m/n/8 Thomas Baker, Pierre-Yves Van-den-buss-che, and Bernard
  []
 
 
-Underfull \hbox (badness 1052) in paragraph at lines 57--62
-\T1/ptm/m/n/8 ing li-censes com-pat-i-bil-ity be-tween vo-cab-u-lar-ies and dat
-a.
+Underfull \hbox (badness 1371) in paragraph at lines 34--38
+[]\T1/ptm/m/n/8 Mathieu d'Aquin, Clau-dio Bal-das-sarre, Lau-rian Gridinoc,
  []
 
 
-Underfull \hbox (badness 1478) in paragraph at lines 88--93
-[]\T1/ptm/m/n/8 Eamonn Maguire, Ale-jan-dra González-Beltrán, Pa-tri-cia L
+Underfull \hbox (badness 1975) in paragraph at lines 46--51
+\T1/ptm/m/n/8 das-sarre, Lau-rian Gridinoc, Sofia An-gele-tou, and En-rico
  []
 
 
-Underfull \hbox (badness 2027) in paragraph at lines 88--93
+Underfull \hbox (badness 2027) in paragraph at lines 85--90
 \T1/ptm/m/n/8 Whet-zel, Susanna-Assunta San-sone, and Philippe Rocca-
  []
 
 
-Underfull \hbox (badness 3058) in paragraph at lines 126--132
+Underfull \hbox (badness 3058) in paragraph at lines 117--123
 \T1/ptm/m/n/8 Eu-zenat, Zhengjie Fan, Pierre-Yves Van-den-buss-che, and
  []
 
 )
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:21.73193pt when 546.68396pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:21.73193pt when 547.68396pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:21.73193pt when 548.68396pt
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Extra height:21.73193pt when 549.68396pt
-Extra height:0.0pt when 550.68396pt
-(2)Left:550.68396pt Right:533.36792pt Output:550.68396pt
+Extra height:0.0pt when 551.73193pt
+(2)Left:551.73193pt Right:553.46387pt Output:551.73193pt
+(2)Left:553.46387pt Right:553.46387pt Output:553.46387pt
 - LAST -
 Extra skip:0.0pt
-Left:550.68396pt
-Right:533.36792pt
-Output:550.68396pt
+Left:553.46387pt
+Right:553.46387pt
+Output:553.46387pt
+ [14] (./swj_lov2014.aux
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
 
- [14]
-(./swj_lov2014.aux)
+)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 21043 strings out of 493633
- 446838 string characters out of 3143378
- 640916 words of memory out of 3000000
- 23877 multiletter control sequences out of 15000+200000
+ 21040 strings out of 493633
+ 446784 string characters out of 3143378
+ 639901 words of memory out of 3000000
+ 23874 multiletter control sequences out of 15000+200000
  45533 words of font info for 65 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  56i,21n,91p,1314b,1843s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1284,7 +1270,7 @@ exmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2011/texmf-dis
 t/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/ty
 pe1/urw/times/utmr8a.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/urw/ti
 mes/utmri8a.pfb>
-Output written on swj_lov2014.pdf (14 pages, 584204 bytes).
+Output written on swj_lov2014.pdf (14 pages, 584526 bytes).
 PDF statistics:
  231 PDF objects out of 1000 (max. 8388607)
  134 compressed objects within 2 object streams
