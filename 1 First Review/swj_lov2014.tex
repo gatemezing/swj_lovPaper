@@ -354,21 +354,21 @@ At the Vocabulary Term level, the system extracts labels that will be used for f
 
 \subsection{Curation}
 
-The vocabulary collection is maintained by curators in charge of validating\footnote{Before a vocabulary is inserted, LOV curators contact the authors to make sure the vocabulary is published following the best practices and contains enough metadata}, inserting a vocabulary in the LOV ecosystem and assigning a detailed review (updated every year).
+The vocabulary collection is maintained by curators in charge of validating\footnote{Before a vocabulary is inserted, LOV curators contact the authors to make sure the vocabulary is published following the best practices and contains enough metadata}, inserting a vocabulary in the LOV ecosystem and assigning a detailed review.
 
-	\subsubsection{Vocabulary Insertion} Compared to other vocabulary catalogues (cf. section \ref{sec:related}), LOV relies on a semi-automated process for vocabulary insertion. Whereas an automated process put the emphasis on the volume, in our process, we focus on the quality of each vocabulary and therefore the quality of the overall LOV ecosystem. Suggestions are coming from the community and from inter-vocabulary reference links. Our system provides a feature to suggest\footnote{\url{http://lov.okfn.org/dataset/lov/suggest/}} the insertion of a new vocabulary. This feature allows a user to check what information the LOV application can automatically detect and extract. LOV curators then check if the vocabulary falls in the scope of LOV and if it meets basic vocabulary quality to be reused:
+	\subsubsection{Vocabulary Insertion} Compared to other vocabulary catalogues (cf. section \ref{sec:related}), LOV relies on a semi-automated process for vocabulary insertion illustrated in figure \ref{fig:insertWorkflow}. Whereas an automated process put the emphasis on the volume, in our process, we focus on the quality of each vocabulary and therefore the quality of the overall LOV ecosystem. Suggestions are coming from the community and from inter-vocabulary reference links. Our system provides a feature to suggest\footnote{\url{http://lov.okfn.org/dataset/lov/suggest/}} the insertion of a new vocabulary. This feature allows a user to check what information the LOV application can automatically detect and extract. LOV curators then check if the vocabulary falls in the scope of LOV and if it meets basic vocabulary quality to be reused:
 \begin{enumerate}
  \item a vocabulary should be dereferentiable
  \item a vocabulary should be parsable without error (warning tolerated)
  \item all classes and properties in a vocabulary should have an rdfs:label
  \item a vocabulary should refer and reuse relevant existing ones
 \end{enumerate}
-If a suggested vocabulary meets these criteria, it is then inserted in the LOV catalogue. during the process, the LOV curators keep the authors informed and help them to improve their vocabulary quality. As a result of our experience in vocabulary publication, we are now able to publish a handbook about Metadata recommendations for linked open data vocabularies to help that process~\cite{vandenbussche2011metadata}.
+If a suggested vocabulary meets these criteria, it is then inserted in the LOV catalogue. during this process, LOV curators keep the authors informed and help them to improve their vocabulary quality. As a result of our experience in vocabulary publication, we are now able to publish a handbook about Metadata recommendations for linked open data vocabularies to help in publishing well documented vocabularies~\cite{vandenbussche2011metadata}.
 
 \begin{figure}[ht!b]
 \includegraphics[width=1\textwidth]{FlowCharts/DiagramInsert.pdf}
 \caption{Curation workflow for vocabulary insertion.}
-\label{fig:arch}
+\label{fig:insertWorkflow}
 \end{figure}
 
 
@@ -378,7 +378,7 @@ When some metadata failed to be extracted automatically (such as creators of a v
 \begin{figure}[ht!b]
 \includegraphics[width=1\textwidth]{FlowCharts/DiagramCuration.pdf}
 \caption{Curation workflow for systematic vocabulary review.}
-\label{fig:arch}
+\label{fig:reviewWorkflow}
 \end{figure}
 
 \subsection{Data Access}
