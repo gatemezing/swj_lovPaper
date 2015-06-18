@@ -531,25 +531,25 @@ Based on the NeOn Methodology's glossary of activities for building ontologies, 
       \label{fig:eqCR}
     \end{figure}
     
- \item [Ontology Localization.] Labels in different languages are stored in the LOV endpoint. This annotations could be used when translating terms into different languages. This information could be extracted by querying the SPARQL endpoint\footnote{Result of the query can be found at the following URL: \url{http://goo.gl/JJCJ01}} as shown in Listing \ref{list:person} where all the labels defined for the terms that have at least one \url{rdfs:label} containing strictly ``person":
+% \item [Ontology Localization.] Labels in different languages are stored in the LOV endpoint. This annotations could be used when translating terms into different languages. This information could be extracted by querying the SPARQL endpoint\footnote{Result of the query can be found at the following URL: \url{http://goo.gl/JJCJ01}} as shown in Listing \ref{list:person} where all the labels defined for the terms that have at least one \url{rdfs:label} containing strictly ``person":
 		
-    \begin{lstlisting}[basicstyle=\tiny,float=htb,caption={SPARQL query asking all the labels defined for the terms containing person.},label=list:person, language=turtle]
- SELECT DISTINCT ?label2 ?element{
-   ?element rdfs:label ?label1 .
-   ?element rdfs:label ?label2 .
-   FILTER (?label1 != ?label2 ).
-   FILTER(REGEX(STR(?label1), "person", "i")).
- } ORDER BY ?element
-	\end{lstlisting}
-							
-   An excerpt of the query result is shown in Figure \ref{fig:translations}. From that result, ``Persona''@es and ``Personne''@fr could be used as translations for the English term ``Person'' in Spanish and French respectively. 
-   
-   \begin{figure}[ht!b]
-     \centering
-     \includegraphics[width=.90\linewidth]{translations1.png}
-     \caption{Translations example for foaf:Person}
-     \label{fig:translations}
-   \end{figure}
+%    \begin{lstlisting}[basicstyle=\tiny,float=htb,caption={SPARQL query asking all the labels defined for the terms containing person.},label=list:person, language=turtle]
+% SELECT DISTINCT ?label2 ?element{
+%   ?element rdfs:label ?label1 .
+%   ?element rdfs:label ?label2 .
+%   FILTER (?label1 != ?label2 ).
+%   FILTER(REGEX(STR(?label1), "person", "i")).
+% } ORDER BY ?element
+%	\end{lstlisting}
+%							
+%   An excerpt of the query result is shown in Figure \ref{fig:translations}. From that result, ``Persona''@es and ``Personne''@fr could be used as translations for the English term ``Person'' in Spanish and French respectively. 
+%   
+%   \begin{figure}[ht!b]
+%     \centering
+%     \includegraphics[width=.90\linewidth]{translations1.png}
+%     \caption{Translations example for foaf:Person}
+%     \label{fig:translations}
+%   \end{figure}
    
 \end{description}
 
@@ -644,6 +644,25 @@ Interaction with Contributors & No &  - & No & Yes \\
 
 \section{Discussion}
 
+Apart form the core features for ontology development as search, ranking and reuse, LOV provides aside useful functionalities  for ontology development processes and activities. For example, one could take advantage of LOV to localize ontologies or provide multilingual annotation as rdfs labels in different languages are stored in the LOV endpoint. This annotations could be used when translating terms into different languages or to provide multilingual search based on ontologies. 
+		
+%    \begin{lstlisting}[basicstyle=\tiny,float=htb,caption={SPARQL query asking all the labels defined for the terms containing person.},label=list:person, language=turtle]
+% SELECT DISTINCT ?label2 ?element{
+%   ?element rdfs:label ?label1 .
+%   ?element rdfs:label ?label2 .
+%   FILTER (?label1 != ?label2 ).
+%   FILTER(REGEX(STR(?label1), "person", "i")).
+% } ORDER BY ?element
+%	\end{lstlisting}
+%							
+%   An excerpt of the query result is shown in Figure \ref{fig:translations}. From that result, ``Persona''@es and ``Personne''@fr could be used as translations for the English term ``Person'' in Spanish and French respectively. 
+%   
+%   \begin{figure}[ht!b]
+%     \centering
+%     \includegraphics[width=.90\linewidth]{translations1.png}
+%     \caption{Translations example for foaf:Person}
+%     \label{fig:translations}
+%   \end{figure}
 
 %The LOV search engine is to the best of our knowledge, the only purpose-built ontology search engine available on the Web with an up-to-date index.
 
