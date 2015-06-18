@@ -68,12 +68,18 @@
     morecomment=[l]{\#},
     tabsize=4,
     frame=lines,
+    numbers=left,
+    numberfirstline=true,
+    stepnumber=1,    
+    firstnumber=1,
     alsoletter={-?}, % allowed in names
     morecomment=[s][\color{blue}]{<}{>},
+    commentstyle=\color{green!40!black},
     basicstyle=\scriptsize\ttfamily\color{black},
     %numberstyle=\color{black},
     morestring=[b][\color{black}]\",
     backgroundcolor=\color{background},    
+    showstringspaces=false
 }
 
 %% language json
@@ -88,6 +94,8 @@
     numbersep=8pt,
     showstringspaces=false,
     breaklines=true,
+    numbers=left,
+    numberfirstline=true,
     frame=lines,
     backgroundcolor=\color{background},
     literate=
@@ -245,23 +253,24 @@ Over the last four years, the Linked Open Vocabularies initiative has gathered a
 \end{inparaenum} 
 Each components provides a set of features detailed in the following subsections.
 
-The intended purpose of the LOV is to promote and facilitate the reuse of well documented vocabularies in the linked data ecosystem. To meet that goal, the LOV performs the following three main activities: 
-\begin{inparaenum}[1)] 
-  \item collecting new vocabularies from the LOV Community;
-  \item tracking and analysis of the LOV vocabulary catalogue; and
-  \item giving access to the data using various indices and publication methods to ease data consumption including a search engine, data dumps, SPARQL endpoint and APIs.
-\end{inparaenum}
-To carry out these tasks, the LOV is based on a number of components depicted in figure \ref{fig:arch}, relying on existing standards and open technologies.
+%The intended purpose of LOV is to promote and facilitate the reuse of well documented vocabularies in the linked data ecosystem. To meet that goal, the LOV performs the following three main activities: 
+%\begin{inparaenum}[1)] 
+%  \item collecting new vocabularies from the LOV Community;
+%  \item tracking and analysis of the LOV vocabulary catalogue; and
+%  \item giving access to the data using various indices and publication methods to ease data consumption including a search engine, data dumps, SPARQL endpoint and APIs.
+%\end{inparaenum}
+%To carry out these tasks, the LOV is based on a number of components depicted in figure \ref{fig:arch}, relying on existing standards and open technologies.
 
 \begin{figure}[ht!b]
-\includegraphics[scale=0.6]{lov_architecture.png}
+\includegraphics[trim={0cm 8cm 0cm 0cm},scale=.6]{lov_architecture.pdf}
 \caption{Overview of the Linked Open Vocabularies Architecture.}
 \label{fig:arch}
 \end{figure}
 
 \subsection{Tracking and Analysis}
-	The \emph{Tracking and Analysis} component takes care of dereferencing\footnote{URI is looked up over HTTP to return content in a processable format such as XML/RDF, notation 3 or turtle.} LOV vocabularies. , storing a version locally (in notation 3 format) and extracting relevant metadata. A vocabulary consists of a collection of terms (classes and properties) expressed in W3C RDF, RDFS, OWL languages. 
+	The \emph{Tracking and Analysis} component takes care of dereferencing\footnote{URI is looked up over HTTP to return content in a processable format such as XML/RDF, notation 3 or turtle.} LOV vocabularies, storing a version locally (in notation 3 format) and extracting relevant metadata. A vocabulary consists of a collection of terms (classes and properties) expressed in W3C RDF, RDFS, OWL languages. 
 
+\subsubsection{Vocabulary Level Analysis}
 At the Vocabulary level, the system extracts three types of information for each vocabulary version (figure \ref{fig:dcat}):
 \begin{itemize}
 \item Metadata associated to the vocabulary: this information is explicitly defined within the vocabulary to provide context, and useful data about the vocabulary. To be part of the LOV catalogue, a vocabulary must contain some minimal metadata information \cite{vandenbussche2011metadata}. Some high level vocabularies can be reused for that purpose, such as Dublin Core to describe authors, contributors, publishers or Creative Commons\footnote{\url{http://creativecommons.org/ns#}} for the description of a license.
@@ -271,35 +280,13 @@ At the Vocabulary level, the system extracts three types of information for each
 \item Outlinks vocabularies, making explicit the\\ \underline{links to} another vocabulary based on the semantic relation of their terms.
 \end{itemize}
 
-\subsubsection{Inter-vocabulary relationships} \label{voafRelations}
-		There are many ways two vocabularies can rely on each other. Considering two vocabularies $V1$ and $V2$ such as $V1$ contains a class $c1$ and a property $p1$ and $V2$ contains a class $c2$ and a property $p2$. Relationships between these two vocabularies can be of the following types:
+There are many ways two vocabularies can be interlinked. Let's consider two vocabularies $V1$ and $V2$ such as $V1$ contains a class $c1$ and a property $p1$ and $V2$ contains a class $c2$ and a property $p2$. Relationships between these two vocabularies can be of the following types (the lines numbers in brackets correspond to real examples presented in listing \ref{list:voaf}):
 		\begin{description}
-			\item [Import.] some terms from $V2$ are reused in complement with $V1$ to capture the semantic of the data:
-\begin{lstlisting}[basicstyle=\tiny,float=htb,label=list:person, language=turtle]
-<http://purl.org/NET/c4dm/event.owl> owl:imports 
-	<http://www.w3.org/2006/time>
-\end{lstlisting}
-			\item [Specialization.] $V1$ defines some subclasses or subproperties (or local restrictions) of $V2$:
-				\begin{itemize}
-					\item c1 is subclass of c2 
-\begin{lstlisting}[basicstyle=\tiny,float=htb,label=list:person, language=turtle]
-<http://open.vocab.org/terms/Birth> rdfs:subClassOf 
-	<http://purl.org/NET/c4dm/event.owl#Event>
-\end{lstlisting}
-					\item p1 is subproperty of p2.  
-\begin{lstlisting}[basicstyle=\tiny,float=htb,label=list:person, language=turtle]
-<http://purl.org/spar/fabio/hasEmbargoDate> 
-	rdfs:subPropertyOf <http://purl.org/dc/terms/date>
-\end{lstlisting}
-				\end{itemize}
+			\item [Metadata.] some terms from $V2$ are reused to provide metadata about $V1$ (lines 1 to 2).
 
-			\item [Generalization.] V1 defines some superclasses or superproperties of V2. c1 is superclass of c2 
-\begin{lstlisting}[basicstyle=\tiny,float=htb,label=list:person, language=turtle]
-<http://semanticweb.cs.vu.nl/2009/11/sem/Place> 
-  skos:narrowMatch 
-  <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
-\end{lstlisting}
+			\item [Import.] some terms from $V2$ are reused in complement with $V1$ to capture the semantic of the data (lines 1 to 2).
 
+<<<<<<< HEAD
 			\item [Extension.] V1 extends the expressivity of V2:
 				\begin{itemize}
 					\item p1 is inverse of p2 
@@ -335,8 +322,47 @@ dul:TimeInterval
 		owl:disjointWith 
 		ontopic:SubjectSpace.
 \end{lstlisting}
+=======
+			\item [Specialization.] $V1$ defines some subclasses or subproperties (or local restrictions) of $V2$ (lines 3 to 6).
+
+			\item [Generalization.] $V1$ defines some superclasses or superproperties of $V2$ (lines 7 to 9).
+
+			\item [Extension.] $V1$ extends the expressivity of $V2$ (lines 10 to 13).
+
+			\item [Equivalence.] $V1$ declares some equivalent classes or properties with $V2$ (lines 14 to 18).
+
+			\item [Disjunction.] $V1$ declares some disjunct classes with $V2$ (lines 19 to 21).
+>>>>>>> refs/remotes/origin/master
 		\end{description}
 Where \texttt{dul} namespace is \url{http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#} and ontopic is \url{http://www.ontologydesignpatterns.org/ont/dul/ontopic.owl#} 
+
+\begin{lstlisting}[float=*,basicstyle=\tiny,label={list:voaf}, language=turtle, caption={Examples of Inter-vocabulary relationships.}]
+# Metadata
+<http://www.w3.org/2004/02/skos/core> dct:title "SKOS Vocabulary"@en
+# Import - V1 imports V2
+<http://purl.org/NET/c4dm/event.owl> owl:imports <http://www.w3.org/2006/time>
+# Specialization - c1 is subclass of c2
+<http://open.vocab.org/terms/Birth> rdfs:subClassOf <http://purl.org/NET/c4dm/event.owl#Event>
+# Specialization - p1 is subproperty of p2  
+<http://purl.org/spar/fabio/hasEmbargoDate> rdfs:subPropertyOf <http://purl.org/dc/terms/date>
+# Generalization - c1 has for narrower match c2 
+<http://semanticweb.cs.vu.nl/2009/11/sem/Place> skos:narrowMatch 
+    <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
+# Extension - p1 is inverse of p2
+<http://vivoweb.org/ontology/core#translatorOf> owl:inverseOf <http://purl.org/ontology/bibo/translator>
+# Extension - p1 has for domain c2
+<http://xmlns.com/foaf/0.1/based_near> rdfs:domain <http://www.w3.org/2003/01/geo/wgs84_pos#SpatialThing>
+# Equivalence - p1 is equivalent to p2
+<http://lsdis.cs.uga.edu/projects/semdis/opus#journal_name> owl:equivalentProperty 
+    <http://purl.org/net/nknouf/ns/bibtex#hasJournal>
+# Equivalence - c1 is equivalent to c2 
+<http://www.loc.gov/mads/rdf/v1#Language> owl:equivalentClass <http://purl.org/dc/terms/LinguisticSystem>
+# Disjunction - c1 is disjoint with c2
+<http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#TimeInterval>owl:disjointWith 
+    <http://www.ontologydesignpatterns.org/ont/dul/ontopic.owl#SubjectSpace>
+\end{lstlisting}
+
+These relationships, with the exception of \emph{Import} which is represented by \url{owl:imports}, are captured by the Vocabulary of a Friend\footnote{\url{http://lov.okfn.org/vocommons/voaf/}} (VOAF) created for LOV representation needs. Table \ref{tab:voaf} presents a breakdown of the occurrences of each relation in LOV.
 
 \begin{table}[h!tb]
 \caption{Inter-vocabularies relationship types and their number of occurrences in LOV.}
@@ -361,9 +387,9 @@ voaf:hasDisjunctionsWith & 16 \\
 \label{fig:dcat}
 \end{figure}
 
-At the Vocabulary Term level, the system extracts labels that will be used for full text search and language information
 
-
+\subsubsection{Vocabulary Term Level Analysis}
+At the Vocabulary Term level, the system extracts labels that will be used for full text search and language information.
 
 \subsection{Curation}
 
