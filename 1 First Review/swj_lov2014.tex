@@ -284,18 +284,19 @@ There are many ways two vocabularies can be interlinked. Let's consider two voca
 		\begin{description}
 			\item [Metadata.] some terms from $V2$ are reused to provide metadata about $V1$ (lines 1 to 2).
 
-			\item [Import.] some terms from $V2$ are reused in complement with $V1$ to capture the semantic of the data (lines 1 to 2).
+			\item [Import.] some terms from $V2$ are reused in complement with $V1$ to capture the semantic of the data (lines 3 to 4).
 
-			\item [Specialization.] $V1$ defines some subclasses or subproperties (or local restrictions) of $V2$ (lines 3 to 6).
+			\item [Specialization.] $V1$ defines some subclasses or subproperties (or local restrictions) of $V2$ (lines 5 to 8).
 
-			\item [Generalization.] $V1$ defines some superclasses or superproperties of $V2$ (lines 7 to 9).
+			\item [Generalization.] $V1$ defines some superclasses or superproperties of $V2$ (lines 9 to 11).
 
-			\item [Extension.] $V1$ extends the expressivity of $V2$ (lines 10 to 13).
+			\item [Extension.] $V1$ extends the expressivity of $V2$ (lines 12 to 15).
 
-			\item [Equivalence.] $V1$ declares some equivalent classes or properties with $V2$ (lines 14 to 18).
+			\item [Equivalence.] $V1$ declares some equivalent classes or properties with $V2$ (lines 16 to 20).
 
-			\item [Disjunction.] $V1$ declares some disjunct classes with $V2$ (lines 19 to 21).
+			\item [Disjunction.] $V1$ declares some disjunct classes with $V2$ (lines 21 to 23).
 		\end{description}
+Where \texttt{dul} namespace is \url{http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#} and ontopic is \url{http://www.ontologydesignpatterns.org/ont/dul/ontopic.owl#} 
 
 \begin{lstlisting}[float=*,basicstyle=\tiny,label={list:voaf}, language=turtle, caption={Examples of Inter-vocabulary relationships.}]
 # Metadata
@@ -358,9 +359,9 @@ The vocabulary collection is maintained by curators in charge of validating\foot
 
 	\subsubsection{Vocabulary Insertion} Compared to other vocabulary catalogues (cf. section \ref{sec:related}), LOV relies on a semi-automated process for vocabulary insertion illustrated in figure \ref{fig:insertWorkflow}. Whereas an automated process put the emphasis on the volume, in our process, we focus on the quality of each vocabulary and therefore the quality of the overall LOV ecosystem. Suggestions are coming from the community and from inter-vocabulary reference links. Our system provides a feature to suggest\footnote{\url{http://lov.okfn.org/dataset/lov/suggest/}} the insertion of a new vocabulary. This feature allows a user to check what information the LOV application can automatically detect and extract. LOV curators then check if the vocabulary falls in the scope of LOV and if it meets basic vocabulary quality to be reused:
 \begin{enumerate}
- \item a vocabulary should be dereferentiable
+ \item a vocabulary should be dereferenceable
  \item a vocabulary should be parsable without error (warning tolerated)
- \item all classes and properties in a vocabulary should have an rdfs:label
+ \item all classes and properties in a vocabulary should have an \texttt{rdfs:label}
  \item a vocabulary should refer and reuse relevant existing ones
 \end{enumerate}
 If a suggested vocabulary meets these criteria, it is then inserted in the LOV catalogue. during this process, LOV curators keep the authors informed and help them to improve their vocabulary quality. As a result of our experience in vocabulary publication, we are now able to publish a handbook about Metadata recommendations for linked open data vocabularies to help in publishing well documented vocabularies~\cite{vandenbussche2011metadata}.
@@ -522,25 +523,25 @@ Based on the NeOn Methodology's glossary of activities for building ontologies, 
       \label{fig:eqCR}
     \end{figure}
     
- \item [Ontology Localization.] Labels in different languages are stored in the LOV endpoint. This annotations could be used when translating terms into different languages. This information could be extracted by querying the SPARQL endpoint\footnote{Result of the query can be found at the following URL: \url{http://goo.gl/JJCJ01}} as shown in Listing \ref{list:person} where all the labels defined for the terms that have at least one \url{rdfs:label} containing strictly ``person":
+% \item [Ontology Localization.] Labels in different languages are stored in the LOV endpoint. This annotations could be used when translating terms into different languages. This information could be extracted by querying the SPARQL endpoint\footnote{Result of the query can be found at the following URL: \url{http://goo.gl/JJCJ01}} as shown in Listing \ref{list:person} where all the labels defined for the terms that have at least one \url{rdfs:label} containing strictly ``person":
 		
-    \begin{lstlisting}[basicstyle=\tiny,float=htb,caption={SPARQL query asking all the labels defined for the terms containing person.},label=list:person, language=turtle]
- SELECT DISTINCT ?label2 ?element{
-   ?element rdfs:label ?label1 .
-   ?element rdfs:label ?label2 .
-   FILTER (?label1 != ?label2 ).
-   FILTER(REGEX(STR(?label1), "person", "i")).
- } ORDER BY ?element
-	\end{lstlisting}
-							
-   An excerpt of the query result is shown in Figure \ref{fig:translations}. From that result, ``Persona''@es and ``Personne''@fr could be used as translations for the English term ``Person'' in Spanish and French respectively. 
-   
-   \begin{figure}[ht!b]
-     \centering
-     \includegraphics[width=.90\linewidth]{translations1.png}
-     \caption{Translations example for foaf:Person}
-     \label{fig:translations}
-   \end{figure}
+%    \begin{lstlisting}[basicstyle=\tiny,float=htb,caption={SPARQL query asking all the labels defined for the terms containing person.},label=list:person, language=turtle]
+% SELECT DISTINCT ?label2 ?element{
+%   ?element rdfs:label ?label1 .
+%   ?element rdfs:label ?label2 .
+%   FILTER (?label1 != ?label2 ).
+%   FILTER(REGEX(STR(?label1), "person", "i")).
+% } ORDER BY ?element
+%	\end{lstlisting}
+%							
+%   An excerpt of the query result is shown in Figure \ref{fig:translations}. From that result, ``Persona''@es and ``Personne''@fr could be used as translations for the English term ``Person'' in Spanish and French respectively. 
+%   
+%   \begin{figure}[ht!b]
+%     \centering
+%     \includegraphics[width=.90\linewidth]{translations1.png}
+%     \caption{Translations example for foaf:Person}
+%     \label{fig:translations}
+%   \end{figure}
    
 \end{description}
 
@@ -635,6 +636,25 @@ Interaction with Contributors & No &  - & No & Yes \\
 
 \section{Discussion}
 
+Apart form the core features for ontology development as search, ranking and reuse, LOV provides aside useful functionalities  for ontology development processes and activities. For example, one could take advantage of LOV to localize ontologies or provide multilingual annotation as rdfs labels in different languages are stored in the LOV endpoint. This annotations could be used when translating terms into different languages or to provide multilingual search based on ontologies. 
+		
+%    \begin{lstlisting}[basicstyle=\tiny,float=htb,caption={SPARQL query asking all the labels defined for the terms containing person.},label=list:person, language=turtle]
+% SELECT DISTINCT ?label2 ?element{
+%   ?element rdfs:label ?label1 .
+%   ?element rdfs:label ?label2 .
+%   FILTER (?label1 != ?label2 ).
+%   FILTER(REGEX(STR(?label1), "person", "i")).
+% } ORDER BY ?element
+%	\end{lstlisting}
+%							
+%   An excerpt of the query result is shown in Figure \ref{fig:translations}. From that result, ``Persona''@es and ``Personne''@fr could be used as translations for the English term ``Person'' in Spanish and French respectively. 
+%   
+%   \begin{figure}[ht!b]
+%     \centering
+%     \includegraphics[width=.90\linewidth]{translations1.png}
+%     \caption{Translations example for foaf:Person}
+%     \label{fig:translations}
+%   \end{figure}
 
 %The LOV search engine is to the best of our knowledge, the only purpose-built ontology search engine available on the Web with an up-to-date index.
 
