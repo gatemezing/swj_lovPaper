@@ -19,7 +19,7 @@
 \usepackage{paralist}
 \usepackage{url}
 \usepackage{natbib}% for bibliography sorting/compressing
-%\usepackage{amsmath}
+\usepackage{amsmath}
 %\usepackage{endnotes}
 \usepackage{floatrow}
 \usepackage{bbding}
@@ -344,11 +344,10 @@ voaf:hasDisjunctionsWith & 16 \\
 \end{table}
 
 \begin{figure}[ht!b]
-\includegraphics[scale=0.4]{dcat-relations.pdf}
+\includegraphics[trim={0cm 10cm 0cm 0cm},width=1\textwidth]{FlowCharts/DCAT.pdf}
 \caption{Metadata type, vocabulary inlinks and outlinks of DCAT vocabulary.}
 \label{fig:dcat}
 \end{figure}
-
 
 \subsubsection{Vocabulary Term Level Analysis}
 At the Vocabulary Term level, the system extracts labels that will be used for full text search and language information.
@@ -402,6 +401,12 @@ For every vocabulary in the LOV, terms (classes, properties, datatypes, instance
 			\item Tertiary labels. Finally all properties not falling in the previous categories are considered as tertiary labels for which a low score is assigned. An example of tertiary label matching the term ``person'' is \url{http://metadataregistry.org/uri/profile/RegAp/name} \emph{"Person"@en}. 
 		\end{itemize}
 As a result a term matching a value for the property \url{rdfs:label} will have a higher score than if it matches a value for the property \url{dcterms:comment}. Based on the different nature of these labels, we apply different indexing tokenizers and scoring methods.
+
+\begin{equation}
+tf(r,V) =0.5+ \frac{0.5 * f(r,V)}{
+\left(\dfrac{\theta +\psi}{2}\right)^2 + \left( \dfrac{1}{2}
+\log \left\lvert\dfrac{B}{A}\right\rvert\right)^2}.
+\end{equation}
 
 	\begin{table}[!htb]
 		\caption{Two words, three words and more and URI search number in LOV.}
