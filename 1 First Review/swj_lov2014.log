@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.2.18)  18 JUN 2015 18:53
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.2.18)  22 JUN 2015 12:11
 entering extended mode
 **swj_lov2014.tex
 ("D:\Papers\swj_lovPaper\1 First Review\swj_lov2014.tex"
@@ -1098,93 +1098,95 @@ Underfull \hbox (badness 10000) in paragraph at lines 242--242
 []$[]$[]$\T1/pcr/m/n/8 https : / / plus . google . com / communities /$
  []
 
+
+Overfull \hbox (17.68796pt too wide) in paragraph at lines 247--256
+ [][] 
+ []
+
 [3] <lov_architecture.pdf, id=23, 722.7pt x 542.025pt>
 File: lov_architecture.pdf Graphic file (type pdf)
 
 <use lov_architecture.pdf>
-Package pdftex.def Info: lov_architecture.pdf used on input line 265.
+Package pdftex.def Info: lov_architecture.pdf used on input line 278.
 (pdftex.def)             Requested size: 433.62334pt x 188.64322pt.
 
-Overfull \hbox (216.62334pt too wide) in paragraph at lines 265--266
+Overfull \hbox (216.62334pt too wide) in paragraph at lines 278--279
  [][] 
  []
 
 
-Overfull \hbox (6.37787pt too wide) in paragraph at lines 278--279
+Overfull \hbox (6.37787pt too wide) in paragraph at lines 291--292
 []\T1/ptm/m/n/10 Inlinks vo-cab-u-lar-ies, mak-ing ex-plicit the $[]$
  []
 
 
-Overfull \hbox (89.78915pt too wide) in paragraph at lines 299--300
+Overfull \hbox (89.78915pt too wide) in paragraph at lines 312--313
 \T1/ptm/m/n/10 Where \T1/pcr/m/n/10 dul \T1/ptm/m/n/10 names-pace is $\T1/pcr/m
 /n/10 http : / / www . ontologydesignpatterns .$
  []
 
 
-Overfull \hbox (5.0pt too wide) in paragraph at lines 299--300
+Overfull \hbox (5.0pt too wide) in paragraph at lines 312--313
 $\T1/pcr/m/n/10 / / www . ontologydesignpatterns . org / ont /$
  []
 
-<FlowCharts/DCAT.pdf, id=24, 614.295pt x 794.97pt>
+[4 <D:/Papers/swj_lovPaper/1 First Review/lov_architecture.pdf>]
+<FlowCharts/DCAT.pdf, id=166, 614.295pt x 794.97pt>
 File: FlowCharts/DCAT.pdf Graphic file (type pdf)
  <use FlowCharts/DCAT.pdf>
-Package pdftex.def Info: FlowCharts/DCAT.pdf used on input line 347.
+Package pdftex.def Info: FlowCharts/DCAT.pdf used on input line 360.
 (pdftex.def)             Requested size: 217.0pt x 180.31653pt.
 
-[4 <D:/Papers/swj_lovPaper/1 First Review/lov_architecture.pdf>] [5 <D:/Papers/
-swj_lovPaper/1 First Review/FlowCharts/DCAT.pdf>]
+Underfull \vbox (badness 3635) has occurred while \output is active []
+
+
+Underfull \vbox (badness 1158) has occurred while \output is active []
+
+ [5 <D:/Papers/swj_lovPaper/1 First Review/FlowCharts/DCAT.pdf>]
 <FlowCharts/DiagramInsert.pdf, id=200, 614.295pt x 794.97pt>
 File: FlowCharts/DiagramInsert.pdf Graphic file (type pdf)
 
 <use FlowCharts/DiagramInsert.pdf>
-Package pdftex.def Info: FlowCharts/DiagramInsert.pdf used on input line 369.
+Package pdftex.def Info: FlowCharts/DiagramInsert.pdf used on input line 382.
 (pdftex.def)             Requested size: 217.0pt x 280.82741pt.
 
 <FlowCharts/DiagramCuration.pdf, id=201, 796.9617pt x 1231.60027pt>
 File: FlowCharts/DiagramCuration.pdf Graphic file (type pdf)
 
 <use FlowCharts/DiagramCuration.pdf>
-Package pdftex.def Info: FlowCharts/DiagramCuration.pdf used on input line 379.
+Package pdftex.def Info: FlowCharts/DiagramCuration.pdf used on input line 392.
 
 (pdftex.def)             Requested size: 217.0pt x 335.33662pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 386--386
+Underfull \hbox (badness 10000) in paragraph at lines 399--399
 []$[]$[]$\T1/pcr/m/n/8 https : / / creativecommons . org / licenses / by / 4 .$
 
  []
 
-
-Underfull \vbox (badness 2426) has occurred while \output is active []
-
- [6 <D:/Papers/swj_lovPaper/1 First Review/FlowCharts/DiagramInsert.pdf> <D:/Pa
-pers/swj_lovPaper/1 First Review/FlowCharts/DiagramCuration.pdf
-
-pdfTeX warning: pdflatex (file D:/Papers/swj_lovPaper/1 First Review/FlowCharts
-/DiagramCuration.pdf): PDF inclusion: multiple pdfs with page group included in
- a single page
->]
-Overfull \hbox (3.80008pt too wide) in paragraph at lines 399--400
+[6 <D:/Papers/swj_lovPaper/1 First Review/FlowCharts/DiagramInsert.pdf>]
+Overfull \hbox (3.80008pt too wide) in paragraph at lines 412--413
 $\T1/pcr/m/n/10 title$\T1/ptm/m/n/10 , $\T1/pcr/m/n/10 dcterms : title$\T1/ptm/
 m/n/10 , $\T1/pcr/m/n/10 skos : prefLabel$
  []
 
 
-Overfull \hbox (13.90005pt too wide) in paragraph at lines 400--401
+Overfull \hbox (13.90005pt too wide) in paragraph at lines 413--414
 $\T1/pcr/m/n/10 dce : description$\T1/ptm/m/n/10 , $\T1/pcr/m/n/10 dcterms : de
 scription$\T1/ptm/m/n/10 ,
  []
 
 
-Underfull \hbox (badness 862) in paragraph at lines 403--404
+Underfull \hbox (badness 862) in paragraph at lines 416--417
 \T1/ptm/m/n/10 erty $\T1/pcr/m/n/10 rdfs : label$ \T1/ptm/m/n/10 will have a hi
 gher score than
  []
 
 
-Underfull \hbox (badness 853) in paragraph at lines 425--426
+Underfull \hbox (badness 853) in paragraph at lines 438--439
 \T1/ptm/m/n/10 with 36,019 (65.90%) du-pli-cate terms and 18,643
  []
 
+[7 <D:/Papers/swj_lovPaper/1 First Review/FlowCharts/DiagramCuration.pdf>]
 ("D:\Papers\swj_lovPaper\1 First Review\PGFPlots/LOVSearch.tex"
 Missing character: There is no / in font nullfont!
 Missing character: There is no p in font nullfont!
@@ -1223,12 +1225,12 @@ Missing character: There is no ) in font nullfont!
 Missing character: There is no , in font nullfont!
 PGFPlots: reading {PGFPlots/LOVSearch.dat}
 )
-Overfull \hbox (7.3441pt too wide) in paragraph at lines 39--441
+Overfull \hbox (7.3441pt too wide) in paragraph at lines 39--454
  [][] 
  []
 
 
-Underfull \hbox (badness 1454) in paragraph at lines 441--441
+Underfull \hbox (badness 1454) in paragraph at lines 454--454
 []\T1/ptm/m/n/10 Fig. 9.: Unique and du-pli-cate terms searched by
  []
 
@@ -1270,138 +1272,128 @@ Missing character: There is no ) in font nullfont!
 Missing character: There is no , in font nullfont!
 PGFPlots: reading {PGFPlots/LOVSearch.dat}
 )
-Overfull \hbox (7.3441pt too wide) in paragraph at lines 39--441
+Overfull \hbox (7.3441pt too wide) in paragraph at lines 39--454
  [][] 
  []
 
 
-Underfull \hbox (badness 1454) in paragraph at lines 441--441
+Underfull \hbox (badness 1454) in paragraph at lines 454--454
 []\T1/ptm/m/n/10 Fig. 9.: []Unique and du-pli-cate terms searched by
  []
 
 
-Underfull \hbox (badness 1694) in paragraph at lines 445--446
+Underfull \hbox (badness 1694) in paragraph at lines 458--459
 \T1/pcr/m/n/10 dcat:Catalog \T1/ptm/m/n/10 com-posed of vo-cab-u-lary en-tries
  []
 
 
-Overfull \hbox (3.24876pt too wide) in paragraph at lines 445--446
+Overfull \hbox (3.24876pt too wide) in paragraph at lines 458--459
 \T1/ptm/m/n/10 (\T1/pcr/m/n/10 dcat:CatalogRecord\T1/ptm/m/n/10 ) cap-tur-ing i
 n-for-ma-tion like
  []
 
 
-Underfull \hbox (badness 808) in paragraph at lines 445--446
+Underfull \hbox (badness 808) in paragraph at lines 458--459
 \T1/ptm/m/n/10 vo-cab-u-lary it-self is rep-re-sented by a sub class of
  []
 
-[7] <model.png, id=228, 710.655pt x 529.98pt>
+<model.png, id=229, 710.655pt x 529.98pt>
 File: model.png Graphic file (type png)
  <use model.png>
-Package pdftex.def Info: model.png used on input line 448.
+Package pdftex.def Info: model.png used on input line 461.
 (pdftex.def)             Requested size: 355.32663pt x 264.98933pt.
-
-<apis.png, id=229, 520.94624pt x 458.46281pt>
+ [8]
+<apis.png, id=233, 520.94624pt x 458.46281pt>
 File: apis.png Graphic file (type png)
  <use apis.png>
-Package pdftex.def Info: apis.png used on input line 467.
+Package pdftex.def Info: apis.png used on input line 480.
 (pdftex.def)             Requested size: 208.3748pt x 183.38187pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 472--472
+Underfull \hbox (badness 10000) in paragraph at lines 485--485
 []$[]$[]$\T1/pcr/m/n/8 http : / / lov . okfn . org / dataset / lov / agents ?$
  []
 
-<graphVocab.png, id=231, 488.57532pt x 371.13657pt>
+<graphVocab.png, id=235, 488.57532pt x 371.13657pt>
 File: graphVocab.png Graphic file (type png)
  <use graphVocab.png>
-Package pdftex.def Info: graphVocab.png used on input line 476.
+Package pdftex.def Info: graphVocab.png used on input line 489.
 (pdftex.def)             Requested size: 219.85686pt x 167.0099pt.
 
-Overfull \hbox (2.85686pt too wide) in paragraph at lines 476--477
+Overfull \hbox (2.85686pt too wide) in paragraph at lines 489--490
  [][] 
  []
 
-
-Overfull \hbox (217.0pt too wide) has occurred while \output is active
-[] []|[] []
- []
-
-
-Overfull \hbox (45.57397pt too wide) has occurred while \output is active
-[] \T1/ptm/m/it/8 Pierre-Yves V. et al. / LOV: a gateway to reusable semantic v
-ocabularies on the Web 
- []
-
-[8]
-Underfull \vbox (badness 2293) has occurred while \output is active []
-
- [9 <D:/Papers/swj_lovPaper/1 First Review/model.png> <D:/Papers/swj_lovPaper/1
- First Review/apis.png> <D:/Papers/swj_lovPaper/1 First Review/graphVocab.png>]
-
-Underfull \hbox (badness 1412) in paragraph at lines 503--504
+[9 <D:/Papers/swj_lovPaper/1 First Review/model.png> <D:/Papers/swj_lovPaper/1 
+First Review/apis.png>]
+Underfull \hbox (badness 1412) in paragraph at lines 516--517
 []\T1/ptm/m/n/10 In LOV, vo-cab-u-lar-ies rely on
  []
 
 
-Underfull \hbox (badness 845) in paragraph at lines 503--504
+Underfull \hbox (badness 845) in paragraph at lines 516--517
 \T1/ptm/m/n/10 cab-u-lary$[]$. This data could be use-ful to find
  []
 
-<equivalentCandR.png, id=239, 627.34375pt x 83.31125pt>
+<equivalentCandR.png, id=240, 627.34375pt x 83.31125pt>
 File: equivalentCandR.png Graphic file (type png)
 
 <use equivalentCandR.png>
-Package pdftex.def Info: equivalentCandR.png used on input line 526.
+Package pdftex.def Info: equivalentCandR.png used on input line 539.
 (pdftex.def)             Requested size: 217.0pt x 28.8174pt.
 
-Underfull \hbox (badness 1412) in paragraph at lines 523--530
+Underfull \hbox (badness 1412) in paragraph at lines 536--543
 \T1/ptm/m/n/10 and dc-terms vo-cab-u-lar-ies by mean of $\T1/pcr/m/n/10 owl :$
  []
 
-<neonScenarios.png, id=240, 722.7pt x 612.2875pt>
+<neonScenarios.png, id=241, 722.7pt x 612.2875pt>
 File: neonScenarios.png Graphic file (type png)
  <use neonScenarios.png>
-Package pdftex.def Info: neonScenarios.png used on input line 556.
+Package pdftex.def Info: neonScenarios.png used on input line 569.
 (pdftex.def)             Requested size: 217.0pt x 183.8465pt.
 
-[10 <D:/Papers/swj_lovPaper/1 First Review/equivalentCandR.png> <D:/Papers/swj_
-lovPaper/1 First Review/neonScenarios.png>]
-Overfull \hbox (12.22849pt too wide) in paragraph at lines 603--604
+[10 <D:/Papers/swj_lovPaper/1 First Review/graphVocab.png> <D:/Papers/swj_lovPa
+per/1 First Review/equivalentCandR.png> <D:/Papers/swj_lovPaper/1 First Review/
+neonScenarios.png>] [11]
+Overfull \hbox (12.22849pt too wide) in paragraph at lines 616--617
 \T1/ptm/m/n/10 falling in this cat-e-gory are vo-cab.org$[]$, on-tologi.es$[]$,
 
  []
 
-[11]
-Underfull \hbox (badness 853) in paragraph at lines 604--605
+
+Underfull \hbox (badness 853) in paragraph at lines 617--618
 \T1/ptm/m/n/10 such as biomedicine with the Bio-Por-tal [[]],
  []
 
 
-Underfull \hbox (badness 1412) in paragraph at lines 604--605
+Underfull \hbox (badness 1412) in paragraph at lines 617--618
 \T1/ptm/m/n/10 cepts (such as data char-ac-ter-is-tics), with the
  []
 
 
-Overfull \hbox (8.15768pt too wide) in paragraph at lines 609--611
+Overfull \hbox (8.15768pt too wide) in paragraph at lines 622--624
 []\T1/ptm/m/n/10 LODStats [[]] is an-other project based on a statement-
  []
 
 
-Overfull \hbox (12.60588pt too wide) in paragraph at lines 618--639
+Overfull \hbox (12.60588pt too wide) in paragraph at lines 631--652
  [][] 
  []
 
 [12]
-Underfull \hbox (badness 1199) in paragraph at lines 692--693
+Underfull \hbox (badness 1199) in paragraph at lines 705--706
 []\T1/ptm/m/n/10 This work has been par-tially sup-ported by the
  []
 
 
-Underfull \hbox (badness 927) in paragraph at lines 692--693
+Underfull \hbox (badness 927) in paragraph at lines 705--706
 \T1/ptm/m/n/10 Vo-cab-u-lar-ies ini-tia-tive is gra-ciously hosted by the
  []
 
-("D:\Papers\swj_lovPaper\1 First Review\swj_lov2014.bbl" [13]
+
+Underfull \vbox (badness 6542) has occurred while \output is active []
+
+ [13]
+("D:\Papers\swj_lovPaper\1 First Review\swj_lov2014.bbl"
 Underfull \hbox (badness 4024) in paragraph at lines 20--23
 []\T1/ptm/m/n/8 Sören Auer, Se-bas-tian Di-et-zold, and Thomas Riechert.
  []
@@ -1442,37 +1434,35 @@ Underfull \hbox (badness 3058) in paragraph at lines 138--144
 \T1/ptm/m/n/8 Eu-zenat, Zhengjie Fan, Pierre-Yves Van-den-buss-che, and
  []
 
-)
-Underfull \vbox (badness 2293) has occurred while \output is active []
+[14])
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
+Extra height:10.0pt when 40.86597pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Extra height:11.73193pt when 567.68396pt
-
-Underfull \vbox (badness 3724) has occurred while \output is active []
-
+Extra height:0.0pt when 41.86597pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Extra height:11.73193pt when 568.68396pt
-Extra height:0.0pt when 569.68396pt
-(2)Left:569.68396pt Right:563.36792pt Output:569.68396pt
+(2)Left:41.86597pt Right:41.73193pt Output:41.86597pt
 - LAST -
 Extra skip:0.0pt
-Left:569.68396pt
-Right:563.36792pt
-Output:569.68396pt
+Left:41.86597pt
+Right:41.73193pt
+Output:41.86597pt
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [14]
+ [15
+
+]
 ("D:\Papers\swj_lovPaper\1 First Review\swj_lov2014.aux") ) 
 Here is how much of TeX's memory you used:
- 29362 strings out of 493921
- 707330 string characters out of 3144867
- 926243 words of memory out of 3000000
- 32070 multiletter control sequences out of 15000+200000
+ 29363 strings out of 493921
+ 707350 string characters out of 3144867
+ 924252 words of memory out of 3000000
+ 32071 multiletter control sequences out of 15000+200000
  47333 words of font info for 73 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  62i,21n,108p,1315b,2401s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1490,9 +1480,9 @@ msfonts/cm/cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/courier
 /ucrr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb
 ><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Progra
 m Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on swj_lov2014.pdf (14 pages, 749284 bytes).
+Output written on swj_lov2014.pdf (15 pages, 750513 bytes).
 PDF statistics:
- 302 PDF objects out of 1000 (max. 8388607)
+ 306 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  58 words of extra memory for PDF output out of 10000 (max. 10000000)
 
