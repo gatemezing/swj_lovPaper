@@ -20,6 +20,7 @@
 \usepackage{url}
 \usepackage{natbib}% for bibliography sorting/compressing
 \usepackage{amsmath}
+\usepackage{amssymb}
 %\usepackage{endnotes}
 \usepackage{floatrow}
 \usepackage{bbding}
@@ -402,10 +403,29 @@ For every vocabulary in the LOV, terms (classes, properties, datatypes, instance
 		\end{itemize}
 As a result a term matching a value for the property \url{rdfs:label} will have a higher score than if it matches a value for the property \url{dcterms:comment}. Based on the different nature of these labels, we apply different indexing tokenizers and scoring methods.
 
+\begin{tabular}{ |l|l| }
+  \hline
+  \textbf{Variable} & \textbf{Description} \\ \hline
+  $\mathbb{V}$ & Set of Vocabularies \\ \hline
+  $V$ & A vocabulary: $V \in \mathbb{V}$ \\ \hline
+  $N$ & Number of vocabularies in $\mathbb{V}$ \\ \hline
+  $t$ & A vocabulary term (class, property, instance \\
+       & or datatype): $t \in V \& t \in URI$ \\
+  \hline
+\end{tabular}
+
 \begin{equation}
-tf(r,V) =0.5+ \frac{0.5 * f(r,V)}{
-\left(\dfrac{\theta +\psi}{2}\right)^2 + \left( \dfrac{1}{2}
-\log \left\lvert\dfrac{B}{A}\right\rvert\right)^2}.
+\begin{split}
+tf(t,V) =0.5+ \frac{0.5 * f(t,V)}{max\left\{f(t_i,V): t_i \in V\right\}} \\
+idf(t,\mathbb{V}) =\log\frac{N}{|\left\{V \in \mathbb{V}: t \in V\right\}|}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+Score(t,Q) =tf(t,V) * idf(t,\mathbb{V}) * boost(t) \\
+: \forall t\left\{\exists q_i \in Q: t \in \sigma(q_i)\right\}
+\end{split}
 \end{equation}
 
 	\begin{table}[!htb]
