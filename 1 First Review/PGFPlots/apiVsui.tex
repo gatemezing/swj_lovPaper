@@ -1,0 +1,30 @@
+%\documentclass{standalone}
+%\usepackage{pgfplots}
+%\begin{document}
+\begin{tikzpicture}
+\begin{semilogyaxis}[
+ cycle list name=exotic,
+ ylabel=searches number,
+ xlabel=month,
+% legend pos=outer north east,
+ legend style={at={(0.02,0.98)},anchor=north west},
+ legend columns=1,
+ ymin=0,ymax=500000,
+ mark size=2pt,
+ xtick={Jan-15,Feb-15,Mar-15,Apr-15,May-15,Jun-15},
+ symbolic x coords={Jan-15,Feb-15,Mar-15,Apr-15,May-15,Jun-15},
+ xmin=Jan-15,xmax=Jun-15,
+ x tick label style={rotate=65,anchor=east,font=\scriptsize}
+]
+ %colormap={rg}{rgb(0cm)=(1,0,0); rgb(1cm)=(0,1,0)}
+
+\pgfplotstableread{PGFPlots/apiVsui.dat}\thisTable
+
+\addplot table[x=month,y=nbAPI]{\thisTable};
+\addlegendentry{API}
+\addplot table[x=month,y=nbUI]{\thisTable};
+\addlegendentry{UI}
+
+\end{semilogyaxis}
+\end{tikzpicture}
+%\end{document}
