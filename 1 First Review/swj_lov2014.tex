@@ -440,28 +440,11 @@ LOV system (code and data) is published under Creative Commons 4.0 license\footn
 
 \subsubsection{Search Engine}
 Butt \emph{et al.} \cite{butt2014} compare eight different ranking methods grouped in two categories:
-\begin{description}
+\begin{itemize}
 	\item Content-based Ranking Models: tf-idf, BM25, Vector Space Model and Class Match Measure.
 	\item Graph-based Ranking Models: PageRank, Density Measure, Semantic Similarity Measure and Betweenness Measure
-\end{description}
-Based on their findings, we defined a new ranking method based on \emph{Term frequency inverse document frequency} (tf-idf) detailed in equation \ref{eq:tfidf}. 
-
-\begin{equation}\label{eq:tfidf}
-\begin{split}
-tf(t,V) =0.5+ \frac{0.5 * f(t,V)}{max\left\{f(t_i,V): t_i \in V\right\}} \\
-idf(t,\mathbb{V}) =\log\frac{N}{|\left\{V \in \mathbb{V}: t \in V\right\}|}
-\end{split}
-\end{equation}
-
-
-For every vocabulary in the LOV, terms (classes, properties, datatypes, instances) are indexed and a full text search feature is offered\footnote{\url{http://lov.okfn.org/dataset/lov/terms}}. Compared to other existing ontology search engines (cf. section \ref{sec:related}), the Linked Open Vocabularies search engine ranking algorithm is not only based on term popularity in datasets but take as well into account its popularity within the LOV ecosystem and most importantly assigned a different score depending on which label property a searched term matched~\cite{butt2014}. We distinguish four different label property categories on which a search term could match: 
-		\begin{itemize}
- 			\item Local name (URI without the namespace). While a URI is not suppose to carry any meaning, it is a convention to use a compressed form of a term label to construct the local name. It becomes therefore an important artifact for term matching for which the highest score will be assigned. An example of local name matching the term ``person'' is \url{http://schema.org/Person};
-			\item Primary labels. The highest score will also be assigned for matches on \url{rdfs:label}, \url{dce:title}, \url{dcterms:title}, \url{skos:prefLabel} properties. An example of primary label matching the term ``person'' is \url{rdfs:label} \emph{"Person"@en};
-			\item Secondary labels. We define as secondary label the following properties: \url{rdfs:comment}, \url{dce:description}, \url{dcterms:description}, \url{skos:altLabel}. A medium score is assigned for matches on these properties. An example of secondary label matching the term ``person'' is \url{dcterms:description} \emph{"Examples of a Creator include a person, an organization, or a service."@en}; and
-			\item Tertiary labels. Finally all properties not falling in the previous categories are considered as tertiary labels for which a low score is assigned. An example of tertiary label matching the term ``person'' is \url{http://metadataregistry.org/uri/profile/RegAp/name} \emph{"Person"@en}. 
-		\end{itemize}
-As a result a term matching a value for the property \url{rdfs:label} will have a higher score than if it matches a value for the property \url{dcterms:comment}. Based on the different nature of these labels, we apply different indexing tokenizers and scoring methods.
+\end{itemize}
+Based on their findings, we defined a new ranking method adapting \emph{Term frequency inverse document frequency} (tf-idf) to the graph-structure of vocabularies. When compared to the other methods, tf-idf takes into account the relevance and importance of a resources to the query when assigning a weight to a particular vocabulary for a given query term. Because of the inherit graph structure of vocabularies, tf-idf need to be tailored so that instead of using a word as the basic unit for measuring, we are considering a vocabulary term $t$ in a vocabulary $V$ as the measuring unit. The equation \ref{eq:tfidf} presents the adaptation of tf-idf to vocabularies.
 
 \begin{tabular}{ |l|l| }
   \hline
@@ -469,36 +452,64 @@ As a result a term matching a value for the property \url{rdfs:label} will have 
   $\mathbb{V}$ & Set of Vocabularies \\ \hline
   $V$ & A vocabulary: $V \in \mathbb{V}$ \\ \hline
   $N$ & Number of vocabularies in $\mathbb{V}$ \\ \hline
-  $t$ & A vocabulary term (class, property, \\
-       &  instance or datatype): $t \in V \& t \in URI$ \\
-  \hline
+  $t$ & A vocabulary term URI (class, property, \\
+       &  instance or datatype): $t \in V \& t \in URI$ \\ \hline
+  $Q$ & Query string \\ \hline
+  $q_i$ & Query term $i$ of $Q$ \\ \hline
+  $\sigma_V$ & Set of matched URIs for $Q$ in $V$ \\ \hline
+  $\sigma_V(q_i)$ & Set of matched URIs for $q_i$ in $V$ : \\
+         & $\forall t_i \in \sigma_V$ , $t_i \in V ,  t_i$ matches $q_i$ \\ \hline
+  $p$ & predicate \\ \hline
+  $\mathbb{D}$ & Set of Datasets \\ \hline
+  $M(t_i)$ & Number of Datasets in $\mathbb{D}$ : $t_i \in \mathbb{D}$ \\ \hline
 \end{tabular}
 
+\begin{equation}\label{eq:tfidf}
+\begin{split}
+tf(t,V) =0.5+ \frac{0.5 * f(t,V)}{max\left\{f(t_i,V): t_i \in V\right\}} \\
+idf(t,\mathbb{V}) =\log\frac{N}{|\left\{V \in \mathbb{V}: t \in V\right\}|}
+\end{split}
+\end{equation}
+ 
 
-\begin{equation}
+As highlighted in \cite{butt2014} and \cite{schaible2013lover}, the notion of popularity of a vocabulary term across the LOD datasets set $\mathbb{D}$ is significantly important. In equation \ref{eq:pop} we introduce a popularity measure, function of the normalisation of the frequency $f(t,\mathbb{D})$ of a term URI $t$ in the set of datasets $\mathbb{D}$ and the normalisation of the number of datasets in which a term URI appears $M(t): t \in \mathbb{D}$. This measure will give a higher score to terms that are often used in datasets and across a large number of datasets.
+
+
+\begin{equation}\label{eq:pop}
+\begin{split}
+pop(t,\mathbb{D}) = \frac{f(t,\mathbb{D})}{max\left\{f(t_i,\mathbb{D}): t_i \in \mathbb{D}\right\}} \\
+* \frac{M(t)}{max\left\{M(t_i): t_i \in \mathbb{D}\right\}}
+\end{split}
+\end{equation}
+
+When compared to RDF datasets, best practices about vocabularies publication makes their structure consensual and stable. It becomes then intuitive to assign more importance of a vocabulary term matching a query on the value of the property \url{rdfs:label} than \url{dcterms:comment}. The equation \ref{eq:norm} extends the lucene based search engine elasticsearch inner field-length norm $lengthNorm(field)$ by combining it with a property-level boost $boost(p(t))$. Using this property-level boost we can assign a different score depending on which label property a query term matched. We distinguish four different label property categories on which a query term could match: 
+		\begin{itemize}
+ 			\item Local name (URI without the namespace). While a URI is not suppose to carry any meaning, it is a convention to use a compressed form of a term label to construct the local name. It becomes therefore an important artifact for term matching for which the highest score will be assigned. An example of local name matching the term ``person'' is \url{http://schema.org/Person};
+			\item Primary labels. The highest score will also be assigned for matches on \url{rdfs:label}, \url{dce:title}, \url{dcterms:title}, \url{skos:prefLabel} properties. An example of primary label matching the term ``person'' is \url{rdfs:label} \emph{"Person"@en};
+			\item Secondary labels. We define as secondary label the following properties: \url{rdfs:comment}, \url{dce:description}, \url{dcterms:description}, \url{skos:altLabel}. A medium score is assigned for matches on these properties. An example of secondary label matching the term ``person'' is \url{dcterms:description} \emph{"Examples of a Creator include a person, an organization, or a service."@en}; and
+			\item Tertiary labels. Finally all properties not falling in the previous categories are considered as tertiary labels for which a low score is assigned. An example of tertiary label matching the term ``person'' is \url{http://metadataregistry.org/uri/profile/RegAp/name} \emph{"Person"@en}. 
+		\end{itemize}
+
+\begin{equation}\label{eq:norm}
 \begin{split}
 norm(t,V) =  lengthNorm(field) \\
-* \prod_{p \in V} boost(p)
+* \prod_{p \in V} boost(p(t))
 \end{split}
 \end{equation}
 
-\begin{equation}
-\begin{split}
-pop(t,\mathbb{D},\mathbb{V}) =  ?
-\end{split}
-\end{equation}
+For every vocabulary in the LOV, terms (classes, properties, datatypes, instances) are indexed and a full text search feature is offered\footnote{\url{http://lov.okfn.org/dataset/lov/terms}}. The final score of $t$ for a query $Q$ (equation \ref{eq:score}) is a combination of tf-idf, the poularity of that term in LOD dataset and the importance of label properties of $t$ on which query terms matched. Human users or agents can further narrow a search by filtering on term type (class, property, datatype, instance), language, vocabulary domain and vocabulary.
 
-\begin{equation}
+\begin{equation}\label{eq:score}
 \begin{split}
 Score(t,Q) =tf(t,V) * idf(t,\mathbb{V}) \\
-* norm(t,V) * pop(t,\mathbb{D},\mathbb{V})\\
-: \forall t\left\{\exists q_i \in Q: t \in \sigma(q_i)\right\}
+* norm(t,V) * pop(t,\mathbb{D})\\
+: \forall t\left\{\exists q_i \in Q: t \in \sigma_V(q_i)\right\}
 \end{split}
 \end{equation}
 
-Boost is the field-length norm, combined with the index-time field-level boost
 
-Human users or agents can further narrow a search by filtering on term type (class, property, datatype, instance), language, vocabulary domain and vocabulary.
+
+
 
 \subsubsection{Data Dumps}
 The system provides data dumps of the LOV vocabulary catalogue in RDF Notation 3 format\footnote{\url{http://lov.okfn.org/lov.n3.gz}} and the LOV catalogue along with the latest version of each vocabulary in RDF N-quads format\footnote{\url{http://lov.okfn.org/lov.nq.gz}}. As illustrated in figure \ref{fig:model}, the RDF model mainly reuses the Data CATalogue Vocabulary (DCAT) which allows the representation of the LOV catalogue as a \texttt{dcat:Catalog} composed of vocabulary entries (\texttt{dcat:CatalogRecord}) capturing information like the insertion date in LOV. Each entry point to the vocabulary itself is represented by a sub class of \texttt{dcat:Dataset} defined in the Vocabulary Of A Friend (VOAF). This artifact contains metadata extracted by LOV application such as creators, first issued date, number of occurrences of the vocabulary in Linked Open Data. Each vocabulary is then linked to its various published versions represented by the \texttt{dcat:Distribution} entity on which information such as inter vocabulary links or languages can be found.
