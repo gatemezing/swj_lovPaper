@@ -240,26 +240,24 @@ Italian & 18 & 3.52\%      \\
 \caption{\label{fig:langdist} Distribution of the vocabularies per language count.}
 \end{figure}
 
-Over the last four years, the Linked Open Vocabularies initiative has gathered a community of around 470 people interested in various domains among them: ontology engineering or data publication. LOV Google+ community\footnote{\url{https://plus.google.com/communities/108509791366293651606}} is now an important place to discuss, report and announce general facts related to vocabularies on the Web. LOV dataset itself referenced 389 resources of type persons and 111 of type organization participating in vocabulary design and/or publication.
+From January to June 2015, more than 1.4 million searches have been issued on LOV\footnote{This figures include API and UI searches as well as searches without keywords such as ``all agents that participated in vocabulary design and publication in the geo-location domain''.}. A breakdown of the search per element type is provided in table \ref{tab:searchcategory}. We can see that the new feature of agent search (used for instance to identify experts of a domain in semantic web vocabulary design and publication) is the most used. Searches that includes keywords (and not only filters) concerns essentially vocabulary terms. Table \ref{tab:toptermsearch} presents the top 10 terms searched over that time period. Although most of the searches are performed through the User Interface, an application ecosystem using LOV APIs is surfaced as shown in the figure \ref{fig:apivsui}. 
 
-\TODO{link Table 3 with the text}
- \begin{table}[h!tb]
-\caption{Type of elements searched from January to June 2015 by users in LOV logs with a keyword.}
-\begin{tabular}{lrr}
+\begin{table*}[h!tb]
+\caption{Type of elements searched from January to June 2015 by users in LOV logs in total and with keyword.}
+\begin{tabular}{l|rr|rr}
 \hline
-\textbf{Element Type searched} & \textbf{Nb searches} & \textbf{\% searches} \\
-\textbf{with keyword(s)} & & \\ \hline
-Term & 80,728 & 92.84\% \\
-Vocabulary & 5,918 & 6.81\% \\
-Agent & 306 & 0.35\% \\
+\textbf{Element Type } & \textbf{Nb searches} & \textbf{\% searches} & \textbf{Nb searches} & \textbf{\% searches} \\
+ &  & & with keyword & with keyword \\ \hline
+Term & 205,682 & 14.19\% & 80,728 & 92.84\% \\
+Vocabulary & 178,837 & 12.34\% & 5,918 & 6.81\% \\
+Agent & 1,064,597 & 73.47\% & 306 & 0.35\% \\
 \hline  
 \end{tabular}
 \label{tab:searchcategory}
-\end{table}
+\end{table*}
 
-\TODO{link Table 4 with the text}
  \begin{table}[h!tb]
-\caption{Type of elements searched from January to June 2015 by users in LOV logs.}
+\caption{Top 10 terms searched from January to June 2015 by users in LOV logs.}
 \begin{tabular}{lrr}
 \hline
 \textbf{Vocabulary Term} & \textbf{Nb searches} & \textbf{\% searches} \\ \hline
@@ -273,16 +271,6 @@ state & 1,235 & 1.53\% \\
 supports & 1,145 & 1.42\% \\
 start & 887 & 1.1\% \\
 space & 864 & 1.07\% \\
-person & 862 & 1.07\% \\
-sent & 683 & 0.85\% \\
-site & 653 & 0.81\% \\
-sign & 613 & 0.76\% \\
-scope & 584 & 0.72\% \\
-star & 575 & 0.71\% \\
-size & 558 & 0.69\% \\
-ship & 515 & 0.64\% \\
-short & 463 & 0.57\% \\
-states & 449 & 0.56\% \\
 \hline  
 \end{tabular}
 \label{tab:toptermsearch}
@@ -290,12 +278,14 @@ states & 449 & 0.56\% \\
 
 \begin{figure}[tb]
 	\ffigbox{
-		\figfontsize%
+		\figfontsize
 		\input{PGFPlots/apiVsui.tex}
-	}{%
+	}{
 	  \caption{\label{fig:apivsui} Evolution of the number of searches through UI and API methods from January and June 2015.}%
 	}
-	\end{figure}
+ \end{figure}
+
+Over the last four years, the Linked Open Vocabularies initiative has gathered a community of around 470 people interested in various domains among them: ontology engineering or data publication. LOV Google+ community\footnote{\url{https://plus.google.com/communities/108509791366293651606}} is now an important place to discuss, report and announce general facts related to vocabularies on the Web. LOV dataset itself referenced 389 resources of type persons and 111 of type organization participating in vocabulary design and/or publication.
 
 
 \section{System Components and Features}
@@ -448,6 +438,21 @@ LOV system (code and data) is published under Creative Commons 4.0 license\footn
 
 
 \subsubsection{Search Engine}
+Butt \emph{et al.} \cite{butt2014} compare eight different ranking methods grouped in two categories:
+\begin{description}
+	\item Content-based Ranking Models: tf-idf, BM25, Vector Space Model and Class Match Measure.
+	\item Graph-based Ranking Models: PageRank, Density Measure, Semantic Similarity Measure and Betweenness Measure
+\end{description}
+Based on their findings, we defined a new ranking method based on \emph{Term frequency inverse document frequency} (tf-idf) detailed in equation \ref{eq:tfidf}. 
+
+\begin{equation}\label{eq:tfidf}
+\begin{split}
+tf(t,V) =0.5+ \frac{0.5 * f(t,V)}{max\left\{f(t_i,V): t_i \in V\right\}} \\
+idf(t,\mathbb{V}) =\log\frac{N}{|\left\{V \in \mathbb{V}: t \in V\right\}|}
+\end{split}
+\end{equation}
+
+
 For every vocabulary in the LOV, terms (classes, properties, datatypes, instances) are indexed and a full text search feature is offered\footnote{\url{http://lov.okfn.org/dataset/lov/terms}}. Compared to other existing ontology search engines (cf. section \ref{sec:related}), the Linked Open Vocabularies search engine ranking algorithm is not only based on term popularity in datasets but take as well into account its popularity within the LOV ecosystem and most importantly assigned a different score depending on which label property a searched term matched~\cite{butt2014}. We distinguish four different label property categories on which a search term could match: 
 		\begin{itemize}
  			\item Local name (URI without the namespace). While a URI is not suppose to carry any meaning, it is a convention to use a compressed form of a term label to construct the local name. It becomes therefore an important artifact for term matching for which the highest score will be assigned. An example of local name matching the term ``person'' is \url{http://schema.org/Person};
@@ -463,57 +468,36 @@ As a result a term matching a value for the property \url{rdfs:label} will have 
   $\mathbb{V}$ & Set of Vocabularies \\ \hline
   $V$ & A vocabulary: $V \in \mathbb{V}$ \\ \hline
   $N$ & Number of vocabularies in $\mathbb{V}$ \\ \hline
-  $t$ & A vocabulary term (class, property, instance \\
-       & or datatype): $t \in V \& t \in URI$ \\
+  $t$ & A vocabulary term (class, property, \\
+       &  instance or datatype): $t \in V \& t \in URI$ \\
   \hline
 \end{tabular}
 
+
 \begin{equation}
 \begin{split}
-tf(t,V) =0.5+ \frac{0.5 * f(t,V)}{max\left\{f(t_i,V): t_i \in V\right\}} \\
-idf(t,\mathbb{V}) =\log\frac{N}{|\left\{V \in \mathbb{V}: t \in V\right\}|}
+norm(t,V) =  lengthNorm(field) \\
+* \prod_{p \in V} boost(p)
 \end{split}
 \end{equation}
 
 \begin{equation}
 \begin{split}
-Score(t,Q) =tf(t,V) * idf(t,\mathbb{V}) * boost(t) \\
+pop(t,\mathbb{D},\mathbb{V}) =  ?
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+Score(t,Q) =tf(t,V) * idf(t,\mathbb{V}) \\
+* norm(t,V) * pop(t,\mathbb{D},\mathbb{V})\\
 : \forall t\left\{\exists q_i \in Q: t \in \sigma(q_i)\right\}
 \end{split}
 \end{equation}
 
-	\begin{table}[!htb]
-		\caption{Two words, three words and more and URI search number in LOV.}
-		\begin{tabular}{lcccc}
-		\hline
-		\textbf{Pattern} & \textbf{2012} & \textbf{2013} & \textbf{2014} & \textbf{Total} \\ \hline
-		\textit{URI}  & 38   &  54  & 63  &  155      \\
-		$t_{1}$ $t_{2}$ & 200 & 480 & 466 & 1146 \\
-		($t_{1}$ $t_{2}$ $t_{3}$)* & 93 & 233 & 249 & 575\\
-		\hline  
-		
-		\end{tabular}
-		\label{tab:patterns}
-	\end{table}
+Boost is the field-length norm, combined with the index-time field-level boost
 
-Human users or agents can further narrow a search by filtering on term type (class, property, datatype, instance), language, vocabulary domain and vocabulary. The LOV log of search terms between 2012-01-06 and 2014-12-09 presents a total of 54,657 terms, with 36,019 (65.90\%) duplicate terms and 18,643 unique terms (34.10\%). Figure \ref{fig:searchterms} depicts the number of terms in the log grouped by year. From 2012 to 2013, there has been an increase of more than 50\% of search in LOV. Searched terms are mostly single words (e.g., ``currency''). However, terms can be a composition of two words (e.g., ``family tree''), three words (e.g., ``semantic sensor network'') or an URI (e.g., ``http://www.aktors.org/ontology/portal''). Table \ref{tab:patterns} details the use of URIs, two words and at least three words for unique values in the LOV search log.
-	
-%	\begin{figure}[!htbp]
-%	\centering{
-%	\includegraphics[scale=.28]{chart_searchterms.pdf}
-%	\caption{Unique and duplicate terms searched by agents/users according to LOV log in the period between 2012/01/06 until 2014/12/09.}
-%	\label{fig:searchterms}
-%	}
-%	\end{figure}
-
-	\begin{figure}[tb]
-	\ffigbox{
-		\figfontsize%
-		\input{PGFPlots/LOVSearch.tex}
-	}{%
-	  \caption{\label{fig:searchterms} Unique and duplicate terms searched by agents/users according to LOV log in the period between 2012-01-06 and 2014-12-09.}%
-	}
-	\end{figure}
+Human users or agents can further narrow a search by filtering on term type (class, property, datatype, instance), language, vocabulary domain and vocabulary.
 
 \subsubsection{Data Dumps}
 The system provides data dumps of the LOV vocabulary catalogue in RDF Notation 3 format\footnote{\url{http://lov.okfn.org/lov.n3.gz}} and the LOV catalogue along with the latest version of each vocabulary in RDF N-quads format\footnote{\url{http://lov.okfn.org/lov.nq.gz}}. As illustrated in figure \ref{fig:model}, the RDF model mainly reuses the Data CATalogue Vocabulary (DCAT) which allows the representation of the LOV catalogue as a \texttt{dcat:Catalog} composed of vocabulary entries (\texttt{dcat:CatalogRecord}) capturing information like the insertion date in LOV. Each entry point to the vocabulary itself is represented by a sub class of \texttt{dcat:Dataset} defined in the Vocabulary Of A Friend (VOAF). This artifact contains metadata extracted by LOV application such as creators, first issued date, number of occurrences of the vocabulary in Linked Open Data. Each vocabulary is then linked to its various published versions represented by the \texttt{dcat:Distribution} entity on which information such as inter vocabulary links or languages can be found.
