@@ -687,14 +687,14 @@ A updated comprehensive empirical survey of Linked Data conformance is presented
 
 LOV main strength focuses mainly on giving access to up-to-date of highly curated vocabularies (subpart of semantic documents of the Web) submitted by the community, reviewed and validated by curators. In addition, LOV keeps track locally of all versions of the vocabularies.  In contrast, Swoogle is designed to automatically discover Semantic Web Documents (SWDs), index their metadata. Thus, the result of a search query retrieved any semantic document. For example, a query of the term \textit{person} gives $16,438$ results while in LOV, the term only appears in $1,562$ vocabularies.
 Watson works similarly to Swoogle, crawling and indexing semantic documents at a small scale, explicitly distinguishing for each document (resource), concepts, properties and individuals if available. While in Swoogle  the ranking score is displayed, Watson shows the language of the resource and the size. Falcons is a keyword-based search system for concepts and objects on the Semantic Web, and is equipped with entity summarization for browsing. It is notable that Falcons limits the search only to ontologies and a recommendation feature is provided according to users' preferences. However, it does not provide any relationships between the related ontologies, nor any domain classification of the vocabularies.
-Table \ref{tab:lovfeatures} compares key features of LOV with respect to Swoogle, Watson and Falcons.
+Table \ref{tab:lovfeatures} presents a summary of key features of LOV with respect to Swoogle, Watson and Falcons.
  \begin{table*}[!htb]
 \centering{
 \begin{tabular}{lllll}
 \hline
  \textbf{Feature}	& Swoogle & Watson & Falcons & LOV 			 \\ \hline
 Browsing ontologies	   & Yes & Yes & Yes & Yes \\
-Ontology Discovery Method   & Automatic & Automatic & Automatic & Manual \\
+Ontology siscovery method   & Automatic & Automatic & Automatic & Manual \\
 Scope & SWDs & SWDs & Concepts & Ontologies \\
 Ranking	& LOD popularity & LOD popularity & LOD popularity &  LOD/LOV popularity\\
 &&&&+ property semantic score	 \\
@@ -706,19 +706,19 @@ Read/Write	& Read & Read \& Write & Read &Read  	\\
 Ontology directory & No & No & No &Yes \\
 Application platform & No & No & No & Yes \\
 Storage & Cache & - & - & Dump \& endpoint \\
-Interaction with Contributors & No &  - & No & Yes \\
+Interaction with contributors & No &  - & No & Yes \\
 
 		\\ \hline
 
 \end{tabular}
-\caption{Comparison of LOV, with respect to Swoogle, Watson and Falcons; based on part of the framework defined in \cite{AquinJoWS12}.  }
+\caption{Comparison of LOV with respect to Swoogle, Watson and Falcons; adapted from the framework presented by d'Aquin and Noy \cite{AquinJoWS12}.  }
 \label{tab:lovfeatures}
 }
 \end{table*}
 
 Apart from the core features for ontology development as search, ranking and reuse, LOV provides to users with useful functionalities and metadata information  for ontology development processes and activities. his makes it possible to find the most suitable classes and properties to express data as Linked Data. For example, one could take advantage of LOV to localize ontologies or provide multilingual annotation as \texttt{RDFS} labels in many different languages are stored in LOV endpoint. This annotations can be used when translating terms into different languages or to provide multilingual search based on ontologies. 
 
-However, LOV itself can not replace the creation of term in an engineering process. Thus LOV can be used as input for a vocabulary recommendation system such as the LOVER approach presented by Schaible et al.\cite{schaible2013lover}. 
+However, LOV itself can not replace the creation of term in an engineering process. Thus, LOV can be used as input for a vocabulary recommendation system such as the LOVER approach presented by Schaible et al.\cite{schaible2013lover}. Furthermore, LOV does not currently support reasoning capabilities (such as transitive closure or schema matching techniques) on top of the vocabularies. Although such information would potentially be relevant to the LOV users, this  out of scope of the current effort of explicitly represent the links between vocabularies using VOAF and maintaining version history.
 
 
 		
