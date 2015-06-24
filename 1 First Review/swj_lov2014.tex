@@ -439,50 +439,53 @@ LOV system (code and data) is published under Creative Commons 4.0 license\footn
 
 
 \subsubsection{Search Engine}
-Butt \emph{et al.} \cite{butt2014} compare eight different ranking methods grouped in two categories:
+In \cite{butt2014}, Butt \emph{et al.} compare eight different ranking methods grouped in two categories for querying vocabulary terms:
 \begin{itemize}
 	\item Content-based Ranking Models: tf-idf, BM25, Vector Space Model and Class Match Measure.
 	\item Graph-based Ranking Models: PageRank, Density Measure, Semantic Similarity Measure and Betweenness Measure
 \end{itemize}
-Based on their findings, we defined a new ranking method adapting \emph{Term frequency inverse document frequency} (tf-idf) to the graph-structure of vocabularies. When compared to the other methods, tf-idf takes into account the relevance and importance of a resources to the query when assigning a weight to a particular vocabulary for a given query term. Because of the inherit graph structure of vocabularies, tf-idf need to be tailored so that instead of using a word as the basic unit for measuring, we are considering a vocabulary term $t$ in a vocabulary $V$ as the measuring unit. The equation \ref{eq:tfidf} presents the adaptation of tf-idf to vocabularies.
+Based on their findings, we defined a new ranking method adapting \emph{Term frequency inverse document frequency} (tf-idf) to the graph-structure of vocabularies. When compared to the other methods, tf-idf takes into account the relevance and importance of a resources to the query when assigning a weight to a particular vocabulary for a given query term. We reuse the augmented frequency variation of term frequency formula to prevent a bias towards longer vocabularies. Because of the inherit graph structure of vocabularies, tf-idf need to be tailored so that instead of using a word as the basic unit for measuring, we are considering a vocabulary term $t$ in a vocabulary $V$ as the measuring unit. The equation \ref{eq:tfidf} presents the adaptation of tf-idf to vocabularies.
 
-\begin{tabular}{ |l|l| }
+\begin{table}[h!tb]
+\begin{tabular}{|l|l|}
   \hline
   \textbf{Variable} & \textbf{Description} \\ \hline
-  $\mathbb{V}$ & Set of Vocabularies \\ \hline
-  $V$ & A vocabulary: $V \in \mathbb{V}$ \\ \hline
-  $N$ & Number of vocabularies in $\mathbb{V}$ \\ \hline
+  $\mathcal{V}$ & Set of Vocabularies \\ \hline
+  $V$ & A vocabulary: $V \in \mathcal{V}$ \\ \hline
+  $N$ & Number of vocabularies in $\mathcal{V}$ \\ \hline
   $t$ & A vocabulary term URI (class, property, \\
-       &  instance or datatype): $t \in V \& t \in URI$ \\ \hline
+       &  instance or datatype): $t \in V, t \in URI$ \\ \hline
   $Q$ & Query string \\ \hline
   $q_i$ & Query term $i$ of $Q$ \\ \hline
   $\sigma_V$ & Set of matched URIs for $Q$ in $V$ \\ \hline
   $\sigma_V(q_i)$ & Set of matched URIs for $q_i$ in $V$ : \\
          & $\forall t_i \in \sigma_V$ , $t_i \in V ,  t_i$ matches $q_i$ \\ \hline
-  $p$ & predicate \\ \hline
-  $\mathbb{D}$ & Set of Datasets \\ \hline
-  $M(t_i)$ & Number of Datasets in $\mathbb{D}$ : $t_i \in \mathbb{D}$ \\ \hline
+  $p$ & A term predicate: $p \in URI$ \\ \hline
+  $\mathcal{D}$ & Set of Datasets \\ \hline
+  $D$ & A Dataset: $D \in \mathcal{D}$ \\ \hline
+  $M(t_i)$ & Number of Datasets: $D$ in $\mathcal{D}$, $t_i \in D$ \\ \hline
 \end{tabular}
+\end{table}
 
 \begin{equation}\label{eq:tfidf}
 \begin{split}
 tf(t,V) =0.5+ \frac{0.5 * f(t,V)}{max\left\{f(t_i,V): t_i \in V\right\}} \\
-idf(t,\mathbb{V}) =\log\frac{N}{|\left\{V \in \mathbb{V}: t \in V\right\}|}
+idf(t,\mathcal{V}) =\log\frac{N}{|\left\{V \in \mathcal{V}: t \in V\right\}|}
 \end{split}
 \end{equation}
  
 
-As highlighted in \cite{butt2014} and \cite{schaible2013lover}, the notion of popularity of a vocabulary term across the LOD datasets set $\mathbb{D}$ is significantly important. In equation \ref{eq:pop} we introduce a popularity measure, function of the normalisation of the frequency $f(t,\mathbb{D})$ of a term URI $t$ in the set of datasets $\mathbb{D}$ and the normalisation of the number of datasets in which a term URI appears $M(t): t \in \mathbb{D}$. This measure will give a higher score to terms that are often used in datasets and across a large number of datasets.
+As highlighted in \cite{butt2014} and \cite{schaible2013lover}, the notion of popularity of a vocabulary term across the LOD datasets set $\mathcal{D}$ is significantly important. In equation \ref{eq:pop} we introduce a popularity measure, function of the normalisation of the frequency $f(t,\mathcal{D})$ of a term URI $t$ in the set of datasets $\mathcal{D}$ and the normalisation of the number of datasets in which a term URI appears $M(t): t \in \mathcal{D}$. By using maximum in the normalisation we put the emphasis on the most used terms, result of a consensus within the community. This measure will give a higher score to terms that are often used in datasets and across a large number of datasets.
 
 
 \begin{equation}\label{eq:pop}
 \begin{split}
-pop(t,\mathbb{D}) = \frac{f(t,\mathbb{D})}{max\left\{f(t_i,\mathbb{D}): t_i \in \mathbb{D}\right\}} \\
-* \frac{M(t)}{max\left\{M(t_i): t_i \in \mathbb{D}\right\}}
+pop(t,\mathcal{D}) = \frac{f(t,\mathcal{D})}{max\left\{f(t_i,\mathcal{D}): t_i \in \mathcal{D}\right\}} \\
+* \frac{M(t)}{max\left\{M(t_i): t_i \in \mathcal{D}\right\}}
 \end{split}
 \end{equation}
 
-When compared to RDF datasets, best practices about vocabularies publication makes their structure consensual and stable. It becomes then intuitive to assign more importance of a vocabulary term matching a query on the value of the property \url{rdfs:label} than \url{dcterms:comment}. The equation \ref{eq:norm} extends the lucene based search engine elasticsearch inner field-length norm $lengthNorm(field)$ by combining it with a property-level boost $boost(p(t))$. Using this property-level boost we can assign a different score depending on which label property a query term matched. We distinguish four different label property categories on which a query term could match: 
+When compared to RDF datasets, best practices about vocabularies publication makes their structure consensual and stable. It becomes then intuitive to assign more importance of a vocabulary term matching a query on the value of the property \url{rdfs:label} than \url{dcterms:comment}. The equation \ref{eq:norm} extends the lucene based search engine elasticsearch inner field-length norm $lengthNorm(field)$, which assigns a heigher weight to shorter fields, by combining it with a property-level boost $boost(p(t))$. Using this property-level boost we can assign a different score depending on which label property a query term matched. We distinguish four different label property categories on which a query term could match: 
 		\begin{itemize}
  			\item Local name (URI without the namespace). While a URI is not suppose to carry any meaning, it is a convention to use a compressed form of a term label to construct the local name. It becomes therefore an important artifact for term matching for which the highest score will be assigned. An example of local name matching the term ``person'' is \url{http://schema.org/Person};
 			\item Primary labels. The highest score will also be assigned for matches on \url{rdfs:label}, \url{dce:title}, \url{dcterms:title}, \url{skos:prefLabel} properties. An example of primary label matching the term ``person'' is \url{rdfs:label} \emph{"Person"@en};
@@ -497,12 +500,15 @@ norm(t,V) =  lengthNorm(field) \\
 \end{split}
 \end{equation}
 
-For every vocabulary in the LOV, terms (classes, properties, datatypes, instances) are indexed and a full text search feature is offered\footnote{\url{http://lov.okfn.org/dataset/lov/terms}}. The final score of $t$ for a query $Q$ (equation \ref{eq:score}) is a combination of tf-idf, the poularity of that term in LOD dataset and the importance of label properties of $t$ on which query terms matched. Human users or agents can further narrow a search by filtering on term type (class, property, datatype, instance), language, vocabulary domain and vocabulary.
+For every vocabulary in the LOV, terms (classes, properties, datatypes, instances) are indexed and a full text search feature is offered\footnote{\url{http://lov.okfn.org/dataset/lov/terms}}. Human users or agents can further narrow a search by filtering on term type (class, property, datatype, instance), language, vocabulary domain and vocabulary.
+
+The final score of $t$ for a query $Q$ (equation \ref{eq:score}) is a combination of tf-idf, the importance of label properties of $t$ on which query terms matched and the popularity of that term in LOD dataset. While the factorisation of tf-idf and field normalisation factor is common for search engine ranking\footnote{See elasticsearch documentation: \url{http://bit.ly/1e37sFL}}, we add a fourth parameter - the popularity - as it is fundamental in the Semantic Web. Indeed, the intention of LOV is to foster the reuse of consensual vocabularies that become de facto standards. The popularity metric provides an indication on how widely a term is already used (in frequency and in number of datasets using it). We therefore add this new factor specific to Semantic Web to the scoring equation.
+ 
 
 \begin{equation}\label{eq:score}
 \begin{split}
-Score(t,Q) =tf(t,V) * idf(t,\mathbb{V}) \\
-* norm(t,V) * pop(t,\mathbb{D})\\
+Score(t,Q) =tf(t,V) * idf(t,\mathcal{V}) \\
+* norm(t,V) * pop(t,\mathcal{D})\\
 : \forall t\left\{\exists q_i \in Q: t \in \sigma_V(q_i)\right\}
 \end{split}
 \end{equation}
