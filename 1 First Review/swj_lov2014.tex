@@ -641,15 +641,15 @@ foaf:Person & owl:equivalentClass & schema:Person \\
 
 \section{LOV Adoption}
 \label{sec:lovecosystem}
-The LOV is supporting the emergence of a rich application ecosystem thanks to its various data access methods. We list below some tools using our system as part of their service and projects using LOV as a research artifact.
+LOV is supporting the emergence of a rich application ecosystem thanks to its various data access methods. We list below some tools using our system as part of their service and projects.
  
 \subsection{Derived tools and applications}
 
-Maguire et al. \cite{ontomaton12} uses the LOV search API to implement OntoMaton\footnote{\url{https://github.com/ISA-tools/OntoMaton}}, a widget for bringing together ontology lookup and tagging within the collaborative environment provided by Google spreadsheets. 
+Maguire et al. \cite{ontomaton12} uses LOV search API to implement OntoMaton\footnote{\url{https://github.com/ISA-tools/OntoMaton}}, a widget for bringing together ontology lookup and tagging within the collaborative environment provided by Google spreadsheets. 
 
 YASGUI (Yet Another SPARQL Query GUI)\footnote{\url{http://yasgui.laurensrietveld.nl}} is a client-side JavaScript SPARQL query editor that uses the LOV API for property and class autocompletion together with \url{http://prefix.cc} for namespace prefix autocompletion \cite{yasgui}.
 
-Datalift\footnote{\url{http://datalift.org/en/node/24}} platform \cite{scharffe_2012}, a framework for ``lifting'' raw data into RDF, comes with a module to map data objects and properties to ontology classes and predicates available in the LOV catalogue. Data2Ontology module takes as input a ``raw RDF'', that is a dataset that has been converted directly from legacy format to triples. The goal is to help publishers reuse existing ontologies for converting their dataset owing easy discovery and interlinking. 
+Datalift\footnote{\url{http://datalift.org/en/node/24}} platform \cite{scharffe_2012}, a framework for ``lifting'' raw data into RDF, comes with a module to map data objects and properties to ontology classes and predicates available in the LOV catalogue. Data2Ontology module takes as input a ``raw RDF'', a dataset that has been converted directly from legacy format to triples. The goal is to help publishers reuse existing ontologies for converting their dataset owing easy discovery and interlinking. 
 %It consists of three main components assisting the publisher in selecting properties suitable for the dataset to be published. 
 %\begin{description}
 %\item 1-LOV component. This component connects with the LOV catalogue to retrieve up-to-date ontologies using the LOV %search API\footnote{\url{http://lov.okfn.org/dataset/lov/apidoc/#lov2search}}.
@@ -658,6 +658,7 @@ Datalift\footnote{\url{http://datalift.org/en/node/24}} platform \cite{scharffe_
 %\end{description}
 
 OntoWiki\footnote{\url{http://ontowiki.net/}} facilitates the visual presentation of a knowledge base as an information map, with different views on instance data \cite{auer2006ontowiki}. It enables intuitive authoring of semantic content, with an inline editing mode for editing RDF content, similar to WYSIWIG for text documents. OntoWiki offers a vocabulary selection feature based on LOV.
+
 Furthermore, we can mention the Prot{\'e}g{\'e}LOV\footnote{\url{http://labs.mondeca.com/protolov/}} tool which provides a technological support to help users in reusing terms based on the vocabularies in the LOV catalogue, mostly by retrieving the classes, object properties and data properties according to the panel in the editor during the modeling. It is a plug-in for Prot{\'e}g{\'e} editor tool \cite{prolov2015} for improving the development of lightweight ontologies by reusing existing vocabularies at low fine grained level. The tool search for a term in LOV via APIs and provides three actions if the term exists : (i) replace the selected term in the current ontology, (ii) add the \texttt{rdfs:subClassOf} axiom and (iv) add the \texttt{owl:equivalentClass}.
 
 
@@ -678,7 +679,7 @@ Governatori et al. \cite{governatori2014} analyzes the current use of licenses i
 
 \section{Related work}
 \label{sec:related}
-In the literature, there bunch of work on vocabulary catalogues and proposals o reuse vocabulary based on ontology repositories. Reusing vocabularies requires searching for terms in existing specialized vocabulary catalogues or search engines on the web. While we refer the reader to~\cite{AquinJoWS12} for a systematic survey of ontology repositories, we list below some existing catalogues relevant to find vocabularies:  
+Reusing vocabularies requires searching for terms in existing specialized vocabulary catalogues or search engines on the web. While we refer the reader to~\cite{AquinJoWS12} for a systematic survey of ontology repositories, we list below some existing catalogues relevant to find vocabularies:  
 
 \begin{itemize}
  \item \textit{Catalogues of generic vocabularies/schemas} similar to LOV catalogue. Example of catalogues falling in this category are vocab.org\footnote{\url{http://vocab.org/}}, ontologi.es\footnote{\url{http://ontologi.es/}}, JoinUp Semantic Assets or the Open Metadata Registry.
