@@ -71,6 +71,8 @@
     frame=lines,
     numbers=left,
     numberfirstline=true,
+    xleftmargin=2.5em,
+    framexleftmargin=2.8em,
     stepnumber=1,    
     firstnumber=1,
     alsoletter={-?}, % allowed in names
@@ -174,6 +176,18 @@ LOV\sep Linked Open Vocabularies\sep Ontology search\sep Linked Data\sep Vocabul
 
 
 \section{Introduction}
+The last two decades has seen the emergence of a ``Semantic Web'' opening the way to a new use of the Web enabling humans and computer systems to exchange data with unambiguous, shared meaning. This vision has been realised through standards by the World Wide Web Consortium (W3C) such as the Resource Description Framework (RDF), RDF-Schema or the Web Ontology Language. 
+
+\cite{janowicz2014five}.
+
+In order to achieve a semantic interoperability, it is necessary that the vocabularies used to describe the data semantics reach a consensus to become \emph{de facto} standards. This is far from being a reality.
+- Being accessible and sustainable
+- Quality and stability
+- Interlinked 
+
+
+Although there are now tens of billions of facts spanning hundreds of Linked Datasets on the Web, 
+
 Started in March 2011, as part of the DataLift research project \cite{scharffe_2012} and hosted by the Open Knowledge Foundation, the Linked Open Vocabularies (LOV) initiative is now an innovative observatory of the semantic vocabularies\footnote{In this paper, ``semantic vocabulary'', ``vocabulary'' and ``ontology'' terms are used interchangeably. An explanation of their meaning is given in the following section.} ecosystem. It gathers and makes visible indicators not yet harvested before, such as interconnection between vocabularies, versioning history, maintenance policy along with past and current referent (individual or organization) if any. The number of vocabularies indexed by LOV is constantly growing (511 as of June 2015) thanks to a community effort. It is the only catalogue, to the best of our knowledge, that provides all types of search criteria: metadata search, ontology search, APIs, comprehensive dump file and a SPARQL endpoint access. According to the categories of ontology libraries defined by D'Aquin and Noy~\cite{AquinJoWS12}, LOV falls under the categories \textit{``curated ontology directory''}  and \textit{``application platform''}. 
 
 The development of the LOV has highlighted a number of interesting research challenges: \textit{``What are the solutions for long-term vocabulary preservation on the Web?"} \cite{Baker2013HLT}. This is a particularly important problem in a distributed and uncontrolled environment where any individual can create and publish a vocabulary that can then be reused by external publishers. This creates a dependency on the original vocabulary availability as it retains the semantics of the data. \textit{``How to facilitate vocabulary search and reuse"} \cite{butt2014, poveda2012landscape}. To be used by a broader community, reuse and design of vocabularies have to be facilitated by intuitive tools and methods.  \textit{``How can we harmonise the various curated vocabulary catalogues on the Web to ease their adoption?"} \cite{wasabi13}. One of the barriers to Semantic Web adoption is the confusion related to understanding and finding an appropriate vocabulary in compliance with best practice.
@@ -579,14 +593,14 @@ Based on the NeOn Methodology's glossary of activities for building ontologies, 
  \item [Ontology Mapping.] In LOV, vocabularies rely on each other in seven different ways. These relationships are explicitly stated using VOAF vocabulary. This data could be useful to find alignments between ontologies, for example one user might be interested in finding equivalent classes for a given class or all equivalent classes and equivalent properties among two ontologies. Listing \ref{list:alignment} shows the SPARQL query to retrieve all the equivalent classes between the vocabularies \texttt{foaf} and \texttt{schema}\footnote{The reader can run the query on LOV Endpoint: \url{http://bit.ly/1Lqybcu}.}. Table \ref{tab:eqCR} shows the alignments between foaf and schema vocabularies.
      
  \begin{lstlisting}[basicstyle=\tiny,float=htb,caption={SPARQL query asking for all the equivalent classes and properties between the vocabularies foaf and schema.},label=list:alignment, language=turtle]
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
 SELECT DISTINCT ?elem1 ?alignment ?elem2{
  GRAPH ?g{
-  ?elem1 rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/>.
+  ?elem1 rdfs:isDefinedBy 
+    <http://xmlns.com/foaf/0.1/>.
   {?elem1 owl:equivalentClass ?elem2}
   UNION {?elem2 owl:equivalentClass ?elem1}
-  FILTER(STRSTARTS(STR(?elem2), "http://schema.org/"))
+  FILTER(STRSTARTS(STR(?elem2), 
+     "http://schema.org/"))
   ?elem1 ?alignment ?elem2.
 }}
 	
