@@ -176,21 +176,13 @@ LOV\sep Linked Open Vocabularies\sep Ontology search\sep Linked Data\sep Vocabul
 
 
 \section{Introduction}
-The last two decades has seen the emergence of a ``Semantic Web'' opening the way to a new use of the Web enabling humans and computer systems to exchange data with unambiguous, shared meaning. This vision has been realised through standards by the World Wide Web Consortium (W3C) such as the Resource Description Framework (RDF), RDF-Schema or the Web Ontology Language. 
+The last two decades has seen the emergence of a ``Semantic Web'' enabling humans and computer systems to exchange data with unambiguous, shared meaning. This vision has been supported by World Wide Web Consortium (W3C) recommendations such as the Resource Description Framework (RDF), RDF-Schema or the Web Ontology Language (OWL). Thanks to a major effort in publishing data following the Semantic Web and Linked Data principles \cite{timld}, there are now tens of billions of facts spanning hundreds of Linked Datasets on the Web covering a wide range of topics. The access to the data are facilitated by portals referencing (such as Datahub\footnote{\url{http://datahub.io/}} or UK Government Data\footnote{\url{http://data.gov.uk/}}) or publishing the data (such as New York Times\footnote{\url{http://data.nytimes.com/}}). 
 
-\cite{janowicz2014five}.
+Despite the enormous volumes of data now available on the Web, Linked Data suffers from the low community's interest in vocabulary\footnote{We use the terms ``semantic vocabulary'', ``vocabulary'' and ``ontology'' interchangeably.} management in favor of the data itself. A vocabulary consists of classes, properties and datatypes that define the meaning of data. RDF Vocabularies are themselves expressed as linked data. When a vocabulary is not published or not available any more, humans and machines do not have access to the definition of the terms used to qualify the data. This brakes the semantic interoperability, one of the fundamentals of the ``Semantic Web''. 
 
-In order to achieve a semantic interoperability, it is necessary that the vocabularies used to describe the data semantics reach a consensus to become \emph{de facto} standards. This is far from being a reality.
-- Being accessible and sustainable
-- Quality and stability
-- Interlinked 
+Started in March 2011, as part of the DataLift research project \cite{scharffe_2012} and hosted by the Open Knowledge Foundation, the Linked Open Vocabularies (LOV) initiative is now an innovative observatory of the semantic vocabularies ecosystem. It gathers and makes visible indicators not yet harvested before, such as interconnection between vocabularies, versioning history, maintenance policy along with past and current referent (individual or organization) if any. The intended purpose of LOV is to promote and facilitate the reuse of well documented vocabularies in the linked data ecosystem. The number of vocabularies indexed by LOV is constantly growing (511 as of June 2015) thanks to a community effort. It is the only catalogue, to the best of our knowledge, that provides all types of search criteria: metadata search, ontology search, APIs, comprehensive dump file and a SPARQL endpoint access. According to the categories of ontology libraries defined by D'Aquin and Noy~\cite{AquinJoWS12}, LOV falls under the categories \textit{``curated ontology directory''}  and \textit{``application platform''}. 
 
-
-Although there are now tens of billions of facts spanning hundreds of Linked Datasets on the Web, 
-
-Started in March 2011, as part of the DataLift research project \cite{scharffe_2012} and hosted by the Open Knowledge Foundation, the Linked Open Vocabularies (LOV) initiative is now an innovative observatory of the semantic vocabularies\footnote{In this paper, ``semantic vocabulary'', ``vocabulary'' and ``ontology'' terms are used interchangeably. An explanation of their meaning is given in the following section.} ecosystem. It gathers and makes visible indicators not yet harvested before, such as interconnection between vocabularies, versioning history, maintenance policy along with past and current referent (individual or organization) if any. The number of vocabularies indexed by LOV is constantly growing (511 as of June 2015) thanks to a community effort. It is the only catalogue, to the best of our knowledge, that provides all types of search criteria: metadata search, ontology search, APIs, comprehensive dump file and a SPARQL endpoint access. According to the categories of ontology libraries defined by D'Aquin and Noy~\cite{AquinJoWS12}, LOV falls under the categories \textit{``curated ontology directory''}  and \textit{``application platform''}. 
-
-The development of the LOV has highlighted a number of interesting research challenges: \textit{``What are the solutions for long-term vocabulary preservation on the Web?"} \cite{Baker2013HLT}. This is a particularly important problem in a distributed and uncontrolled environment where any individual can create and publish a vocabulary that can then be reused by external publishers. This creates a dependency on the original vocabulary availability as it retains the semantics of the data. \textit{``How to facilitate vocabulary search and reuse"} \cite{butt2014, poveda2012landscape}. To be used by a broader community, reuse and design of vocabularies have to be facilitated by intuitive tools and methods.  \textit{``How can we harmonise the various curated vocabulary catalogues on the Web to ease their adoption?"} \cite{wasabi13}. One of the barriers to Semantic Web adoption is the confusion related to understanding and finding an appropriate vocabulary in compliance with best practice.
+%The development of the LOV has highlighted a number of interesting research challenges: \textit{``What are the solutions for long-term vocabulary preservation on the Web?"} \cite{Baker2013HLT}. This is a particularly important problem in a distributed and uncontrolled environment where any individual can create and publish a vocabulary that can then be reused by external publishers. This creates a dependency on the original vocabulary availability as it retains the semantics of the data. \textit{``How to facilitate vocabulary search and reuse"} \cite{butt2014, poveda2012landscape}. To be used by a broader community, reuse and design of vocabularies have to be facilitated by intuitive tools and methods.  \textit{``How can we harmonise the various curated vocabulary catalogues on the Web to ease their adoption?"} \cite{wasabi13}. One of the barriers to Semantic Web adoption is the confusion related to understanding and finding an appropriate vocabulary in compliance with best practice.
 
 This report is structured as follows: In the next section, we describe the LOV architecture along with some high level results that the system has collected. In section \ref{sec:dataPubOntoEngine}, we explain how the LOV is used to support the Data Publication and Ontology Engineering process. Subsequently, we provide an overview of some applications and research projects based and motivated by the LOV system (section \ref{sec:lovecosystem}). In section \ref{sec:related}, we report on related work and reach out conclusions in section \ref{sec:conclusion}.
 
@@ -217,7 +209,7 @@ As of June 2015, the LOV database contains 511 vocabularies. Figure \ref{fig:evo
 \end{figure}
 
 Looking at the creation date of the vocabularies registered in LOV, illustrated in Figure \ref{fig:creaevol}, it informs on the adoption of Semantic Web technologies. The apex of this bell curve is happening in 2011. The figure put as well this in the perspective of the W3C recommendation effort of RDF, RDFS and OWL languages. A decrease of vocabulary creation does not mean a decrease in use of the technology but rather than the coverage of existing vocabularies now covers a large part of the semantic description need. This is as well confirmed by figure \ref{fig:modifevol} that presents the last modification date of LOV vocabularies demonstrating a living ecosystem where vocabularies are not static. The median number of versions per vocabulary is 2. Where 98.23\% of vocabularies makes use of RDFS in addition to RDF, only 45.99\% of them makes use of OWL. Datasets usage are added to 127 vocabularies, from which 98 vocabularies are used in at least 2 datasets and 29 of them are described in only one dataset. 
-% The last sentence for dataset usage comes from the endpoint containing 494 vocabularies, thus 25.70\% of vocabs with dataset info; from which 77,16\% reused by at least 2 datasets. 
+
 
 Overall, LOV dataset contains almost 50,000 RDF vocabulary classes and properties with a median number of 9 and 17 respectively per vocabulary. Table \ref{tab:elements} presents a breakdown of LOV dataset content by vocabulary element type. Out of 511 vocabularies, 66.14\% use explicitly the English language for labels/comments. Table \ref{tab:language} presents the number and percentage of the top five languages detected in the LOV. Figure \ref{fig:langdist} shows the distribution of vocabularies per number of languages explicitly used: 27.98\% vocabularies still does not provide any language information and only 14.68\% of vocabularies are multilingual. 45 Languages are represented in LOV. We will discuss in section \ref{sec:conclusion} the importance for publishers to provide multilingual vocabularies on the Web.
 
@@ -388,12 +380,12 @@ These relationships, with the exception of \emph{Import} which is represented by
 
 \begin{table}[h!tb]
 \caption{Inter-vocabularies relationship types and their number of occurrences in LOV.}
-\begin{tabular}{lcc}
+\begin{tabular}{lr}
 \hline
 \textbf{Inter vocabulary relationship} & \textbf{Nb Relations} \\ \hline
-voaf:metadataVoc & 2637 \\
-voaf:specializes & 1269 \\
-voaf:extends & 1031 \\
+voaf:metadataVoc & 2,637 \\
+voaf:specializes & 1,269 \\
+voaf:extends & 1,031 \\
 owl:imports & 373 \\
 voaf:hasEquivalencesWith & 201 \\
 voaf:generalizes & 57 \\
