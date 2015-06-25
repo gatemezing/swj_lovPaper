@@ -65,7 +65,7 @@
 {
     columns=fullflexible,
     keywordstyle=\color{red},
-    morekeywords={PREFIX,SELECT,DISTINCT,UNION,FILTER,ORDER,BY,REGEX,STR,isBlank},
+    morekeywords={PREFIX,SELECT,DISTINCT,UNION,FILTER,ORDER,BY,REGEX,STR,STRSTARTS,GRAPH,isBlank},
     morecomment=[l]{\#},
     tabsize=4,
     frame=lines,
@@ -576,33 +576,38 @@ Based on the NeOn Methodology's glossary of activities for building ontologies, 
 
  \item [Ontology Search.] Main LOV's feature is the search of vocabulary terms. These vocabularies are categorized within the LOV according to the domain they address. In this way, the LOV system contributes to ontology search by means of (a) keyword search and (b) domain browsing.
  \item [Ontology Assessment.] LOV provides a score for each term retrieved by a keyword search. This score can be used during the assessment stage.
- \item [Ontology Mapping.] In LOV, vocabularies rely on each other in seven different ways. These relationships are explicitly stated using VOAF vocabulary\footnote{\url{http://purl.org/vocommons/voaf}}. This data could be useful to find alignments between ontologies, for example one user might be interested in finding equivalent classes for a given class or all the equivalent classes among two ontologies. Listing \ref{list:alignment} shows the SPARQL query to retrieve all the equivalent classes and properties between the vocabularies \texttt{foaf} and \texttt{dcterms}\footnote{The reader can run the query on LOV Endpoint: \url{http://goo.gl/sTIGQ6}. Prefixes are omitted for readability purpose. They can be found in LOV.}.
+ \item [Ontology Mapping.] In LOV, vocabularies rely on each other in seven different ways. These relationships are explicitly stated using VOAF vocabulary. This data could be useful to find alignments between ontologies, for example one user might be interested in finding equivalent classes for a given class or all equivalent classes and equivalent properties among two ontologies. Listing \ref{list:alignment} shows the SPARQL query to retrieve all the equivalent classes between the vocabularies \texttt{foaf} and \texttt{schema}\footnote{The reader can run the query on LOV Endpoint: \url{http://bit.ly/1Lqybcu}.}. Table \ref{tab:eqCR} shows the alignments between foaf and schema vocabularies.
      
- \begin{lstlisting}[basicstyle=\tiny,float=htb,caption={SPARQL query asking for all the equivalent classes and properties between the vocabularies foaf and dcterms. },label=list:alignment, language=turtle]
- PREFIX owl:<http://www.w3.org/2002/07/owl#>
- SELECT DISTINCT ?elem1 ?alignment ?elem2 {
-   {?elem1 owl:equivalentClass ?elem2}
-      UNION {?elem1 owl:equivalentProperty ?elem2}
-      UNION {?elem2 owl:equivalentClass ?elem1}
-      UNION {?elem2 owl:equivalentProperty ?elem1}
-      FILTER(!isBlank(?elem2))
-      FILTER(!isBlank(?elem1))
-      ?elem1 ?alignment ?elem2.
-      ?elem1 rdfs:isDefinedBy 
-		<http://xmlns.com/foaf/0.1/>.
-      ?elem2 rdfs:isDefinedBy 
-		<http://purl.org/dc/terms/>.
- } ORDER BY ?alignment
+ \begin{lstlisting}[basicstyle=\tiny,float=htb,caption={SPARQL query asking for all the equivalent classes and properties between the vocabularies foaf and schema.},label=list:alignment, language=turtle]
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+SELECT DISTINCT ?elem1 ?alignment ?elem2{
+ GRAPH ?g{
+  ?elem1 rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/>.
+  {?elem1 owl:equivalentClass ?elem2}
+  UNION {?elem2 owl:equivalentClass ?elem1}
+  FILTER(STRSTARTS(STR(?elem2), "http://schema.org/"))
+  ?elem1 ?alignment ?elem2.
+}}
 	
 	\end{lstlisting}
 	
-	Figure \ref{fig:eqCR} shows the alignments between foaf and dcterms vocabularies by mean of \url{owl:equivalentClass} and \\ \url{owl:equivalentProperty}.
-    \begin{figure}
-      \centering
-      \includegraphics[width=1.0\linewidth]{equivalentCandR.png}
-      \caption{Equivalent classes and properties between foaf and dcterms}
-      \label{fig:eqCR}
-    \end{figure}
+
+
+ \begin{table}[h!tb]
+\caption{Equivalent classes and properties between foaf and schema.}
+\scalebox{0.81}{
+\begin{tabular}{lll}
+\hline
+\textbf{elem1} & \textbf{alignment} & \textbf{elem2} \\ \hline
+foaf:Document & owl:equivalentClass & schema:CreativeWork \\
+foaf:Image & owl:equivalentClass & schema:ImageObject \\
+foaf:Person & owl:equivalentClass & schema:Person \\
+\hline  
+\end{tabular}
+}
+\label{tab:eqCR}
+\end{table}
     
 % \item [Ontology Localization.] Labels in different languages are stored in the LOV endpoint. This annotations could be used when translating terms into different languages. This information could be extracted by querying the SPARQL endpoint\footnote{Result of the query can be found at the following URL: \url{http://goo.gl/JJCJ01}} as shown in Listing \ref{list:person} where all the labels defined for the terms that have at least one \url{rdfs:label} containing strictly ``person":
 		
