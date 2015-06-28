@@ -742,16 +742,47 @@ Interaction with contributors & No &  - & No & Yes \\
 %A updated comprehensive empirical survey of Linked Data conformance is presented by Schmachtenberg et al. \cite{max2014}. Their survey is based on a large-scale Linked Data crawl from March 2014 as well as detailed categorize datasets by topical domain to analyze the differences in the adoption of the best practices in different domains. Their results concerning the most used accessible vocabularies vocabularies (e.g., foaf, dcterms, skos, etc.) and the adoption of well-known vocabularies are inline with the findings of this paper. The general difference of our work with the one presented by Schmachtenberg et al. is that our approach is vocabulary-based while their approach is dataset-based. On the other hand, deferenceability of a vocabulary is a strong requirement of a vocabulary to be inserted into LOV, which is not always the case in their work (e.g., they define the notion of partly dereferencable for vocabularies).
 
 
-\section{Discussion}\label{sec:discussion}
+\section{Discussion and Future Work}\label{sec:discussion}
 
 %LOV main strength focuses mainly on giving access to up-to-date of highly curated vocabularies (subpart of semantic documents of the Web) submitted by the community, reviewed and validated by curators. In addition, LOV keeps track locally of all versions of the vocabularies.  In contrast, Swoogle is designed to automatically discover Semantic Web Documents (SWDs), index their metadata. Thus, the result of a search query retrieved any semantic document. For example, a query of the term \textit{person} gives $16,438$ results while in LOV, the term only appears in $1,562$ vocabularies.
 
 %Watson works similarly to Swoogle, crawling and indexing semantic documents at a small scale, explicitly distinguishing for each document (resource), concepts, properties and individuals if available. While in Swoogle  the ranking score is displayed, Watson shows the language of the resource and the size. Falcons is a keyword-based search system for concepts and objects on the Semantic Web, and is equipped with entity summarization for browsing. It is notable that Falcons limits the search only to ontologies and a recommendation feature is provided according to users' preferences. However, it does not provide any relationships between the related ontologies, nor any domain classification of the vocabularies.
 
+With many users, both humans and applications and several years of development, LOV is a mature system that offers a wide range of services for RDF vocabulary reuse. 
 
-Apart from the core features for ontology development as search, ranking and reuse, LOV provides to users with useful functionalities and metadata information  for ontology development processes and activities. his makes it possible to find the most suitable classes and properties to express data as Linked Data. For example, one could take advantage of LOV to localize ontologies or provide multilingual annotation as \texttt{RDFS} labels in many different languages are stored in LOV endpoint. This annotations can be used when translating terms into different languages or to provide multilingual search based on ontologies. 
+While LOV is delivering quality vocabularies, it focuses on a subset of vocabularies for the description of RDF data, called \emph{Metadata Element Sets} in the librarian domain. It does not include any \emph{Value Vocabularies} such as SKOS thesaurus that would benefit from LOV services to encourage their reuse. This limitation is due to the rather small team of curators (4 at the date of writing this paper). Although we automatises all the process and analyses we could, the support to vocabulary authors is far from negligible. 
 
-However, LOV itself can not replace the creation of term in an engineering process. Thus, LOV can be used as input for a vocabulary recommendation system such as the LOVER approach presented by Schaible et al.\cite{schaible2013lover}. Furthermore, LOV does not currently support reasoning capabilities (such as transitive closure or schema matching techniques) on top of the vocabularies. Although such information would potentially be relevant to the LOV users, this  out of scope of the current effort of explicitly represent the links between vocabularies using VOAF and maintaining version history.
+From the study of LOV as an dynamic ecosystem we can draw the following lessons learned:
+\begin{itemize}
+
+\item There is a need for vocabularies to support more languages. Labels are the main entry point to a vocabulary and their associated language is the key. Only 15\% of LOV vocabularies make use of more than one language. Multilingualism is important at least for two reasons: 
+\begin{inparaenum}[1)] 
+	\item the most obvious one is allowing users to search, query and navigate vocabularies in their native language; and
+	\item translating is a process through which the quality of a vocabulary can only improve. Looking at a vocabulary through the eyes of other languages and identifying the difficulties of translation helps to better outline the initial concepts and if necessary refine or revise them. 
+\end{inparaenum} 
+Hence multilingualism and translation should be native, built-in features of any vocabulary construction, not a marginal task.
+
+\item There is at the moment no solution for long-term vocabulary preservation on the Web\cite{Baker2013HLT}. This is a particularly important problem in a distributed and uncontrolled environment where any individual can create and publish a vocabulary. Third parties can reuse such vocabularies and therefore create a dependency on the original vocabulary availability as it retains the semantics of the data. This issue weakens the Semantic Web foundations.
+\end{itemize}
+
+In the future, we see in particular the following directions for advancing LOV initiative:
+
+\begin{itemize}
+\item An area which is still largely unexplored is multi-term vocabulary search. During the ontology design process, it is common to have more than 20 concepts to be represented using existing vocabularies or a new one in case there is no corresponding artifact. While we are able to search for relevant terms in LOV it is still the responsibility of the ontology designer to understand the complex relationships between all these terms and come up with a coherent ontology. We could use the network of vocabularies defined in LOV to suggest not only a list of terms but graphs to represent several concepts together.
+
+\item Another research perspective is SPARQL query extension and rewriting based on Linked Vocabularies. Using the inter-vocabulary relationships we could transform the query to use the same semantic (same vocabulary terms) as the data source(s) to query.
+\end{itemize}
+
+
+%\emph{A comprehensive list of most used vocabularies.} LOV catalogue and related work on profiling 
+%LOD can serve as a foundation to build a comprehensive list of most used vocabularies. Such as list
+%can be updated frequently (e.g., annually) as the LOD cloud statistics is launched to monitor the ranking 
+%of vocabularies. This will need to combine different efforts and better synchronization and integration of data from different sources (e.g., LODStats, lod-cloud.net and prefix.cc).
+
+
+%Apart from the core features for ontology development as search, ranking and reuse, LOV provides to users with useful functionalities and metadata information  for ontology development processes and activities. his makes it possible to find the most suitable classes and properties to express data as Linked Data. For example, one could take advantage of LOV to localize ontologies or provide multilingual annotation as \texttt{RDFS} labels in many different languages are stored in LOV endpoint. This annotations can be used when translating terms into different languages or to provide multilingual search based on ontologies. 
+
+%However, LOV itself can not replace the creation of term in an engineering process. Thus, LOV can be used as input for a vocabulary recommendation system such as the LOVER approach presented by Schaible et al.\cite{schaible2013lover}. Furthermore, LOV does not currently support reasoning capabilities (such as transitive closure or schema matching techniques) on top of the vocabularies. Although such information would potentially be relevant to the LOV users, this  out of scope of the current effort of explicitly represent the links between vocabularies using VOAF and maintaining version history.
 
 
 		
@@ -777,29 +808,14 @@ However, LOV itself can not replace the creation of term in an engineering proce
 
 \section{Conclusion and Future work}
 \label{sec:conclusion}
-In this system report, we presented an overview of the Linked Open Vocabularies initiative. The importance of this work is motivated by the difficulty for data publishers to determine which vocabularies to use to describe their data. The key innovations described in this article include: 
+In this system report, we presented an overview of the Linked Open Vocabularies initiative, a high quality catalogue of reusable vocabularies for the description of data on the Web. The importance of this work is motivated by the difficulty for data publishers to determine which vocabularies to use to describe their data. The key innovations described in this article include: 
 \begin{inparaenum}[1)] 
 	\item the availability of a high quality vocabularies dataset through multiple accessing methods;
-	\item the vocabulary metadata curation by experts, making explicit for the first time the relationships between vocabularies and their version history; and
+	\item the curation by experts, making explicit for the first time the relationships between vocabularies and their version history; and
 	\item the consideration of property semantic in term search scoring.
 \end{inparaenum}
 
-The adoption and integration of LOV catalogue in applications for vocabulary engineering, reuse and data quality are significant. Linked Open Vocabularies have a central role in vocabulary life-cycle on the Web of Data as highlighted by the W3C\footnote{\url{http://www.w3.org/2013/data/}}. In the future, we see in particular the following directions for advancing LOV initiative:
-
-\emph{A comprehensive list of most used vocabularies.} LOV catalogue and related work on profiling 
-LOD can serve as a foundation to build a comprehensive list of most used vocabularies. Such as list
-can be updated frequently (e.g., annually) as the LOD cloud statistics is launched to monitor the ranking 
-of vocabularies. This will need to combine different efforts and better synchronization and integration of data from different sources (e.g., LODStats, lod-cloud.net and prefix.cc).
-\emph{From single to multi-term search.} An area which is still largely unexplored is multi-term vocabulary search. During the ontology design process, it is common to have more than 20 concepts to be represented using existing vocabularies or a new one in case there is no corresponding artifact. While we are able to search for relevant terms in LOV it is still the responsibility of the ontology designer to understand the complex relationships betwen all these terms and come up with a coherent ontology. We could use the network of vocabularies defined in LOV to suggest not only a list of terms but graphs to represent several concepts together.
-
-\emph{Multilingual vocabularies.} There is a need for vocabularies to support more languages. Labels are the main entry point to a vocabulary and their associated language is the key. Only 18\% of LOV vocabularies use a different language than English. Multilingualism is important at least for two reasons: 
-\begin{inparaenum}[1)] 
-	\item the most obvious one is allowing users to search, query and navigate vocabularies in their native language; and
-	\item translating is a process through which the quality of a vocabulary can only improve. Looking at a vocabulary through the eyes of other languages and identifying the difficulties of translation helps to better outline the initial concepts and if necessary refine or revise them. 
-\end{inparaenum} 
-Hence multilingualism and translation should be native, built-in features of any vocabulary construction, not a marginal task.
-
-\emph{Query extension and rewriting.} Another research perspective is SPARQL query extension and rewriting based on Linked Vocabularies. Using the inter-vocabulary relationships we could transform the query to use the same semantic (same vocabulary terms) as the data source(s) to query.
+The adoption and integration of LOV catalogue in applications for vocabulary engineering, reuse and data quality are significant. LOV has a central role in vocabulary life-cycle on the Web of Data as highlighted by the W3C\footnote{\url{http://www.w3.org/2013/data/}}. 
 
 
 \section*{Acknowledgments}
