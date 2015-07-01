@@ -56,7 +56,7 @@
 
 %%%%%%%%%%% Put your definitions here
 \newcommand{\TODO}[1]{\textcolor{red}{\textbf{[TODO:#1]}}}
-\newcommand{\maria}[1]{\textcolor{blue}{\textbf{[MARIA TO:#1]}}}
+\newcommand{\maria}[1]{\textcolor{blue}{\textbf{[MARIA:#1]}}}
 \newcommand{\py}[1]{\textcolor{olive}{\textbf{[PIERRE-YVES TO:#1]}}}
 \newcommand{\ghis}[1]{\textcolor{brown}{\textbf{[GHIS TO:#1]}}}
 \newcommand{\suggest}[1]{\textcolor{red}{\textbf{[SUGGEST:#1]}}}
@@ -336,7 +336,7 @@ At the Vocabulary level, the system extracts three types of information for each
 
 \item Inlinks vocabularies, making explicit the \underline{links from} another vocabulary based on the semantic relation of their terms.
 
-\item Outlinks vocabularies, making explicit the\\ \underline{links to} another vocabulary based on the semantic relation of their terms.
+\item Outlinks vocabularies, making explicit the\\ \underline{links to} another vocabulary \maria{should be the other vocabularies to which lov makes explicit links already in LOV? is that a constrain?} based on the semantic relation of their terms.
 \end{itemize}
 
 \begin{figure}[ht!b]
@@ -414,7 +414,7 @@ voaf:hasDisjunctionsWith & 16 \\
 At the vocabulary term level, the system extracts two types of information:
 \begin{itemize}
 \item term type (class, property, datatype or instance of the same vocabulary) which is provided for indexing by the search engine so a user can filter a search based on this information.
-\item term labels with their predicate (e.g. \url{rdfs:label} \url{"Temperature"@en}). This information is provided for indexing by the search engine and will later be used (cf. section \ref{sssec:search}) in the ranking algorithm.
+\item term labels with their predicate (e.g. \url{rdfs:label} \url{"Temperature"@en}). This information is provided for indexing by the search engine and will later be used (cf. section \ref{sssec:search}) in the ranking algorithm. \maria{we only mention labels here but in the other section it is shown that other annotations are taken into account. should se say "term natural language annotations like labels (as example)" here?}
 \end{itemize}
 
 The information concerning vocabulary terms use in Linked Open Data, also named "popularity," is used in LOV search results ranking as explained in section \ref{sssec:search}. This information is not natively present in the vocabularies and can not be inferred from the LOV dataset. The LODStats \cite{demter-2012-ekaw} project gathers comprehensive statistics about RDF datasets. LOV regularly fetches LODStats raw data\footnote{We keep synchronised the statistics available at: \url{http://stats.lod2.eu/rdfdocs/void}. Unfortunately this file has been unavailable since June 2014 which explains some differences between the statistics we use and LODStats.} using the Vocabulary of Interlinked Datasets (VoID)\cite{void2009} and the Data Cube vocabulary. We pre-process LODStats data before inserting it to LOV. Indeed, There are many duplicates in LODStats representing in fact the same vocabulary URI (e.g., foaf has three different records\footnote{\url{http://stats.lod2.eu/vocabularies?search=foaf}}, and has to be mapped to a single entry in LOV.
@@ -422,7 +422,7 @@ The information concerning vocabulary terms use in Linked Open Data, also named 
 \subsection{Curation}
 The vocabulary collection is maintained by curators in charge of validating, inserting a vocabulary in the LOV ecosystem, and assigning a detailed review.
 
-	\subsubsection{Vocabulary Insertion}\label{sssec:vocabInsert} Compared with other vocabulary catalogues (cf. section \ref{sec:related}), LOV relies on a semi-automated process for vocabulary insertion illustrated in figure \ref{fig:insertWorkflow}. Whereas an automated process puts the emphasis on the volume, in our process, we focus on the quality of each vocabulary and therefore the quality of the overall LOV ecosystem. Suggestions come from the community and from inter-vocabulary reference links. Our system provides a feature to suggest\footnote{\url{http://lov.okfn.org/dataset/lov/suggest/}} the insertion of a new vocabulary. This feature allows a user to check what information the LOV application can automatically detect and extract. LOV curators then check if the vocabulary falls in the scope of LOV and if it meets basic vocabulary quality requirements to be reused:
+	\subsubsection{Vocabulary Insertion}\label{sssec:vocabInsert} Compared with other vocabulary catalogues (cf. section \ref{sec:related}), LOV relies on a semi-automated process for vocabulary insertion illustrated in figure \ref{fig:insertWorkflow} \maria{should we include a box in this workflow for the vocabulary editors to improve the vocab when we contact them and then resubmit?}. Whereas an automated process puts the emphasis on the volume, in our process, we focus on the quality of each vocabulary and therefore the quality of the overall LOV ecosystem. Suggestions come from the community and from inter-vocabulary reference links. Our system provides a feature to suggest\footnote{\url{http://lov.okfn.org/dataset/lov/suggest/}} the insertion of a new vocabulary. This feature allows a user to check what information the LOV application can automatically detect and extract. LOV curators then check if the vocabulary falls in the scope of LOV and if it meets basic vocabulary quality requirements to be reused:
 \begin{enumerate}
  \item a vocabulary should be written in RDF and be dereferenceable;
  \item a vocabulary should be parsable without error (warning tolerated);
@@ -440,7 +440,7 @@ If a suggested vocabulary meets these criteria it is then inserted in the LOV ca
 
 
 	\subsubsection{Vocabulary Review}
-When automatic extraction of metadata fails, LOV curators enhance the description available in the system and notify the vocabulary authors. The documentation provided by the LOV application assists any user in the task of understanding the semantics of each vocabulary term and therefore of any data using it. For instance, information about the creator and publisher is a key indication for a vocabulary user in case help or clarification is required from the author, or to assess the stability of that artifact. About 55\% of vocabularies specify at least one creator, contributor or editor. We augment this information using manually gathered information, leading to the inclusion of data about the creator in over 85\% of vocabularies in LOV. The database stores every version of a vocabulary since its first issue. For each version, a user can access the file (particularly useful when the original online file is no longer available). As illustrated in figure \ref{fig:reviewWorkflow}, an automatic script is in place to automatically check for vocabulary updates on a daily basis. If a new version has been detected, the version is stored locally, the statistics about that vocabulary recomputed and a notification to the curators issued. Similarly we ensure that curated review for each vocabulary is less than one year old by sending curators a notification when a vocabulary review is older than eleven months. In both case, curators update the vocabulary review accordingly. 
+When automatic extraction of metadata fails, LOV curators enhance the description available in the system and notify the vocabulary authors. The documentation provided by the LOV application assists any user in the task of understanding the semantics of each vocabulary term and therefore of any data using it. For instance, information about the creator and publisher is a key indication for a vocabulary user in case help or clarification is required from the author, or to assess the stability of that artifact. About 55\% of vocabularies specify at least one creator, contributor or editor. We augment this information using manually gathered information, leading to the inclusion of data about the creator in over 85\% of vocabularies in LOV. The database stores every version of a vocabulary since its first issue. For each version, a user can access the file (particularly useful when the original online file is no longer available). As illustrated in figure \ref{fig:reviewWorkflow}, an automatic script is in place to automatically \maria{automatic script to automatically... sounds repetitive, rephrase? remove the ``automatic'' before script?} check for vocabulary updates on a daily basis. If a new version has been detected, the version is stored locally, the statistics about that vocabulary recomputed and a notification to the curators issued. Similarly we ensure that curated review for each vocabulary is less than one year old by sending curators a notification when a vocabulary review is older than eleven months. In both case, curators update the vocabulary review accordingly. 
 
 \begin{figure}[ht!b]
 \includegraphics[width=1\textwidth]{FlowCharts/DiagramCuration.pdf}
@@ -465,7 +465,7 @@ In \cite{butt2014}, Butt \emph{et al.} compare eight different ranking methods g
 	\item Content-based Ranking Models: tf-idf, BM25, Vector Space Model and Class Match Measure.
 	\item Graph-based Ranking Models: PageRank, Density Measure, Semantic Similarity Measure and Betweenness Measure
 \end{itemize}
-Based on their findings, we defined a new ranking method adapting \emph{Term frequency inverse document frequency} (tf-idf) to the graph-structure of vocabularies. When compared to the other methods, tf-idf takes into account the relevance and importance of a resource to the query when assigning a weight to a particular vocabulary for a given query term. We reuse the augmented frequency variation of term frequency formula to prevent a bias towards longer vocabularies. Because of the inherit graph structure of vocabularies, tf-idf needs to be tailored so that instead of using a word as the basic unit for measuring, we are considering a vocabulary term $t$ in a vocabulary $V$ as the measuring unit. The equation \ref{eq:tfidf} presents the adaptation of tf-idf to vocabularies.
+Based on their findings, we defined a new ranking method adapting \emph{Term frequency inverse document frequency} (tf-idf) to the graph-structure of vocabularies. When compared to the other methods, tf-idf takes into account the relevance and importance of a resource to the query when assigning a weight to a particular vocabulary for a given query term. We reuse the augmented frequency variation of term frequency formula to prevent a bias towards longer vocabularies. Because of the inherit graph structure of vocabularies, tf-idf needs to be tailored so that instead of using a word as the basic unit for measuring, we are considering a vocabulary term $t$ in a vocabulary $V$ as the measuring unit. The equation \ref{eq:tfidf} presents the adaptation of tf-idf to vocabularies. \maria{the table describing the variables in the equations has no caption and is not referenced in the text.}
 
 \begin{table}[h!tb]
 \begin{tabular}{|l|l|}
@@ -552,6 +552,7 @@ The system provides two data dumps, one containing the LOV vocabulary catalogue 
 The LOV SPARQL Endpoint\footnote{\url{http://lov.okfn.org/dataset/lov/sparql}} offers a complementary data access method and allows clients to pose complex queries to the server and retrieve direct answers computed over the LOV dataset. We use the Jena fuseki triple store to store the N-quads file containing the LOV catalogue and the latest version of each vocabulary. We believe this is the first service to allow users to to query multiple vocabularies at the same time and to detect inter-vocabulary dependencies. 
 
 \subsection{LOV User Interfaces and Application Program Interfaces}
+\maria{the section titles mentions before the user interface and in the text it is placed in the last paragraph, as all the section was about API I thought it was out of place, which is not, but the structure is not homogeneous with the title. If you do not understand my comment you can ignore it, it might be only in my mind. I mean that if we talk fist about apis and then about UI the title could be ``LOV Application Program Interfaces and User Interfaces''. extra minor comment. }
 LOV APIs give a remote access to the many functions of LOV through a set of RESTful services\footnote{\url{http://lov.okfn.org/dataset/lov/apidoc/}}. The basic design requirements for these APIs is that they should allow applications to get access to the very same information humans do via the User Interfaces. More precisely the APIs give access, through three different services (cf. figure \ref{fig:apis}), to functions related to:
 \begin{itemize} 
 			\item Vocabulary terms (classes, properties, datatypes and instances). With these functions, a software application can query the LOV search engine, ask for auto-completion or a suggestion for misspelled terms.
@@ -590,7 +591,7 @@ LOV can be used in any methodology for the creation and reuse of ontologies. One
 % \item Methodological guidelines for different processes and activities of the ontology network development process, such as the reuse and re-%engineering of ontological and non-ontological resources, the ontology requirements specification, the ontology localization, the scheduling, %etc.
 %\end{itemize}
 
-Based on the NeOn Methodology's glossary of activities for building ontologies, the LOV system is relevant in four activities:
+Based on the NeOn Methodology's glossary of activities for building ontologies, the LOV system is relevant in three activities:
 
 \begin{description}
 
@@ -613,7 +614,7 @@ SELECT DISTINCT ?elem1 ?alignment ?elem2{
 	\end{lstlisting}
 	
  \begin{table}[h!tb]
-\caption{Equivalent classes and properties between foaf and schema.}
+\caption{Equivalent classes and properties between foaf and schema.org.}
 \scalebox{0.81}{
 \begin{tabular}{lll}
 \hline
@@ -762,7 +763,7 @@ From the study of LOV as a dynamic ecosystem we can draw the following lessons l
 \end{inparaenum} 
 Hence multilingualism and translation should be native, built-in features of any vocabulary construction, not a marginal task.
 
-\item There is at the moment no solution for long-term vocabulary preservation on the Web\cite{Baker2013HLT}. This is a particularly important problem in a distributed and uncontrolled environment where any individual can create and publish a vocabulary. Third parties can reuse such vocabularies and therefore create a dependency on the original vocabulary availability as it retains the semantics of the data. This issue weakens the Semantic Web foundations.
+\item There is at the moment no solution for long-term vocabulary preservation on the Web \cite{Baker2013HLT}. This is a particularly important problem in a distributed and uncontrolled environment where any individual can create and publish a vocabulary. Third parties can reuse such vocabularies and therefore create a dependency on the original vocabulary availability as it retains the semantics of the data. This issue weakens the Semantic Web foundations.
 \end{itemize}
 
 In the future, we see in particular the following directions for advancing the LOV initiative:
