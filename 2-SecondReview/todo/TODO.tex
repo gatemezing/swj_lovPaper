@@ -7,10 +7,10 @@
 \usepackage[usenames, dvipsnames]{color}
 \usepackage{hyperref}
 \usepackage[export]{adjustbox}  % draw frame of the image
-
+\usepackage{xcolor}
 \usepackage{wasysym}
 
-
+\newcommand{\progress}[1]{\textcolor{brown}{\textbf{[PROGRESS: #1]}}}
 \newcommand\todo[2]{\item[--] #1 \hfill[#2] $\Box$}%
 \newcommand\done[2]{ \item[--]\textcolor{ForestGreen}{\st{#1}} \hfill\textcolor{ForestGreen}{[#2] $\CheckedBox$}}%
 
@@ -103,6 +103,9 @@ Furthermore, the five requirements can also be checked automatically. Yet for LO
 ==Rev3==Finally, the conclusion and future work section describes accurately the following directions of the LOV project. However the limitations are missed. So, it would be acceptable to provide some details about them.\\
 ==Rev4==Whereas bullet-points are very helpful for structuring a document and drawing attention to some specific statements, their excessive use causes the opposite. In Section 3, you use them just fine to briefly enumerate various information types, categories or others, but in Sections 6 and 7, they are way too long to point out something very clearly. Please use bullet-point to enumerate solely the categories (e.g. “Catalogues of generic vocabularies/schemas”, “Catalogues of ontologies for a specific domain”), and go into detail in the following paragraphs. However, this is my personal preference and other reviewers can of course proof me wrong.\\
 ==Rev4==Both comprise “Future Work” in their titles. Please concentrate on the shortcomings of LOV in the Discussion and provide a brief outlook on the future work in the conclusion of the paper.}{Ghis}
+
+\progress{moved the future work part in the conclusion, removed the bullet point in the future description,added a sentence to provide a user study for the tool }
+
 \end{description}
 
 
