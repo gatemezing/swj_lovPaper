@@ -730,36 +730,41 @@ Reusing vocabularies requires searching for terms in existing specialised vocabu
  \item \textit{Datasets and Vocabularies statistics}. One of the major project on which LOV relies, LODStats \cite{demter-2012-ekaw} makes a bridge between datasets and vocabularies. LODStats gathers up to 32 different statistical criteria based on a statement-stream-based approach for RDF datasets in Datahub\footnote{\url{http://datahub.io/}}. LODStats maintains a comprehensive statistics on vocabularies terms (i.e. classes, properties) defined and used in a dataset. Schmachtenberg et al. \cite{max2014} present a survey based on a large-scale Linked Data crawl from March 2014 to analyse the differences in best practices adoption across different application domains. Their results concerning the most used vocabularies (e.g., foaf, dcterms, skos, etc.) and the adoption of well-known vocabularies are inline with the findings of this paper.
 \end{itemize}
 
+
+
+
  \begin{table*}[!htb]
 \centering{
-\begin{tabular}{lllll}
+\begin{tabular}{|l|l|l|l|l|l|}
 \hline
- \textbf{Feature}	& Swoogle & Watson & Falcons & LOV 			 \\ \hline
-Browsing ontologies	   & Yes & Yes & Yes & Yes \\
-Ontology discovery method   & Automatic & Automatic & Automatic & Automatic and manual \\
-Scope & SWDs & SWDs & Concepts & Vocabularies \\
-Ranking	& LOD popularity & LOD popularity & LOD popularity &  LOD/LOV popularity\\
-&&&&+ label's property type	 \\
-Domain filtering & No & No & No & Yes \\
-Comments and review 	& No & Yes & No & Only by curators	\\
-Web service access & Yes & Yes & Yes & Yes		\\
-SPARQL endpoint	& No & No & No & Yes		\\
-Read/Write	& Read & Read \& Write & Read &Read  	\\
-Ontology directory & No & No & No &Yes \\
-Application platform & No & No & No & Yes \\
-Storage & Cache & - & - & Dump \& endpoint \\
-Interaction with contributors & No &  - & No & Yes \\
-		\\ \hline
+ \textbf{Feature}	& Swoogle & Watson & Falcons & Vocab.cc & LOV 			 \\ \hline
+Browsing ontologies	   & Yes & Yes & Yes & Yes & Yes \\ \hline
+Ontology discovery method   & Automatic & Automatic & Automatic & Automatic & Automatic/Manual \\ \hline
+Scope & SWDs & SWDs & Concepts & vocab terms & Vocabularies \\ \hline
+Ranking	& LOD metric & LOD metric & LOD metric &  BTC corpus & LOD/LOV metric\\ 
+&&&&+ label's property type	 \\ \hline
+Domain filtering & No & No & No & No & Yes \\ \hline
+Comments and review 	& No & Yes & No & No & Curators	\\ \hline
+Web service access & Yes & Yes & Yes & Yes & Yes		\\ \hline
+SPARQL endpoint	& No & No & No & No & Yes		\\ \hline
+Read/Write	& Read & Read/Write & Read & Read & Read  	\\ \hline
+Ontology directory & No & No & No & Yes & Yes \\ \hline
+Application platform & No & No & No & N/A & Yes \\ \hline
+Storage & Cache & N/A & N/A &  API & Dump/endpoint \\ \hline
+Interaction with contributors & No &  N/A & No & No & Yes \\ 
+		 \hline
 
 \end{tabular}
-\caption{Comparison of LOV with respect to Swoogle, Watson and Falcons; adapted from the framework presented by d'Aquin and Noy \cite{AquinJoWS12}. SWD stands for Semantic Web Document }
+\caption{Comparison of LOV with respect to Swoogle, Watson, Falcons and Vocab.cc; adapted from the framework presented by d'Aquin and Noy \cite{AquinJoWS12}. SWD stands for Semantic Web Document }
 \label{tab:lovfeatures}
 }
 \end{table*}
 
   %LODStats result for datasets usage  pull in LOV to represent the occurrences of datasets used in the LOD cloud. 
 
-%A updated comprehensive empirical survey of Linked Data conformance is presented by Schmachtenberg et al. \cite{max2014}. Their survey is based on a large-scale Linked Data crawl from March 2014 as well as detailed categorize datasets by topical domain to analyze the differences in the adoption of the best practices in different domains. Their results concerning the most used accessible vocabularies vocabularies (e.g., foaf, dcterms, skos, etc.) and the adoption of well-known vocabularies are inline with the findings of this paper. The general difference of our work with the one presented by Schmachtenberg et al. is that our approach is vocabulary-based while their approach is dataset-based. On the other hand, deferenceability of a vocabulary is a strong requirement of a vocabulary to be inserted into LOV, which is not always the case in their work (e.g., they define the notion of partly dereferencable for vocabularies).
+\textit{Vocab.cc}\footnote{\url{http://vocab.cc}} is a service which is similar to LOV as it enables to look up and search for RDF terms based on usage information while providing more specific information about the usage of a particular class or property in the Billion Triple Challenge Dataset (BTCD) \cite{vocabcc2013}. It also provides the ranking of those properties or classes based on the data from prefix.cc. The main difference with LOV catalogue is that vocab.cc only contains property and classes without aggregating them to a single vocabulary namespace. Moreover, it does not include any relationships (sublass, subproperty) among the elements, while those information can be retrieved from vocabularies in LOV. 
+
+Recently, an updated comprehensive empirical survey of Linked Data conformance is presented by Schmachtenberg et al. \cite{max2014}. Their survey is based on a large-scale Linked Data crawl from March 2014 as well as detailed categorize datasets by topical domain to analyze the differences in the adoption of the best practices in different domains. Their results concerning the most used accessible vocabularies vocabularies (e.g., FOAF, DCTERMS, SKOS, etc.) and the adoption of well-known vocabularies are inline with the findings of this paper. The general difference of our work with the one presented by Schmachtenberg et al. is that our approach is vocabulary-based while their approach is dataset driven. On the other hand, providing a dereferenceable URI and metadata of a vocabulary are strict requirements for inserting a vocabulary into LOV. Those strong requirements are not always taken into account in the aforementioned work (e.g., the authors define the notion of partly dereferencable for vocabularies).
 
 
 \section{Discussion}\label{sec:discussion}
@@ -778,6 +783,8 @@ While LOV is delivering quality vocabularies, it presents some limitations:
 \item LOV relies on third projects to get the valuable information of vocabulary usage in published datasets. At the moment, the popularity information coming from LODStats does not take into account the most recent interest (e.g. Schema.org) in publishing RDF data using markup language. As a consequence, the popularity measure is incomplete and does not represent all possible use of a vocabulary. 
 
 \end{itemize}
+
+% change the text below to remove the bullets and replace with text on the weakness of the tool
 
 From the study of LOV as a dynamic ecosystem we can draw the following lessons learned:
 \begin{itemize}
