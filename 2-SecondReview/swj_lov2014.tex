@@ -726,8 +726,8 @@ Reusing vocabularies requires searching for terms in existing specialised vocabu
  \item \textit{Catalogues of generic vocabularies/schemas} similar to LOV catalogue. Example of catalogues falling in this category are vocab.org\footnote{\url{http://vocab.org/}}, ontologi.es\footnote{\url{http://ontologi.es/}}, JoinUp Semantic Assets or the Open Metadata Registry.
  \item \textit{Catalogues of ontologies for a specific domain} such as biomedicine with the BioPortal \cite{bioportal11}, geospatial ontologies with SOCoP+OOR\footnote{\url{https://ontohub.org/socop}}, Marine Metadata Interoperability and the SWEET \cite{sweet05} ontologies\footnote{\url{http://sweet.jpl.nasa.gov//}}. The SWEET ontologies include several thousand terms, spanning a broad extent of Earth system science and related concepts (such as data characteristics), with the search tool to aid finding science data resources. 
  \item \textit{Catalogues of ontology Design Patterns (ODP)} focused on reusable patterns in ontology engineering \cite{presutti08}. The submitted patterns are small pieces of vocabularies that can further be integrated or linked with other vocabularies. ODP does not provide a search function for specific terms as is the case with Swoogle or Watson.
- \item \textit{Search Engines of ontology terms}. Among ontology search engines, we can cite: Swoogle \cite{finin2005swoogle}, Watson \cite{d2007watson,Sabou07} and FalconS \cite{cheng2008falcons}. These search engines crawl for data schema from RDF documents on the Web. They offer filtering based on ontology type (Class, Property) and a ranking based on the popularity. They don't look for ontology relations nor check if the definition of the ontology is available (usually known as dereferenciation). While in Swoogle the ranking score is displayed, Watson shows the language of the resource and the size. However, none of these services provide any relationship between the related ontologies, nor any domain classification of the vocabularies. Table \ref{tab:lovfeatures} presents a summary of key features of LOV with respect to Swoogle, Watson and Falcons.
- \item \textit{Datasets and Vocabularies statistics}. One of the major project on which LOV relies, LODStats \cite{demter-2012-ekaw} makes a bridge between datasets and vocabularies. LODStats gathers up to 32 different statistical criteria based on a statement-stream-based approach for RDF datasets in Datahub\footnote{\url{http://datahub.io/}}. LODStats maintains a comprehensive statistics on vocabularies terms (i.e. classes, properties) defined and used in a dataset. Schmachtenberg et al. \cite{max2014} present a survey based on a large-scale Linked Data crawl from March 2014 to analyse the differences in best practices adoption across different application domains. Their results concerning the most used vocabularies (e.g., foaf, dcterms, skos, etc.) and the adoption of well-known vocabularies are inline with the findings of this paper.
+ \item \textit{Search Engines of ontology terms}. Among ontology search engines, we can cite: Swoogle \cite{finin2005swoogle}, Watson \cite{d2007watson,Sabou07}, FalconS \cite{cheng2008falcons} and Vocab.cc \cite{vocabcc2013}. These search engines crawl for data schema from RDF documents on the Web. They offer filtering based on ontology type (Class, Property) and a ranking based on the popularity. They don't look for ontology relations nor check if the definition of the ontology is available (usually known as dereferenciation). While in Swoogle the ranking score is displayed, Watson shows the language of the resource and the size. However, none of these services provide any relationship between the related ontologies, nor any domain classification of the vocabularies. Table \ref{tab:lovfeatures} presents a summary of key features of LOV with respect to Swoogle, Watson, Falcons and Vocab.cc.
+ \item \textit{Datasets and Vocabularies statistics}. In this category we can mention LODStats \cite{demter-2012-ekaw} and the vocabularies derived from the LOD Cloud.  LODStats makes a bridge between datasets and vocabularies gathering up to 32 different statistical criteria based on a statement-stream-based approach for RDF datasets in Datahub\footnote{\url{http://datahub.io/}}. LODStats maintains a comprehensive statistics on vocabularies terms (i.e. classes, properties) defined and used in a dataset. Schmachtenberg et al. \cite{max2014} present a survey based on a large-scale Linked Data crawl from March 2014 to analyse the differences in best practices adoption across different application domains. Their results concerning the most used vocabularies (e.g., foaf, dcterms, skos, etc.) and the adoption of well-known vocabularies are inline with the findings of this paper.
 \end{itemize}
 
 
@@ -775,29 +775,23 @@ Recently, an updated comprehensive empirical survey of Linked Data conformance i
 
 With many users, both humans and applications, and several years of development, LOV is a mature system that offers a wide range of services for RDF vocabulary reuse. 
 
-While LOV is delivering quality vocabularies, it presents some limitations:
-
-\begin{itemize}
- \item LOV focuses on a subset of vocabularies for the description of RDF data. It does not include any \emph{Value Vocabularies} such as SKOS thesaurus that would benefit from LOV services to encourage their reuse. This limitation is due to the rather small team of curators (4 at the date of writing this paper). Although we automated all the processes and analyses we could, the support to vocabulary authors is far from negligible. 
-
-\item LOV relies on third projects to get the valuable information of vocabulary usage in published datasets. At the moment, the popularity information coming from LODStats does not take into account the most recent interest (e.g. Schema.org) in publishing RDF data using markup language. As a consequence, the popularity measure is incomplete and does not represent all possible use of a vocabulary. 
-
-\end{itemize}
+Whilst LOV is delivering quality vocabularies, it presents two main limitations: the non inclusion of SKOS thesaurus and the provision of a comprehensive metric of vocabulary usage. On one hand, LOV focuses on a subset of vocabularies for the description of RDF data. It does not include any \emph{Value Vocabularies} such as SKOS thesaurus that would benefit from LOV services to encourage their reuse. This limitation is due to the rather small team of curators (4 at the date of writing this paper). Although we automated all the processes and analyses we could, the support to vocabulary authors is far from negligible. 
+On the other hand, LOV relies on third projects to get the valuable information of vocabulary usage in published datasets. At the moment, the popularity information coming from LODStats does not take into account the most recent interest (e.g. Schema.org) in publishing RDF data using markup language. As a consequence, the popularity measure is incomplete and does not represent all possible use of a vocabulary. 
 
 % change the text below to remove the bullets and replace with text on the weakness of the tool
 
-From the study of LOV as a dynamic ecosystem we can draw the following lessons learned:
-\begin{itemize}
-
-\item There is a need for vocabularies to support more languages. Labels are the main entry point to a vocabulary and their associated language is the key. Only 15\% of LOV vocabularies make use of more than one language. Multilingualism is important at least for two reasons: 
+From the study of LOV as a dynamic ecosystem we can draw the following lessons learned, such as the need of more multilingual vocabularies on the Web and the long term preservation of vocabulary URIs. 
+\paragraph{Multilingual Vocabularies:}
+There is a need for vocabularies to support more languages. Labels are the main entry point to a vocabulary and their associated language is the key. Only 15\% of LOV vocabularies make use of more than one language. Multilingualism is important at least for two reasons: 
 \begin{inparaenum}[1)] 
 	\item the most obvious one is allowing users to search, query and navigate vocabularies in their native language; and
 	\item translating is a process through which the quality of a vocabulary can only improve. Looking at a vocabulary through the eyes of other languages and identifying the difficulties of translation helps to better outline the initial concepts and if necessary refine or revise them. 
 \end{inparaenum} 
 Hence multilingualism and translation should be native, built-in features of any vocabulary construction, not a marginal task.
 
-\item There is at the moment no solution for long-term vocabulary preservation on the Web \cite{Baker2013HLT}. This is a particularly important problem in a distributed and uncontrolled environment where any individual can create and publish a vocabulary. Third parties can reuse such vocabularies and therefore create a dependency on the original vocabulary availability as it retains the semantics of the data. This issue weakens the Semantic Web foundations.
-\end{itemize}
+\paragraph{Long term preservation of vocabularies URIs:} There is at the moment no solution for long-term vocabulary preservation on the Web \cite{Baker2013HLT}. This is a particularly important problem in a distributed and uncontrolled environment where any individual can create and publish a vocabulary. Third parties can reuse such vocabularies and therefore create a dependency on the original vocabulary availability as it retains the semantics of the data. This issue weakens the Semantic Web foundations.
+
+
 
 
 
