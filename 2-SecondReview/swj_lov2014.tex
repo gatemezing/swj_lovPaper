@@ -232,7 +232,7 @@ By observing the vocabularies contained in LOV as a whole, we can extract some i
 Overall, LOV vocabularies contain 20,000 classes and almost 30,000 properties with a median number per vocabulary of 9 and 17 respectively. Table \ref{tab:elements} presents a breakdown of the LOV dataset content by vocabulary element type. 
 
 \begin{table}[htb]
-\caption{LOV vocabulary elements statistics.}
+\caption{LOV vocabulary element types statistics. \emph{Classes} refers to any instance of {\small\texttt{rdfs:Class}} or {\small\texttt{owl:Class}}. \emph{Properties} refers to any instance of {\small\texttt{rdf:Property}} and by inference, any instance of subclasses of {\small\texttt{rdf:Property}} defined in the OWL language. \emph{Datatypes} refers to any instance of {\small\texttt{rdfs:Datatype}}. The members of a vocabulary class are known as \emph{instances} of the class.}
 \begin{tabular}{lrr}
 \hline
 \textbf{Type} & \textbf{Count} &  \textbf{Median per vocab} \\ \hline
@@ -263,7 +263,7 @@ Italian & 18 & 3.52\%      \\
 \end{table}
 
 
-From January to June 2015, more than 1.4 million searches were conducted on LOV\footnote{This figure includes searches from the API and UI as well as searches with and without keywords such as ``all agents that participated in vocabulary design and publication in the geo-location domain''.}. A breakdown of searches per element type is provided in Table \ref{tab:searchcategory}. We can see that the new feature (from LOV version 3) of agent search (used for instance to identify experts of a domain in semantic web vocabulary design and publication) is the most used. Searches that include keywords (and not only filters) are concerned with vocabulary terms. Table \ref{tab:toptermsearch} presents the top 10 terms searched from January to June 2015. Although most of the searches are performed through the User Interface, an application ecosystem using LOV APIs has surfaced as shown in Figure \ref{fig:apivsui}. 
+From January to June 2015, more than 1.4 million searches were conducted on LOV\footnote{This figure includes searches from the API and UI as well as searches with and without keywords such as ``all agents that participated in vocabulary design and publication in the geo-location domain''.}. A breakdown of searches per element type is provided in Table \ref{tab:searchcategory}. We can see that the new feature (from LOV version 3) of agent search is the most used. This could be explained by the uniqueness and the recent development of this feature in LOV (when compared to other ontology catalogues) which now allows a user to visualise the participation of an agent (person or organisation) in the definition or publication of vocabularies. Searches that include keywords (and not only filters) are targeting mainly vocabulary terms. Table \ref{tab:toptermsearch} presents the top 10 terms searched from January to June 2015. Although most of the searches are performed through the User Interface, an application ecosystem using LOV APIs has surfaced as shown in Figure \ref{fig:apivsui}. 
 
 \begin{figure}[htb]
 \resizebox{\linewidth}{!}{\input{PGFPlots/LOVLangDist.tex}}
@@ -404,7 +404,7 @@ There are many ways two vocabularies can be interlinked. Let's consider two voca
     <http://www.ontologydesignpatterns.org/ont/dul/ontopic.owl#SubjectSpace>
 \end{lstlisting}
 
-These relationships, with the exception of \emph{Import} which is represented by \url{owl:imports}, are captured by the Vocabulary of a Friend\footnote{\url{http://lov.okfn.org/vocommons/voaf/}} (VOAF). Table \ref{tab:voaf} presents a breakdown of the occurrences of each relation in LOV.
+These relationships, with the exception of \emph{Import} which is represented by {\small\texttt{owl:imports}}, are captured by the Vocabulary of a Friend\footnote{\url{http://lov.okfn.org/vocommons/voaf/}} (VOAF). Table \ref{tab:voaf} presents a breakdown of the occurrences of each relation in LOV.
 
 \begin{table}[h!tb]
 \caption{Inter-vocabularies relationship types and their number of occurrences in LOV.}
@@ -429,7 +429,7 @@ voaf:hasDisjunctionsWith & 16 \\
 At the vocabulary term level, the system extracts two types of information:
 \begin{itemize}
 \item term type (class, property, datatype or instance defined in the namespace of the vocabulary) which is provided for indexing by the search engine so a user can filter a search based on this information.
-\item term natural language annotations with their predicate (e.g. \url{rdfs:label} \url{"Temperature"@en}). This information is provided for indexing by the search engine and will later be used (cf. Section \ref{sssec:search}) in the ranking algorithm.
+\item term natural language annotations (RDF literals) with their predicate (e.g. {\small\texttt{rdfs:label "Temperature"@en}}). This information is provided as is for indexing by the search engine and will later be used (cf. Section \ref{sssec:search}) in the ranking algorithm.
 \end{itemize}
 
 The information concerning the use of a vocabulary term in Linked Open Data, also named "popularity," is used in LOV search results ranking as explained in Section \ref{sssec:search}. This information is not natively present in the vocabularies and can not be inferred from the LOV dataset. The LODStats project gathers comprehensive statistics about RDF datasets \cite{demter-2012-ekaw}. LOV regularly fetches LODStats raw data\footnote{We keep synchronised the statistics available at: \url{http://stats.lod2.eu/rdfdocs/void}. Unfortunately this file has been unavailable since June 2014 which explains some differences between the statistics we use and LODStats.} using the Vocabulary of Interlinked Datasets (VoID) \cite{void2009} and the Data Cube vocabulary. We pre-process LODStats data before inserting it to LOV. Indeed, there are many duplicates in LODStats representing in fact the same vocabulary URI (e.g., foaf has three different records\footnote{\url{http://stats.lod2.eu/vocabularies?search=foaf}}, and has to be mapped to a single entry in LOV).
@@ -442,7 +442,7 @@ The vocabulary collection is maintained by curators in charge of validating, ins
 \begin{enumerate}
  \item a vocabulary should be written in RDF and be dereferenceable;
  \item a vocabulary should be parsable without error (warning tolerated);
- \item all vocabulary terms (classes, properties and datatypes) in a vocabulary should have an \\ \texttt{rdfs:label};
+ \item all vocabulary terms (classes, properties and datatypes) in a vocabulary should have an \\ {\small\texttt{rdfs:label}};
  \item a vocabulary should refer to and reuse relevant existing ones;
  \item a vocabulary should provide some metadata about the vocabulary itself (a minima a title).
 \end{enumerate}
@@ -456,7 +456,7 @@ If a suggested vocabulary meets these criteria it is then inserted in the LOV ca
 
 
 	\subsubsection{Vocabulary Review}
-When automatic extraction of metadata fails, LOV curators enhance the description available in the system and notify the vocabulary authors. The documentation provided by the LOV application assists any user in the task of understanding the semantics of each vocabulary term and therefore of any data using it. For instance, information about the creator and publisher is a key indication for a vocabulary user in case help or clarification is required from the author, or to assess the stability of that artifact. About 55\% of the vocabularies specify at least one creator, contributor or editor. We augment this information using manually gathered information, leading to the inclusion of data about the creator in over 85\% of the vocabularies in LOV. The database stores every version of a vocabulary since its first issue. For each version, a user can access the file (particularly useful when the original online file is no longer available). As illustrated in Figure \ref{fig:reviewWorkflow}, a script is in place to automatically check for vocabulary updates on a daily basis. If a new version has been detected, the version is stored locally, the statistics about that vocabulary recomputed and a notification to the curators issued. Similarly we ensure that curated review for each vocabulary is less than one year old by sending curators a notification when a vocabulary review is older than eleven months. In both cases, curators update the vocabulary review accordingly. 
+When automatic extraction of metadata fails, LOV curators enhance the description available in the system and notify the vocabulary authors. This manual task usually consists in checking for any additional information present in the HTML documentation (targeted for human) and not reflected in the RDF description. The documentation provided by the LOV application assists any user in the task of understanding the semantics of each vocabulary term and therefore of any data using it. For instance, information about the creator and publisher is a key indication for a vocabulary user in case help or clarification is required from the author, or to assess the stability of that artifact. About 55\% of the vocabularies specify at least one creator, contributor or editor. We augment this information using manually gathered information, leading to the inclusion of data about the creator in over 85\% of the vocabularies in LOV. The database stores every version of a vocabulary since its first issue. For each version, a user can access the file (particularly useful when the original online file is no longer available). As illustrated in Figure \ref{fig:reviewWorkflow}, a script is in place to automatically check for vocabulary updates on a daily basis. If a new version has been detected, the version is stored locally, the statistics about that vocabulary recomputed and a notification to the curators issued. Similarly we ensure that curated review for each vocabulary is less than one year old by sending curators a notification when a vocabulary review is older than eleven months. In both cases, curators update the vocabulary review accordingly. 
 
 \begin{figure}[ht!b]
 \includegraphics[width=1\textwidth]{FlowCharts/DiagramCuration.pdf}

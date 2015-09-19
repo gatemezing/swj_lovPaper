@@ -43,22 +43,24 @@ An analysis about the number of datasets using the included vocabs could also he
  \done{Explain better Fig2-3 \\
 ==Rev2==Figure 2 and 3 either need some more explanation or should be rethought, as at the current state I am not sure about the contribution of those figures. Does Figure 2 state the number of new vocabularies which were created within each year? Do they all follow the current W3C recommendation language? Are those filtered by the format which is recommended? Also it would be helpful instead of stating the absolute number to state the percentage of all vocabs (from the 511 included).}{Pierre}
 
- \todo{Precise Vocabulary Term extraction or skip\\
-==Rev3==In the section 2 the system architecture of LOV is presented. Then, the LOV system is split in its modules and each one is individually analysed. In particular, in the section 2.2 the authors mentioned that :"At the Vocabulary Term level, the system extracts labels that will be used..", on this case the extracted labels are coming from the dictionaries, I am wondering if the authors have just considered to use others NLP technologies to extract labels from the text.}{Pierre}
-
- \todo{Precise Manual augmentation or skip\\
-==Rev3==Later, the authors have mentioned that "When some metadata failed to be extracted automatically, LOV curators enhance the description available in the system", could you be more explicitly, how the curators do that? it would be nice to describe deeply how they could help to overcome the mentioned issue.}{Pierre}
-
- \todo{Define the terms used\\
+ 
+ \done{Define the terms used\\
 ==Rev4==Table 1 describes the LOV dataset content by vocabulary element type. Please clarify what you mean by “Instances” and “Datatypes”, especially as they have a median value of 0. It seems that you refer to rdfs:Class, rdf:Property, and rdfs:Datatype, but the reader can get confused, as there is no rdfs:Instance according to http://www.w3.org/TR/rdf-schema/.}{Pierre}
 
- \todo{Explain why more agent search\\
+ \done{Explain why more agent search\\
 ==Rev4==In Table 3, the reader can observe that searching for Agents is most prominent. But why? Traditionally, an ontology engineer filters vocabularies that represent the domain of interest directly. Therefore, please provide a brief explanation for this difference-making feature, particularly as it was introduced only in version 3 and users were not accustomed to that type of search.}{Pierre}
 
 \end{description}
 
 \subsection{System Components and Features}
 \begin{description}
+
+\done{Precise Vocabulary Term extraction or skip\\
+==Rev3==In the section 2 the system architecture of LOV is presented. Then, the LOV system is split in its modules and each one is individually analysed. In particular, in the section 2.2 the authors mentioned that :"At the Vocabulary Term level, the system extracts labels that will be used..", on this case the extracted labels are coming from the dictionaries, I am wondering if the authors have just considered to use others NLP technologies to extract labels from the text.}{Pierre}
+
+ \done{Precise Manual augmentation or skip\\
+==Rev3==Later, the authors have mentioned that "When some metadata failed to be extracted automatically, LOV curators enhance the description available in the system", could you be more explicitly, how the curators do that? it would be nice to describe deeply how they could help to overcome the mentioned issue.}{Pierre}
+
  \todo{Restructure\\
 Section 3.3 is a bit off in its structure. Three of the four data access possibilities are described from 3.3.1 to 3.3.3, but the fourth one is described in 3.4. The readability can be increased, if 3.3.1 describes the Search Engine, 3.3.2 the additional UI facets and elements helping to navigate within the vocabularies catalogue, 3.3.3 the data dump, 3.3.4 the SPARQL Endpoint, and 3.3.5 the API, since they are all part of the data access.}{PYV}
 
@@ -78,7 +80,7 @@ Furthermore, the five requirements can also be checked automatically. Yet for LO
 
 \subsection{DataPublication and Onto Engin.}
 \begin{description}
-\todo{is it the right place? Take ideas for abstract/intro motivate the work \\
+\done{is it the right place? Take ideas for abstract/intro motivate the work \\
 ==Rev2==Chapter 4 is somehow creating a topical cut between Chapter 3 and 5. I would recommend the authors to rethink the location of this part and think about an inclusion into the introduction as motivation.}{Pierre}
 \end{description}
 
