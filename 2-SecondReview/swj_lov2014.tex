@@ -181,35 +181,23 @@ The last two decades have seen the emergence of a ``Semantic Web'' enabling huma
 
 Despite the enormous volumes of data now available on the Web, Linked Data suffers from low community interest in vocabulary\footnote{We use the terms ``semantic vocabulary'', ``vocabulary'' and ``ontology'' interchangeably.} management in favour of the data itself. A vocabulary consists of classes, properties and datatypes that define the meaning of data. RDF Vocabularies are themselves expressed as Linked Data. When a vocabulary is not published or not available any more, humans and machines do not have access to the definition of the terms used to qualify the data. This breaks the semantic interoperability, one of the fundamentals of the Semantic Web. 
 
-Started in March 2011, as part of the DataLift research project \cite{scharffe_2012} and hosted by the Open Knowledge Foundation, the Linked Open Vocabularies (LOV) initiative\footnote{\url{http://lov.okfn.org/dataset/lov/}} is now an innovative observatory of the semantic vocabularies ecosystem. It gathers and makes visible indicators not yet harvested before, such as the interconnections between vocabularies, versioning history along with past and current referent (individual or organization). The intended purpose of LOV is to promote and facilitate the reuse of well documented vocabularies in the Linked Data ecosystem. According to the categories of ontology libraries defined by D'Aquin and Noy~\cite{AquinJoWS12}, LOV falls under the categories \textit{``curated ontology directory''}  and \textit{``application platform''}.  Specifically LOV supports various activities for the design of ontologies and the publication of data on the Web \cite{MC10, ohdeploying, pedrinaci2014, villata2012}:
+Started in March 2011, as part of the DataLift research project \cite{scharffe_2012} and hosted by the Open Knowledge Foundation, the Linked Open Vocabularies (LOV) initiative\footnote{\url{http://lov.okfn.org/dataset/lov/}} is now an innovative observatory of the semantic vocabularies ecosystem. It gathers and makes visible indicators not yet harvested before, such as the interconnections between vocabularies, versioning history along with past and current referent (individual or organization). The number of vocabularies indexed by LOV is constantly growing (511 as of June 2015) thanks to a community effort. It is the only catalogue, to the best of our knowledge, that provides all types of search criteria: metadata search, ontology search, APIs, a comprehensive dump file and SPARQL endpoint access. 
+
+The intended purpose of LOV is to promote and facilitate the reuse of well documented vocabularies in the Linked Data ecosystem. According to the categories of ontology libraries defined by D'Aquin and Noy~\cite{AquinJoWS12}, LOV falls under the categories \textit{``curated ontology directory''}  and \textit{``application platform''}.  Specifically LOV supports various activities for the design of ontologies and the publication of data on the Web \cite{MC10, ohdeploying, pedrinaci2014, villata2012}:
 
 \begin{description}
  \item [Ontology Search.] One of LOV's main features is the search of vocabulary terms (class, property, datatype). Vocabularies are categorised according to the domain they address. In this way, the LOV system contributes to ontology search by means of (a) keyword search and (b) domain browsing.
  \item [Ontology Assessment.] LOV provides a score for each term retrieved by a keyword search. This score can be used during the ontology assessment stage.
- \item [Ontology Mapping.] In LOV, vocabularies rely on each other in seven different ways (cf. Section \ref{sec:vocabLevelAnalysis}). These relationships can be useful to find alignments between ontologies. Table \ref{tab:eqCR} shows the alignments between \texttt{foaf} and \texttt{schema.org} vocabulary classes as stated in LOV\footnote{The reader can run the query on LOV SPARQL Endpoint: \url{http://bit.ly/1Lqybcu}.}. 
+ \item [Ontology Mapping.] In LOV, vocabularies rely on each other in seven different ways (cf. Section \ref{sec:vocabLevelAnalysis}). These relationships can be useful to find alignments between ontologies. 
 \end{description}
 
-\begin{table}[h!tb]
-\caption{Equivalent classes and properties between \texttt{foaf} and \texttt{schema.org}.}
-\scalebox{0.81}{
-\begin{tabular}{lll}
-\hline
-\textbf{elem1} & \textbf{alignment} & \textbf{elem2} \\ \hline
-foaf:Document & owl:equivalentClass & schema:CreativeWork \\
-foaf:Image & owl:equivalentClass & schema:ImageObject \\
-foaf:Person & owl:equivalentClass & schema:Person \\
-\hline  
-\end{tabular}
-}
-\label{tab:eqCR}
-\end{table}
 
 
-The number of vocabularies indexed by LOV is constantly growing (511 as of June 2015) thanks to a community effort. It is the only catalogue, to the best of our knowledge, that provides all types of search criteria: metadata search, ontology search, APIs, a comprehensive dump file and SPARQL endpoint access. 
+
 
 %The development of the LOV has highlighted a number of interesting research challenges: \textit{``What are the solutions for long-term vocabulary preservation on the Web?"} \cite{Baker2013HLT}. This is a particularly important problem in a distributed and uncontrolled environment where any individual can create and publish a vocabulary that can then be reused by external publishers. This creates a dependency on the original vocabulary availability as it retains the semantics of the data. \textit{``How to facilitate vocabulary search and reuse"} \cite{butt2014, poveda2012landscape}. To be used by a broader community, reuse and design of vocabularies have to be facilitated by intuitive tools and methods.  \textit{``How can we harmonise the various curated vocabulary catalogues on the Web to ease their adoption?"} \cite{wasabi13}. One of the barriers to Semantic Web adoption is the confusion related to understanding and finding an appropriate vocabulary in compliance with best practice.
 
-This report is structured as follows: In the next section, we provide statistics on the usage of LOV. In Section \ref{sec:arch}, we describe the components and features that constitute LOV. Thereafter,  in Section \ref{sec:lovecosystem}, we provide an overview of some applications and research projects based and motivated by the LOV system. In Section \ref{sec:related}, we report on related work. Discussion about the limitations and further development of LOV is presented in Section \ref{sec:discussion}. We finally reach our conclusions in Section \ref{sec:conclusion}.
+This report is structured as follows: In the next section, we provide statistics on the usage of LOV. In Section~\ref{sec:arch}, we describe the components and features that constitute LOV. Thereafter,  in Section~\ref{sec:lovecosystem}, we provide an overview of some applications and research projects based and motivated by the LOV system. In Section~\ref{sec:related}, we report on related work. Discussion about the limitations and further development of LOV is presented in Section~\ref{sec:discussion}. We finally reach our conclusions in Section~\ref{sec:conclusion}.
 
 \section{LOV state}\label{sec:state}
 The LOV dataset consists of 511 vocabularies as of June 2015. Figure \ref{fig:evolLOV} depicts the evolution of the number of vocabularies inserted in the LOV dataset since March 2011. The addition of new vocabularies to LOV has been fairly constant with two outstanding events: 
@@ -225,7 +213,7 @@ The LOV dataset consists of 511 vocabularies as of June 2015. Figure \ref{fig:ev
 
 
 
-By observing the vocabularies contained in LOV as a whole, we can extract some interesting facts about Semantic Web adoption and dynamics. In Figure \ref{fig:creaevol}, we present a distribution of LOV vocabularies by creation date, noting the main W3C Recommendation languages used RDF, RDFS and OWL. The distribution follows a bell curve with the peak in 2011. A decrease of vocabulary creation does not necessarily mean a decrease in use of the technology but rather that the existing vocabularies now cover a large part of the semantic description needed. Figure \ref{fig:modifevol} shows the last modification date of LOV vocabularies over time demonstrating a living ecosystem. 
+By observing the vocabularies contained in LOV as a whole, we can extract some interesting facts about Semantic Web adoption and dynamics. In Figure \ref{fig:creaevol}, we present a distribution of LOV vocabularies by creation date. The distribution follows a bell curve with its peak in 2011. It is worth noting that a decrease of vocabulary creation does not necessarily mean a decrease in use of the technology but rather that the existing vocabularies now cover a large part of the semantic description needed. When looking at the last modification date of the same vocabularies (as illustrated in Figure \ref{fig:modifevol}), we can notice that LOV vocabularies are far from static artifacts but on the contrary are part of a living ecosystem. 
 
 \begin{figure}[htb]
 \resizebox{\linewidth}{!}{\input{PGFPlots/LOVCreaEvol.tex}}
