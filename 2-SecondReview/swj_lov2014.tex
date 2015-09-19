@@ -320,10 +320,10 @@ Over the last four years, the Linked Open Vocabularies initiative has gathered a
 \section{System Components and Features}\label{sec:arch}
 	 The LOV architecture is composed of four main components (cf. Figure \ref{fig:arch}): 
 \begin{inparaenum}[1)] 
-	\item \emph{Tracking and Analysis}. Responsible for checking  for any vocabulary version update and analysing vocabularies' specific features.
+	\item \emph{Tracking and Analysis}. Responsible for checking for any vocabulary version update and analysing vocabularies' specific features.
 	\item \emph{Curation}. Ensuring the high quality of the LOV dataset through methods for the community to suggest or edit the catalogue.
 	\item \emph{Data Access}. Provides access to the data through a large range of methods and protocols to facilitate the use of LOV dataset and
-	\item \emph{LOV User Interfaces and Application Program Interfaces}.
+	\item \emph{Data Storage}. Offering a reliable and efficient method to store the data.
 \end{inparaenum} 
 Each component provides a set of features detailed in the following subsections.
 
@@ -336,7 +336,7 @@ Each component provides a set of features detailed in the following subsections.
 %To carry out these tasks, the LOV is based on a number of components depicted in figure \ref{fig:arch}, relying on existing standards and open technologies.
 
 \begin{figure}[ht!b]
-\includegraphics[trim={0cm 8cm 0cm 0cm},scale=.6]{lov_architecture.pdf}
+\includegraphics[trim={0cm 7cm 0cm 0cm},scale=.6]{lov_architecture.pdf}
 \caption{Overview of the Linked Open Vocabularies Architecture.}
 \label{fig:arch}
 \end{figure}
@@ -349,9 +349,9 @@ At the vocabulary level, the system extracts three types of information for each
 \begin{itemize}
 \item Metadata associated to the vocabulary. This information is explicitly defined within the vocabulary to provide context and useful data about the vocabulary. Some high level vocabularies can be reused for that purpose, such as Dublin Core\footnote{\url{http://purl.org/dc/terms/}} to describe authors, contributors, publishers or Creative Commons\footnote{\url{http://creativecommons.org/ns\#}} for the description of a license.
 
-\item Inlinks vocabularies, making explicit the \underline{links from} another vocabulary based on the semantic relation of their terms.
+\item Inlinks/incoming vocabularies, making explicit the \underline{links from} another vocabulary based on the semantic relation of their terms.
 
-\item Outlinks vocabularies, making explicit the\\ \underline{links to} another vocabulary based on the semantic relation of their terms.
+\item Outlinks/outgoing vocabularies, making explicit the\\ \underline{links to} another vocabulary based on the semantic relation of their terms.
 \end{itemize}
 
 \begin{figure}[ht!b]
@@ -404,7 +404,7 @@ There are many ways two vocabularies can be interlinked. Let's consider two voca
     <http://www.ontologydesignpatterns.org/ont/dul/ontopic.owl#SubjectSpace>
 \end{lstlisting}
 
-These relationships, with the exception of \emph{Import} which is represented by {\small\texttt{owl:imports}}, are captured by the Vocabulary of a Friend\footnote{\url{http://lov.okfn.org/vocommons/voaf/}} (VOAF). Table \ref{tab:voaf} presents a breakdown of the occurrences of each relation in LOV.
+These relationships, with the exception of \emph{Import} which is represented by {\small\texttt{owl:imports}}, are captured by the Vocabulary of a Friend\footnote{\url{http://lov.okfn.org/vocommons/voaf/}} (VOAF). Whenever a new vocabulary version is added in LOV, these vocabulary relationships are automatically detected using specific SPARQL queries and a link between the vocabularies explicitly added to the LOV catalogue. Table \ref{tab:voaf} presents a breakdown of the occurrences of each relation in LOV.
 
 \begin{table}[h!tb]
 \caption{Inter-vocabularies relationship types and their number of occurrences in LOV.}
@@ -429,7 +429,7 @@ voaf:hasDisjunctionsWith & 16 \\
 At the vocabulary term level, the system extracts two types of information:
 \begin{itemize}
 \item term type (class, property, datatype or instance defined in the namespace of the vocabulary) which is provided for indexing by the search engine so a user can filter a search based on this information.
-\item term natural language annotations (RDF literals) with their predicate (e.g. {\small\texttt{rdfs:label "Temperature"@en}}). This information is provided as is for indexing by the search engine and will later be used (cf. Section \ref{sssec:search}) in the ranking algorithm.
+\item term natural language annotations (RDF literals) with their predicate (e.g. {\small\texttt{rdfs:label}}\\ {\small\texttt{"Temperature"@en}}). This information is provided as is for indexing by the search engine and will later be used (cf. Section \ref{sssec:search}) in the ranking algorithm.
 \end{itemize}
 
 The information concerning the use of a vocabulary term in Linked Open Data, also named "popularity," is used in LOV search results ranking as explained in Section \ref{sssec:search}. This information is not natively present in the vocabularies and can not be inferred from the LOV dataset. The LODStats project gathers comprehensive statistics about RDF datasets \cite{demter-2012-ekaw}. LOV regularly fetches LODStats raw data\footnote{We keep synchronised the statistics available at: \url{http://stats.lod2.eu/rdfdocs/void}. Unfortunately this file has been unavailable since June 2014 which explains some differences between the statistics we use and LODStats.} using the Vocabulary of Interlinked Datasets (VoID) \cite{void2009} and the Data Cube vocabulary. We pre-process LODStats data before inserting it to LOV. Indeed, there are many duplicates in LODStats representing in fact the same vocabulary URI (e.g., foaf has three different records\footnote{\url{http://stats.lod2.eu/vocabularies?search=foaf}}, and has to be mapped to a single entry in LOV).
@@ -438,7 +438,7 @@ The information concerning the use of a vocabulary term in Linked Open Data, als
 The vocabulary collection is maintained by curators in charge of validating, inserting a vocabulary in the LOV ecosystem, and assigning a detailed review.
 
 %\maria{should we include a box in this workflow for the vocabulary editors to improve the vocab when we contact them and then resubmit?}
-	\subsubsection{Vocabulary Insertion}\label{sssec:vocabInsert} Compared with other vocabulary catalogues (cf. Section \ref{sec:related}), LOV relies on a semi-automated process for vocabulary insertion illustrated in Figure \ref{fig:insertWorkflow}. Whereas an automated process puts the emphasis on the volume, in our process, we focus on the quality of each vocabulary and therefore the quality of the overall LOV ecosystem. Suggestions come from the community and from inter-vocabulary reference links. Our system provides a feature to suggest\footnote{\url{http://lov.okfn.org/dataset/lov/suggest/}} the insertion of a new vocabulary. This feature allows a user to check what information the LOV application can automatically detect and extract. LOV curators then check if the vocabulary falls in the scope of LOV and if it meets LOV vocabulary quality requirements to be reused:
+	\subsubsection{Vocabulary Insertion}\label{sssec:vocabInsert} Compared with other vocabulary catalogues (cf. Section \ref{sec:related}), LOV relies on a semi-automated process for vocabulary insertion. Whereas an automated process puts the emphasis on the volume, in our process, we focus on the quality of each vocabulary and therefore the quality of the overall LOV ecosystem. Suggestions come from the community and from inter-vocabulary reference links. Our system provides a feature to suggest\footnote{\url{http://lov.okfn.org/dataset/lov/suggest/}} the insertion of a new vocabulary. This feature allows a user to check what information the LOV application can automatically detect and extract. LOV curators then check if the vocabulary meets LOV quality requirements:
 \begin{enumerate}
  \item a vocabulary should be written in RDF and be dereferenceable;
  \item a vocabulary should be parsable without error (warning tolerated);
@@ -448,21 +448,21 @@ The vocabulary collection is maintained by curators in charge of validating, ins
 \end{enumerate}
 If a suggested vocabulary meets these criteria it is then inserted in the LOV catalogue. During this process, LOV curators keep the authors informed and help them to improve their vocabulary quality. As a result of our experience in vocabulary publication, we are now able to publish a handbook about metadata recommendations for Linked Open Data vocabularies to help in publishing well documented vocabularies~\cite{vandenbussche2011metadata}.
 
-\begin{figure}[ht!b]
-\includegraphics[width=1\textwidth]{FlowCharts/DiagramInsert.pdf}
-\caption{Curation workflow for vocabulary insertion.}
-\label{fig:insertWorkflow}
-\end{figure}
+%\begin{figure}[ht!b]
+%\includegraphics[width=1\textwidth]{FlowCharts/DiagramInsert.pdf}
+%\caption{Curation workflow for vocabulary insertion.}
+%\label{fig:insertWorkflow}
+%\end{figure}
 
 
 	\subsubsection{Vocabulary Review}
-When automatic extraction of metadata fails, LOV curators enhance the description available in the system and notify the vocabulary authors. This manual task usually consists in checking for any additional information present in the HTML documentation (targeted for human) and not reflected in the RDF description. The documentation provided by the LOV application assists any user in the task of understanding the semantics of each vocabulary term and therefore of any data using it. For instance, information about the creator and publisher is a key indication for a vocabulary user in case help or clarification is required from the author, or to assess the stability of that artifact. About 55\% of the vocabularies specify at least one creator, contributor or editor. We augment this information using manually gathered information, leading to the inclusion of data about the creator in over 85\% of the vocabularies in LOV. The database stores every version of a vocabulary since its first issue. For each version, a user can access the file (particularly useful when the original online file is no longer available). As illustrated in Figure \ref{fig:reviewWorkflow}, a script is in place to automatically check for vocabulary updates on a daily basis. If a new version has been detected, the version is stored locally, the statistics about that vocabulary recomputed and a notification to the curators issued. Similarly we ensure that curated review for each vocabulary is less than one year old by sending curators a notification when a vocabulary review is older than eleven months. In both cases, curators update the vocabulary review accordingly. 
+When automatic extraction of metadata fails, LOV curators enhance the description available in the system and notify the vocabulary authors. This manual task usually consists in checking for any additional information present in the HTML documentation (targeted for human) and not reflected in the RDF description. The documentation provided by the LOV application assists any user in the task of understanding the semantics of each vocabulary term and therefore of any data using it. For instance, information about the creator and publisher is a key indication for a vocabulary user in case help or clarification is required from the author, or to assess the stability of that artifact. About 55\% of the vocabularies specify at least one creator, contributor or editor. We augment this information using manually gathered information, leading to the inclusion of data about the creator in over 85\% of the vocabularies in LOV. The database stores every version of a vocabulary since its first issue. For each version, a user can access the file (particularly useful when the original online file is no longer available). A script is in place to automatically check for vocabulary updates on a daily basis. If a new version has been detected, the version is stored locally, the statistics about that vocabulary recomputed. Similarly we ensure that curated review for each vocabulary is less than one year old by sending curators a notification when a vocabulary review is older than eleven months. In both cases, curators update the vocabulary review accordingly. 
 
-\begin{figure}[ht!b]
-\includegraphics[width=1\textwidth]{FlowCharts/DiagramCuration.pdf}
-\caption{Curation workflow for systematic vocabulary review.}
-\label{fig:reviewWorkflow}
-\end{figure}
+%\begin{figure}[ht!b]
+%\includegraphics[width=1\textwidth]{FlowCharts/DiagramCuration.pdf}
+%\caption{Curation workflow for systematic vocabulary review.}
+%\label{fig:reviewWorkflow}
+%\end{figure}
 
 \subsection{Data Access}
 
@@ -569,7 +569,7 @@ The system provides two data dumps, one containing the LOV vocabulary catalogue 
 \subsubsection{SPARQL Endpoint}
 The LOV SPARQL Endpoint\footnote{\url{http://lov.okfn.org/dataset/lov/sparql}} offers a complementary data access method and allows clients to pose complex queries to the server and retrieve direct answers computed over the LOV dataset. We use the Jena fuseki triple store to store the N-quads file containing the LOV catalogue and the latest version of each vocabulary. We believe this is the first service to allow users to to query multiple vocabularies at the same time and to detect inter-vocabulary dependencies. 
 
-\subsection{LOV Application Program Interfaces and User Interfaces}
+\subsubsection{LOV Application Program Interfaces and User Interfaces}
 LOV APIs give a remote access to the many functions of LOV through a set of RESTful services\footnote{\url{http://lov.okfn.org/dataset/lov/apidoc/}}. The basic design requirements for these APIs is that they should allow applications to get access to the very same information humans do via the User Interfaces. More precisely the APIs give access, through three different services (cf. Figure \ref{fig:apis}), to functions related to:
 \begin{itemize} 
 			\item Vocabulary terms (classes, properties, datatypes and instances). With these functions, a software application can query the LOV search engine, ask for auto-completion or a suggestion for misspelled terms.
@@ -593,7 +593,9 @@ The LOV Website offers intuitive navigation within the vocabularies catalogue. I
 \label{fig:graphVocab}
 \end{figure}
 
+\subsection{Data Storage}
 
+To support the features presented above, we make use of different storage technologies adapted for each use of the system. The LOV catalogue is stored in MongoDB\textregistered, a document-based schema-less data store that scales and allows for dynamic change in the data schema. We use Jena Fuseki\footnote{\url{https://jena.apache.org/documentation/serving_data/}} to serve the data exported in RDF through the SPARQL protocol. The search feature is supported by Elasticsearch\textregistered, a full text index based on Lucene technology. This storage solution is particularly well adapted to our User Interface technology (nodejs) as it offers RESTful APIs with output in JSON format. Finally we store each vocabulary version file and RDF dumps of LOV catalogue in the environment file system.
 
 
 %Figure \ref{fig:LOVandNeOn} shows the activities within the overall NeOn methodologies activity workflow that can benefit from the LOV.
