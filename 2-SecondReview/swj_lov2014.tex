@@ -652,7 +652,7 @@ Governatori et al. \cite{governatori2014} analyse the current use of licenses in
 Reusing vocabularies requires searching for terms in existing specialised vocabulary catalogues or search engines on the Web. While we refer the reader to~\cite{AquinJoWS12} for a systematic survey of ontology repositories, we list below some existing catalogues relevant to finding vocabularies:  
 
 \begin{itemize}
- \item \textit{Catalogues of generic vocabularies/schemas} similar to LOV catalogue. Example of catalogues falling in this category are vocab.org\footnote{\url{http://vocab.org/}}, ontologi.es\footnote{\url{http://ontologi.es/}}, JoinUp Semantic Assets or the Open Metadata Registry.
+ \item \textit{Catalogues of generic vocabularies/schemas} similar to LOV catalogue. Example of catalogues falling in this category are vocab.org\footnote{\url{http://vocab.org/}}, ontologi.es\footnote{\url{http://ontologi.es/}}, JoinUp Semantic Assets or the Open Metadata Registry. Most of those repositories are not regularly updated and are created/owned by the institutions using the service.
  \item \textit{Catalogues of ontologies for a specific domain} such as biomedicine with the BioPortal \cite{bioportal11}, geospatial ontologies with SOCoP+OOR\footnote{\url{https://ontohub.org/socop}}, Marine Metadata Interoperability and the SWEET \cite{sweet05} ontologies\footnote{\url{http://sweet.jpl.nasa.gov//}}. The SWEET ontologies include several thousand terms, spanning a broad extent of Earth system science and related concepts (such as data characteristics), with the search tool to aid finding science data resources. 
  \item \textit{Catalogues of ontology Design Patterns (ODP)} focused on reusable patterns in ontology engineering \cite{presutti08}. The submitted patterns are small pieces of vocabularies that can further be integrated or linked with other vocabularies. ODP does not provide a search function for specific terms as is the case with Swoogle or Watson.
  \item \textit{Search Engines of ontology terms}. Among ontology search engines, we can cite: Swoogle \cite{finin2005swoogle}, Watson \cite{d2007watson,Sabou07}, FalconS \cite{cheng2008falcons} and Vocab.cc \cite{vocabcc2013}. These search engines crawl for data schema from RDF documents on the Web. They offer filtering based on ontology type (Class, Property) and a ranking based on the popularity. They don't look for ontology relations nor check if the definition of the ontology is available (usually known as dereferenciation). While in Swoogle the ranking score is displayed, Watson shows the language of the resource and the size. However, none of these services provide any relationship between the related ontologies, nor any domain classification of the vocabularies. Table \ref{tab:lovfeatures} presents a summary of key features of LOV with respect to Swoogle, Watson, Falcons and Vocab.cc.
@@ -660,7 +660,7 @@ Reusing vocabularies requires searching for terms in existing specialised vocabu
 \end{itemize}
 
 
-
+Almost all the other repositories and semantic web search engines do not provide the ability for a user to suggest a vocabulary. They are all based on the automatic discovery mechanism of vocabularies, where vocabularies emerged from data processing. However, the LOV catalogue content comes from two main sources: (i) users suggesting vocabularies by providing a single URI, (ii) matching process of the LOV with external services (such as \texttt{prefix.cc})
 
  \begin{table*}[!htb]
 \centering{
@@ -680,7 +680,10 @@ Read/Write	& Read & Read/Write & Read & Read & Read  	\\ \hline
 Ontology directory & No & No & No & Yes & Yes \\ \hline
 Application platform & No & No & No & N/A & Yes \\ \hline
 Storage & Cache & N/A & N/A &  API & Dump/endpoint \\ \hline
-Interaction with contributors & No &  N/A & No & No & Yes \\ 
+Interaction with contributors & No &  N/A & No & No & Yes \\ \hline
+Version tracking & No & No & No & No & Yes \\ \hline
+Visualizing vocabulary relationships & No & No & No & No & Yes \\ \hline
+		 
 		 \hline
 
 \end{tabular}
@@ -690,7 +693,7 @@ Interaction with contributors & No &  N/A & No & No & Yes \\
 \end{table*}
 
   %LODStats result for datasets usage  pull in LOV to represent the occurrences of datasets used in the LOD cloud. 
-Although 2940 vocabularies are mentioned in LODStats, comparing the content with LOV vocabularies needs further analysis to align both datasets. In LODStats dataset, we filtered out URIs containing ''resource'' that are not strictly vocabularies (1634) and some polluted data from the domain dati.opendataground.it, where the pattern dati.opendataground.it/comunealbanolaziale/ontologies/Owner9DatasetYYY are not vocabularies (962). This result in only 344 candidate URIs in LODStats comparable with LOV vocabularies. Out of those 344 URIs, 73 (21.22\%) are covered by LOV\footnote{\url{https://github.com/gatemezing/swj_lovPaper/blob/master/2-SecondReview/experiment/mapping-lov-lodstat-vocabs.csv}}.
+Although 2940 vocabularies are mentioned in LODStats, comparing the content with LOV vocabularies needs further analysis to align both datasets. In LODStats dataset, we filtered out URIs containing ''resource'' that are not strictly vocabularies (1634) and some polluted data from the domain dati.opendataground.it, where the pattern \url{http://{domain}/ontologies/Owner9DatasetYYY} are not vocabularies (962). This result in only 344 candidate URIs in LODStats comparable with LOV vocabularies. Out of those 344 URIs, 73 (21.22\%) are covered by LOV\footnote{\url{https://github.com/gatemezing/swj_lovPaper/blob/master/2-SecondReview/experiment/mapping-lov-lodstat-vocabs.csv}}. This type of analysis is part of the manual effort made by the curators to include a new vocabulary in LOV.
 
 Recently, an updated comprehensive empirical survey of Linked Data conformance is presented by Schmachtenberg et al. \cite{max2014}. Their survey is based on a large-scale Linked Data crawl from March 2014 as well as detailed categorize datasets by topical domain to analyze the differences in the adoption of the best practices in different domains. Their results concerning the most used accessible vocabularies vocabularies (e.g., FOAF, DCTERMS, SKOS, etc.) and the adoption of well-known vocabularies are inline with the findings of this paper. However, comparing the vocabularies in the LOD cloud with LOV catalogue needs some alignments. From the 638 mentioned by Schmachtenberg et al, we filtered out URIs starting with ''http://'' to remove domains, such as umbel.org. Additionally by removing misspelled URIs (07), incomplete URIs (10), bad names for vocabulary URIs, e.g., those finishing by different character than the trailing ''/'' or '\#' (24). Thus we found that 270 candidates URIs to be compared with LOV vocabularies, meaning 42.31\% of the initial set of LOD cloud vocabularies are comparable with LOV. Based on this analysis, we found that 102 vocabularies in the LOD cloud are already in the LOV catalogue, representing 38\% of the 270 candidates\footnote{\url{https://github.com/gatemezing/swj_lovPaper/tree/master/2-SecondReview/experiment}}. The general difference of our work with the one presented by Schmachtenberg et al. is that our approach applied strict criteria to include a vocabulary while their approach is dataset driven, and we found there was not a further analysis of the results from their algorithm.
 
@@ -710,8 +713,6 @@ With many users, both humans and applications, and several years of development,
 Whilst LOV is delivering quality vocabularies, it presents two main limitations: the non inclusion of SKOS thesaurus and the provision of a comprehensive metric of vocabulary usage. On the one hand, LOV focuses on a subset of vocabularies for the description of RDF data. It does not include any \emph{Value Vocabularies} such as SKOS thesaurus that would benefit from LOV services to encourage their reuse. This limitation is due to the rather small team of curators (4 at the date of writing this paper). Although we automated all the processes and analyses we could, the support to vocabulary authors is far from negligible. 
 On the other hand, LOV relies on third projects to get the valuable information of vocabulary usage in published datasets. At the moment, the popularity information coming from LODStats does not take into account the most recent interest (e.g. Schema.org) in publishing RDF data using markup language. As a consequence, the popularity measure is incomplete and does not represent all possible use of a vocabulary. 
 
-% change the text below to remove the bullets and replace with text on the weakness of the tool
-
 From the study of LOV as a dynamic ecosystem we can draw the following lessons learned, such as the need of more multilingual vocabularies on the Web and the long term preservation of vocabulary URIs. 
 \paragraph{Multilingual Vocabularies:}
 There is a need for vocabularies to support more languages. Labels are the main entry point to a vocabulary and their associated language is the key. Only 15\% of LOV vocabularies make use of more than one language. Multilingualism is important at least for two reasons: 
@@ -722,10 +723,6 @@ There is a need for vocabularies to support more languages. Labels are the main 
 Hence multilingualism and translation should be native, built-in features of any vocabulary construction, not a marginal task.
 
 \paragraph{Long term preservation of vocabularies URIs:} There is at the moment no solution for long-term vocabulary preservation on the Web \cite{Baker2013HLT}. This is a particularly important problem in a distributed and uncontrolled environment where any individual can create and publish a vocabulary. Third parties can reuse such vocabularies and therefore create a dependency on the original vocabulary availability as it retains the semantics of the data. This issue weakens the Semantic Web foundations.
-
-
-
-
 
 
 %\emph{A comprehensive list of most used vocabularies.} LOV catalogue and related work on profiling 
