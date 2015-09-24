@@ -663,15 +663,16 @@ Reusing vocabularies requires searching for terms in existing specialised vocabu
 Almost all the other repositories and semantic web search engines do not provide the ability for a user to suggest a vocabulary. They are all based on the automatic discovery mechanism of vocabularies, where vocabularies emerged from data processing. However, the LOV catalogue content comes from two main sources: (i) users suggesting vocabularies by providing a single URI, (ii) matching process of the LOV with external services (such as \texttt{prefix.cc})
 
  \begin{table*}[!htb]
+ \scriptsize
 \centering{
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
  \textbf{Feature}	& Swoogle & Watson & Falcons & Vocab.cc & LOV 			 \\ \hline
-Browsing ontologies	   & Yes & Yes & Yes & Yes & Yes \\ \hline
+Listing ontologies	   & Yes & Yes & Yes & Yes & Yes \\ \hline
 Ontology discovery method   & Automatic & Automatic & Automatic & Automatic & Automatic/Manual \\ \hline
 Scope & SWDs & SWDs & Concepts & vocab terms & Vocabularies \\ \hline
-Ranking	& LOD metric & LOD metric & LOD metric &  BTC corpus & LOD/LOV metric\\ 
-&&&&+ label's property type	 \\ \hline
+Ranking	& LOD metric & LOD metric & LOD metric &  BTC corpus & \\ 
+&&&&+ label's property type	& LOD/LOV metric \\ \hline
 Domain filtering & No & No & No & No & Yes \\ \hline
 Comments and review 	& No & Yes & No & No & Curators	\\ \hline
 Web service access & Yes & Yes & Yes & Yes & Yes		\\ \hline
@@ -682,7 +683,7 @@ Application platform & No & No & No & N/A & Yes \\ \hline
 Storage & Cache & N/A & N/A &  API & Dump/endpoint \\ \hline
 Interaction with contributors & No &  N/A & No & No & Yes \\ \hline
 Version tracking & No & No & No & No & Yes \\ \hline
-Visualizing vocabulary relationships & No & No & No & No & Yes \\ \hline
+Inter-vocab. relationship visualization & No & No & No & No & Yes \\ \hline
 		 
 		 \hline
 
@@ -693,9 +694,9 @@ Visualizing vocabulary relationships & No & No & No & No & Yes \\ \hline
 \end{table*}
 
   %LODStats result for datasets usage  pull in LOV to represent the occurrences of datasets used in the LOD cloud. 
-Although 2940 vocabularies are mentioned in LODStats, comparing the content with LOV vocabularies needs further analysis to align both datasets. In LODStats dataset, we filtered out URIs containing ''resource'' that are not strictly vocabularies (1634) and some polluted data from the domain dati.opendataground.it, where the pattern \url{http://{domain}/ontologies/Owner9DatasetYYY} are not vocabularies (962). This result in only 344 candidate URIs in LODStats comparable with LOV vocabularies. Out of those 344 URIs, 73 (21.22\%) are covered by LOV\footnote{\url{https://github.com/gatemezing/swj_lovPaper/blob/master/2-SecondReview/experiment/mapping-lov-lodstat-vocabs.csv}}. This type of analysis is part of the manual effort made by the curators to include a new vocabulary in LOV.
+Although 2940 vocabularies are mentioned in LODStats, comparing the content with LOV vocabularies needs further analysis to align both datasets. In LODStats dataset, we filtered out URIs containing ''resource'' that are not strictly vocabularies (1634) and some polluted data from the domain dati.opendataground.it, where the pattern \url{http://{domain}/ontologies/Owner9DatasetYYY} are not vocabularies (962). This result in only 344 candidate URIs in LODStats comparable with LOV vocabularies. Out of those 344 URIs, 73 (21.22\%) are covered by LOV\footnote{\url{https://github.com/gatemezing/swj_lovPaper/blob/master/2-SecondReview/experiment/mapping-lov-lodstat-vocabs.csv}}. When asserting 20 random vocabularies not already inserted in LOV, there are 8 different categories of errors detected: (i) Failed to determine the triples content type, (ii) Not found exception, (iii) 403 forbidden, (iv) Unknown host exception, (v) Peer not authenticated, (vi) 504 gateway, (vii) Bad URI and (viii) Unqualified typed nodes are not allowed. This shows that not all the vocabularies will be included in LOV. This type of analysis is part of the manual effort made by the curators to include a new vocabulary in LOV.
 
-Recently, an updated comprehensive empirical survey of Linked Data conformance is presented by Schmachtenberg et al. \cite{max2014}. Their survey is based on a large-scale Linked Data crawl from March 2014 as well as detailed categorize datasets by topical domain to analyze the differences in the adoption of the best practices in different domains. Their results concerning the most used accessible vocabularies vocabularies (e.g., FOAF, DCTERMS, SKOS, etc.) and the adoption of well-known vocabularies are inline with the findings of this paper. However, comparing the vocabularies in the LOD cloud with LOV catalogue needs some alignments. From the 638 mentioned by Schmachtenberg et al, we filtered out URIs starting with ''http://'' to remove domains, such as umbel.org. Additionally by removing misspelled URIs (07), incomplete URIs (10), bad names for vocabulary URIs, e.g., those finishing by different character than the trailing ''/'' or '\#' (24). Thus we found that 270 candidates URIs to be compared with LOV vocabularies, meaning 42.31\% of the initial set of LOD cloud vocabularies are comparable with LOV. Based on this analysis, we found that 102 vocabularies in the LOD cloud are already in the LOV catalogue, representing 38\% of the 270 candidates\footnote{\url{https://github.com/gatemezing/swj_lovPaper/tree/master/2-SecondReview/experiment}}. The general difference of our work with the one presented by Schmachtenberg et al. is that our approach applied strict criteria to include a vocabulary while their approach is dataset driven, and we found there was not a further analysis of the results from their algorithm.
+Recently, an updated comprehensive empirical survey of Linked Data conformance is presented by Schmachtenberg et al. \cite{max2014}. Their survey is based on a large-scale Linked Data crawl from March 2014 as well as detailed categorize datasets by topical domain to analyze the differences in the adoption of the best practices in different domains. Their results concerning the most used accessible vocabularies vocabularies (e.g., FOAF, DCTERMS, SKOS, etc.) and the adoption of well-known vocabularies are inline with the findings of this paper. However, comparing the vocabularies in the LOD cloud with LOV catalogue needs some alignments. From the 638 mentioned by Schmachtenberg et al, we kept URIs starting with ''http://'' removing domain names, such as umbel.org. Additionally by removing misspelled URIs (07), incomplete URIs (10), bad names for vocabulary URIs, e.g., those finishing by different character than the trailing ''/'' or '\#' (24). Thus we found that 270 candidates URIs to be compared with LOV vocabularies, meaning 42.31\% of the initial set of LOD cloud vocabularies are comparable with LOV. Based on this analysis, we found that 102 vocabularies in the LOD cloud are already in the LOV catalogue, representing 38\% of the 270 candidates\footnote{\url{https://github.com/gatemezing/swj_lovPaper/tree/master/2-SecondReview/experiment}}. The general difference of our work with the one presented by Schmachtenberg et al. is that our approach applied strict criteria to include a vocabulary while their approach is dataset driven, and we found there was not a further analysis of the results from their algorithm.
 
 \textit{Vocab.cc}\footnote{\url{http://vocab.cc}} is a service which is similar to LOV as it enables to look up and search for RDF terms based on usage information while providing more specific information about the usage of a particular class or property in the Billion Triple Challenge Dataset (BTCD) \cite{vocabcc2013}. It also provides the ranking of those properties or classes based on the data from prefix.cc. The main difference with LOV catalogue is that vocab.cc only contains property and classes without aggregating them to a single vocabulary namespace. Moreover, it does not include any relationships (sublass, subproperty) among the elements, while those information can be retrieved from vocabularies in LOV. 
 
