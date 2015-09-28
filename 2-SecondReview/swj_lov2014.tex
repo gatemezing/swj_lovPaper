@@ -524,12 +524,12 @@ pop(t,\mathcal{D}) = \frac{f(t,\mathcal{D})}{max\left\{f(t_i,\mathcal{D}): t_i \
 \end{split}
 \end{equation}
 
-When compared with RDF datasets, best practices about vocabulary publication makes their structure consensual and stable. It becomes then intuitive to assign more importance to a vocabulary term matching a query on the value of the property \url{rdfs:label} than \url{dcterms:comment}. Equation (\ref{eq:norm}) extends the lucene based search engine elasticsearch inner field-length norm $lengthNorm(field)$, which attaches a higher weight to shorter fields, by combining it with a property-level boost $boost(p(t))$. Using this property-level boost we can assign a different score depending on which label property a query term matched. We distinguish four different label property categories on which a query term could match: 
+When compared with RDF datasets, best practices about vocabulary publication makes their structure consensual and stable. It becomes then intuitive to assign more importance to a vocabulary term matching a query on the value of the property {\small\texttt{rdfs:label}} than {\small\texttt{dcterms:comment}}. Equation (\ref{eq:norm}) extends the lucene based search engine elasticsearch inner field-length norm $lengthNorm(field)$, which attaches a higher weight to shorter fields, by combining it with a property-level boost $boost(p(t))$. Using this property-level boost we can assign a different score depending on which label property a query term matched. We distinguish four different label property categories on which a query term could match: 
 		\begin{itemize}
- 			\item Local name (URI without the namespace). While a URI is not supposed to carry any meaning, it is a convention to use a compressed form of a term label to construct the local name. It becomes therefore an important artifact for term matching for which the highest score will be assigned. An example of local name matching the term ``person'' is \url{http://schema.org/Person}.
-			\item Primary labels. The highest score will also be assigned for matches on \url{rdfs:label}, \url{dce:title}, \url{dcterms:title}, \url{skos:prefLabel} properties. An example of primary label matching the term ``person'' is \url{rdfs:label} \emph{"Person"@en}.
-			\item Secondary labels. We define as secondary label the following properties: \url{rdfs:comment}, \url{dce:description}, \url{dcterms:description}, \url{skos:altLabel}. A medium score is assigned for matches on these properties. An example of secondary label matching the term ``person'' is \url{dcterms:description} \emph{"Examples of a Creator include a person, an organization, or a service."@en}.
-			\item Tertiary labels. Finally all properties not falling in the previous categories are considered as tertiary labels for which a low score is assigned. An example of tertiary label matching the term ``person'' is \url{http://metadataregistry.org/uri/profile/RegAp/name} \emph{"Person"@en}. 
+ 			\item Local name (URI without the namespace). While a URI is not supposed to carry any meaning, it is a convention to use a compressed form of a term label to construct the local name. It becomes therefore an important artifact for term matching for which the highest score will be assigned. An example of local name matching the term ``person'' is {\small\texttt{http://schema.org/Person}}.
+			\item Primary labels. The highest score will also be assigned for matches on {\small\texttt{rdfs:label}}, {\small\texttt{dce:title}}, {\small\texttt{dcterms:title}}, {\small\texttt{skos:prefLabel}} properties. An example of primary label matching the term ``person'' is {\small\texttt{rdfs:label "Person"@en}}.
+			\item Secondary labels. We define as secondary label the following properties: {\small\texttt{rdfs:comment}}, {\small\texttt{dce:description}}, {\small\texttt{dcterms:description}}, {\small\texttt{skos:altLabel}}. A medium score is assigned for matches on these properties. An example of secondary label matching the term ``person'' is {\small\texttt{dcterms:description}} {\small\texttt{"Examples of a Creator include a person,\\ an organization, or a service."@en}}.
+			\item Tertiary labels. Finally all properties not falling in the previous categories are considered as tertiary labels for which a low score is assigned. An example of tertiary label matching the term ``person'' is {\small\texttt{rdarel2:name "Person"@en}}. 
 		\end{itemize}
 
 \begin{equation}\label{eq:norm}
@@ -557,7 +557,7 @@ score(t,Q) =tf(t,V) * idf(t,\mathcal{V}) \\
 
 
 \subsubsection{Data Dumps}
-The system provides two data dumps, one containing the LOV vocabulary catalogue only in RDF Notation 3 format\footnote{\url{http://lov.okfn.org/lov.n3.gz}} and another one containing the LOV catalogue along with the latest version of each vocabulary and the statistics of use in LOD in RDF N-quads format\footnote{\url{http://lov.okfn.org/lov.nq.gz}}(keeping each vocabulary in a separate named graph). As illustrated in Figure \ref{fig:model}, the RDF model mainly reuses the Data CATalogue Vocabulary (DCAT) which allows the representation of the LOV catalogue as a \texttt{dcat:Catalog} composed of vocabulary entries (\texttt{dcat:CatalogRecord}) capturing information like the insertion date in LOV. Each entry point to the vocabulary itself is represented by a sub class of \texttt{dcat:Dataset} defined in the Vocabulary Of A Friend (VOAF). This artifact contains metadata extracted by the LOV application such as creators, first issued date, number of occurrences of the vocabulary in Linked Open Data. Each vocabulary is then linked to its various published versions represented by the \texttt{dcat:Distribution} entity on which information such as inter-vocabulary links or languages can be found.
+The system provides two data dumps, one containing the LOV vocabulary catalogue only in RDF Notation 3 format\footnote{\url{http://lov.okfn.org/lov.n3.gz}} and another one containing the LOV catalogue along with the latest version of each vocabulary and the statistics of use in LOD in RDF N-quads format\footnote{\url{http://lov.okfn.org/lov.nq.gz}}(keeping each vocabulary in a separate named graph). As illustrated in Figure \ref{fig:model}, the RDF model mainly reuses the Data CATalogue Vocabulary (DCAT) which allows the representation of the LOV catalogue as a {\small\texttt{dcat:Catalog}} composed of vocabulary entries ({\small\texttt{dcat:CatalogRecord}}) capturing information like the insertion date in LOV. Each entry point to the vocabulary itself is represented by a sub class of {\small\texttt{dcat:Dataset}} defined in the Vocabulary Of A Friend (VOAF). This artifact contains metadata extracted by the LOV application such as creators, first issued date, number of occurrences of the vocabulary in Linked Open Data. Each vocabulary is then linked to its various published versions represented by the {\small\texttt{dcat:Distribution}} entity on which information such as inter-vocabulary relations or languages can be found.
 
 \begin{figure*}[!htb]
 \includegraphics[width=.9\textwidth]{LOV_model.pdf}
@@ -567,7 +567,7 @@ The system provides two data dumps, one containing the LOV vocabulary catalogue 
 
 
 \subsubsection{SPARQL Endpoint}
-The LOV SPARQL Endpoint\footnote{\url{http://lov.okfn.org/dataset/lov/sparql}} offers a complementary data access method and allows clients to pose complex queries to the server and retrieve direct answers computed over the LOV dataset. We use the Jena fuseki triple store to store the N-quads file containing the LOV catalogue and the latest version of each vocabulary. We believe this is the first service to allow users to to query multiple vocabularies at the same time and to detect inter-vocabulary dependencies. 
+The LOV SPARQL endpoint\footnote{\url{http://lov.okfn.org/dataset/lov/sparql}} offers a complementary data access method and allows clients to pose complex queries to the server and retrieve direct answers computed over the LOV dataset. We use the Jena fuseki triple store to store the N-quads file containing the LOV catalogue and the latest version of each vocabulary. We believe this is the first service that allows users to query multiple vocabularies at the same time and to detect inter-vocabulary dependencies. 
 
 \subsubsection{LOV Application Program Interfaces and User Interfaces}
 LOV APIs give a remote access to the many functions of LOV through a set of RESTful services\footnote{\url{http://lov.okfn.org/dataset/lov/apidoc/}}. The basic design requirements for these APIs is that they should allow applications to get access to the very same information humans do via the User Interfaces. More precisely the APIs give access, through three different services (cf. Figure \ref{fig:apis}), to functions related to:
@@ -578,8 +578,8 @@ LOV APIs give a remote access to the many functions of LOV through a set of REST
 		\end{itemize}
 LOV APIs are a convenient means to access the full functionality and data of LOV. It is particularly appropriate for dynamic Web applications using scripting languages such as Javascript. The APIs described above have been developed for, and follow the requirements of, Ontology Design and Data Publication tools.
 
-\begin{figure}[ht!b]
-\includegraphics[scale=0.4]{apis.png}
+\begin{figure}[!htb]
+\includegraphics[trim={1cm 1cm 1cm 2cm},width=1.2\textwidth]{apis.pdf}
 \caption{List of APIs to access LOV data.}
 \label{fig:apis}
 \end{figure}
@@ -588,7 +588,7 @@ The LOV Website offers intuitive navigation within the vocabularies catalogue. I
 
 
 \begin{figure}[ht!b]
-\includegraphics[scale=0.45]{graphVocab.png}
+\includegraphics[trim={1cm 1cm 1cm 1cm},width=1\textwidth]{graphVocab.pdf}
 \caption{Schema.org vocabulary incoming and outgoing links graphical representation as displayed in the UI.}
 \label{fig:graphVocab}
 \end{figure}
@@ -612,11 +612,11 @@ LOV supports the emergence of a rich application ecosystem thanks to its various
  
 \subsection{Derived tools and applications}
 
-Maguire et al. \cite{ontomaton12} use the LOV search API to implement OntoMaton\footnote{\url{https://github.com/ISA-tools/OntoMaton}}, a widget for bringing together ontology lookup and tagging within the collaborative environment provided by Google spreadsheets. 
+In \cite{ontomaton12}, Maguire et al. use the LOV search API to implement OntoMaton\footnote{\url{https://github.com/ISA-tools/OntoMaton}}, a widget for bringing together ontology lookup and tagging within the collaborative environment provided by Google spreadsheets. 
 
 YASGUI (Yet Another SPARQL Query GUI)\footnote{\url{http://legacy.yasgui.org/}} is a client-side JavaScript SPARQL query editor that uses the LOV API for property and class auto-completion together with prefix.cc\footnote{\url{http://prefix.cc}} for namespace prefix auto-completion \cite{yasgui}. YASGUI is itself reused by LOV for its SPARQL Endpoint User Interface.
 
-The Datalift\footnote{\url{http://datalift.org/}} platform \cite{scharffe_2012}, a framework for ``lifting'' raw data into RDF, comes with a module to map data objects and properties to ontology classes and predicates available in the LOV catalogue. The Data2Ontology module takes as input a ``raw RDF'', a dataset that has been converted directly from legacy format to triples. The goal is to help publishers reuse existing ontologies for converting their dataset with easy discovery and interlinking. 
+The Datalift\footnote{\url{http://datalift.org/}} platform \cite{scharffe_2012}, a framework for ``lifting'' raw data into RDF, comes with a module, named Data2Ontology, to map data objects and properties to ontology classes and predicates available in the LOV catalogue. The Data2Ontology module takes as input a ``raw RDF'' -- straitghforward conversion of legacy format to RDF -- with the goal to help data publishers in selecting vocabulary terms that could be used to represent better their data.
 %It consists of three main components assisting the publisher in selecting properties suitable for the dataset to be published. 
 %\begin{description}
 %\item 1-LOV component. This component connects with the LOV catalogue to retrieve up-to-date ontologies using the LOV %search API\footnote{\url{http://lov.okfn.org/dataset/lov/apidoc/#lov2search}}.
@@ -626,7 +626,7 @@ The Datalift\footnote{\url{http://datalift.org/}} platform \cite{scharffe_2012},
 
 OntoWiki\footnote{\url{http://ontowiki.net/}} facilitates the visual presentation of a knowledge base as an information map, with different views on instance data \cite{auer2006ontowiki}. It enables intuitive authoring of semantic content, with an inline editing mode for editing RDF content, similar to WYSIWIG for text documents. OntoWiki offers a vocabulary selection feature based on LOV.
 
-Furthermore, we can mention the Prot{\'e}g{\'e}LOV\footnote{\url{http://labs.mondeca.com/protolov/}}, a plug-in for the Prot{\'e}g{\'e} editor tool \cite{prolov2015} that aims at improving the development of lightweight ontologies by reusing existing vocabularies at a low fine grained level. The tool searches for a term in LOV via APIs and provides three actions if the term exists : (i) replaces the selected term in the current ontology, (ii) adds the \texttt{rdfs:subClassOf} axiom and (iv) adds the \texttt{owl:equivalentClass}.
+Furthermore, we can mention the Prot{\'e}g{\'e}LOV\footnote{\url{http://labs.mondeca.com/protolov/}}, a plug-in for the Prot{\'e}g{\'e} editor tool \cite{prolov2015} that aims at improving the development of lightweight ontologies by reusing existing vocabularies at a low fine grained level. The tool searches for a term in LOV via APIs and provides three actions if the term exists : (i) replaces the selected term in the current ontology, (ii) adds the {\small\texttt{rdfs:subClassOf}} axiom and (iv) adds the {\small\texttt{owl:equivalentClass}}.
 % tool which provides a technological support to help users in reusing terms based on the vocabularies in the LOV catalogue, mostly by retrieving the classes, object properties and data properties according to the panel in the editor during the modeling
 
 \subsection{Using LOV as a Research platform}
@@ -644,7 +644,7 @@ In \cite{janowicz2014five}, the authors provide a 5 star rating for RDF vocabula
 
 RDFUnit\footnote{\url{https://github.com/AKSW/RDFUnit}} is a test-driven data debugging framework for the Web of data. In \cite{rdfunit}, the authors provide an automatic test case for all available schema registered with LOV. Vocabularies are used to encode semantics to domain specific knowledge to check the quality of data.
 
-Governatori et al. \cite{governatori2014} analyse the current use of licenses in vocabularies on the Web based on the LOV catalogue in order to propose a framework to detect incompatibilities between datasets and vocabularies.
+Finally, Governatori et al. \cite{governatori2014} analyse the current use of licenses in vocabularies on the Web based on the LOV catalogue in order to propose a framework to detect incompatibilities between datasets and vocabularies.
 
 
 \section{Related work}
