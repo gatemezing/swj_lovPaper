@@ -1,0 +1,23 @@
+\begin{tikzpicture}
+\begin{axis}[
+    ylabel=number of vocabularies,
+    xlabel=number of explicit languages,
+    ybar,
+    ymin={0},
+    % ylabel={\#vocabularies},
+    symbolic x coords={0,1,2,3,4,5,6,7+},
+    xtick=data,
+    nodes near coords,
+    nodes near coords align={vertical},
+    ]
+\addplot[fill=orange] coordinates {(0,143)
+(1,292)
+(2,49)
+(3,7)
+(4,2)
+(5,7)
+(6,5)
+(7+,5)
+};
+\end{axis}
+\end{tikzpicture}
