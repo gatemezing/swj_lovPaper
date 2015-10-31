@@ -59,7 +59,7 @@
 \newcommand{\maria}[1]{\textcolor{blue}{\textbf{[MARIA:#1]}}}
 \newcommand{\py}[1]{\textcolor{olive}{\textbf{[PIERRE-YVES TO:#1]}}}
 \newcommand{\ghis}[1]{\textcolor{brown}{\textbf{[GHIS TO:#1]}}}
-\newcommand{\suggest}[1]{\textcolor{red}{\textbf{[SUGGEST:#1]}}}
+\newcommand{\js}[1]{\textcolor{green}{\textbf{[JS:#1]}}}
 
 % Language Definitions for Turtle
 \definecolor{MyLightGray}{RGB}{200, 200,200}
@@ -192,12 +192,15 @@ The purpose of LOV is to promote and facilitate the reuse of well documented voc
 \begin{description}
  \item [Ontology Search.] One of LOV's main features is the search of vocabulary terms (class, property, datatype) where vocabularies (and therefore vocabulary terms) are categorised according to the domain they address.
  \item [Ontology Assessment.] LOV provides a score for each term retrieved by a keyword search. This score can be used during the ontology assessment stage.
- \item [Ontology Mapping.] In LOV, vocabularies rely on each other in seven different ways (cf. Section \ref{sec:vocabLevelAnalysis}). These relationships can be useful to find alignments between ontologies. 
+ \item [Ontology Mapping.] In LOV, vocabularies rely on each other in seven different ways: metadata, import, specialization, generalization, extension and equivalence (cf. Section \ref{sec:vocabLevelAnalysis}). These relationships can be useful to find alignments between ontologies. 
 \end{description}
 
 This report is structured as follows: In the next section, we provide statistics on the usage of LOV. In Section~\ref{sec:arch}, we describe the components and features of the system. Thereafter,  in Section~\ref{sec:lovecosystem}, we offer an overview of some applications and research projects based and motivated by the LOV system. In Section~\ref{sec:related}, we report on related work. Discussion about the limitations and further development of LOV is presented in Section~\ref{sec:discussion}. We finally reach our conclusions in Section~\ref{sec:conclusion}.
 
-%%%%%LOV state
+
+%%%%%Section: LOV state%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \section{LOV state}\label{sec:state}
 The LOV dataset consists of 511 vocabularies as of June 2015. Figure \ref{fig:evolLOV} depicts the evolution of the number of vocabularies inserted in the LOV dataset since March 2011. The addition of new vocabularies to LOV has been fairly constant with two outstanding events: 
 \begin{inparaenum}[1)] 
