@@ -325,32 +325,33 @@ Since 2011, the Linked Open Vocabularies initiative has gathered a community of 
 
 
 
-%%%%% SYSTEM COMPONENTS %%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% System components and Features %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{System Components and Features}\label{sec:arch}
-	 The LOV architecture consists of four main components (cf. Figure \ref{fig:arch}): 
+	 The LOV architecture is composed of four main components (cf. Figure \ref{fig:arch}): 
 \begin{inparaenum}[1)] 
-	\item \emph{Tracking and Analysis}. Responsible for checking for any vocabulary version update and analysing vocabularies' specific features.
-	\item \emph{Curation}. Ensuring the high quality of the LOV dataset through methods for the community to suggest or edit the catalogue.
+	\item \emph{Tracking and Analysis}. Checks for any vocabulary version update and analyses vocabularies' specific features.
+	\item \emph{Curation}. Ensures the high quality of the LOV dataset by enabling the community to suggest vocabularies or edit the catalogue.
 	\item \emph{Data Access}. Provides access to the data through a large range of methods and protocols to facilitate the use of LOV dataset and
-	\item \emph{Data Storage}. Offering a reliable and efficient method to store and query the data.
+	\item \emph{Data Storage}. Offers a reliable and efficient method for storing and querying the data.
 \end{inparaenum} 
 Each component provides a set of features detailed in the following subsections.
 
+
 \begin{figure}[ht!b]
-\includegraphics[trim={0cm 7cm 0cm 0cm},scale=.6]{figures/lov_architecture.pdf}
+\includegraphics[trim={0cm 7cm 0cm 0cm},scale=.6]{lov_architecture.pdf}
 \caption{Overview of the Linked Open Vocabularies Architecture.}
 \label{fig:arch}
 \end{figure}
 
 \subsection{Tracking and Analysis}
-	The \emph{Tracking and Analysis} component takes care of dereferencing\footnote{A given URI is looked up over HTTP to return content in a processable format such as XML/RDF, Notation 3 or turtle.} LOV vocabularies, storing a version locally (in Notation 3 format) and extracting relevant metadata.
+	The \emph{Tracking and Analysis} component dereferences\footnote{A URI is looked up over HTTP to return content in a processable format such as XML/RDF, Notation 3 or Turtle.} LOV vocabularies, stores a version locally (in Notation 3 format) and extracts relevant metadata.
 
 \subsubsection{Vocabulary Level Analysis}\label{sec:vocabLevelAnalysis}
 At the vocabulary level, the system extracts three types of information for each vocabulary version (Figure \ref{fig:dcat}):
 \begin{itemize}
-\item Metadata associated to the vocabulary. This information is explicitly defined within the vocabulary to provide context and useful data about the vocabulary. Some high level vocabularies can be reused for that purpose, such as Dublin Core\footnote{\url{http://purl.org/dc/terms/}} to describe authors, contributors, publishers or Creative Commons\footnote{\url{http://creativecommons.org/ns\#}} for the description of a license.
+\item The metadata associated to the vocabulary. This information is explicitly defined within the vocabulary to provide context and useful data about the vocabulary. Some high level vocabularies can be reused for that purpose, such as Dublin Core\footnote{\url{http://purl.org/dc/terms/}} to describe authors, contributors, publishers or Creative Commons\footnote{\url{http://creativecommons.org/ns\#}} for the description of a license.
 
 \item Inlinks/incoming vocabularies, making explicit the \underline{links from} another vocabulary based on the semantic relation of their terms.
 
@@ -358,27 +359,30 @@ At the vocabulary level, the system extracts three types of information for each
 \end{itemize}
 
 \begin{figure}[ht!b]
-\includegraphics[trim={0cm 10cm 0cm 0cm},width=1\textwidth]{figures/DCAT.pdf}
-\caption{Metadata type, vocabulary inlinks and outlinks of the DCAT vocabulary.}
+\includegraphics[trim={0cm 10cm 0cm 0cm},width=1\textwidth]{FlowCharts/DCAT.pdf}
+\caption{Metadata type, vocabulary inlinks and outlinks of DCAT vocabulary.}
 \label{fig:dcat}
 \end{figure}
 
-There are many ways two vocabularies can be interlinked. Let us consider two vocabularies $V1$ and $V2$ such that $V1$ contains a class $c1$ and a property $p1$ and $V2$ contains a class $c2$ and a property $p2$. Relationships between these two vocabularies can be of the following types (the lines and numbers in brackets correspond to real examples presented in Listing \ref{list:voaf}):
+Two vocabularies can be interlinked in many different ways. Consider two vocabularies $V1$ and $V2$ such that $V1$ contains a class $c1$ and a property $p1$ and $V2$ contains a class $c2$ and a property $p2$. Relationships between these two vocabularies can be of the following types (the lines and numbers in brackets correspond to real examples presented in Listing \ref{list:voaf}):
+
 		\begin{description}
-			\item [Metadata.] some terms from $V2$ are reused to provide metadata about $V1$ (lines 1 to 2).
+			\item [Metadata.] some terms from $V2$ are reused to provide metadata about $V1$, Listing \ref{list:voaf} lines 1-2 .
 
 			\item [Import.] some terms from $V2$ are reused with $V1$ to capture the semantic of the data (lines 3 to 4).
 
-			\item [Specialization.] $V1$ defines some subclasses or subproperties (or local restrictions) of $V2$ (lines 5 to 8).
+			\item [Specialization.] $V1$ defines some subclasses or subproperties (or local restrictions) of $V2$, Listing \ref{list:voaf} lines 5-8.
 
-			\item [Generalization.] $V1$ defines some superclasses or superproperties of $V2$ (lines 9 to 11).
+			\item [Generalization.] $V1$ defines some superclasses or superproperties of $V2$, Listing \ref{list:voaf} lines 9-11.
 
-			\item [Extension.] $V1$ extends the expressivity of $V2$ (lines 12 to 15).
+			\item [Extension.] $V1$ extends the expressivity of $V2$, Listing \ref{list:voaf} lines 12-15.
 
-			\item [Equivalence.] $V1$ declares some equivalent classes or properties with $V2$ (lines 16 to 20).
+			\item [Equivalence.] $V1$ declares some equivalent classes or properties with $V2$, Listing \ref{list:voaf} lines 16-20.
 
-			\item [Disjunction.] $V1$ declares some disjunct classes with $V2$ (lines 21 to 23).
+			\item [Disjunction.] $V1$ declares some disjunct classes with $V2$, Listing \ref{list:voaf} lines 21-23.
 		\end{description}
+
+
 
 \begin{lstlisting}[float=*,basicstyle=\tiny,label={list:voaf}, language=turtle, caption={Examples of Inter-vocabulary relationships.}]
 # Metadata
@@ -406,7 +410,7 @@ There are many ways two vocabularies can be interlinked. Let us consider two voc
     <http://www.ontologydesignpatterns.org/ont/dul/ontopic.owl#SubjectSpace>
 \end{lstlisting}
 
-These relationships, with the exception of \emph{Import}, which is represented by {\small\texttt{owl:imports}}, are captured by the Vocabulary of a Friend\footnote{\url{http://lov.okfn.org/vocommons/voaf/}} (VOAF). Whenever a new vocabulary/vocabulary version is added to LOV, the system automatically detects and adds the inter-vocabulary relationships to the LOV catalogue using specific \emph{Construct} SPARQL queries\footnote{The SPARQL Queries are described in the VOAF vocabulary}. Table \ref{tab:voaf} presents a breakdown of the occurrences of each relation in LOV.
+These relationships, with the exception of \emph{Import} which is represented by {\small\texttt{owl:imports}}, are captured by the Vocabulary of a Friend\footnote{\url{http://lov.okfn.org/vocommons/voaf/}} (VOAF). Whenever a new vocabulary/vocabulary version is added to LOV, the system automatically detects and adds the inter-vocabulary relationships to the LOV catalogue using specific \emph{Construct} SPARQL queries\footnote{The SPARQL Queries are described in the VOAF vocabulary}. Table \ref{tab:voaf} presents a breakdown of the occurrences of each relation in LOV.
 
 \begin{table}[h!tb]
 \caption{Inter-vocabulary relationship types and their number of occurrences in LOV.}
@@ -431,48 +435,53 @@ voaf:hasDisjunctionsWith & 16 \\
 At the vocabulary term level, the system extracts two types of information:
 \begin{itemize}
 \item term type (class, property, datatype or instance defined in the namespace of the vocabulary) indexed by the system's search engine so it can be used to filter a search.
-\item term natural language annotations (RDF literals) with their predicate and language (e.g. {\small\texttt{rdfs:label}}\\ {\small\texttt{"Temperature"@en}}). This information is provided as is for indexing by the search engine and will later be used in the scoring algorithm (cf. Section \ref{sssec:search}).
+\item term natural language annotations (RDF literals) with their predicate and language (e.g. {\small\texttt{rdfs:label}}\\ {\small\texttt{"Temperature"@en}}). This information is provided as is for indexing by the search engine and will later be used (cf. Section \ref{sssec:search}) in the scoring algorithm.
 \end{itemize}
 
-The information concerning the use of a vocabulary term in Linked Open Data, also named "popularity", is used in LOV search results scoring, as explained in Section \ref{sssec:search}. This information is not natively present in the vocabularies and can not be inferred from the LOV dataset. We make use of the LODStats project, which gathers comprehensive statistics about RDF datasets \cite{demter-2012-ekaw}. LOV regularly fetches LODStats raw data\footnote{We keep the statistics available at: \url{http://stats.lod2.eu/rdfdocs/void} synchronised. Unfortunately, this file is unavailable since June 2014, which explains some differences between the statistics we use and LODStats.} described using the Vocabulary of Interlinked Datasets (VoID) \cite{void2009} and the Data Cube vocabulary. We pre-process LODStats data before inserting it to LOV. Indeed, there are many duplicates in LODStats representing in fact the same vocabulary URI (e.g., foaf has three different records\footnote{\url{http://stats.lod2.eu/vocabularies?search=foaf}}, and has to be mapped to a single entry in LOV).
+The information concerning the usage  of a vocabulary term in Linked Open Data, also called "popularity", is used in LOV search results scoring as explained in Section \ref{sssec:search}. This information is not natively present in the vocabularies and can not be inferred from the LOV dataset. We make use of the LODStats project which gathers comprehensive statistics about RDF datasets ~\cite{demter-2012-ekaw}. LOV regularly fetches LODStats raw data\footnote{We retrieve the statistics available at: \url{http://stats.lod2.eu/rdfdocs/void}. Unfortunately this file has been unavailable since June 2014 which explains some differences between the statistics we use and LODStats.} described using the Vocabulary of Interlinked Datasets (VoID) \cite{void2009} and the Data Cube vocabulary. We pre-process LODStats data before inserting it to LOV. Indeed, there are many duplicates in LODStats representing in fact the same vocabulary URI (e.g., \texttt{foaf} has three different records\footnote{\url{http://stats.lod2.eu/vocabularies?search=foaf}}, and has to be mapped to a single entry in LOV)
+
 
 \subsection{Curation}
-The vocabulary collection is maintained by curators in charge of validating, inserting a vocabulary in the LOV ecosystem, and assigning a detailed review.
+The vocabulary collection is maintained by curators who are responsible for validating metadata information, inserting a vocabulary in the LOV ecosystem, and assigning a review on the suggested vocabulary. 
 
-	\subsubsection{Vocabulary Insertion}\label{sssec:vocabInsert} Compared to other vocabulary catalogues (cf. Section \ref{sec:related}), LOV relies on a semi-automated process for vocabulary insertion. Whereas an automated process puts the emphasis on the volume, in our process, we focus on the quality of each vocabulary and therefore the quality of the overall LOV ecosystem. Suggestions come from the community and from inter-vocabulary reference links. Our system provides a feature to suggest\footnote{\url{http://lov.okfn.org/dataset/lov/suggest/}} the insertion of a new vocabulary. This feature allows a user to check what information the LOV system can automatically detect and extract. LOV curators then check if the vocabulary meets LOV quality requirements:
+%[JS: requesting a detailed review? from whom].
+
+	\subsubsection{Vocabulary Insertion}\label{sssec:vocabInsert} Compared to other vocabulary catalogues (cf. Section \ref{sec:related}), LOV relies on a semi-automated process for vocabulary insertion. Whereas an automated process focuses only on volume, in our process, we focus on the quality of each vocabulary and therefore the quality of the overall LOV ecosystem. Suggestions come from the community and from inter-vocabulary reference links. Our system provides a feature to suggest\footnote{\url{http://lov.okfn.org/dataset/lov/suggest/}} the insertion of a new vocabulary. This feature allows a user to check what information the LOV system can automatically detect and extract. LOV curators then check whether the vocabulary meets the following LOV quality requirements:
 \begin{enumerate}
  \item a vocabulary should be written in RDF and be dereferenceable;
- \item a vocabulary should be parsable without error (warning tolerated);
+ \item a vocabulary should be parsable without error (warnings are tolerated);
  \item all vocabulary terms (classes, properties and datatypes) in a vocabulary should have an \\ {\small\texttt{rdfs:label}};
  \item a vocabulary should refer to and reuse relevant existing ones;
  \item a vocabulary should provide some metadata about the vocabulary itself (a minima a title).
 \end{enumerate}
-If a suggested vocabulary meets these criteria it is then inserted in the LOV catalogue. During this process, LOV curators keep the authors informed and help them to improve their vocabulary quality. As a result of our experience in vocabulary publication, we are now able to publish a handbook about metadata recommendations for Linked Open Data vocabularies to help in publishing well documented vocabularies~\cite{vandenbussche2011metadata}.
-
+If a suggested vocabulary meets these criteria it is then inserted in the LOV catalogue. During this process, LOV curators keep the authors informed and help them to improve their vocabulary quality. As a result of our experience in vocabulary publication, we developed a handbook of metadata recommendations for Linked Open Data vocabularies to help in publishing well documented vocabularies~\cite{vandenbussche2011metadata}.
 
 
 	\subsubsection{Vocabulary Review}
-When automatic extraction of metadata fails, LOV curators enhance the description available in the system and notify the vocabulary authors. This manual task usually consists in checking for any additional information present in the HTML documentation (targeted for humans) and not reflected in the RDF description. The documentation provided by the LOV system assists any user in the task of understanding the semantics of each vocabulary term and therefore of any data using it. For instance, information about the creator and publisher is a key indication for a vocabulary user in case help or clarification is required from the author, or to assess the stability of that artifact. About 55\% of the vocabularies specify at least one creator, contributor or editor. We augment this information using manually gathered information, leading to the inclusion of data about the creator in over 85\% of the vocabularies in LOV. The database stores every version of a vocabulary since its first issue. For each version, a user can access the file (particularly helpful when the original online file is no longer available). A script automatically checks for vocabulary updates on a daily basis. If a new version has been detected, the version is stored locally, and the statistics about that vocabulary are recomputed. Similarly, we ensure that the curated review for each vocabulary is less than one year old by sending curators a notification when a vocabulary review is older than eleven months. In both cases, curators update the vocabulary review accordingly. 
+When automatic extraction of metadata fails, LOV curators enhance the description available in the system and notify the vocabulary authors of the pitfalls' report. This manual task usually consists in checking for any additional information present in the HTML documentation (targeted for humans) and not reflected in the RDF description. The documentation provided by the LOV system assists users in understanding the semantics of each vocabulary term and therefore of any data using the term. For instance, information about the creator and publisher is a key indication for a vocabulary user in case help or clarification is required from the author, or to assess the stability of that artifact. About 55\% of the vocabularies specify at least one creator, contributor or editor. We augment this information using manually gathered information, leading to the inclusion of data about the creator in over 85\% of the vocabularies in LOV. The database stores every version of a vocabulary since its first issue. For each version, a user can access the file (particularly useful when the original online file is no longer available). A script automatically checks for vocabulary updates on a daily basis. When a new version is detected, it is stored locally, and the statistics about that vocabulary are recomputed. Similarly we ensure that curated review for each vocabulary is less than one year old by sending curators a notification when a vocabulary review is older than eleven months. In both cases, curators update the vocabulary review accordingly. 
+
 
 
 \subsection{Data Access}
 
-LOV system (code and data) is published under Creative Commons 4.0 license\footnote{\url{https://creativecommons.org/licenses/by/4.0/}} (CC BY 4.0). Four methods are offered for users and applications to access LOV data:
-		\begin{inparaenum}[1)] 
-			\item query the LOV search engine to find the most relevant vocabulary terms, vocabularies or agents matching keywords and/or filters;
-			\item download data dumps of the LOV catalogue in RDF Notation 3 format or the LOV catalogue and the latest version of each vocabulary in RDF N-quads format;
-			\item run SPARQL queries on the LOV SPARQL Endpoint; and
-			\item use the LOV system Application Program Interface (API) which provides a full access to LOV data for software applications.
-		\end{inparaenum}
+The LOV system (code and data) is published under a Creative Commons 4.0 license\footnote{\url{https://creativecommons.org/licenses/by/4.0/}} (CC BY 4.0). Users and applications can access the LOV data in four ways:
+		\begin{enumerate} 
+			\item Query the LOV search engine to find the most relevant vocabulary terms, vocabularies or agents matching keywords and/or filters;
+			\item Download data dumps of the LOV catalogue in RDF Notation 3 format or the LOV catalogue and the latest version of each vocabulary in RDF N-quads format;
+			\item Run SPARQL queries on the LOV SPARQL Endpoint; and
+			\item Use the LOV API which provides a full access to LOV data for software applications.
+		\end{enumerate}
+		
+	%[Why not make as a  multi-line list (not inparaenum)?]
 
 
 \subsubsection{Search Engine}\label{sssec:search}
 In \cite{butt2014}, Butt \emph{et al.} compare eight different ranking methods grouped in two categories for querying vocabulary terms:
-\begin{itemize}
+\begin{enumerate}
 	\item Content-based Ranking Models: tf-idf, BM25, Vector Space Model and Class Match Measure.
-	\item Graph-based Ranking Models: PageRank, Density Measure, Semantic Similarity Measure and Betweenness Measure
-\end{itemize}
-Based on their findings, we defined a new ranking method adapting \emph{term frequency inverse document frequency} (tf-idf) to the graph-structure of vocabularies. When compared to the other methods, tf-idf takes into account the relevance and importance of a resource to the query when assigning a weight to a particular vocabulary for a given query term. We reuse the augmented frequency variation of term frequency formula to prevent a bias towards longer vocabularies. Because of the inherit graph structure of vocabularies, tf-idf needs to be tailored so that instead of using a word as the basic unit for measuring, we are considering a vocabulary term $t$ in a vocabulary $V$ as the measuring unit. Equation (\ref{eq:tfidf}) presents the adaptation of tf-idf to vocabularies (a definition of the variables used in this paper's equations is provided in Table \ref{tab:variable}). 
+	\item Graph-based Ranking Models: PageRank, Density Measure, Semantic Similarity Measure and Betweenness Measure.
+\end{enumerate}
+Based on their findings, we defined a new ranking method adapting \emph{term frequency inverse document frequency} (tf-idf) to the graph-structure of vocabularies. Compared to the other methods, tf-idf takes into account the relevance and importance of a resource to the query when assigning a weight to a particular vocabulary for a given query term. We reuse the augmented frequency variation of term frequency formula to prevent a bias towards longer vocabularies. Because of the inherent graph structure of vocabularies, tf-idf needs to be tailored so that the basic unit is not a word, but rather a vocabulary term $t$ in a vocabulary $V$. Equation (\ref{eq:tfidf}) presents the adaptation of tf-idf to vocabularies (a definition of the variables used in this paper's equations is provided in Table \ref{tab:variable}). 
 
 \begin{table}[h!tb]
 \caption{Definition of the variables used in the equations.}
@@ -505,7 +514,7 @@ idf(t,\mathcal{V}) =\log\frac{|V|}{|\left\{V \in \mathcal{V}: t \in V\right\}|}
 \end{equation}
  
 
-As highlighted in \cite{butt2014} and \cite{schaible2013lover}, the notion of popularity of a vocabulary term across the LOD datasets set $\mathcal{D}$ is significantly important. In Equation (\ref{eq:pop}) we introduce a popularity measure, function of the normalisation of the frequency $f(t,\mathcal{D})$ of a term URI $t$ in the set of datasets $\mathcal{D}$ and the normalisation of the number of datasets in which a term URI appears $M(t): t \in \mathcal{D}$. By using maximum in the normalisation, we emphasise the most used terms, resulting in a consensus within the community. This measure will give a higher score to terms that are often used in datasets and across a large number of datasets.
+As highlighted in \cite{butt2014} and \cite{schaible2013lover}, the notion of the popularity of a vocabulary term across the LOD datasets set $\mathcal{D}$ is quite important. In Equation (\ref{eq:pop}) we introduce a new popularity measure, which is a function of the normalisation of the frequency $f(t,\mathcal{D})$ of a term URI $t$ in the set of datasets $\mathcal{D}$ and the normalisation of the number of datasets in which a term URI appears $M(t): t \in \mathcal{D}$. By using the maximum in this normalisation we emphasise the most used terms, resulting in a consensus within the community. This measure will give a higher score to terms that are often used in datasets and across a large number of datasets.
 
 
 \begin{equation}\label{eq:pop}
@@ -515,11 +524,11 @@ pop(t,\mathcal{D}) = \frac{f(t,\mathcal{D})}{max\left\{f(t_i,\mathcal{D}): t_i \
 \end{split}
 \end{equation}
 
-When compared to RDF datasets, best practices about vocabulary publication make their structure consensual and stable. It becomes then intuitive to assign more importance to a vocabulary term matching a query on the value of the property {\small\texttt{rdfs:label}} than {\small\texttt{dcterms:comment}}. Equation (\ref{eq:norm}) extends the Lucene based search engine Elasticsearch inner field-length norm $lengthNorm(field)$, which attaches a higher weight to shorter fields, by combining it with a property-level boost $boost(p(t))$. Using this property-level boost we can assign a different score depending on which label property a query term matched. We distinguish four different label property categories on which a query term could match: 
+RDF datasets have a consensual and stable  structure, which arises from the best practices of vocabulary publication. It then becomes intuitive to assign more importance to a vocabulary term matching a query on the value of the property {\small\texttt{rdfs:label}} than {\small\texttt{dcterms:comment}}. Equation (\ref{eq:norm}) extends the inner field-length norm $lengthNorm(field)$ from the Lucene-based search engine Elasticsearch, which attaches a higher weight to shorter fields, by combining it with a property-level boost $boost(p(t))$. Using this property-level boost we can assign a different score depending on which label property a query term matches. We distinguish four categories of matches: 
 		\begin{itemize}
- 			\item Local name (URI without the namespace). While a URI is not supposed to carry any meaning, it is a convention to use a compressed form of a term label to construct the local name. It becomes therefore an important artifact for term matching for which the highest score will be assigned. An example of a local name matching the term ``person'' is {\small\texttt{http://schema.org/Person}}.
-			\item Primary labels. The highest score will also be assigned for matches on {\small\texttt{rdfs:label}}, {\small\texttt{dce:title}}, {\small\texttt{dcterms:title}}, {\small\texttt{skos:prefLabel}} properties. An example of a primary label matching the term ``person'' is {\small\texttt{rdfs:label "Person"@en}}.
-			\item Secondary labels. We define as secondary label the following properties: {\small\texttt{rdfs:comment}}, {\small\texttt{dce:description}}, {\small\texttt{dcterms:description}}, {\small\texttt{skos:altLabel}}. A medium score is assigned to matches on these properties. An example of a secondary label matching the term ``person'' is {\small\texttt{dcterms:description}} {\small\texttt{"Examples of a Creator include a person,\\ an organization, or a service."@en}}.
+ 			\item Local name (URI without the namespace). While a URI is not supposed to carry any meaning, it is a convention to use a compressed form of a term label to construct the local name. The local name therefore becomes an important artifact for term matching for which the highest score will be assigned. An example of local name matching the term ``person'' is {\small\texttt{http://schema.org/Person}}.
+			\item Primary labels. The highest score will also be assigned for matches on the {\small\texttt{rdfs:label}}, {\small\texttt{dce:title}}, {\small\texttt{dcterms:title}}, {\small\texttt{skos:prefLabel}} properties. An example of primary label matching the term ``person'' is {\small\texttt{rdfs:label "Person"@en}}.
+			\item Secondary labels. We define as secondary label the following properties: {\small\texttt{rdfs:comment}}, {\small\texttt{dce:description}}, {\small\texttt{dcterms:description}}, {\small\texttt{skos:altLabel}}. A medium score is assigned for matches on these properties. An example of secondary label matching the term ``person'' is {\small\texttt{dcterms:description}} {\small\texttt{"Examples of a Creator include a person,\\ an organization, or a service."@en}}.
 			\item Tertiary labels. Finally all properties not falling in the previous categories are considered as tertiary labels for which a low score is assigned. An example of tertiary label matching the term ``person'' is {\small\texttt{rdarel2:name "Person"@en}}. 
 		\end{itemize}
 
@@ -532,8 +541,9 @@ norm(t,V) =  lengthNorm(field) \\
 
 For every vocabulary in LOV, terms (classes, properties, datatypes, instances) are indexed and a full text search feature is offered\footnote{\url{http://lov.okfn.org/dataset/lov/terms}}. Human users or agents can further narrow a search by filtering on term type (class, property, datatype, instance), language, vocabulary domain and vocabulary.
 
-The final score of $t$ for a query $Q$ (Equation (\ref{eq:score})) is a combination of tf-idf, the importance of label properties of $t$ on which query terms matched and the popularity of that term in the LOD dataset. While the factorisation of tf-idf and field normalisation factor is common for search engine ranking\footnote{See elasticsearch documentation: \url{http://bit.ly/1e37sFL}}, we add a fourth parameter - the popularity - as it is fundamental in the Semantic Web. Indeed, the intention of LOV is to foster the reuse of consensual vocabularies that become de facto standards. The popularity metric provides an indication on how widely a term is already used (in frequency and in number of datasets using it). We therefore add this new factor specific to the Semantic Web to the scoring equation.
+The final score of $t$ for a query $Q$ (Equation (\ref{eq:score})) is a combination of the tf-idf, the importance of label properties of $t$ on which query terms matched, and the popularity of that term in the LOD dataset.  While the factorisation of the tf-idf and field normalisation factor is common for search engine ranking\footnote{See elasticsearch documentation: \url{http://bit.ly/1e37sFL}}, we add a fourth parameter - the popularity - as it is fundamental in the Semantic Web. Indeed, the intention of LOV is to foster the reuse of consensual vocabularies that become de facto standards. The popularity metric provides an indication on how widely a term is already used (in frequency and in the number of datasets using it). We therefore add this new factor specific to the Semantic Web to the scoring equation:
  
+ %[JS: I think technical lists should have the comma to be clear. YMMV.]
 
 \begin{equation}\label{eq:score}
 \begin{split}
@@ -545,50 +555,51 @@ score(t,Q) =tf(t,V) * idf(t,\mathcal{V}) \\
 
 
 
-
-
 \subsubsection{Data Dumps}
-The system provides two data dumps, one containing the LOV vocabulary catalogue only in RDF Notation 3 format\footnote{\url{http://lov.okfn.org/lov.n3.gz}} and another one containing the LOV catalogue along with the latest version of each vocabulary and the statistics of use in LOD in RDF N-quads format\footnote{\url{http://lov.okfn.org/lov.nq.gz}}(keeping each vocabulary in a separate named graph). As illustrated in Figure \ref{fig:model}, the RDF model mainly reuses the Data CATalogue Vocabulary (DCAT) which allows the representation of the LOV catalogue as a {\small\texttt{dcat:Catalog}} composed of vocabulary entries ({\small\texttt{dcat:CatalogRecord}}) capturing information like the insertion date in LOV. Each entry point to the vocabulary itself is represented by a subclass of {\small\texttt{dcat:Dataset}} defined in the Vocabulary Of A Friend (VOAF). This artifact contains metadata extracted by the LOV application such as creators, first issued date and number of occurrences of the vocabulary in Linked Open Data. Each vocabulary is then linked to its various published versions represented by the {\small\texttt{dcat:Distribution}} entity on which information such as inter-vocabulary relations or languages can be found.
+The system provides two data dumps, one containing the LOV vocabulary catalogue only in RDF Notation 3 format\footnote{\url{http://lov.okfn.org/lov.n3.gz}} and another containing the LOV catalogue along with the latest version of each vocabulary and the statistics of use in LOD in RDF N-quads format\footnote{\url{http://lov.okfn.org/lov.nq.gz}}(keeping each vocabulary in a separate named graph). As illustrated in Figure \ref{fig:model}, the RDF model mainly reuses the Data CATalogue Vocabulary (DCAT) which allows the representation of the LOV catalogue as a {\small\texttt{dcat:Catalog}} composed of vocabulary entries ({\small\texttt{dcat:CatalogRecord}}) capturing information like the insertion date in LOV. Each entry point to the vocabulary itself is represented by a sub class of {\small\texttt{dcat:Dataset}} defined in the Vocabulary Of A Friend (VOAF). This artifact contains metadata extracted by the LOV application such as creators, first issued date, number of occurrences of the vocabulary in Linked Open Data. Each vocabulary is then linked to its various published versions represented by the {\small\texttt{dcat:Distribution}} entity on which information such as inter-vocabulary relations or languages can be found.
 
 \begin{figure*}[!htb]
-\includegraphics[width=.9\textwidth]{figures/LOV_model.pdf}
-\caption{UML class diagram representation of LOV catalogue RDF schema model.}
+\includegraphics[width=.9\textwidth]{LOV_model.pdf}
+\caption{The LOV catalogue RDF schema model, in a UML class diagram representation.}
 \label{fig:model}
 \end{figure*}
 
 
 \subsubsection{SPARQL Endpoint}
-The LOV SPARQL endpoint\footnote{\url{http://lov.okfn.org/dataset/lov/sparql}} offers a complementary data access method and allows clients to pose complex queries to the server and retrieve direct answers computed over the LOV dataset. We use the Jena Fuseki triple store to store the N-quads file containing the LOV catalogue and the latest version of each vocabulary. We believe this is the first service that allows users to query multiple vocabularies at the same time and to detect inter-vocabulary dependencies. 
+The LOV SPARQL endpoint\footnote{\url{http://lov.okfn.org/dataset/lov/sparql}} offers a complementary data access method and allows clients to pose complex queries to the server and retrieve direct answers computed over the LOV dataset. We use the Jena Fuseki triple store to store the N-quads file containing the LOV catalogue and the latest version of each vocabulary. We believe that this is the first service that allows users to query multiple vocabularies at the same time and to detect inter-vocabulary dependencies. 
 
 \subsubsection{LOV Application Program Interfaces and User Interfaces}
-LOV APIs give remote access to the many functions of LOV through a set of RESTful services\footnote{\url{http://lov.okfn.org/dataset/lov/apidoc/}}. The basic design requirements for these APIs is that they should allow applications to get access to the very same information humans do via the User Interfaces. More precisely the APIs give access, through three different services (cf. Figure \ref{fig:apis}), to functions related to:
+LOV APIs give a remote access to the many functions of LOV through a set of RESTful services\footnote{\url{http://lov.okfn.org/dataset/lov/apidoc/}}. The basic design requirements for these APIs is that they should allow applications to get access to the very same information humans do via the User Interfaces. More precisely the APIs give access, through three different services (cf. Figure \ref{fig:apis}), to functions related to:
 \begin{itemize} 
 			\item Vocabulary terms (classes, properties, datatypes and instances). With these functions, a software application can query the LOV search engine, ask for auto-completion or a suggestion for misspelled terms.
 			\item Vocabularies. A client can get access to the current list of vocabularies contained in the LOV catalogue; search for vocabularies, get auto-completion or obtain all details about a vocabulary.
-			\item Agents. This provides a software agent with a list of all agents referenced in the LOV catalogue, a means to search for an agent, get auto-completion and details about an agent.
+			\item Agents. This provides a software agent with a list of all agent references in the LOV catalogue, a means to search for an agent, get auto-completion and details about an agent.
 		\end{itemize}
-LOV APIs are convenient tools to access the full functionality and data of LOV. They are particularly appropriate for dynamic Web applications using scripting languages such as Javascript. The APIs described above have been developed for, and follow the requirements of, Ontology Design and Data Publication tools.
+LOV APIs are a convenient means to access the full functionality and data of LOV. It is particularly appropriate for dynamic Web applications using scripting languages such as JavaScript. The APIs described above have been developed for, and follow the requirements of, Ontology Design and Data Publication tools. 
+
 
 \begin{figure}[!htb]
-\includegraphics[trim={1cm 1cm 1cm 2cm},width=1.2\textwidth]{figures/apis.pdf}
+\includegraphics[trim={1cm 1cm 1cm 2cm},width=1.2\textwidth]{apis.pdf}
 \caption{List of APIs to access LOV data.}
 \label{fig:apis}
 \end{figure}
 
-The LOV Website offers intuitive navigation within the vocabularies catalogue. It allows users to explore vocabularies, vocabulary terms, agents and languages, and to see the connections between these entities. For instance, a user can look for experts in the \emph{geography} and \emph{geometry} domains\footnote{\url{http://lov.okfn.org/dataset/lov/agents?&tag=Geography,Geometry}}. We use d3\footnote{\url{http://d3js.org/}} javascript library to display charts and make the navigation more interactive; for example, we use the star graph representation to display incoming and outgoing links between vocabularies (cf. Figure \ref{fig:graphVocab}). 
+The LOV Website offers intuitive navigation within the vocabularies catalogue. It allows users to explore vocabularies, vocabulary terms, agents and languages, and to see the connections between these entities. For instance, a user can use the agent search to look for experts in \emph{geography} and \emph{geometry} domains\footnote{\url{http://lov.okfn.org/dataset/lov/agents?&tag=Geography,Geometry}}. We use the d3\footnote{\url{http://d3js.org/}} JavaScript library to display charts and make the navigation more interactive; for example, we use the star graph representation to display incoming and outgoing links between vocabularies (cf. Figure \ref{fig:graphVocab}). 
 
 
 \begin{figure}[ht!b]
-\includegraphics[trim={1cm 1cm 1cm 1cm},width=1\textwidth]{figures/graphVocab.pdf}
-\caption{Schema.org vocabulary incoming and outgoing links graphical representation as displayed in the UI.}
+\includegraphics[trim={1cm 1cm 1cm 1cm},width=1\textwidth]{graphVocab.pdf}
+\caption{A graphical representation of the incoming and outgoing links for the Schema.org vocabulary as displayed in the UI.}
 \label{fig:graphVocab}
 \end{figure}
 
 \subsection{Data Storage}
 
-To support the features presented above, we make use of specific storage technologies. The LOV catalogue is stored in MongoDB\textregistered, a document-based schema-less data store that scales and allows for dynamic changes in the data schema. We use Jena Fuseki\footnote{\url{https://jena.apache.org/documentation/serving_data/}} to serve the data exported in RDF through the SPARQL protocol. The search feature is supported by Elasticsearch, a full-text index based on Lucene technology. This storage solution is particularly well adapted to our User Interface technology (nodejs) as it offers RESTful APIs with output in JSON format. Finally, we store each vocabulary version file and RDF dumps of LOV catalogue in the environment file system.
+To support the features presented above, we make use of specific storage technologies. The LOV catalogue is stored in MongoDB\textregistered, [JS: cite/URL] a document-based schema-less data store that scales and allows for dynamic changes in the data schema. We use Jena Fuseki\footnote{\url{https://jena.apache.org/documentation/serving_data/}} to serve the data exported in RDF through the SPARQL protocol. The search feature is supported by Elasticsearch\textregistered, a full text index based on Lucene technology\footnote{\url{https://lucene.apache.org/}}. This storage solution is particularly well adapted to our User Interface technology (Node.js) as it offers RESTful APIs with output in JSON format. Finally we store each vocabulary version file and RDF dumps of LOV catalogue in the environment file system.
 
 
+%%%Section: LOV Adoption %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{LOV Adoption}
 \label{sec:lovecosystem}
