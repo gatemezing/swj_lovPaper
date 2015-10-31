@@ -472,8 +472,7 @@ The LOV system (code and data) is published under a Creative Commons 4.0 license
 			\item Use the LOV API which provides a full access to LOV data for software applications.
 		\end{enumerate}
 		
-	%[Why not make as a  multi-line list (not inparaenum)?]
-
+	
 
 \subsubsection{Search Engine}\label{sssec:search}
 In \cite{butt2014}, Butt \emph{et al.} compare eight different ranking methods grouped in two categories for querying vocabulary terms:
@@ -552,7 +551,6 @@ score(t,Q) =tf(t,V) * idf(t,\mathcal{V}) \\
 : \forall t\left\{\exists q_i \in Q: t \in \sigma_V(q_i)\right\}
 \end{split}
 \end{equation}
-
 
 
 \subsubsection{Data Dumps}
@@ -648,17 +646,21 @@ Finally, Governatori et al.~\cite{governatori2014} analyse the current use of li
 
 \section{Related Work}
 \label{sec:related}
-Reusing vocabularies requires searching for terms in existing specialised vocabulary catalogues or search engines on the Web. While we refer the reader to~\cite{AquinJoWS12} for a systematic survey of ontology repositories, we list below some existing catalogues relevant to finding vocabularies:  
+Reusing vocabularies requires searching for terms in existing specialised vocabulary catalogues or search engines on the Web. While we refer the reader to~\cite{AquinJoWS12} for a systematic survey of ontology repositories, below we list some existing catalogues relevant for finding vocabularies:  
 
 \begin{itemize}
  \item \textit{Catalogues of generic vocabularies/schemas} similar to LOV catalogue. Example of catalogues falling in this category are vocab.org\footnote{\url{http://vocab.org/}}, ontologi.es\footnote{\url{http://ontologi.es/}}, JoinUp Semantic Assets or the Open Metadata Registry. Most of those repositories are not regularly updated and are created/owned by the institutions using the service.
  \item \textit{Catalogues of ontologies for a specific domain} such as biomedicine with the BioPortal \cite{bioportal11}, geospatial ontologies with SOCoP+OOR\footnote{\url{https://ontohub.org/socop}}, Marine Metadata Interoperability and the SWEET \cite{sweet05} ontologies\footnote{\url{http://sweet.jpl.nasa.gov//}}. The SWEET ontologies include several thousand terms, spanning a broad extent of Earth system science and related concepts (such as data characteristics), with the search tool to aid finding science data resources. 
- \item \textit{Catalogues of Ontology Design Patterns (ODP)} focused on reusable patterns in ontology engineering \cite{presutti08}. The submitted patterns are small pieces of vocabularies that can further be integrated or linked with other vocabularies. The ODP catalogue does not provide a search function for specific terms as is the case with Swoogle or Watson.
- \item \textit{Search Engines of ontology terms}. Among ontology search engines, we can cite: Swoogle \cite{finin2005swoogle}, Watson \cite{d2007watson,Sabou07}, FalconS \cite{cheng2008falcons} and Vocab.cc \cite{vocabcc2013}. These search engines crawl for data schema from RDF documents on the Web. They offer filtering based on ontology type (Class, Property) and a ranking based on popularity. They do not look for ontology relations or check if the definition of the ontology is available (usually known as dereferenciation). While in Swoogle the ranking score is displayed, Watson shows the language of the resource and the size. However, none of these services provide any relationship between the related ontologies, nor any domain classification of the vocabularies. Table \ref{tab:lovfeatures} presents a summary of key features of LOV with respect to Swoogle, Watson, Falcons and Vocab.cc.
- \item \textit{Datasets and Vocabularies statistics}. In this category we can mention LODStats \cite{demter-2012-ekaw} and the vocabularies derived from the LOD Cloud.  LODStats builds a bridge between datasets and vocabularies gathering up to 32 different statistical criteria based on a statement-stream-based approach for RDF datasets in Datahub\footnote{\url{http://datahub.io/}}. LODStats maintains a comprehensive statistics on vocabularies terms (i.e. classes, properties) defined and used in a dataset. %Schmachtenberg et al. \cite{max2014} present a survey based on a large-scale Linked Data crawl from March 2014 to analyse the differences in best practices adoption across different application domains. Their results concerning the most used vocabularies (e.g., foaf, dcterms, skos, etc.) and the adoption of well-known vocabularies are inline with the findings of this paper.
+ \item \textit{Catalogues of ontology Design Patterns (ODP)} focus on reusable patterns in ontology engineering \cite{presutti08}. The submitted patterns are small pieces of vocabularies that can further be integrated or linked with other vocabularies. ODP does not provide a search function for specific terms as is the case with some of these other catalogues. 
+ 
+ \item \textit{Search Engines of ontology terms}. Among ontology search engines, we can cite: Swoogle~\cite{finin2005swoogle}, Watson~\cite{d2007watson,Sabou07}, FalconS~\cite{cheng2008falcons} and Vocab.cc~\cite{vocabcc2013}. These search engines crawl for data schema from RDF documents on the Web. They offer filtering based on ontology type (Class, Property) and a ranking based on the popularity. They don't look for ontology relations nor do they check if the definition of the ontology is available (usually known as dereferenciation). While in Swoogle the ranking score is displayed, Watson shows the language of the resource and the size. However, none of these services provide any relationship between the related ontologies, or any domain classification of the vocabularies. Table \ref{tab:lovfeatures} presents a summary of key features of LOV with respect to Swoogle, Watson, Falcons and Vocab.cc.
+ \item \textit{Datasets and Vocabularies statistics}. In this category we can mention LODStats \cite{demter-2012-ekaw} and the vocabularies derived from the LOD Cloud.  LODStats makes a bridge between datasets and vocabularies gathering up to 32 different statistical criteria based on a statement-stream-based approach for RDF datasets in Datahub\footnote{\url{http://datahub.io/}}. LODStats maintains a comprehensive statistics on vocabularies terms (i.e. classes, properties) defined and used in a dataset. Schmachtenberg et al.~\cite{max2014} present a survey based on a large-scale Linked Data crawl from March 2014 to analyse the differences in best practices adoption across different application domains. Their results concerning the most used vocabularies (e.g., \texttt{foaf}, \texttt{dcterms}, \texttt{skos}, etc.) and the adoption of well-known vocabularies are inline with the findings of this paper.
 \end{itemize}
 
-While most of the related works focus on automatic techniques to gather as many ontologies as possible, LOV focuses on maintaining a high quality collection of vocabularies with the aim to be reused by data publishers to describe their own data. To ensure LOV high quality, we set up some strong requirements for vocabularies to be inserted such as the fact that a vocabulary URI must be dereferenceable. Those strong requirements are not always taken into account in the aforementioned work (e.g., the authors define the notion of partly dereferenceable for vocabularies). As a consequence anyone using a vocabulary referenced in LOV is ensured to get access to the vocabulary metadata but most importantly to its formal definition. 
+%[JS: how would we verify that they're inline? Any reference? OR refer to table below...] 
+
+While most of the related work focuses on automatic techniques to gather as many ontologies as possible, LOV focuses on maintaining a high quality collection of vocabularies that data publishers can reuse to describe their own data. To ensure the high quality of LOV data, we set up some stringent requirements for vocabularies to be inserted (cf. Section \ref{sssec:vocabInsert}) such as the fact that a vocabulary URI must be dereferenceable. These kinds of requirements are not always taken into account in the aforementioned work: for instance, the authors in~\cite{max2014} define the notion of partly dereferenceable for vocabularies. As a consequence, anyone using a vocabulary referenced in LOV is ensured to get access to the vocabulary metadata but most importantly to its formal definition and preservation by accessing to various versions. 
+
 
  \begin{table*}[!htb]
  \scriptsize
@@ -691,56 +693,80 @@ Inter-vocab. relationship visualization & No & No & No & No & Yes \\ \hline
 }
 \end{table*}
 
-As part of our system evaluation we have compared the list of vocabularies in LOV with the ones in external services (LODStats and the empirical survey of Schmachtenberg et al. \cite{max2014}) so as to understand the discrepancy.
+As part of our system evaluation we have compared the list of vocabularies in LOV with the ones in external services (LODStats and the empirical survey of Schmachtenberg et al.~\cite{max2014}) so as to understand the discrepancy.
 
-  
-LODStats contains 2,940 vocabularies extracted from datasets listed in Datahub.io. This list includes in fact a large number (2596) of invalid vocabulary URIs and resource URIs not referring to a vocabulary (e.g. {\footnotesize\url{http://data.kingcounty.gov/resource/d665-vvmd/}} or {\footnotesize\url{http://lod2.eu/view}}). The domain ``http://dati.opendataground.it'' contains 962 Resource URIs which are instances and not vocabularies. As a result, only 344 candidate URIs in LODStats are comparable with LOV vocabularies. Out of those 344 URIs, 73 (21.22\%) are covered by LOV. When asserting 20 random vocabularies not already present in LOV, none of them meets LOV requirements  and 8 different categories of errors have been detected: (i) Failed to determine the triples content type, (ii) Not found exception, (iii) 403 forbidden, (iv) Unknown host exception, (v) Peer not authenticated, (vi) 504 gateway, (vii) Bad URI and (viii) Unqualified typed nodes are not allowed. 
+ 
+LODStats contains 2,940 vocabularies extracted from datasets listed in Datahub.io. This list contains in fact a large number (2596) of invalid vocabulary URIs and resource URIs that do not refer to a vocabulary (e.g. {\footnotesize\url{http://data.kingcounty.gov/resource/d665-vvmd/}} or {\footnotesize\url{http://lod2.eu/view}}). The domain ``http://dati.opendataground.it'' contains 962 Resource URIs which are instances and not vocabularies. As a result, only 344 candidate URIs in LODStats are comparable with LOV vocabularies. Out of those 344 URIs, 73 (21.22\%) are covered by LOV. We randomly chose 20 vocabularies not already present in LOV for assessment. None of the randomly chosen vocabularies met LOV requirements and 8 different categories of errors were detected: 
+\begin{inparaenum}[1)]
+\item Failed to determine the triples content type,
+\item  Not found exception, 
+\item 403 forbidden, 
+\item Unknown host exception, 
+\item  Peer not authenticated,
+\item 504 gateway,
+\item Bad URI and
+\item  Unqualified typed nodes are not allowed. 
+\end{inparaenum}
 
-
-Recently, an updated comprehensive empirical survey of Linked Data conformance has been presented by Schmachtenberg et al. \cite{max2014}. Their survey is based on a large-scale Linked Data crawl from March 2014 to analyse the differences of best practices adoption in different domains. Their results concerning the most used accessible vocabularies and the adoption of well-known vocabularies are inline with the findings of this paper. However, comparing the vocabularies in the LOD cloud with the LOV catalogue needs some alignments. From the 638 mentioned by Schmachtenberg et al., we removed invalid URIs such as domain names such as ``umbel.org''. Additionally we removed misspelled URIs and incomplete URIs. As a result, 270 candidate URIs (42.31\%) can be compared with LOV vocabularies. Based on this analysis, we found that 102 vocabularies in the LOD cloud are already in the LOV catalogue, representing 38\% of the 270 candidates. The general difference of our work with the one presented by Schmachtenberg et al. is that our approach applies strict criteria to include a vocabulary while theirs is dataset driven.
-
-
-
-%%%%%%%DISCUSSION
-\section{Discussion}\label{sec:discussion}
-
-Whilst providing access to high quality vocabularies, the LOV system presents several limitations. As described in the last section, the LOV system could benefit from an automatic discovery process to suggest vocabulary candidates. We could for instance extract vocabularies from the latest version of the Billion Triple Challenge or the Web Data Commons\footnote{\url{http://webdatacommons.org/}} dataset. Manual curation is a critical activity to ensure the high quality of the LOV catalogue but represents as well a limitation. At the moment we have been able to recruit new curators as the catalogue is growing. The version 3 of the LOV system automates most of the processes and analyses but there is still some assessment and support activities that only a human can perform.
-
-Currently, LOV scope focuses on vocabularies for the description of RDF data and does not include any \emph{Value Vocabularies} such as SKOS thesaurus. By making the code of the LOV system open source, we encourage anyone to set up an instance of the system to target such artifacts. 
-
-LOV relies on external projects to get the valuable information of vocabulary usage in published datasets. At the moment, the popularity information coming from LODStats does not take into account the most recent interest in publishing RDF data using markup language (e.g. schema.org). As a consequence, the popularity measure is incomplete and does not represent the whole potential use of a vocabulary. As a future work we intend to extract that information from the latest datasets versions of the Billion Triple Challenge and the Web Data Commons.
+Recently, an updated comprehensive empirical survey of Linked Data conformance has been presented by Schmachtenberg et al.~\cite{max2014}. Their survey is based on a large-scale Linked Data crawl from March 2014 to analyse the differences of best practices adoption in different domains. Their results concerning the most used accessible vocabularies and the adoption of well-known vocabularies are inline with the findings of this paper. However, comparing the vocabularies in the LOD cloud with the LOV catalogue needs some alignments. From the 638 mentioned by Schmachtenberg et al., we removed invalid URIs such as domain names such as ``umbel.org''. Additionally we removed misspelled URIs and incomplete URIs. As a result, 270 candidate URIs (42.31\%) can be compared with LOV vocabularies. Based on this analysis, we found that 102 vocabularies in the LOD cloud are already in the LOV catalogue, representing 38\% of the 270 candidates. The general difference of our work with the one presented by Schmachtenberg et al. is that our approach applies strict criteria to include a vocabulary while their approach is dataset driven.
 
 
-From the study of LOV as a dynamic ecosystem we can draw two main lessons learned: the need for more multilingual vocabularies on the Web and the long term preservation of vocabularies. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%Section: DISCUSSION %%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Whilst providing access to high quality vocabularies, LOV system presents several limitations. As described in the last section, LOV system could benefit from an automatic discovery process to suggest vocabulary candidates. We could for instance extract vocabularies from the latest version of the Billion Triple Challenge or the Web Data Commons\footnote{\url{http://webdatacommons.org/}} dataset. Manual curation is a critical activity to ensure the high quality of the LOV catalogue but also represents a limitation. At the moment we have been able to recruit new curators as the catalogue is growing. The version 3 of LOV system automates most of the processes and analyses but there are still some assessment and support activities that only a human can perform.
+
+Currently, LOV's scope focuses on vocabularies for the description of RDF data and does not include any \emph{Value Vocabularies} such as SKOS thesauri. By making the code of LOV system open source, we encourage anyone to set up an instance of the system to target such artifacts. 
+
+LOV relies on external projects such as LODStats to get the valuable information of vocabulary usage in published datasets. At the moment, the popularity information coming from LODStats does not take into account the most recent interest in publishing RDF data using markup language (e.g. \texttt{schema.org}). As a consequence, the popularity measure is incomplete and does not represent all possible use of a vocabulary. In future work we intend to extract those information from the latest datasets versions of the Billion Triple Challenge and the Web Data Commons.
+ 
+
+From the study of LOV as a dynamic ecosystem we can draw two main lessons learned: the need for more multilingual vocabularies on the Web and the importance of long term preservation of vocabularies. 
 
 Labels are the main entry point to a vocabulary and their associated language is the key. Only 15\% of LOV vocabularies make use of more than one language. Multilingualism is important at least for two reasons: 
 \begin{inparaenum}[1)] 
 	\item the most obvious one is allowing users to search, query and navigate vocabularies in their native language; and
-	\item translating is a process through which the quality of a vocabulary can only improve. Looking at a vocabulary through the eyes of other languages and identifying the difficulties of translation helps to better outline the initial concepts and if necessary refine or revise them. 
+	\item translation is a process through which the quality of a vocabulary can only improve. Looking at a vocabulary through the eyes of other languages and identifying the difficulties of translation helps to better outline the initial concepts and if necessary refine or revise them. 
 \end{inparaenum} 
-Hence multilingualism and translation should be native, built-in features of any vocabulary construction, not a marginal task.
+Hence multilingualism and translation should be native, built-in features of any vocabulary construction, not a marginal task. 
+%[JS: BUT -- cost, misalignment of semantics between languages]
 
-Currently there is no solution for long-term vocabulary preservation on the Web \cite{Baker2013HLT}. This is a particularly important problem in a distributed and uncontrolled environment where any individual can create and publish a vocabulary. Third parties can reuse such vocabularies and therefore create a dependency on the original vocabulary availability as it retains the semantics of the data. This issue weakens the Semantic Web foundations.
+Currently there is no solution for long-term vocabulary preservation on the Web \cite{Baker2013HLT}. This is a particularly important problem in a distributed and uncontrolled environment where any individual can create and publish a vocabulary. Third parties can reuse such vocabularies and therefore create a dependency on the original vocabulary availability as it retains the semantics of the data. This issue weakens the Semantic Web foundations. 
+
+%[JS: You have to boast! You are contributing to vocab preservation for the most important vocabularies! And you can identify the non-LOV vocabs that appear and share those with preservation-oriented groups...]
 
 
-\section{Conclusion and Future work}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Section: Conclusion %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Conclusions and Future work}
 \label{sec:conclusion}
-In this system report we presented an overview of the Linked Open Vocabularies initiative, a high quality catalogue of reusable vocabularies for the description of data on the Web. The importance of this work is motivated by the difficulty for data publishers to determine which vocabularies to use to describe their data. The key innovations described in this article include: 
+%[JS: Note you already mentioned some future work above. Would that be better brought in here? (not necessarily, but worth looking at)]
+
+In this system report we presented an overview of the Linked Open Vocabularies initiative, a high quality catalogue of reusable vocabularies for the description of data on the Web. The importance of this work is motivated by the difficulty that data publishers have in determining which vocabularies to use to describe their data. The key innovations described in this article include: 
 \begin{inparaenum}[1)] 
-	\item the availability of a high quality vocabularies dataset through multiple accessing methods;
-	\item the curation by experts, making explicit for the first time the relationships between vocabularies and their version history; and
-	\item the consideration of property semantic in term search scoring.
+	\item the availability of a high quality dataset of vocabularies available through multiple access methods [JS: `access methods' is odd -- not sure what else to use?];
+	\item the curation by experts, making explicit [JS: curation doesn't make this explicit, I don't think. I'd suggest separating those] for the first time the relationships between vocabularies and their version history; and
+	\item the consideration of property semantics in term search relevance scoring.
 \end{inparaenum}
 
-In the future, we see some directions in particular for advancing the LOV initiative. First, an area that is still largely unexplored is multi-term vocabulary search. During the ontology design process, it is common to have more than 20 concepts represented using existing vocabularies or a new one in case there is no corresponding artifact. While we are able to search for relevant terms in LOV it is still the responsibility of the ontology designer to understand the complex relationships between all these terms and come up with a coherent ontology. We could use the network of vocabularies defined in LOV to suggest not only a list of terms but also graphs to represent several concepts together. Second, we would like to provide more vocabulary based services such as vocabulary matching to help the authors in adding more relationships to other related vocabularies. Vocabulary checking is another service the community is asking for. We could integrate useful applications to LOV such as: Vapour\footnote{\url{http://validator.linkeddata.org/vapour}}, RDF Triple-Checker\footnote{\url{http://graphite.ecs.soton.ac.uk/checker/}} or OOPS!\footnote{\url{http://oops.linkeddata.es/}}. Furthermore, another research perspective is SPARQL query extension and rewriting based on Linked Vocabularies. Using the inter-vocabulary relationships we could transform the query to use the same semantic (same vocabulary terms) as the data source(s) to query.
+In the future, the LOV initiative could evolve in several ways. First, an area that is still largely unexplored is multi-term vocabulary search. During the ontology design process, it is common to have more than 20 concepts represented using existing vocabularies or a new one in case there is no corresponding artifact. While we are able to search for relevant terms in LOV it is still the responsibility of the ontology designer to understand the complex relationships between all these terms and come up with a coherent ontology. We could use the network of vocabularies defined in LOV to suggest not only a list of terms but graphs to represent several concepts together. 
 
-Finally, we plan to provide a user study and publish the results on the described use cases of LOV. In addition, we would need to insert the vocabularies from LODStats and LOD Cloud that are suitable to be included in the LOV catalogue.
+Second, we would like to provide more vocabulary based services such as vocabulary matching to help authors add more relationships to other vocabularies. Vocabulary checking is another service the community is asking for. We could integrate useful applications directly into LOV, such as Vapour\footnote{\url{http://validator.linkeddata.org/vapour}}, RDF Triple-Checker\footnote{\url{http://graphite.ecs.soton.ac.uk/checker/}} and OOPS!\footnote{\url{http://oops.linkeddata.es/}}. 
 
-The adoption and integration of the LOV catalogue in applications for vocabulary engineering, reuse and data quality are significant. LOV has a central role in vocabulary life-cycle on the Web of data as highlighted by the W3C\footnote{\url{http://www.w3.org/2013/data/}}. 
+Another research direction is SPARQL query extension and rewriting based on Linked Vocabularies. Using the inter-vocabulary relationships we could transform a query to use the same semantics (same vocabulary terms) as the data source(s) being queried.
+
+% add in the future a user-study of the tool as suggested by one reviewer
+Finally, we plan to provide a user study and publish the results on the different usage of LOV by end users. In addition, we plan to include the vocabularies from LODStats and LOD Cloud that are suitable for inclusion in the LOV catalogue.
+
+The adoption and integration of the LOV catalogue in applications for vocabulary engineering, reuse and data quality are significant. [JS: mention again how it's used as a corpus] LOV has a central role in vocabulary life-cycle on the Web of data as highlighted by the W3C\footnote{\url{http://www.w3.org/2013/data/}}: \textit{``The success of LOV as a central information point about vocabularies is symptomatic of a need, for an authoritative reference point to aid the encoding and publication of data''}.
+
 
 
 \section*{Acknowledgments}
-This work has been partially supported by the French National Research Agency (ANR) within the Datalift Project, under grant number ANR-10-CORD-009; the Spanish project BabelData (TIN2010-17550) and Fujitsu Laboratories Limited. The Linked Open Vocabularies initiative is graciously hosted by the Open Knowledge Foundation. We would like to thank all the members of LOV community, all the editors and publishers of vocabularies who trust in LOV catalogue. A special thank to Phil Archer and Julia Bosque Gil for proofreading this paper. 
+This work has been partially supported by the French National Research Agency (ANR) within the Datalift Project, under grant number ANR-10-CORD-009; the Spanish project BabelData (TIN2010-17550) and Fujitsu Laboratories Limited. The Linked Open Vocabularies initiative is graciously hosted by the Open Knowledge Foundation. We would like to thank all the members of LOV community and all the editors and publishers of vocabularies who trust in LOV catalogue. A special thank to Phil Archer, Julia Bosque Gil and Jodi Schneider for their valuable feedback and comments on this paper.
 
 \bibliographystyle{plain}
 \bibliography{lov}
