@@ -693,7 +693,7 @@ Recently, an updated comprehensive empirical survey of Linked Data conformance h
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
-%%%Section:DISCUSSION%%%
+%%%Section:Discussion%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Discussion}\label{sec:discussion}
@@ -702,7 +702,7 @@ Whilst providing access to high quality vocabularies, the LOV system presents se
 
 Currently, LOV scope focuses on vocabularies for the description of RDF data and does not include any \emph{Value Vocabularies} such as SKOS thesaurus. By making the code of the LOV system open source, we encourage anyone to set up an instance of the system to target such artifacts. 
 
-LOV relies on external projects to get the valuable information of vocabulary usage in published datasets. At the moment, the popularity information coming from LODStats does not take into account the most recent interest in publishing RDF data using markup language (e.g. schema.org). As a consequence, the popularity measure is incomplete and does not represent the whole potential use of a vocabulary. As a future work we intend to extract that information from the latest datasets versions of the Billion Triple Challenge and the Web Data Commons.
+LOV relies on external projects to get the valuable information of vocabulary usage in published datasets. At the moment, the popularity information coming from LODStats does not take into account the most recent interest in publishing RDF data using markup language (e.g. \texttt{schema.org}). As a consequence, the popularity measure is incomplete and does not represent the whole potential use of a vocabulary. As a future work we intend to extract that information from the latest datasets versions of the Billion Triple Challenge and the Web Data Commons.
 
 
 From the study of LOV as a dynamic ecosystem we can draw two main lessons learned: the need for more multilingual vocabularies on the Web and the long term preservation of vocabularies. 
@@ -714,8 +714,14 @@ Labels are the main entry point to a vocabulary and their associated language is
 \end{inparaenum} 
 Hence multilingualism and translation should be native, built-in features of any vocabulary construction, not a marginal task.
 
-Currently there is no solution for long-term vocabulary preservation on the Web~\cite{Baker2013HLT}. This is a particularly important problem in a distributed and uncontrolled environment where any individual can create and publish a vocabulary. Third parties can reuse such vocabularies and therefore create a dependency on the original vocabulary availability as it retains the semantics of the data. This issue weakens the Semantic Web foundations.
+Currently there is no solution for long-term vocabulary preservation on the Web~\cite{Baker2013HLT}. This is a particularly important problem in a distributed and uncontrolled environment where any individual can create and publish a vocabulary. Third parties can reuse such vocabularies and therefore create a dependency on the original vocabulary availability as it retains the semantics of the data. This issue weakens the Semantic Web foundations. LOV contributes to vocabulary preservation for the most important vocabularies on the Web. The approach also identifies the non-LOV vocabularies that appear and share those with preservation-oriented features.
 
+%[JS: You have to boast! You are contributing to vocab preservation for the most important vocabularies! And you can identify the non-LOV vocabs that appear and share those with preservation-oriented groups...]
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Section: Conclusion %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Conclusion and Future work}
 \label{sec:conclusion}
@@ -728,13 +734,13 @@ In this system report we presented an overview of the Linked Open Vocabularies i
 
 In the future, we see some directions in particular for advancing the LOV initiative. First, an area that is still largely unexplored is multi-term vocabulary search. During the ontology design process, it is common to have more than 20 concepts represented using existing vocabularies or a new one in case there is no corresponding artifact. While we are able to search for relevant terms in LOV it is still the responsibility of the ontology designer to understand the complex relationships between all these terms and come up with a coherent ontology. We could use the network of vocabularies defined in LOV to suggest not only a list of terms but also graphs to represent several concepts together. Second, we would like to provide more vocabulary based services such as vocabulary matching to help the authors in adding more relationships to other related vocabularies. Vocabulary checking is another service the community is asking for. We could integrate useful applications to LOV such as: Vapour\footnote{\url{http://validator.linkeddata.org/vapour}}, RDF Triple-Checker\footnote{\url{http://graphite.ecs.soton.ac.uk/checker/}} or OOPS!\footnote{\url{http://oops.linkeddata.es/}}. Furthermore, another research perspective is SPARQL query extension and rewriting based on Linked Vocabularies. Using the inter-vocabulary relationships we could transform the query to use the same semantic (same vocabulary terms) as the data source(s) to query.
 
-Finally, we plan to provide a user study and publish the results on the described use cases of LOV. In addition, we would need to insert the vocabularies from LODStats and LOD Cloud that are suitable to be included in the LOV catalogue.
+Finally, we plan to provide a user study and publish the results on the different usage of LOV by end users. In addition, we would need to insert the vocabularies from LODStats and LOD Cloud that are suitable to be included in the LOV catalogue.
 
-The adoption and integration of the LOV catalogue in applications for vocabulary engineering, reuse and data quality are significant. LOV has a central role in vocabulary life-cycle on the Web of data as highlighted by the W3C\footnote{\url{http://www.w3.org/2013/data/}}. 
+The adoption and integration of the LOV catalogue in applications for vocabulary engineering, reuse and data quality are significant. LOV has a central role in vocabulary life-cycle on the Web of data as highlighted by the W3C\footnote{\url{http://www.w3.org/2013/data/}}: \textit{``The success of LOV as a central information point about vocabularies is symptomatic of a need, for an authoritative reference point to aid the encoding and publication of data''}. 
 
 
 \section*{Acknowledgments}
-This work has been partially supported by the French National Research Agency (ANR) within the Datalift Project, under grant number ANR-10-CORD-009; the Spanish project BabelData (TIN2010-17550) and Fujitsu Laboratories Limited. The Linked Open Vocabularies initiative is graciously hosted by the Open Knowledge Foundation. We would like to thank all the members of LOV community, all the editors and publishers of vocabularies who trust in LOV catalogue. A special thank to Phil Archer and Julia Bosque Gil for proofreading this paper. 
+This work has been partially supported by the French National Research Agency (ANR) within the Datalift Project, under grant number ANR-10-CORD-009; the Spanish project BabelData (TIN2010-17550) and Fujitsu Laboratories Limited. The Linked Open Vocabularies initiative is graciously hosted by the Open Knowledge Foundation. We would like to thank all the members of LOV community, all the editors and publishers of vocabularies who trust in LOV catalogue. A special thank to Phil Archer, Julia Bosque Gil and Jodi Schneider for their valuable feedback and comments on this paper. 
 
 \bibliographystyle{plain}
 \bibliography{lov}
