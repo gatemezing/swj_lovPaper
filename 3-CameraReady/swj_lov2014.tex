@@ -603,38 +603,50 @@ To support the features presented above, we make use of specific storage technol
 
 \section{LOV Adoption}
 \label{sec:lovecosystem}
-LOV supports the emergence of a rich application ecosystem thanks to its various data access methods. Below we list some tools using our system as part of their service and project.
+LOV, with its various data access methods, supports the emergence of a rich application ecosystem. Below we list some tools using our system as part of their service and project.
  
 \subsection{Derived tools and applications}
 
-In \cite{ontomaton12}, Maguire et al. use the LOV search API to implement OntoMaton\footnote{\url{https://github.com/ISA-tools/OntoMaton}}, a widget for bringing together ontology lookup and tagging within the collaborative environment provided by Google spreadsheets. 
+In \cite{ontomaton12}, Maguire et al./ use the LOV search API to implement OntoMaton\footnote{\url{https://github.com/ISA-tools/OntoMaton}}, a widget for using ontology lookup and tagging within the Google spreadsheets collaborative environment. 
 
 YASGUI (Yet Another SPARQL Query GUI)\footnote{\url{http://legacy.yasgui.org/}} is a client-side JavaScript SPARQL query editor that uses the LOV API for property and class auto-completion together with prefix.cc\footnote{\url{http://prefix.cc}} for namespace prefix auto-completion \cite{yasgui}. YASGUI is itself reused by LOV for its SPARQL Endpoint User Interface.
 
-The Datalift\footnote{\url{http://datalift.org/}} platform \cite{scharffe_2012}, a framework for ``lifting'' raw data into RDF, comes with a module, named Data2Ontology, to map data objects and properties to ontology classes and predicates available in the LOV catalogue. The Data2Ontology module takes as input a ``raw RDF'' -- straitghforward conversion of legacy format to RDF -- with the goal to help data publishers in selecting vocabulary terms that could be used to represent their data better.
+Data2Ontology maps data objects and properties to ontology classes and predicates available in the LOV catalogue. Data2Ontology is part of the  Datalift\footnote{\url{http://datalift.org/}} platform \cite{scharffe_2012}, a framework for ``lifting'' raw data into RDF. The Data2Ontology module takes as input ``raw RDF'' -- straightforward conversion of legacy format to RDF -- with the goal of helping data publishers in selecting vocabulary terms that could be used to better represent their data.
 
 
 OntoWiki\footnote{\url{http://ontowiki.net/}} facilitates the visual presentation of a knowledge base as an information map, with different views on instance data \cite{auer2006ontowiki}. It enables intuitive authoring of semantic content, with an inline editing mode for editing RDF content, similar to WYSIWIG for text documents. OntoWiki offers a vocabulary selection feature based on LOV.
 
-Furthermore, we can mention Prot{\'e}g{\'e}LOV\footnote{\url{http://labs.mondeca.com/protolov/}}, a plug-in for the Prot{\'e}g{\'e} editor tool \cite{prolov2015} that aims at improving the development of lightweight ontologies by reusing existing vocabularies at a low fine-grained level. The tool searches for a term in LOV via APIs and provides three actions if the term exists : (i) to replace the selected term in the current ontology, (ii) to add the {\small\texttt{rdfs:subClassOf}} axiom and (iii) to add the {\small\texttt{owl:equivalentClass}}.
+Furthermore, we can mention the Prot{\'e}g{\'e}LOV\footnote{\url{http://labs.mondeca.com/protolov/}}, a plug-in for the Prot{\'e}g{\'e} editor tool \cite{prolov2015} that aims at improving the development of lightweight ontologies by reusing existing vocabularies at a low fine grained level. The tool searches for a term in LOV via APIs and provides three actions if the term exists : 
+\begin{inparaenum}[1)] 
+ \item to replace the selected term in the current ontology, 
+ \item to add the {\small\texttt{rdfs:subClassOf}} axiom and 
+ \item to add the {\small\texttt{owl:equivalentClass}}.
+\end{inparaenum}
+
+
 
 \subsection{Using LOV as a Research platform}
 
-LOV has served as the object of studies in \cite{poveda2012landscape} where Poveda-Villal\'on \emph{et al.} analysed trends in ontology reuse methods. In addition, the LOV dataset has been used in order to analyse the occurrence of good and bad practices in vocabularies \cite{poveda2013detecting}.
+LOV has served as the object of studies in~\cite{poveda2012landscape} where Poveda-Villal\'on \emph{et al.} analysed trends in ontology reuse methods. In addition, the LOV dataset has been used to analyse the occurrence of good and bad practices in vocabularies~\cite{poveda2013detecting}.
 
-Prefixes in the LOV dataset are regularly mapped with namespaces in the prefix.cc service. In \cite{wasabi13}, the authors perform alignments of Qnames of vocabularies in both services and provide different solutions to handle clashes and disagreements between preferred namespaces. Both  LOV and prefix.cc provide associations between prefixes and namespaces but follow a different logic. The prefix.cc service supports polysemy and synonymy, and has a very loose control on its crowd-sourced information. In contrast, LOV has a much more strict policy forbidding polysemy and synonymy ensuring that each vocabulary in the LOV database is uniquely identified by a unique prefix identification allowing the usage of prefixes in various LOV publication URIs. 
+Prefixes in the LOV dataset are regularly mapped with namespaces in the prefix.cc service. In~\cite{wasabi13}, the authors perform alignments of Qnames of vocabularies in both services and provide different solutions to handle clashes and disagreements between preferred namespaces. Both LOV and prefix.cc provide associations between prefixes and namespaces but follow a different logic. The prefix.cc service supports polysemy and synonymy, and has a very loose control on its crowd-sourced information. In contrast, LOV has a much more strict policy forbidding polysemy and synonymy ensuring that each vocabulary in the LOV database is uniquely identified by a unique prefix identification allowing the usage of prefixes in various LOV publication URIs. 
 
-The LOV query log covering the period between 2012-01-06 and 2014-04-16 has been used in \cite{butt2014} to build a benchmark suite for ontology search and ranking. The CBRBench\footnote{\url{https://zenodo.org/record/11121}} benchmark uses eight ranking models of resources in ontologies and compares the results with ontology engineers. Our vocabulary term ranking method relies on and extends the outcome of this work.
-
-In \cite{janowicz2014five}, the authors provide a 5 star rating for RDF vocabulary publication to foster interoperability, query federation and better interpretation of data on the Web similar to the 5 stars rating for Linked Open Data. Based on LOV insertion criteria, all vocabularies must be 5 stars according to this ranking and must provide further quality attributes imposed by LOV to facilitate vocabulary reuse.
+The LOV query log covering the period between 2012-01-06 and 2014-04-16 has been used in \cite{butt2014} to build a benchmark suite for ontology search and ranking. The CBRBench\footnote{\url{https://zenodo.org/record/11121}} benchmark uses eight ranking models of resources in ontologies and compares the results  with ontology engineers' results. Our vocabulary term ranking method relies on and extends the outcome of this work.
 
 
-RDFUnit\footnote{\url{https://github.com/AKSW/RDFUnit}} is a test-driven data debugging framework for the Web of data. In \cite{rdfunit}, the authors provide an automatic test case for all available schema registered with LOV. Vocabularies are used to add semantics to domain specific knowledge to check the quality of data.
-
-Finally, Governatori et al. \cite{governatori2014} analyse the current use of licenses in vocabularies on the Web based on the LOV catalogue in order to propose a framework to detect incompatibilities between datasets and vocabularies.
+In \cite{janowicz2014five}, the authors provide a 5 star rating for RDF vocabulary publication [JS: not sure what this means.] to foster interoperability, query federation and better interpretation of data on the Web similar to the 5 stars rating for Linked Open Data. Based on LOV's  best practices criteria, all vocabularies must be 5 stars using this ranking and must provide further quality attributes imposed by LOV to facilitate vocabulary reuse.
 
 
-\section{Related work}
+RDFUnit\footnote{\url{https://github.com/AKSW/RDFUnit}} is a test-driven data debugging framework for the Web of Data. In~\cite{rdfunit}, the authors provide an automatic test case for all available schema registered with LOV. Vocabularies are used to encode semantics to domain specific knowledge to check the quality of data.
+
+Finally, Governatori et al.~\cite{governatori2014} analyse the current use of licenses in vocabularies on the Web based on the LOV catalogue in order to propose a framework to detect incompatibilities between datasets and vocabularies.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%Section: Related Work %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Related Work}
 \label{sec:related}
 Reusing vocabularies requires searching for terms in existing specialised vocabulary catalogues or search engines on the Web. While we refer the reader to~\cite{AquinJoWS12} for a systematic survey of ontology repositories, we list below some existing catalogues relevant to finding vocabularies:  
 
