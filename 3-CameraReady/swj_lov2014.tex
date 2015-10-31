@@ -198,7 +198,8 @@ The purpose of LOV is to promote and facilitate the reuse of well documented voc
 This report is structured as follows: In the next section, we provide statistics on the usage of LOV. In Section~\ref{sec:arch}, we describe the components and features of the system. Thereafter,  in Section~\ref{sec:lovecosystem}, we offer an overview of some applications and research projects based and motivated by the LOV system. In Section~\ref{sec:related}, we report on related work. Discussion about the limitations and further development of LOV is presented in Section~\ref{sec:discussion}. We finally reach our conclusions in Section~\ref{sec:conclusion}.
 
 
-%%%%%Section: LOV state%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%Section: LOV state %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{LOV state}\label{sec:state}
@@ -315,7 +316,7 @@ space & 864 & 1.07\% \\
 Since 2011, the Linked Open Vocabularies initiative has gathered a community of around 480 people interested in various domains including ontology engineering and data publication. The LOV Google+ community\footnote{\url{https://plus.google.com/communities/108509791366293651606}} is now an important place to discuss, report and announce general facts related to vocabularies on the Web. The LOV dataset itself referenced 389 resources of type \emph{Person} and 111 of type \emph{Organization} participating in vocabulary design and/or publication.
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%% SYSTEM COMPONENTS %%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -356,19 +357,19 @@ At the vocabulary level, the system extracts three types of information for each
 
 There are many ways two vocabularies can be interlinked. Let us consider two vocabularies $V1$ and $V2$ such that $V1$ contains a class $c1$ and a property $p1$ and $V2$ contains a class $c2$ and a property $p2$. Relationships between these two vocabularies can be of the following types (the lines and numbers in brackets correspond to real examples presented in Listing \ref{list:voaf}):
 		\begin{description}
-			\item [Metadata.] some terms from $V2$ are reused to provide metadata about $V1$ (lines 1 to 2).
+			\item [Metadata.] some terms from $V2$ are reused to provide metadata about $V1$, Listing~\ref{list:voaf} lines 1-2.
 
-			\item [Import.] some terms from $V2$ are reused with $V1$ to capture the semantic of the data (lines 3 to 4).
+			\item [Import.] some terms from $V2$ are reused with $V1$ to capture the semantic of the data, Listing~\ref{list:voaf} lines 3-4.
 
-			\item [Specialization.] $V1$ defines some subclasses or subproperties (or local restrictions) of $V2$ (lines 5 to 8).
+			\item [Specialization.] $V1$ defines some subclasses or subproperties (or local restrictions) of $V2$, Listing~\ref{list:voaf} lines 5-8.
 
-			\item [Generalization.] $V1$ defines some superclasses or superproperties of $V2$ (lines 9 to 11).
+			\item [Generalization.] $V1$ defines some superclasses or superproperties of $V2$, Listing~\ref{list:voaf} lines 9-11.
 
-			\item [Extension.] $V1$ extends the expressivity of $V2$ (lines 12 to 15).
+			\item [Extension.] $V1$ extends the expressivity of $V2$, Listing~\ref{list:voaf} lines 12-15.
 
-			\item [Equivalence.] $V1$ declares some equivalent classes or properties with $V2$ (lines 16 to 20).
+			\item [Equivalence.] $V1$ declares some equivalent classes or properties with $V2$, Listing~\ref{list:voaf} lines 16-20.
 
-			\item [Disjunction.] $V1$ declares some disjunct classes with $V2$ (lines 21 to 23).
+			\item [Disjunction.] $V1$ declares some disjunct classes with $V2$, Listing~\ref{list:voaf} lines 21-23.
 		\end{description}
 
 \begin{lstlisting}[float=*,basicstyle=\tiny,label={list:voaf}, language=turtle, caption={Examples of Inter-vocabulary relationships.}]
