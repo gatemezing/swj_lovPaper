@@ -59,7 +59,7 @@
 \newcommand{\maria}[1]{\textcolor{blue}{\textbf{[MARIA:#1]}}}
 \newcommand{\py}[1]{\textcolor{olive}{\textbf{[PIERRE-YVES TO:#1]}}}
 \newcommand{\ghis}[1]{\textcolor{brown}{\textbf{[GHIS TO:#1]}}}
-\newcommand{\js}[1]{\textcolor{green}{\textbf{[JS:#1]}}}
+\newcommand{\js}[1]{\textcolor{brown}{\textbf{[JS:#1]}}}
 
 % Language Definitions for Turtle
 \definecolor{MyLightGray}{RGB}{200, 200,200}
@@ -186,14 +186,14 @@ LOV\sep Linked Open Vocabularies\sep Ontology search\sep Linked Data\sep Vocabul
 %%%% Section: INTRO %%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
-The last two decades have seen the emergence of a ``Semantic Web'' enabling humans and computer systems to exchange data with unambiguous, shared meaning. This vision has been supported by World Wide Web Consortium (W3C) Recommendations such as the Resource Description Framework (RDF), RDF-Schema and the Web Ontology Language (OWL). Thanks to a major effort in publishing data following Semantic Web and Linked Data principles~\cite{timld}, there are now tens of billions of facts spanning hundreds of linked datasets on the Web covering a wide range of topics.%[JS:Citation for tens of billions?]
-Access to the data is facilitated by portals (such as Datahub\footnote{\url{http://datahub.io/}} or UK Government Data\footnote{\url{http://data.gov.uk/}}) or published directly by organisations (e.g. New York Times\footnote{\url{http://data.nytimes.com/}}). 
+The last two decades have seen the emergence of a ``Semantic Web'' enabling humans and computer systems to exchange data with unambiguous, shared meaning. This vision has been supported by World Wide Web Consortium (W3C) Recommendations such as the Resource Description Framework (RDF), RDF-Schema and the Web Ontology Language (OWL). Thanks to a major effort in publishing data following Semantic Web and Linked Data principles~\cite{timld}, there are now tens of billions of facts spanning hundreds of linked datasets on the Web covering a wide range of topics. \js{Citation for tens of billions?} 
+Access to the data is facilitated by portals (such as Datahub\footnote{\url{http://datahub.io/}} or UK Government Data\footnote{\url{http://data.gov.uk/}}) or direct publication by organisations (e.g. New York Times\footnote{\url{http://data.nytimes.com/}}). 
 
-Despite the enormous volume of data now available on the Web, the Linked Data community has relatively little interest in vocabulary\footnote{We use the terms ``semantic vocabulary'', ``vocabulary'' and ``ontology'' interchangeably.} management, focusing rather on the data itself. A vocabulary consists of classes, properties and datatypes that define the meaning of data. RDF vocabularies are themselves expressed and published following the Linked Data principles; this gives humans and machines access to the definition of the terms used to qualify the data. Unfortunately some vocabularies are not published or are no longer not available; this breaks the semantic interoperability of the data, one of the fundamental principles of the Semantic Web~\cite{janowicz2014five}.
+Despite the enormous volume of data now available on the Web, the Linked Data community has relatively little interest in vocabulary\footnote{We use the terms ``semantic vocabulary'', ``vocabulary'' and ``ontology'' interchangeably.} management, focusing rather on the data itself. A vocabulary consists of classes, properties and datatypes that define the meaning of data. RDF vocabularies are themselves expressed and published following the Linked Data principles; this gives humans and machines access to the definitions of the terms used to qualify the data. Unfortunately some vocabularies are not published or are no longer not available; this breaks the semantic interoperability of the data, one of the fundamental principles of the Semantic Web~\cite{janowicz2014five}.
 
-The Linked Open Vocabularies (LOV) initiative\footnote{\url{http://lov.okfn.org/dataset/lov/}} is an innovative observatory of the semantic vocabularies ecosystem. Started in March 2011, as part of the DataLift research project~\cite{scharffe_2012} and hosted by the Open Knowledge Foundation, LOV gathers and makes visible  indicators not previously harvested, such as the interconnections between vocabularies, the versioning history along with past and current editors  (individual or organization). The number of vocabularies indexed by LOV is constantly growing (527 as of October 2015) thanks to a community effort. It is the only catalogue, to the best of our knowledge, that accepts all types of search criteria: metadata search, ontology search, APIs, a comprehensive dump file and SPARQL endpoint access. 
+The Linked Open Vocabularies (LOV) initiative\footnote{\url{http://lov.okfn.org/dataset/lov/}} is an innovative observatory of the semantic vocabularies ecosystem. Started in March 2011, as part of the DataLift research project~\cite{scharffe_2012} and hosted by the Open Knowledge Foundation, LOV gathers and makes visible  indicators not previously harvested, such as the interconnections between vocabularies, the versioning history along with past and current editor  (individual or organization). The number of vocabularies indexed by LOV is constantly growing (527 as of October 2015) thanks to a community effort. It is the only catalogue, to the best of our knowledge, that accepts all types of search criteria: metadata search, ontology search, APIs, a comprehensive dump file and SPARQL endpoint access. 
 
-The purpose of LOV is to promote and facilitate the reuse of well documented vocabularies in the Linked Data ecosystem. In D'Aquin and Noy~\cite{AquinJoWS12}'s categorisation of ontology libraries, LOV falls into the categories \textit{``curated ontology directory''}  and \textit{``application platform''}.  LOV supports the following main activities for the design of ontologies and the publication of data on the Web~\cite{MC10, ohdeploying, pedrinaci2014, villata2012}:
+The purpose of LOV is to promote and facilitate the reuse of well documented vocabularies in the Linked Data ecosystem. In D'Aquin and Noy~\cite{AquinJoWS12}'s categorisation of ontology libraries, LOV falls into the categories \textit{``curated ontology directory''}  and \textit{``application platform''}. Specifically, LOV supports the following main activities for the design of ontologies and the publication of data on the Web~\cite{MC10, ohdeploying, pedrinaci2014, villata2012}:
 
 \begin{description}
  \item [Ontology Search.] LOV enables searching for vocabulary terms (class, property, datatype) based on domain: vocabularies (and therefore vocabulary terms) are categorised according to the domain they address.
@@ -208,13 +208,13 @@ This report is structured as follows: In the next section, we provide statistics
 %%%%%%%%%%%%%%%%%%%%%
 \section{LOV state}\label{sec:state}
 
-The LOV dataset consists of 527 vocabularies as of October 2015\footnote{However, the figures and evaluation used in this report are based on LOV catalogue with 511 vocabularies as of June 2015}. Figure \ref{fig:evolLOV} shows the evolution of the number of vocabularies inserted in the LOV dataset since March 2011. The addition of new vocabularies to LOV has been fairly constant with two exceptions: 
+The LOV dataset consists of 527 vocabularies as of October 2015\footnote{However, the figures and evaluation used in this report are based on LOV catalogue with 511 vocabularies as of June 2015.}. Figure \ref{fig:evolLOV} shows the evolution of the number of vocabularies inserted in the LOV dataset since March 2011. The addition of new vocabularies to LOV has been fairly constant with two exceptions: 
 \begin{inparaenum}[1)] 
-	\item the deployment of LOV version 2 [early 2012] automated most of the vocabulary analyses, resulting in ; and
-	\item the deployment of LOV version 3 [early 2015]. At that time we were considering removing offline vocabularies but finally decided to keep them with a special flag making LOV the last semantic continuity for datasets referencing unreachable vocabularies.
-	
+	\item the deployment of LOV version 2 [early 2012] automated most of the vocabulary analyses, resulting in the increase number of vocabularies ; and
+	\item the deployment of LOV version 3 [early 2015], resulting in a small decrease and plateau of the vocabularies. At that time we were considering removing offline vocabularies but finally decided to keep them with a special flag, making LOV the only source of continuity for datasets referencing unreachable vocabularies.
+		
 %	[JS: describe what is due to this. Are these two events, e.g. offline vocabs removed & then reinstated?]
-%	[JS: remove/rewrite aa small decrease and plateau beginning of 2015 corresponding to the deployment of LOV version 3 described in the present report.]
+%\js{ remove/rewrite aa small decrease and plateau beginning of 2015 corresponding to the deployment of LOV version 3 described in the present report.}
 	
 	
 \end{inparaenum} 
@@ -228,7 +228,7 @@ The LOV dataset consists of 527 vocabularies as of October 2015\footnote{However
 %[JS: update end date if it's easy]
 
 
-By observing the vocabularies contained in LOV as a whole, we can extract some information about Semantic Web adoption and dynamics. Figure~\ref{fig:creaevol} shows the distribution of LOV vocabularies by creation date. The distribution follows a bell curve with its peak in 2011. It is worth noting that a decrease of vocabulary creation does not necessarily mean a decrease in use of the technology but rather that the existing vocabularies now cover a large part of the semantic description needed. When looking at the last modified date of the same vocabularies (as illustrated in Figure~\ref{fig:modifevol}), we see that LOV vocabularies are part of a living ecosystem in constant evolution. 
+By observing the vocabularies contained in LOV as a whole, we can extract some information about Semantic Web adoption and dynamics. Figure~\ref{fig:creaevol} shows the distribution of LOV vocabularies by creation date. The distribution follows a bell curve with its peak in 2011. It is worth noting that a decrease in number of vocabulary creation does not necessarily mean a decrease in use of the technology but rather that the existing vocabularies now cover a large part of the semantic description needed. When looking at the last modified date of the same vocabularies (as illustrated in Figure~\ref{fig:modifevol}), we see that LOV vocabularies are part of a living ecosystem in constant evolution. 
 
 \begin{figure}[htb]
 \resizebox{\linewidth}{!}{\input{PGFPlots/LOVCreaEvol.tex}}
@@ -241,7 +241,7 @@ By observing the vocabularies contained in LOV as a whole, we can extract some i
 \end{figure}
 
  
-Overall, the LOV dataset contains 20,000 classes and almost 30,000 properties. The median is 9 classes and 17 properties per vocabulary. Table \ref{tab:elements} presents a breakdown of LOV content by vocabulary element type. In this Table, \emph{Classes} type refers to any instance of {\small\texttt{rdfs:Class}} or {\small\texttt{owl:Class}}; \emph{Properties} type refers to any instance of {\small\texttt{rdf:Property}} and by inference, any instance of subclasses of {\small\texttt{rdf:Property}} defined in the OWL language; \emph{Datatypes} type refers to any instance of {\small\texttt{rdfs:Datatype}}; and finally, the members of a vocabulary class are known as \emph{instances} of the class.
+Overall, the LOV dataset contains 20,000 classes and almost 30,000 properties. The median is 9 classes and 17 properties per vocabulary. Table \ref{tab:elements} presents a breakdown of LOV content by vocabulary element type. In this Table, the  \emph{Classes} type refers to any instance of {\small\texttt{rdfs:Class}} or {\small\texttt{owl:Class}}; the  \emph{Properties} type refers to any instance of {\small\texttt{rdf:Property}} or by inference, any instance of subclasses of {\small\texttt{rdf:Property}} defined in the OWL language; the \emph{Datatypes} type refers to any instance of {\small\texttt{rdfs:Datatype}}; and finally, the members of a vocabulary class are known as \emph{instances} of the class.
 
 \begin{table}[htb]
 \caption{LOV vocabulary element types statistics.}
@@ -257,11 +257,11 @@ Datatypes & 101 & 0 \\
 \label{tab:elements}
 \end{table}
 
-Out of 511 vocabularies, 66.14\% explicitly use the English language for labels/comments, i.e containing \texttt{lang@en} tag. Table \ref{tab:language} presents the number and percentage of the top five languages detected in LOV. Figure \ref{fig:langdist} shows the distribution of vocabularies per number of languages explicitly 
-used: 27.98\% of the vocabularies still do not provide any language information and only 14.68\% of the vocabularies are multilingual. In total, 45 languages are used by vocabularies in LOV. We will discuss the importance of providing multilingual vocabularies in Section \ref{sec:conclusion}.
+Out of 511 vocabularies, 66.14\% explicitly use the English language for labels/comments, i.e containing \texttt{lang@en} tag. Table \ref{tab:language} presents the number and percentage of vocabularies using the top five languages detected in LOV. Figure \ref{fig:langdist} shows the distribution of vocabularies per number of languages explicitly 
+used: 27.98\% of the vocabularies still do not provide any language information, and only 14.68\% of the vocabularies are multilingual. In total, 45 languages are used by vocabularies in LOV. We will discuss the importance of providing multilingual vocabularies in Section \ref{sec:conclusion}.
 
  \begin{table}[h!tb]
-\caption{The top five languages detected in the LOV catalogue. A vocabulary can make use of multiple languages.}
+\caption{Top five languages detected in the LOV catalogue, showing numbers and percentages of vocabularies using them. A vocabulary can make use of multiple languages.}
 \begin{tabular}{lrr}
 \hline
 \textbf{Language} & \textbf{\# vocabs} & \textbf{\% vocabs (out of 511)}  \\ \hline
@@ -276,11 +276,11 @@ Italian & 18 & 3.52\%      \\
 \end{table}
 
 
-From January to June 2015, more than 1.4 million searches were conducted on LOV\footnote{This figure includes searches from the API and UI as well as searches with and without keywords such as ``all agents that participated in vocabulary design and publication in the geo-location domain''.}. A breakdown of searches per element type is provided in Table \ref{tab:searchcategory}. We can see that agent search (for person or organisation) is the most prevalent; this is a new feature in LOV version 3. This might be explained by the uniqueness (when compared to other ontology catalogues) and the recent development of this feature in LOV which now allows a user to visualise who defined or published vocabularies. Searches that include keywords (and not only filters) are mainly seek vocabulary terms. Table \ref{tab:toptermsearch} presents the top 10 searched terms between January and June 2015. Although most of the searches are performed through the User Interface, an application ecosystem using LOV APIs has surfaced as shown in Figure \ref{fig:apivsui}. 
+From January to June 2015, more than 1.4 million searches were conducted on LOV\footnote{This figure includes searches from the API and UI as well as searches with and without keywords such as ``all agents that participated in vocabulary design and publication in the geo-location domain''.}. A breakdown of searches per element type is provided in Table \ref{tab:searchcategory}. We can see that agent search (for person or organisation) is the most prevalent; this is a new feature in LOV version 3. This might be explained by the uniqueness (when compared to other ontology catalogues) and the recent development of this feature in LOV, which now allows a user to visualise who defined or published vocabularies. Searches that include keywords (and not only filters) are mainly seek vocabulary terms. Table \ref{tab:toptermsearch} presents the top 10 searched terms between January and June 2015. Although most of the searches are performed through the user interface, an application ecosystem using LOV APIs has surfaced, as shown in Figure \ref{fig:apivsui}. 
 
 \begin{figure}[htb]
 \resizebox{\linewidth}{!}{\input{PGFPlots/LOVLangDist.tex}}
-\caption{\label{fig:langdist} Distribution of LOV vocabularies per number of languages explicitly mentioned using language tag. ``0" means that there is no explicit language tag declared (i.e./ no literal value of the vocabulary has a language tag).}
+\caption{\label{fig:langdist} Distribution of LOV vocabularies by number of languages explicitly mentioned using language tag. ``Zero" means that there is no explicit language tag declared (i.e./ no literal value of the vocabulary has a language tag).}
 %[JS: put language tag info in the main text]}
 \end{figure}
 
@@ -324,11 +324,11 @@ space & 864 & 1.07\% \\
 		\figfontsize
 		\resizebox{\linewidth}{!}{\input{PGFPlots/apiVsui.tex}}
 	}{
-	  \caption{\label{fig:apivsui} Evolution of the number of searches through UI and API methods from January to June 2015. Note that the y-axis has a logarithmic scale.}
+	  \caption{\label{fig:apivsui} Evolution of the number of searches through UI and API methods from January to June 2015. Note that the y axis has a logarithmic scale.}
 	}
  \end{figure}
 
-Since 2011, the Linked Open Vocabularies initiative has gathered a community of around 480 people interested in various domains including ontology engineering or data publication. The LOV Google+ community\footnote{\url{https://plus.google.com/communities/108509791366293651606}} is now an important place to discuss, report and announce general facts related to vocabularies on the Web. The LOV dataset itself referenced 389 resources of type \emph{Person} and 111 of type \emph{Organization} participating in vocabulary design and/or publication.
+Since 2011, the Linked Open Vocabularies initiative has gathered a community of about 480 people interested in various domains, including ontology engineering and data publication. The LOV Google+ community\footnote{\url{https://plus.google.com/communities/108509791366293651606}} is now an important place to discuss, report and announce general facts related to vocabularies on the Web. The LOV dataset itself references 389 resources of type \emph{Person} and 111 of type \emph{Organization} participating in vocabulary design and/or publication.
 
 
 
