@@ -1,0 +1,62 @@
+## References without DOI ###
+#################################
+
+@techreport{vandenbussche2011metadata,
+  title={Metadata recommendations for linked open data vocabularies},
+  author={Vandenbussche, Pierre-Yves and Vatant, Bernard},
+  volume={1.1},
+  pages={1--4},
+  year={2012}
+}
+
+
+@inproceedings{void2009,
+  title={Describing linked datasets-on the design and usage of void, the vocabulary of interlinked datasets},
+  author={Alexander, Keith and Hausenblas, Michael},
+  booktitle={In Linked Data on the Web Workshop (LDOW 09), in conjunction with 18th International World Wide Web Conference (WWW 09)},
+  year={2009},
+  organization={Citeseer}
+}
+
+@inproceedings{wasabi13,
+  added-at = {2013-12-09T00:00:00.000+0100},
+  author = {Atemezing, Ghislain Auguste and Vatant, Bernard and Troncy, Rapha\"{e}l and Vandenbussche, Pierre-Yves},
+  biburl = {http://www.bibsonomy.org/bibtex/2e5a6bc1d2a637b022b585321493686e8/dblp},
+  booktitle = {WaSABi@ISWC},
+  crossref = {conf/semweb/2013wasabi},
+  editor = {Coppens, Sam and Hammar, Karl and Knuth, Magnus and Neumann, Marco and Ritze, Dominique and Sack, Harald and Sande, Miel Vander},
+  ee = {http://ceur-ws.org/Vol-1106/paper2.pdf},
+  interhash = {b6eea0d60fa36ea64be1b880b9ec96dc},
+  intrahash = {e5a6bc1d2a637b022b585321493686e8},
+  keywords = {dblp},
+  publisher = {CEUR-WS.org},
+  series = {CEUR Workshop Proceedings},
+  timestamp = {2013-12-10T11:40:38.000+0100},
+  title = {Harmonizing Services for LOD Vocabularies: A Case Study.},
+  url = {http://dblp.uni-trier.de/db/conf/semweb/wasabi2013.html#AtemezingVTV13},
+  volume = 1106,
+  year = 2013
+}
+
+@INPROCEEDINGS{Sabou07,
+  added-at = {2010-01-14T10:58:32.000+0100},
+  author = {d'Aquin, M. and C.Baldassare and L.Gridinoc and Sabou, M. and S.Angeletou and E.Motta},
+  biburl = {http://www.bibsonomy.org/bibtex/232d1aa2e2fd53e326431a8cca8aa439f/mdaquin},
+  booktitle = {WWW/Internet conference 2007},
+  interhash = {670ea93079f3b2a34a0ac75b403f2f2c},
+  intrahash = {32d1aa2e2fd53e326431a8cca8aa439f},
+  keywords = {ontologies semanticweb semanticwebsearchengine watson},
+  timestamp = {2010-01-18T22:24:46.000+0100},
+  title = {Watson: Supporting Next Generation Semantic Web Applications},
+  url = {http://people.kmi.open.ac.uk/mathieu/papers/WWWInternet07.pdf},
+  year = 2007
+}
+
+@article{vandenbussche2014,
+  title={Linked Open Vocabularies.},
+  author={Vandenbussche, Pierre-Yves and Vatant, Bernard},
+  journal={ERCIM News},
+  volume={2014},
+  number={96},
+  year={2014}
+}
