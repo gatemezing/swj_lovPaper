@@ -60,3 +60,63 @@
   number={96},
   year={2014}
 }
+
+@INPROCEEDINGS{finin2005swoogle,
+author = {Finin, Tim and Ding, Li and Pan, Rong and Joshi, Anupam and Kolari, Pranam and Java, Akshay and Peng, Yun},
+ title = {Swoogle: Searching for Knowledge on the Semantic Web},
+ booktitle = {Proceedings of the 20th National Conference on Artificial Intelligence - Volume 4},
+ series = {AAAI'05},
+ year = {2005},
+ isbn = {1-57735-236-x},
+ location = {Pittsburgh, Pennsylvania},
+ pages = {1682--1683},
+ numpages = {2},
+ url = {http://dl.acm.org/citation.cfm?id=1619566.1619614},
+ acmid = {1619614},
+ publisher = {AAAI Press}
+} 
+
+@article{janowicz2014five,
+  added-at = {2014-05-04T00:00:00.000+0200},
+  author = {Janowicz, Krzysztof and Hitzler, Pascal and Adams, Benjamin and Kolas, Dave and Vardeman, Charles},
+  biburl = {http://www.bibsonomy.org/bibtex/23a31391a035d66ce406b49c21d8d6823/dblp},
+  ee = {http://dx.doi.org/10.3233/SW-140135},
+  interhash = {c178bdbc149fc861e0b8b667397ced2b},
+  intrahash = {3a31391a035d66ce406b49c21d8d6823},
+  journal = {Semantic Web},
+  keywords = {dblp},
+  number = 3,
+  pages = {173-176},
+  timestamp = {2015-06-18T02:57:13.000+0200},
+  title = {Five stars of Linked Data vocabulary use.},
+  url = {http://dblp.uni-trier.de/db/journals/semweb/semweb5.html#JanowiczHAKV14},
+  volume = 5,
+  year = 2014
+}
+
+@inproceedings{governatori2014,
+  added-at = {2015-01-03T00:00:00.000+0100},
+  author = {Governatori, Guido and Lam, Ho-Pun and Rotolo, Antonino and Villata, Serena and Atemezing, Ghislain Auguste and Gandon, Fabien L.},
+  biburl = {http://www.bibsonomy.org/bibtex/2e5442b638405d7fe8bb79542195de52c/dblp},
+  booktitle = {COLD},
+  crossref = {conf/semweb/2014cold},
+  editor = {Hartig, Olaf and Hogan, Aidan and Sequeda, Juan},
+  ee = {http://ceur-ws.org/Vol-1264/cold2014_GovernatoriLRVAG.pdf},
+  interhash = {c85d1efe23862b6f0b9d779bc3c7af62},
+  intrahash = {e5442b638405d7fe8bb79542195de52c},
+  keywords = {dblp},
+  publisher = {CEUR-WS.org},
+  series = {CEUR Workshop Proceedings},
+  timestamp = {2015-06-18T22:57:02.000+0200},
+  title = {Checking Licenses Compatibility between Vocabularies and Data.},
+  url = {http://dblp.uni-trier.de/db/conf/semweb/cold2014.html#GovernatoriLRVAG14a},
+  volume = 1264,
+  year = 2014
+}
+
+@inproceedings{verborgh2014ldf,
+  title={Low-Cost Queryable Linked Data through Triple Pattern Fragments},
+  author={Verborgh, Ruben and Hartig, Olaf and De Meester, Ben and Haesendonck, Gerald and De Vocht, Laurens and Vander Sande, Miel and Cyganiak, Richard and Colpaert, Pieter and Mannens, Erik and Van de Walle, Rik},
+  booktitle={Proceedings of the 13th International Semantic Web Conference: Posters and Demos},
+  year={2014}
+}
