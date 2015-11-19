@@ -76,23 +76,6 @@ author = {Finin, Tim and Ding, Li and Pan, Rong and Joshi, Anupam and Kolari, Pr
  publisher = {AAAI Press}
 } 
 
-@article{janowicz2014five,
-  added-at = {2014-05-04T00:00:00.000+0200},
-  author = {Janowicz, Krzysztof and Hitzler, Pascal and Adams, Benjamin and Kolas, Dave and Vardeman, Charles},
-  biburl = {http://www.bibsonomy.org/bibtex/23a31391a035d66ce406b49c21d8d6823/dblp},
-  ee = {http://dx.doi.org/10.3233/SW-140135},
-  interhash = {c178bdbc149fc861e0b8b667397ced2b},
-  intrahash = {3a31391a035d66ce406b49c21d8d6823},
-  journal = {Semantic Web},
-  keywords = {dblp},
-  number = 3,
-  pages = {173-176},
-  timestamp = {2015-06-18T02:57:13.000+0200},
-  title = {Five stars of Linked Data vocabulary use.},
-  url = {http://dblp.uni-trier.de/db/journals/semweb/semweb5.html#JanowiczHAKV14},
-  volume = 5,
-  year = 2014
-}
 
 @inproceedings{governatori2014,
   added-at = {2015-01-03T00:00:00.000+0100},
@@ -120,3 +103,60 @@ author = {Finin, Tim and Ding, Li and Pan, Rong and Joshi, Anupam and Kolari, Pr
   booktitle={Proceedings of the 13th International Semantic Web Conference: Posters and Demos},
   year={2014}
 }
+
+
+@inproceedings{vandenbussche:11,
+	author = { P.Y. Vandenbussche and B. Vatant and L. Rozat } ,
+  	title = {Linked open vocabularies: an initiative for the
+web of data} ,
+	booktitle = {QetR Workshop, Chambery, France. } ,
+	year ={2011}
+}
+
+@techreport{vandenbussche2011metadata,
+  title={Metadata recommendations for linked open data vocabularies},
+  author={Vandenbussche, Pierre-Yves and Vatant, Bernard},
+  volume={1.1},
+  pages={1--4},
+  year={2012}
+}
+
+@inproceedings{void2009,
+  title={Describing linked datasets-on the design and usage of void, the vocabulary of interlinked datasets},
+  author={Alexander, Keith and Hausenblas, Michael},
+  booktitle={In Linked Data on the Web Workshop (LDOW 09), in conjunction with 18th International World Wide Web Conference (WWW 09)},
+  year={2009},
+  organization={Citeseer}
+}
+
+
+@INPROCEEDINGS{scharffe_2012,
+  author = {Fran\c{c}ois Scharffe and Ghislain Atemezing and Rapha\"{e}l Troncy
+	and Fabien Gandon and Serena Villata and B\'{e}n\'{e}dicte Bucher
+	and Fay\c{c}al Hamdi and Laurent Bihanic and Gabriel K\'{e}p\'{e}klian
+	and Franck Cotton and J\'{e}r\^{o}me Euzenat and Zhengjie Fan and
+	Pierre-Yves Vandenbussche and Bernard Vatant},
+  title = {Enabling linked-data publication with the Datalift Platform},
+  booktitle = {26th Conference on Artificial Intelligence (AAAI-12)},
+  year = {2012},
+  timestamp = {2012.07.09}
+}
+
+
+
+
+@inproceedings{villata2012,
+  author    = {Serena Villata and
+               Fabien Gandon},
+  title     = {Licenses Compatibility and Composition in the Web of Data},
+  booktitle = {Proceedings of the Third International Workshop on Consuming Linked
+               Data, {COLD} 2012, Boston, MA, USA, November 12, 2012},
+  year      = {2012},
+  crossref  = {DBLP:conf/semweb/2012cold},
+  url       = {http://ceur-ws.org/Vol-905/VillataAndGandon_COLD2012.pdf},
+  timestamp = {Tue, 13 Nov 2012 18:10:25 +0100},
+  biburl    = {http://dblp.uni-trier.de/rec/bib/conf/semweb/VillataG12a},
+  bibsource = {dblp computer science bibliography, http://dblp.org}
+}
+
+@inproceedings{poveda2013detecting,

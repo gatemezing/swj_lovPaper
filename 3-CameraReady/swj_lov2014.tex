@@ -580,7 +580,7 @@ LOV APIs are a convenient means to access the full functionality and data of LOV
 \label{fig:apis}
 \end{figure}
 
-The LOV Website offers intuitive navigation within the vocabularies catalogue. It allows users to explore vocabularies, vocabulary terms, agents and languages, and to see the connections between these entities. For instance, a user can use the agent search to look for experts in \emph{geography} and \emph{geometry} domains\footnote{\url{http://lov.okfn.org/dataset/lov/agents?&tag=Geography,Geometry}}. We use the d3\footnote{\url{http://d3js.org/}} JavaScript library to display charts and make the navigation more interactive; for example, we use the star graph representation to display incoming and outgoing links between vocabularies (cf. Figure \ref{fig:graphVocab}). 
+The LOV Website offers intuitive navigation within the vocabularies catalogue. It allows users to explore vocabularies, vocabulary terms, agents and languages, and to see the connections between these entities. For instance, a user can use the agent search to look for experts in \emph{geography} and \emph{geometry} domains\footnote{\url{http://lov.okfn.org/dataset/lov/agents?&tag=Geography,Geometry}}. We use the d3\footnote{\url{http://d3js.org/}} JavaScript library~\cite{d3js} to display charts and make the navigation more interactive; for example, we use the star graph representation to display incoming and outgoing links between vocabularies (cf. Figure \ref{fig:graphVocab}). 
 
 
 \begin{figure}[ht!b]
@@ -609,7 +609,7 @@ YASGUI (Yet Another SPARQL Query GUI)\footnote{\url{http://legacy.yasgui.org/}} 
 Data2Ontology maps data objects and properties to ontology classes and predicates available in the LOV catalogue. Data2Ontology is part of the  Datalift\footnote{\url{http://datalift.org/}} platform \cite{scharffe_2012}, a framework for ``lifting'' raw data into RDF. The Data2Ontology module takes as input ``raw RDF'', straightforward conversion of legacy format to RDF, with the goal of helping data publishers in selecting vocabulary terms that could be used to better represent their data.
 
 
-OntoWiki\footnote{\url{http://ontowiki.net/}} facilitates the visual presentation of a knowledge base as an information map, with different views on instance data \cite{auer2006ontowiki}. It enables intuitive authoring of semantic content, with an inline editing mode for editing RDF content, similar to WYSIWIG for text documents. OntoWiki offers a vocabulary selection feature based on LOV.
+OntoWiki\footnote{\url{http://ontowiki.net/}} facilitates the visual presentation of a knowledge base as an information map, with different views on instance data~\cite{auer2006ontowiki}. It enables intuitive authoring of semantic content, with an inline editing mode for editing RDF content, similar to WYSIWIG for text documents. OntoWiki offers a vocabulary selection feature based on LOV.
 
 Furthermore, we can mention the Prot{\'e}g{\'e}LOV\footnote{\url{http://labs.mondeca.com/protolov/}}, a plug-in for the Prot{\'e}g{\'e} editor tool \cite{prolov2015} that aims at improving the development of lightweight ontologies by reusing existing vocabularies at a low fine grained level. The tool searches for a term in LOV via APIs and provides three actions if the term exists : 
 \begin{inparaenum}[1)] 
